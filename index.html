@@ -528,7 +528,7 @@ input[type="file"]#mImgFile{display:none;}
     <div class="search-row">
       <div class="search-box">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="pubSearch" placeholder="Buscar modelo... ex: iPhone 14, Galaxy S23" oninput="renderCatalog()">
+        <input type="text" id="pubSearch" placeholder="Buscar modelo... ex: iPhone 14, Galaxy S23" oninput="debouncedSearch()">
       </div>
     </div>
     <div class="brand-tabs" id="brandTabs"></div>
@@ -771,6 +771,13 @@ input[type="file"]#mImgFile{display:none;}
         </div>
         <input type="file" id="mImgFile" accept="image/*" onchange="handleImgUpload(event)">
         <input type="hidden" id="mImgData">
+        <div style="margin-top:8px;">
+          <label class="fl" style="margin-bottom:4px">Ou cole um link de imagem (URL)</label>
+          <div style="display:flex;gap:6px;">
+            <input class="fi" id="mImgUrl" placeholder="https://i.ibb.co/..." style="flex:1" oninput="handleImgUrl()">
+          </div>
+          <div style="font-size:11px;color:var(--text3);margin-top:3px;">Use imgbb.com ou imgur.com para hospedar a imagem gratuitamente</div>
+        </div>
       </div>
       <div class="fg"><label class="fl">Nome do modelo *</label><input class="fi" id="mName" placeholder="Ex: iPhone 15 Pro"></div>
 
@@ -885,6 +892,15 @@ input[type="file"]#mImgFile{display:none;}
 <div class="toast" id="toast"><div class="toast-dot" id="toastDot"></div><span id="toastMsg"></span></div>
 
 <script>
+// ═══════════════════════════════════════════════
+// DEBOUNCE BUSCA
+// ═══════════════════════════════════════════════
+let _searchTimer = null;
+function debouncedSearch() {
+  clearTimeout(_searchTimer);
+  _searchTimer = setTimeout(renderCatalog, 200);
+}
+
 // ═══════════════════════════════════════════════
 // STORAGE
 // ═══════════════════════════════════════════════
@@ -1010,6 +1026,7 @@ function showAP(id) {
 // ═══════════════════════════════════════════════
 let activeBrand = 'all';
 
+let _lastBrandsKey = '';
 function renderCatalog() {
   const modelos = loadModelos();
   const cfg = loadConfig();
@@ -1018,12 +1035,21 @@ function renderCatalog() {
   const search = document.getElementById('pubSearch').value.toLowerCase();
   const brands = ['all', ...new Set(modelos.map(m => m.brand))];
 
-  // Tabs de marca
-  const tabs = document.getElementById('brandTabs');
-  tabs.innerHTML = brands.map(b => `
-    <div class="brand-tab ${activeBrand===b?'active':''}" onclick="setBrand('${b}')">
-      ${b === 'all' ? '📱 Todos' : (modelos.find(m=>m.brand===b)?.icon||'📱')+' '+b}
-    </div>`).join('');
+  // Só reconstrói tabs se as marcas mudaram
+  const brandsKey = brands.join(',');
+  if (brandsKey !== _lastBrandsKey) {
+    _lastBrandsKey = brandsKey;
+    const tabs = document.getElementById('brandTabs');
+    tabs.innerHTML = brands.map(b => `
+      <div class="brand-tab ${activeBrand===b?'active':''}" onclick="setBrand('${b.replace(/'/g,"\\'")}')">
+        ${b === 'all' ? '📱 Todos' : (modelos.find(m=>m.brand===b)?.icon||'📱')+' '+b}
+      </div>`).join('');
+  } else {
+    // Só atualiza classe active
+    document.querySelectorAll('.brand-tab').forEach((el, i) => {
+      el.classList.toggle('active', brands[i] === activeBrand);
+    });
+  }
 
   // Filtro
   let filtered = modelos.filter(m => {
@@ -1365,11 +1391,15 @@ function openModeloModal(modelo) {
   document.getElementById('mNewBrand').value = '';
   document.getElementById('mIcon').value = modelo?.icon||'📱';
   document.getElementById('mName').value = modelo?.name||'';
-  document.getElementById('mImgData').value = modelo?.imgData||'';
+  const imgData = modelo?.imgData||'';
+  document.getElementById('mImgData').value = imgData;
   // Reset file input
   document.getElementById('mImgFile').value = '';
+  // Preenche URL se for link externo
+  const urlField = document.getElementById('mImgUrl');
+  if (urlField) urlField.value = (imgData && !imgData.startsWith('data:')) ? imgData : '';
   // Update preview
-  updateImgPreview(modelo?.imgData||'', modelo?.icon||'📱');
+  updateImgPreview(imgData, modelo?.icon||'📱');
 
   const sel = document.getElementById('mBrand');
   sel.innerHTML = `<option value="">Nova marca...</option>` + brands.map(b=>`<option value="${esc(b)}" ${modelo?.brand===b?'selected':''}>${esc(b)}</option>`).join('');
@@ -1479,10 +1509,18 @@ function handleImgUpload(event) {
   reader.onload = function(e) {
     const dataUrl = e.target.result;
     document.getElementById('mImgData').value = dataUrl;
+    document.getElementById('mImgUrl').value = '';
     updateImgPreview(dataUrl, '');
     toast('Foto carregada!', 'green');
   };
   reader.readAsDataURL(file);
+}
+
+function handleImgUrl() {
+  const url = document.getElementById('mImgUrl').value.trim();
+  if (!url) return;
+  document.getElementById('mImgData').value = url;
+  updateImgPreview(url, '');
 }
 
 function updateImgPreview(imgData, emoji) {
@@ -1520,6 +1558,8 @@ function syncEmojiPreview() {
 function removeImg() {
   document.getElementById('mImgData').value = '';
   document.getElementById('mImgFile').value = '';
+  const urlField = document.getElementById('mImgUrl');
+  if (urlField) urlField.value = '';
   const preview = document.getElementById('mImgPreview');
   const img = preview.querySelector('img');
   if (img) img.style.display = 'none';
@@ -1653,15 +1693,21 @@ function gerarSiteAtualizado() {
       const pedidos  = loadPedidos();
       const senha    = localStorage.getItem(SENHA_KEY) || 'sakkat22';
 
+      // Stripe base64 images para manter o arquivo leve (mantém apenas URLs externas)
+      const modelosLeve = modelos.map(m => {
+        if (m.imgData && m.imgData.startsWith('data:')) {
+          return {...m, imgData: ''};
+        }
+        return m;
+      });
+
       // Script que injeta os dados no localStorage assim que a página abre
       const injectScript = `<script id="cellos-inject">
 (function(){
-  var m=${JSON.stringify(JSON.stringify(modelos))};
-  var c=${JSON.stringify(JSON.stringify(config))};
-  var p=${JSON.stringify(JSON.stringify(pedidos))};
-  if(!localStorage.getItem('${MODELOS_KEY}')) localStorage.setItem('${MODELOS_KEY}',m);
-  if(!localStorage.getItem('${CONFIG_KEY}'))  localStorage.setItem('${CONFIG_KEY}',c);
-  if(!localStorage.getItem('${PEDIDOS_KEY}')) localStorage.setItem('${PEDIDOS_KEY}',p);
+  var m=${JSON.stringify(modelosLeve)};
+  var c=${JSON.stringify(config)};
+  if(!localStorage.getItem('${MODELOS_KEY}')) localStorage.setItem('${MODELOS_KEY}',JSON.stringify(m));
+  if(!localStorage.getItem('${CONFIG_KEY}'))  localStorage.setItem('${CONFIG_KEY}',JSON.stringify(c));
   if(!localStorage.getItem('${SENHA_KEY}'))   localStorage.setItem('${SENHA_KEY}','${senha}');
 })();
 <\/script>`;
