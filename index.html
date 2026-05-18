@@ -922,7 +922,7 @@ function loadModelos() {
     });
     stored.forEach(function(m, i){
       var d = defMap[m.id];
-      if (d && d.imgData && d.imgData.indexOf('img/') === 0 && m.imgData !== d.imgData) {
+      if (d && d.imgData && m.imgData !== d.imgData && !(m.imgData||'').startsWith('data:')) {
         stored[i] = Object.assign({}, m, { imgData: d.imgData });
         changed = true;
       }
