@@ -579,6 +579,10 @@ input[type="file"]#mImgFile{display:none;}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
           Modelos & Preços
         </button>
+        <button class="anav" onclick="showAP('os')" id="an-os">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Ordens de Serviço
+        </button>
         <button class="anav" onclick="showAP('config')" id="an-config">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
           Configurações
@@ -623,6 +627,20 @@ input[type="file"]#mImgFile{display:none;}
         </div>
         <div class="admin-content">
           <div id="adminModelos"></div>
+        </div>
+      </div>
+
+      <!-- ── Ordens de Serviço ── -->
+      <div class="ap" id="ap-os">
+        <div class="admin-topbar">
+          <div><h1>Ordens de Serviço</h1><div class="sub">Gerencie reparos e acompanhamento de clientes</div></div>
+          <button class="btn btn-primary" onclick="openOSModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nova OS
+          </button>
+        </div>
+        <div class="admin-content">
+          <div id="adminOS"></div>
         </div>
       </div>
 
@@ -722,10 +740,88 @@ input[type="file"]#mImgFile{display:none;}
             </div>
 
           </div>
+
+            <!-- Firebase config -->
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">🔥 Firebase — Acompanhamento Online</div>
+              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;display:flex;flex-direction:column;gap:12px;">
+                <div style="font-size:13px;color:var(--text2);line-height:1.6;">Configure o Firebase para o cliente acompanhar a OS em tempo real pelo celular.</div>
+                <div style="background:var(--bg4);border-radius:var(--r);padding:10px 12px;font-size:12px;color:var(--text3);line-height:1.8;">
+                  <strong style="color:var(--text2)">Como configurar (5 min):</strong><br>
+                  1. Acesse <strong style="color:var(--accent)">console.firebase.google.com</strong><br>
+                  2. Crie um projeto → ative o <strong>Realtime Database</strong> (modo teste)<br>
+                  3. Em Configurações do projeto → Seus apps → Web → copie o objeto <code style="color:var(--amber)">firebaseConfig</code><br>
+                  4. Cole no campo abaixo e salve
+                </div>
+                <div id="fbStatus" style="font-size:12px;padding:6px 10px;border-radius:6px;display:none;"></div>
+                <textarea class="fi" id="fbConfigInput" rows="5" placeholder='Cole aqui o objeto firebaseConfig, ex:&#10;{&#10;  "apiKey": "...",&#10;  "authDomain": "...",&#10;  "databaseURL": "...",&#10;  "projectId": "..."&#10;}' style="font-family:var(--mono);font-size:11px;resize:vertical;"></textarea>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-primary" onclick="salvarFbConfig()" style="flex:1;">Salvar e Conectar</button>
+                  <button class="btn btn-ghost" onclick="testarFbConfig()" style="flex:1;">Testar Conexão</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
 
     </main>
+  </div>
+</div>
+
+<!-- Modal: OS -->
+<div class="amodal-overlay" id="osModal" onclick="closeOSFora(event)" style="display:none;align-items:flex-start;padding-top:40px;">
+  <div class="amodal" style="max-width:600px;width:100%;max-height:90vh;overflow-y:auto;">
+    <div class="amodal-head">
+      <h2 id="osModalTitle">Nova Ordem de Serviço</h2>
+      <button class="close-btn" onclick="closeOSModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="amodal-body" style="display:flex;flex-direction:column;gap:16px;">
+      <!-- Cliente -->
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:6px;">Dados do Cliente</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div class="fg"><label class="fl">Nome *</label><input class="fi" id="osCliente" placeholder="Nome completo"></div>
+        <div class="fg"><label class="fl">Telefone / WhatsApp</label><input class="fi" id="osTelefone" placeholder="(00) 00000-0000"></div>
+      </div>
+      <!-- Aparelho -->
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:6px;">Aparelho</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div class="fg"><label class="fl">Modelo</label><input class="fi" id="osModelo" placeholder="Ex: iPhone 14, Galaxy A54"></div>
+        <div class="fg"><label class="fl">Status</label>
+          <select class="fs" id="osStatus">
+            <option value="aguardando">⏳ Aguardando Avaliação</option>
+            <option value="orcamento">💬 Orçamento Enviado</option>
+            <option value="aprovado">✅ Orçamento Aprovado</option>
+            <option value="reparo">🔧 Em Reparo</option>
+            <option value="pronto">🎉 Pronto para Retirada</option>
+            <option value="entregue">📦 Entregue</option>
+          </select>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div class="fg"><label class="fl">Valor do Orçamento (R$)</label><input class="fi" id="osOrcamento" type="number" step="0.01" placeholder="0,00"></div>
+        <div class="fg"><label class="fl">Previsão de entrega</label><input class="fi" id="osDataPrevista" type="date"></div>
+      </div>
+      <div class="fg"><label class="fl">Problema relatado pelo cliente</label><textarea class="fi" id="osProblema" rows="2" placeholder="Descreva o problema..." style="resize:vertical;"></textarea></div>
+      <!-- Checklist -->
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:6px;">Condições ao Receber</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="osChecklistGrid"></div>
+      <!-- Fotos -->
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:6px;">Fotos do Aparelho <span style="color:var(--text3);font-weight:400;text-transform:none;">(máx. 6)</span></div>
+      <div class="os-photo-grid" id="osFotoGrid"></div>
+      <button type="button" class="os-add-photo" onclick="addFotoOS()" style="width:100%;padding:14px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Adicionar fotos
+      </button>
+      <input type="file" id="osFotoInput" accept="image/*" multiple style="display:none" onchange="handleFotoInput(this)">
+      <!-- Observações -->
+      <div class="fg"><label class="fl">Observações internas</label><textarea class="fi" id="osObs" rows="2" placeholder="Anotações técnicas, peças necessárias..." style="resize:vertical;"></textarea></div>
+    </div>
+    <div class="amodal-foot">
+      <button class="btn btn-ghost" onclick="closeOSModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="salvarOS()">Salvar OS</button>
+    </div>
   </div>
 </div>
 
@@ -886,10 +982,70 @@ input[type="file"]#mImgFile{display:none;}
   50%{box-shadow:0 4px 28px rgba(37,211,102,0.7),0 0 0 8px rgba(37,211,102,0.1);}
 }
 .login-box{position:relative;}
+
+/* ══ OS TRACKING ══════════════════════════════ */
+.os-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.os-badge.aguardando{background:var(--amber-dim);color:var(--amber);}
+.os-badge.orcamento{background:rgba(139,92,246,.15);color:#a78bfa;}
+.os-badge.aprovado{background:var(--accent-dim);color:var(--accent);}
+.os-badge.reparo{background:rgba(251,146,60,.12);color:#fb923c;}
+.os-badge.pronto{background:var(--green-dim);color:var(--green);}
+.os-badge.entregue{background:rgba(82,82,91,.2);color:var(--text2);}
+.os-timeline{display:flex;align-items:flex-start;gap:0;}
+.os-step{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:60px;}
+.os-step-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;border:2px solid var(--border2);background:var(--bg3);color:var(--text3);transition:.3s;flex-shrink:0;}
+.os-step-dot.done{background:var(--green);border-color:var(--green);color:#000;}
+.os-step-dot.current{background:var(--accent);border-color:var(--accent);color:#000;box-shadow:0 0 0 4px rgba(34,211,238,.2);}
+.os-step-label{font-size:9px;color:var(--text3);text-align:center;font-weight:500;line-height:1.3;}
+.os-step-label.done{color:var(--green);}
+.os-step-label.current{color:var(--accent);font-weight:600;}
+.os-step-line{flex:1;height:2px;background:var(--border2);margin-top:15px;min-width:8px;}
+.os-step-line.done{background:var(--green);}
+.os-photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;}
+.os-photo-wrap{position:relative;aspect-ratio:1;border-radius:var(--r);overflow:hidden;background:var(--bg3);border:1px solid var(--border);}
+.os-photo-wrap img{width:100%;height:100%;object-fit:cover;}
+.os-photo-del{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.75);border:none;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:11px;}
+.os-add-photo{aspect-ratio:1;border-radius:var(--r);border:1.5px dashed var(--border2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;color:var(--text3);font-size:11px;transition:.2s;background:transparent;}
+.os-add-photo:hover{border-color:var(--accent);color:var(--accent);}
+.os-check-item{display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--bg3);border-radius:var(--r);border:1px solid var(--border);font-size:12px;cursor:pointer;transition:.2s;user-select:none;}
+.os-check-item.checked{background:rgba(34,211,238,.07);border-color:rgba(34,211,238,.25);color:var(--accent);}
+.os-check-box{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;transition:.2s;}
+.os-check-item.checked .os-check-box{background:var(--accent);border-color:var(--accent);color:#000;}
+#customerTrackPage{position:fixed;inset:0;z-index:2000;background:var(--bg);overflow-y:auto;display:none;}
+.ct-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10;}
+.ct-body{max-width:620px;margin:0 auto;padding:24px 16px;}
+.ct-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;margin-bottom:14px;}
+.ct-card h3{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px;}
+.ct-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.ct-row:last-child{border-bottom:none;}
+.ct-row-label{color:var(--text3);}
+.ct-row-val{font-weight:500;}
 </style>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
 <!-- Toast -->
 <div class="toast" id="toast"><div class="toast-dot" id="toastDot"></div><span id="toastMsg"></span></div>
+
+<!-- Página de acompanhamento do cliente -->
+<div id="customerTrackPage">
+  <div class="ct-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;color:var(--accent)"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <div>
+      <div style="font-size:15px;font-weight:700" id="ctShopName">Ordem de Serviço</div>
+      <div style="font-size:12px;color:var(--text3)">Código: <span id="ctCode" style="font-family:var(--mono);color:var(--accent)"></span></div>
+    </div>
+  </div>
+  <div class="ct-body" id="ctBody">
+    <div style="text-align:center;padding:60px 20px;color:var(--text3)">
+      <div style="font-size:32px;margin-bottom:12px">⏳</div>
+      <div>Carregando informações...</div>
+    </div>
+  </div>
+</div>
 
 <script>
 // ═══════════════════════════════════════════════
@@ -1149,7 +1305,8 @@ function showAP(id) {
   document.getElementById('an-'+id).classList.add('active');
   if (id === 'modelos') renderAdminModelos();
   if (id === 'pedidos') renderPedidos();
-  if (id === 'config') loadConfigForm();
+  if (id === 'config') { loadConfigForm(); loadFbConfigForm(); }
+  if (id === 'os') renderAdminOS();
 }
 
 // ═══════════════════════════════════════════════
@@ -1883,8 +2040,420 @@ function gerarSiteAtualizado() {
 }
 
 // ═══════════════════════════════════════════════
+// ORDENS DE SERVIÇO (OS)
+// ═══════════════════════════════════════════════
+const OS_KEY = 'cellos_os_v1';
+const FB_CFG_KEY = 'cellos_fb_config_v1';
+
+const OS_STATUS_MAP = {
+  aguardando: { label:'Aguardando Avaliação', icon:'⏳' },
+  orcamento:  { label:'Orçamento Enviado',    icon:'💬' },
+  aprovado:   { label:'Orçamento Aprovado',   icon:'✅' },
+  reparo:     { label:'Em Reparo',            icon:'🔧' },
+  pronto:     { label:'Pronto! ✨',           icon:'🎉' },
+  entregue:   { label:'Entregue',             icon:'📦' },
+};
+const OS_STEPS = ['aguardando','orcamento','aprovado','reparo','pronto','entregue'];
+
+const CHECKLIST_ITEMS = [
+  { key:'tela',      label:'Tela trincada/quebrada' },
+  { key:'carcaca',   label:'Carcaça amassada/riscada' },
+  { key:'camera',    label:'Câmera danificada' },
+  { key:'lente',     label:'Lente da câmera' },
+  { key:'bateria',   label:'Bateria/Inflada' },
+  { key:'conector',  label:'Conector de carga' },
+  { key:'microfone', label:'Microfone' },
+  { key:'tampa',     label:'Tampa trincada' },
+  { key:'agua',      label:'Sem ligar/Oxidação/Água' },
+];
+
+function loadOS() { try { return JSON.parse(localStorage.getItem(OS_KEY)) || []; } catch { return []; } }
+function saveOS(d) { localStorage.setItem(OS_KEY, JSON.stringify(d)); }
+
+function gerarCodigoOS() {
+  const lista = loadOS();
+  const ano = new Date().getFullYear();
+  const num = String(lista.length + 1).padStart(3,'0');
+  return 'OS-' + ano + '-' + num;
+}
+
+function compressImage(file, cb) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      let w = img.width, h = img.height, max = 900;
+      if (w > max) { h = h * max / w; w = max; }
+      if (h > max) { w = w * max / h; h = max; }
+      const c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      c.getContext('2d').drawImage(img, 0, 0, w, h);
+      cb(c.toDataURL('image/jpeg', 0.72));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── Firebase ────────────────────────────────────
+let fbApp = null, fbDb = null, fbAuth = null, fbShopId = null;
+
+function loadFbConfig() { try { return JSON.parse(localStorage.getItem(FB_CFG_KEY)); } catch { return null; } }
+function saveFbConfigData(cfg) { localStorage.setItem(FB_CFG_KEY, JSON.stringify(cfg)); }
+
+async function initFirebase(cfg) {
+  cfg = cfg || loadFbConfig();
+  if (!cfg || !cfg.apiKey || !cfg.databaseURL) return false;
+  try {
+    if (!window.firebase) return false;
+    if (!fbApp) {
+      fbApp = firebase.initializeApp(cfg);
+      fbDb = firebase.database(fbApp);
+      fbAuth = firebase.auth(fbApp);
+    }
+    if (!fbAuth.currentUser) await fbAuth.signInAnonymously();
+    fbShopId = fbAuth.currentUser.uid;
+    localStorage.setItem('cellos_shop_id', fbShopId);
+    return true;
+  } catch(e) { console.error('Firebase:', e); return false; }
+}
+
+function getShopId() {
+  return fbShopId || localStorage.getItem('cellos_shop_id') || '';
+}
+
+async function syncOSToFirebase(os) {
+  if (!fbDb) return;
+  const sid = getShopId(); if (!sid) return;
+  const osLeve = {...os, fotos: (os.fotos||[]).map(f => f.startsWith('data:') ? f : f)};
+  try { await fbDb.ref('shops/' + sid + '/os/' + os.id).set(osLeve); } catch(e) { console.error(e); }
+}
+
+async function deleteOSFromFirebase(id) {
+  if (!fbDb) return;
+  const sid = getShopId(); if (!sid) return;
+  try { await fbDb.ref('shops/' + sid + '/os/' + id).remove(); } catch(e) { console.error(e); }
+}
+
+function getOSTrackingURL(os) {
+  const sid = getShopId();
+  return window.location.origin + window.location.pathname + '?os=' + encodeURIComponent(os.codigo) + '&shop=' + sid;
+}
+
+function loadFbConfigForm() {
+  const cfg = loadFbConfig();
+  const el = document.getElementById('fbConfigInput');
+  if (el && cfg) el.value = JSON.stringify(cfg, null, 2);
+  const st = document.getElementById('fbStatus');
+  if (st && getShopId()) {
+    st.style.display = 'block';
+    st.style.background = 'var(--green-dim)';
+    st.style.color = 'var(--green)';
+    st.textContent = '✅ Firebase conectado — Shop ID: ' + getShopId();
+  }
+}
+
+function salvarFbConfig() {
+  const raw = document.getElementById('fbConfigInput').value.trim();
+  const fbSt = document.getElementById('fbStatus');
+  try {
+    const cfg = JSON.parse(raw);
+    if (!cfg.apiKey || !cfg.databaseURL) throw new Error('Campos obrigatórios ausentes (apiKey, databaseURL)');
+    saveFbConfigData(cfg);
+    fbSt.style.display = 'block';
+    fbSt.style.background = 'var(--accent-dim)';
+    fbSt.style.color = 'var(--accent)';
+    fbSt.textContent = '⏳ Conectando ao Firebase...';
+    initFirebase(cfg).then(ok => {
+      fbSt.textContent = ok ? '✅ Firebase conectado! Acompanhamento em tempo real ativo.' : '❌ Falha na conexão. Verifique o config.';
+      fbSt.style.background = ok ? 'var(--green-dim)' : 'var(--red-dim)';
+      fbSt.style.color = ok ? 'var(--green)' : 'var(--red)';
+    });
+  } catch(e) {
+    fbSt.style.display = 'block';
+    fbSt.style.background = 'var(--red-dim)';
+    fbSt.style.color = 'var(--red)';
+    fbSt.textContent = '❌ JSON inválido: ' + e.message;
+  }
+}
+
+function testarFbConfig() {
+  const fbSt = document.getElementById('fbStatus');
+  fbSt.style.display = 'block';
+  initFirebase().then(ok => {
+    fbSt.style.background = ok ? 'var(--green-dim)' : 'var(--red-dim)';
+    fbSt.style.color = ok ? 'var(--green)' : 'var(--red)';
+    fbSt.textContent = ok ? '✅ Conectado! Shop ID: ' + getShopId() : '❌ Não conectado. Configure o Firebase primeiro.';
+  });
+}
+
+// ── Admin OS ────────────────────────────────────
+let osModalId = null, osFotosTemp = [];
+
+function renderAdminOS() {
+  const lista = loadOS();
+  const el = document.getElementById('adminOS');
+  if (!el) return;
+  if (!lista.length) {
+    el.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text3)"><div style="font-size:48px;margin-bottom:16px">📋</div><div style="font-size:16px;font-weight:600;color:var(--text2);margin-bottom:8px">Nenhuma OS criada</div><div style="font-size:13px">Clique em "Nova OS" para começar</div></div>';
+    return;
+  }
+  const total = lista.length;
+  const abertas = lista.filter(o => o.status !== 'entregue').length;
+  const prontos = lista.filter(o => o.status === 'pronto').length;
+  el.innerHTML = '<div class="stats-row" style="margin-bottom:20px">' +
+    '<div class="stat"><div class="slabel">Total OS</div><div class="sval">' + total + '</div></div>' +
+    '<div class="stat"><div class="slabel">Em aberto</div><div class="sval" style="color:var(--accent)">' + abertas + '</div></div>' +
+    '<div class="stat"><div class="slabel">Prontos</div><div class="sval" style="color:var(--green)">' + prontos + '</div></div>' +
+    '</div><div style="display:flex;flex-direction:column;gap:12px;">' +
+    lista.slice().reverse().map(renderOSCard).join('') + '</div>';
+}
+
+function renderOSCard(os) {
+  const st = OS_STATUS_MAP[os.status] || OS_STATUS_MAP.aguardando;
+  const currentIdx = OS_STEPS.indexOf(os.status);
+  const statusBtns = OS_STEPS.map(s => {
+    const si = OS_STATUS_MAP[s]; const i = OS_STEPS.indexOf(s);
+    const active = s === os.status, done = i < currentIdx;
+    return '<button onclick="quickStatusOS(\'' + os.id + '\',\'' + s + '\')" style="padding:3px 9px;border-radius:20px;font-size:10px;font-weight:600;border:1.5px solid;cursor:pointer;background:' + (active?'var(--accent)':done?'var(--green-dim)':'transparent') + ';color:' + (active?'#000':done?'var(--green)':'var(--text3)') + ';border-color:' + (active?'var(--accent)':done?'var(--green)':'var(--border2)') + '">' + si.icon + ' ' + si.label + '</button>';
+  }).join('');
+  const fotos = (os.fotos||[]).length ? '<div class="os-photo-grid" style="grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:5px;margin-top:8px;">' + os.fotos.map(f => '<div class="os-photo-wrap"><img src="' + f + '"></div>').join('') + '</div>' : '';
+  return '<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;display:flex;flex-direction:column;gap:10px;">' +
+    '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">' +
+      '<div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-weight:700;color:var(--accent)">' + esc(os.codigo) + '</span><span class="os-badge ' + os.status + '">' + st.icon + ' ' + st.label + '</span></div>' +
+      '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
+        '<button class="btn btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="copiarLinkOS(\'' + os.id + '\')">🔗 Link</button>' +
+        '<button class="btn btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="enviarWhats(\'' + os.id + '\')">WhatsApp</button>' +
+        '<button class="btn btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="openOSModal(\'' + os.id + '\')">Editar</button>' +
+        '<button class="btn" style="padding:5px 11px;font-size:11px;background:var(--red-dim);color:var(--red);border:1px solid rgba(248,113,113,.2);" onclick="deleteOS(\'' + os.id + '\')">✕</button>' +
+      '</div>' +
+    '</div>' +
+    '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;font-size:12px;">' +
+      '<div><span style="color:var(--text3)">Cliente: </span><strong>' + esc(os.cliente.nome) + '</strong></div>' +
+      '<div><span style="color:var(--text3)">Tel: </span>' + esc(os.cliente.telefone||'—') + '</div>' +
+      '<div><span style="color:var(--text3)">Modelo: </span>' + esc(os.modelo||'—') + '</div>' +
+      '<div><span style="color:var(--text3)">Orçamento: </span><strong style="color:var(--green)">' + (os.orcamento ? 'R$ ' + Number(os.orcamento).toFixed(2) : '—') + '</strong></div>' +
+      '<div><span style="color:var(--text3)">Entrada: </span>' + (os.dataEntrada||'—') + '</div>' +
+      '<div><span style="color:var(--text3)">Previsão: </span>' + (os.dataPrevista||'—') + '</div>' +
+    '</div>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:5px;">' + statusBtns + '</div>' +
+    fotos +
+  '</div>';
+}
+
+function quickStatusOS(id, status) {
+  const lista = loadOS();
+  const idx = lista.findIndex(o => o.id === id);
+  if (idx < 0) return;
+  lista[idx].status = status;
+  lista[idx].historico = lista[idx].historico || [];
+  lista[idx].historico.push({ status, data: new Date().toISOString() });
+  saveOS(lista);
+  syncOSToFirebase(lista[idx]);
+  renderAdminOS();
+  toast('Status → ' + OS_STATUS_MAP[status].label, 'green');
+}
+
+function copiarLinkOS(id) {
+  const os = loadOS().find(o => o.id === id);
+  if (!os) return;
+  const url = getOSTrackingURL(os);
+  navigator.clipboard.writeText(url).then(() => toast('Link copiado! ✅', 'green'));
+}
+
+function enviarWhats(id) {
+  const os = loadOS().find(o => o.id === id);
+  if (!os) return;
+  const cfg = loadConfig();
+  const url = getOSTrackingURL(os);
+  const tel = (os.cliente.telefone||'').replace(/\D/g,'');
+  const msg = encodeURIComponent('Olá ' + os.cliente.nome + '! 👋\nSua OS *' + os.codigo + '* foi aberta.\nAcompanhe em tempo real:\n' + url);
+  window.open('https://wa.me/' + (tel||cfg.whats||'') + '?text=' + msg, '_blank');
+}
+
+function deleteOS(id) {
+  if (!confirm('Excluir esta OS? Esta ação não pode ser desfeita.')) return;
+  saveOS(loadOS().filter(o => o.id !== id));
+  deleteOSFromFirebase(id);
+  renderAdminOS();
+  toast('OS removida', 'red');
+}
+
+// ── OS Modal ────────────────────────────────────
+function openOSModal(id) {
+  osModalId = id || null;
+  osFotosTemp = [];
+  const lista = loadOS();
+  const os = id ? lista.find(o => o.id === id) : null;
+  document.getElementById('osModalTitle').textContent = os ? 'Editar OS — ' + os.codigo : 'Nova Ordem de Serviço';
+  document.getElementById('osCliente').value = os?.cliente?.nome || '';
+  document.getElementById('osTelefone').value = os?.cliente?.telefone || '';
+  document.getElementById('osModelo').value = os?.modelo || '';
+  document.getElementById('osStatus').value = os?.status || 'aguardando';
+  document.getElementById('osOrcamento').value = os?.orcamento || '';
+  document.getElementById('osProblema').value = os?.problema || '';
+  document.getElementById('osObs').value = os?.observacoes || '';
+  document.getElementById('osDataPrevista').value = os?.dataPrevista || '';
+  // Checklist
+  const grid = document.getElementById('osChecklistGrid');
+  grid.innerHTML = CHECKLIST_ITEMS.map(item => {
+    const checked = os?.checklist?.[item.key] || false;
+    return '<div class="os-check-item' + (checked?' checked':'') + '" id="osCkW_' + item.key + '" onclick="toggleOsCk(\'' + item.key + '\')">' +
+      '<input type="checkbox" id="osCk_' + item.key + '"' + (checked?' checked':'') + '>' +
+      '<div class="os-check-box">' + (checked?'✓':'') + '</div>' +
+      '<span>' + item.label + '</span></div>';
+  }).join('');
+  osFotosTemp = os?.fotos ? [...os.fotos] : [];
+  renderOSFotos();
+  const modal = document.getElementById('osModal');
+  modal.style.display = 'flex';
+  setTimeout(() => modal.classList.add('active'), 10);
+}
+
+function closeOSModal() {
+  const modal = document.getElementById('osModal');
+  modal.classList.remove('active');
+  setTimeout(() => { modal.style.display = 'none'; }, 200);
+}
+
+function closeOSFora(e) { if (e.target === document.getElementById('osModal')) closeOSModal(); }
+
+function toggleOsCk(key) {
+  const cb = document.getElementById('osCk_' + key);
+  cb.checked = !cb.checked;
+  const wrap = document.getElementById('osCkW_' + key);
+  wrap.classList.toggle('checked', cb.checked);
+  wrap.querySelector('.os-check-box').textContent = cb.checked ? '✓' : '';
+}
+
+function renderOSFotos() {
+  const grid = document.getElementById('osFotoGrid');
+  grid.innerHTML = osFotosTemp.map((f, i) =>
+    '<div class="os-photo-wrap"><img src="' + f + '"><button class="os-photo-del" onclick="removeFotoOS(' + i + ')">✕</button></div>'
+  ).join('');
+}
+
+function addFotoOS() { document.getElementById('osFotoInput').click(); }
+
+function handleFotoInput(input) {
+  Array.from(input.files).forEach(file => {
+    if (osFotosTemp.length >= 6) return;
+    compressImage(file, b64 => { osFotosTemp.push(b64); renderOSFotos(); });
+  });
+  input.value = '';
+}
+
+function removeFotoOS(idx) { osFotosTemp.splice(idx, 1); renderOSFotos(); }
+
+async function salvarOS() {
+  const nome = document.getElementById('osCliente').value.trim();
+  if (!nome) { toast('Informe o nome do cliente', 'red'); return; }
+  const checklist = {};
+  CHECKLIST_ITEMS.forEach(i => { checklist[i.key] = document.getElementById('osCk_' + i.key).checked; });
+  const lista = loadOS();
+  const isNew = !osModalId;
+  const existing = osModalId ? lista.find(o => o.id === osModalId) : null;
+  const os = {
+    id: osModalId || ('os_' + Date.now()),
+    codigo: existing?.codigo || gerarCodigoOS(),
+    dataEntrada: existing?.dataEntrada || new Date().toISOString().slice(0,10),
+    dataPrevista: document.getElementById('osDataPrevista').value,
+    cliente: { nome, telefone: document.getElementById('osTelefone').value.trim() },
+    modelo: document.getElementById('osModelo').value.trim(),
+    status: document.getElementById('osStatus').value,
+    orcamento: document.getElementById('osOrcamento').value,
+    problema: document.getElementById('osProblema').value.trim(),
+    observacoes: document.getElementById('osObs').value.trim(),
+    checklist,
+    fotos: [...osFotosTemp],
+    historico: existing?.historico || [{ status:'aguardando', data:new Date().toISOString() }],
+  };
+  if (osModalId) { const idx = lista.findIndex(o => o.id === osModalId); lista[idx] = os; }
+  else lista.push(os);
+  saveOS(lista);
+  await syncOSToFirebase(os);
+  closeOSModal();
+  renderAdminOS();
+  toast(isNew ? 'OS ' + os.codigo + ' criada! ✅' : 'OS atualizada!', 'green');
+}
+
+// ── Customer Tracking ────────────────────────────
+let fbListener = null;
+
+function checkAndShowCustomerTracking() {
+  const params = new URLSearchParams(window.location.search);
+  const osCode = params.get('os');
+  const shopId = params.get('shop');
+  if (!osCode || !shopId) return;
+  const page = document.getElementById('customerTrackPage');
+  page.style.display = 'block';
+  document.getElementById('ctCode').textContent = osCode;
+  const fbCfg = loadFbConfig();
+  if (fbCfg && fbCfg.apiKey && window.firebase) {
+    initFirebase(fbCfg).then(ok => {
+      if (!ok) { showOSLocal(osCode); return; }
+      if (fbListener) fbListener();
+      fbListener = firebase.database(fbApp).ref('shops/' + shopId + '/os')
+        .orderByChild('codigo').equalTo(osCode)
+        .on('value', snap => {
+          const data = snap.val();
+          if (!data) { document.getElementById('ctBody').innerHTML = '<div style="text-align:center;padding:60px;color:var(--text3)">OS <strong>' + esc(osCode) + '</strong> não encontrada.</div>'; return; }
+          renderCustomerOS(Object.values(data)[0]);
+        });
+    });
+  } else {
+    showOSLocal(osCode);
+  }
+}
+
+function showOSLocal(osCode) {
+  const os = loadOS().find(o => o.codigo === osCode);
+  if (os) renderCustomerOS(os);
+  else document.getElementById('ctBody').innerHTML = '<div style="text-align:center;padding:60px;color:var(--text3)">OS <strong>' + esc(osCode) + '</strong> não encontrada.</div>';
+}
+
+function renderCustomerOS(os) {
+  const cfg = loadConfig();
+  document.getElementById('ctShopName').textContent = cfg.nome || 'Ordem de Serviço';
+  const st = OS_STATUS_MAP[os.status] || OS_STATUS_MAP.aguardando;
+  const currentIdx = OS_STEPS.indexOf(os.status);
+  const ckChecked = CHECKLIST_ITEMS.filter(i => os.checklist?.[i.key]);
+  const timeline = OS_STEPS.map((s, i) => {
+    const si = OS_STATUS_MAP[s];
+    const done = i < currentIdx, curr = i === currentIdx;
+    return (i > 0 ? '<div class="os-step-line' + (done||curr?' done':'') + '"></div>' : '') +
+      '<div class="os-step"><div class="os-step-dot' + (done?' done':'') + (curr?' current':'') + '">' + (done?'✓':si.icon) + '</div>' +
+      '<div class="os-step-label' + (done?' done':'') + (curr?' current':'') + '">' + si.label + '</div></div>';
+  }).join('');
+  document.getElementById('ctBody').innerHTML =
+    '<div class="ct-card" style="text-align:center;padding:28px 20px;">' +
+      '<div style="font-size:52px;margin-bottom:10px">' + st.icon + '</div>' +
+      '<div style="font-size:22px;font-weight:700;margin-bottom:6px">' + st.label + '</div>' +
+      '<div style="color:var(--text3);font-size:13px">Atualização em tempo real</div>' +
+    '</div>' +
+    '<div class="ct-card"><h3>Progresso do Reparo</h3><div class="os-timeline">' + timeline + '</div></div>' +
+    '<div class="ct-card"><h3>Dados do Aparelho</h3>' +
+      '<div class="ct-row"><span class="ct-row-label">Modelo</span><span class="ct-row-val">' + esc(os.modelo||'—') + '</span></div>' +
+      '<div class="ct-row"><span class="ct-row-label">Problema</span><span class="ct-row-val">' + esc(os.problema||'—') + '</span></div>' +
+      '<div class="ct-row"><span class="ct-row-label">Data de entrada</span><span class="ct-row-val">' + (os.dataEntrada||'—') + '</span></div>' +
+      '<div class="ct-row"><span class="ct-row-label">Previsão</span><span class="ct-row-val">' + (os.dataPrevista||'—') + '</span></div>' +
+      (os.orcamento ? '<div class="ct-row"><span class="ct-row-label">Orçamento</span><span class="ct-row-val" style="color:var(--green);font-weight:700">R$ ' + Number(os.orcamento).toFixed(2) + '</span></div>' : '') +
+    '</div>' +
+    (ckChecked.length ? '<div class="ct-card"><h3>Condições ao Receber</h3><div style="display:flex;flex-direction:column;gap:8px;">' +
+      ckChecked.map(i => '<div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2)"><span>⚠️</span>' + i.label + '</div>').join('') +
+    '</div></div>' : '') +
+    (os.fotos&&os.fotos.length ? '<div class="ct-card"><h3>Fotos do Aparelho (entrada)</h3><div class="os-photo-grid">' +
+      os.fotos.map(f => '<div class="os-photo-wrap"><img src="' + f + '"></div>').join('') +
+    '</div></div>' : '') +
+    (os.observacoes ? '<div class="ct-card"><h3>Observações</h3><div style="font-size:13px;color:var(--text2);line-height:1.6">' + esc(os.observacoes) + '</div></div>' : '') +
+    '<div style="height:40px;"></div>';
+}
+
+// ═══════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════
+initFirebase();
+checkAndShowCustomerTracking();
 renderCatalog();
 </script>
 </body>
