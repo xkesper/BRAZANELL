@@ -908,7 +908,20 @@ const MODELOS_KEY = 'cellos_modelos_v1';
 const PEDIDOS_KEY = 'cellos_pedidos_v1';
 const CONFIG_KEY  = 'cellos_config_v1';
 
-function loadModelos() { try { return JSON.parse(localStorage.getItem(MODELOS_KEY)) || defaultModelos(); } catch { return defaultModelos(); } }
+function loadModelos() {
+  try {
+    var stored = JSON.parse(localStorage.getItem(MODELOS_KEY));
+    if (!stored) return defaultModelos();
+    var def = defaultModelos();
+    var storedIds = stored.map(function(m){ return m.id; });
+    var added = false;
+    def.forEach(function(m){
+      if (storedIds.indexOf(m.id) === -1) { stored.push(m); added = true; }
+    });
+    if (added) localStorage.setItem(MODELOS_KEY, JSON.stringify(stored));
+    return stored;
+  } catch { return defaultModelos(); }
+}
 function saveModelos(d) { localStorage.setItem(MODELOS_KEY, JSON.stringify(d)); }
 function loadPedidos() { try { return JSON.parse(localStorage.getItem(PEDIDOS_KEY)) || []; } catch { return []; } }
 function savePedidos(d) { localStorage.setItem(PEDIDOS_KEY, JSON.stringify(d)); }
