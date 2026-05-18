@@ -913,12 +913,21 @@ function loadModelos() {
     var stored = JSON.parse(localStorage.getItem(MODELOS_KEY));
     if (!stored) return defaultModelos();
     var def = defaultModelos();
+    var defMap = {};
+    def.forEach(function(m){ defMap[m.id] = m; });
+    var changed = false;
     var storedIds = stored.map(function(m){ return m.id; });
-    var added = false;
     def.forEach(function(m){
-      if (storedIds.indexOf(m.id) === -1) { stored.push(m); added = true; }
+      if (storedIds.indexOf(m.id) === -1) { stored.push(m); changed = true; }
     });
-    if (added) localStorage.setItem(MODELOS_KEY, JSON.stringify(stored));
+    stored.forEach(function(m, i){
+      var d = defMap[m.id];
+      if (d && d.imgData && d.imgData.indexOf('img/') === 0 && m.imgData !== d.imgData) {
+        stored[i] = Object.assign({}, m, { imgData: d.imgData });
+        changed = true;
+      }
+    });
+    if (changed) localStorage.setItem(MODELOS_KEY, JSON.stringify(stored));
     return stored;
   } catch { return defaultModelos(); }
 }
