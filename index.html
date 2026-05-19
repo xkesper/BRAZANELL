@@ -771,7 +771,7 @@ input[type="file"]#mImgFile{display:none;}
 </div>
 
 <!-- Modal: OS -->
-<div class="amodal-overlay" id="osModal" onclick="closeOSFora(event)" style="display:none;align-items:flex-start;padding-top:40px;">
+<div class="amodal-overlay" id="osModal" onclick="closeOSFora(event)" style="align-items:flex-start;padding-top:40px;">
   <div class="amodal" style="max-width:600px;width:100%;max-height:90vh;overflow-y:auto;">
     <div class="amodal-head">
       <h2 id="osModalTitle">Nova Ordem de Serviço</h2>
@@ -2328,14 +2328,11 @@ function openOSModal(id) {
   osFotosTemp = os?.fotos ? [...os.fotos] : [];
   renderOSFotos();
   const modal = document.getElementById('osModal');
-  modal.style.display = 'flex';
-  setTimeout(() => modal.classList.add('active'), 10);
+  modal.classList.add('open');
 }
 
 function closeOSModal() {
-  const modal = document.getElementById('osModal');
-  modal.classList.remove('active');
-  setTimeout(() => { modal.style.display = 'none'; }, 200);
+  document.getElementById('osModal').classList.remove('open');
 }
 
 function closeOSFora(e) { if (e.target === document.getElementById('osModal')) closeOSModal(); }
