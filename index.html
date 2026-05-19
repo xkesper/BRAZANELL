@@ -2136,8 +2136,30 @@ async function deleteOSFromFirebase(id) {
 }
 
 function getOSTrackingURL(os) {
-  const sid = getShopId();
-  return window.location.origin + window.location.pathname + '?os=' + encodeURIComponent(os.codigo) + '&shop=' + sid;
+  // Encode key data in URL (sem fotos — muito pesado)
+  const payload = {
+    codigo: os.codigo,
+    status: os.status,
+    cliente: os.cliente ? os.cliente.nome : '',
+    modelo: os.modelo || '',
+    orcamento: os.orcamento || '',
+    problema: os.problema || '',
+    dataPrevista: os.dataPrevista || '',
+    dataEntrada: os.dataEntrada || '',
+    observacoes: os.observacoes || '',
+    checklist: os.checklist || {},
+    loja: (loadConfig().nome || 'Assistência Técnica'),
+    fotos: (os.fotos || []).slice(0, 3), // até 3 fotos pequenas no link
+  };
+  try {
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    return window.location.origin + window.location.pathname + '?os=' + encoded;
+  } catch(e) {
+    // fallback sem fotos se URL ficar grande
+    payload.fotos = [];
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    return window.location.origin + window.location.pathname + '?os=' + encoded;
+  }
 }
 
 function loadFbConfigForm() {
@@ -2382,34 +2404,49 @@ let fbListener = null;
 
 function checkAndShowCustomerTracking() {
   const params = new URLSearchParams(window.location.search);
-  const osCode = params.get('os');
-  const shopId = params.get('shop');
-  if (!osCode || !shopId) return;
+  const raw = params.get('os');
+  if (!raw) return;
+
   const page = document.getElementById('customerTrackPage');
   page.style.display = 'block';
-  document.getElementById('ctCode').textContent = osCode;
+
+  // Tenta decodificar payload da URL (novo formato)
+  try {
+    const json = decodeURIComponent(escape(atob(raw)));
+    const os = JSON.parse(json);
+    if (os && os.codigo) {
+      document.getElementById('ctCode').textContent = os.codigo;
+      document.getElementById('ctShopName').textContent = os.loja || 'Ordem de Serviço';
+      renderCustomerOS(os);
+      return;
+    }
+  } catch(e) {}
+
+  // Fallback: tenta Firebase (se configurado) ou localStorage
+  document.getElementById('ctCode').textContent = raw;
   const fbCfg = loadFbConfig();
-  if (fbCfg && fbCfg.apiKey && window.firebase) {
+  const shopId = params.get('shop');
+  if (fbCfg && fbCfg.apiKey && shopId && window.firebase) {
     initFirebase(fbCfg).then(ok => {
-      if (!ok) { showOSLocal(osCode); return; }
+      if (!ok) { showOSLocal(raw); return; }
       if (fbListener) fbListener();
       fbListener = firebase.database(fbApp).ref('shops/' + shopId + '/os')
-        .orderByChild('codigo').equalTo(osCode)
+        .orderByChild('codigo').equalTo(raw)
         .on('value', snap => {
           const data = snap.val();
-          if (!data) { document.getElementById('ctBody').innerHTML = '<div style="text-align:center;padding:60px;color:var(--text3)">OS <strong>' + esc(osCode) + '</strong> não encontrada.</div>'; return; }
+          if (!data) { document.getElementById('ctBody').innerHTML = '<div style="text-align:center;padding:60px;color:var(--text3)">OS não encontrada.</div>'; return; }
           renderCustomerOS(Object.values(data)[0]);
         });
     });
   } else {
-    showOSLocal(osCode);
+    showOSLocal(raw);
   }
 }
 
 function showOSLocal(osCode) {
   const os = loadOS().find(o => o.codigo === osCode);
   if (os) renderCustomerOS(os);
-  else document.getElementById('ctBody').innerHTML = '<div style="text-align:center;padding:60px;color:var(--text3)">OS <strong>' + esc(osCode) + '</strong> não encontrada.</div>';
+  else document.getElementById('ctBody').innerHTML = '<div style="text-align:center;padding:60px;color:var(--text3)">OS não encontrada.</div>';
 }
 
 function renderCustomerOS(os) {
