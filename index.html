@@ -724,16 +724,18 @@ input[type="file"]#mImgFile{display:none;}
                 <div style="font-size:13px;color:var(--text2);line-height:1.6;">
                   Gera um novo arquivo <strong style="color:var(--text)">index.html</strong> com todos os seus modelos, fotos e preços já embutidos. Suba esse arquivo no Netlify e <strong style="color:var(--green)">todo mundo vai ver suas alterações.</strong>
                 </div>
-                <div style="background:var(--bg4);border-radius:var(--r);padding:10px 12px;font-size:12px;color:var(--text3);line-height:1.7;">
-                  <strong style="color:var(--text2);">Como usar:</strong><br>
-                  1. Clique em "Gerar e baixar site"<br>
-                  2. Renomeie o arquivo para <code style="color:var(--amber)">index.html</code><br>
-                  3. Suba no Netlify (na pasta do projeto)<br>
-                  4. Pronto — clientes verão tudo atualizado ✅
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <label class="fl" style="font-size:12px;">Token do GitHub <span style="color:var(--text3);font-weight:400;">(opcional — ativa publicação automática)</span></label>
+                  <div style="display:flex;gap:8px;align-items:center;">
+                    <input class="fi" id="cfgGhToken" type="password" placeholder="ghp_xxxxxxxxxxxx" style="flex:1;font-family:monospace;font-size:12px;"
+                      oninput="localStorage.setItem('cellos_gh_token',this.value.trim());atualizarBotaoPublicar()">
+                    <button class="btn" onclick="document.getElementById('cfgGhToken').type=document.getElementById('cfgGhToken').type==='password'?'text':'password'" style="padding:8px 10px;font-size:11px;">👁</button>
+                  </div>
+                  <div id="ghTokenInfo" style="font-size:11px;color:var(--text3);line-height:1.6;"></div>
                 </div>
-                <button class="btn" onclick="gerarSiteAtualizado()" style="background:var(--green);color:#000;font-weight:700;font-size:14px;padding:12px 20px;width:fit-content;">
+                <button class="btn" id="btnPublicar" onclick="gerarSiteAtualizado()" style="background:var(--green);color:#000;font-weight:700;font-size:14px;padding:12px 20px;width:fit-content;">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:15px;height:15px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  Gerar e baixar site atualizado
+                  <span id="btnPublicarTxt">Gerar e baixar site atualizado</span>
                 </button>
                 <div id="publishStatus" style="font-size:12px;color:var(--green);display:none;"></div>
               </div>
@@ -1078,10 +1080,13 @@ function loadModelos() {
     });
     stored.forEach(function(m, i){
       var d = defMap[m.id];
-      if (d && d.imgData && m.imgData !== d.imgData && !(m.imgData||'').startsWith('data:')) {
-        stored[i] = Object.assign({}, m, { imgData: d.imgData });
-        changed = true;
-      }
+      if (!d) return;
+      var upd = {};
+      if (d.imgData && m.imgData !== d.imgData && !(m.imgData||'').startsWith('data:'))
+        upd.imgData = d.imgData;
+      if (!m._customServicos && d.servicos && JSON.stringify(m.servicos) !== JSON.stringify(d.servicos))
+        upd.servicos = d.servicos;
+      if (Object.keys(upd).length) { stored[i] = Object.assign({}, m, upd); changed = true; }
     });
     if (changed) localStorage.setItem(MODELOS_KEY, JSON.stringify(stored));
     return stored;
@@ -1790,15 +1795,17 @@ function salvarModelo() {
   const editId = document.getElementById('mEditId').value;
   if (editId) {
     const idx = modelos.findIndex(m=>m.id===editId);
-    if (idx>=0) modelos[idx] = {...modelos[idx], brand, icon, imgData, name, servicos};
+    if (idx>=0) modelos[idx] = {...modelos[idx], brand, icon, imgData, name, servicos, _customServicos: true};
   } else {
-    modelos.push({id:genId(), brand, icon, imgData, name, servicos});
+    modelos.push({id:genId(), brand, icon, imgData, name, servicos, _customServicos: true});
   }
   saveModelos(modelos);
   closeModeloModal();
   renderAdminModelos();
   renderCatalog();
   toast('Modelo salvo!', 'green');
+  const ghToken = localStorage.getItem('cellos_gh_token')||'';
+  if (ghToken) { setTimeout(()=>publicarGitHub(), 800); }
 }
 
 function editModelo(id) {
@@ -1902,6 +1909,9 @@ function loadConfigForm() {
   document.getElementById('cfgNome').value = cfg.nome||'';
   document.getElementById('cfgWhats').value = cfg.whats||'';
   document.getElementById('cfgMsg').value = cfg.msg||'';
+  const el = document.getElementById('cfgGhToken');
+  if (el) el.value = localStorage.getItem('cellos_gh_token')||'';
+  atualizarBotaoPublicar();
 }
 function salvarConfig() {
   saveConfigData({
@@ -1910,6 +1920,31 @@ function salvarConfig() {
     msg: document.getElementById('cfgMsg').value,
   });
   document.getElementById('pubNomeEmpresa').textContent = document.getElementById('cfgNome').value || 'CellOS';
+}
+
+function atualizarBotaoPublicar() {
+  const token = localStorage.getItem('cellos_gh_token')||'';
+  const btn = document.getElementById('btnPublicarTxt');
+  const info = document.getElementById('ghTokenInfo');
+  if (!btn) return;
+  if (token) {
+    btn.textContent = '🚀 Publicar automaticamente';
+    if (info) info.innerHTML = '✅ Token configurado — ao salvar um modelo, o site atualiza sozinho em todos os aparelhos.';
+  } else {
+    btn.textContent = 'Gerar e baixar site atualizado';
+    if (info) info.innerHTML = 'Sem token: gera o arquivo para você subir manualmente. <a href="https://github.com/settings/tokens/new?scopes=repo&description=CellOS" target="_blank" style="color:var(--accent);">Criar token no GitHub ↗</a>';
+  }
+}
+
+function carregarConfigAdmin() {
+  const c = loadConfig();
+  const el = id => document.getElementById(id);
+  if (el('cfgNome')) el('cfgNome').value = c.nome||'';
+  if (el('cfgWhats')) el('cfgWhats').value = c.whats||'';
+  if (el('cfgMsg')) el('cfgMsg').value = c.msg||'';
+  const token = localStorage.getItem('cellos_gh_token')||'';
+  if (el('cfgGhToken')) el('cfgGhToken').value = token;
+  atualizarBotaoPublicar();
 }
 
 // ═══════════════════════════════════════════════
@@ -1995,22 +2030,14 @@ function importarBackup(event) {
 // ═══════════════════════════════════════════════
 // GERAR SITE ATUALIZADO
 // ═══════════════════════════════════════════════
-function gerarSiteAtualizado() {
-  const status = document.getElementById('publishStatus');
-  status.style.display = 'block';
-  status.textContent = '⏳ Gerando arquivo...';
-
+function _buildInjectHtml(html) {
   const modelos = loadModelos();
   const config  = loadConfig();
   const senha   = localStorage.getItem(SENHA_KEY) || 'sakkat22';
   const versao  = Date.now();
-
-  // Remove base64 para manter o arquivo leve
   const modelosLeve = modelos.map(m =>
     (m.imgData && m.imgData.startsWith('data:')) ? {...m, imgData:''} : m
   );
-
-  // Script de inject com controle de versão — atualiza TODOS os visitantes
   const injectScript = `<script id="cellos-inject">
 (function(){
   var VER=${versao};
@@ -2023,24 +2050,60 @@ function gerarSiteAtualizado() {
   }
 })();
 <\/script>`;
+  html = html.replace(/<script id="cellos-inject">[\s\S]*?<\/script>/g, '');
+  html = html.replace('</head>', injectScript + '\n</head>');
+  return html;
+}
 
-  // Busca o HTML original do servidor (evita capturar DOM renderizado)
+async function publicarGitHub(silent) {
+  const token = localStorage.getItem('cellos_gh_token')||'';
+  if (!token) return false;
+  const status = document.getElementById('publishStatus');
+  if (status) { status.style.display='block'; status.textContent='⏳ Publicando no GitHub...'; }
+  try {
+    const rawHtml = await fetch(window.location.href).then(r=>r.text());
+    const newHtml = _buildInjectHtml(rawHtml);
+    const repo = 'xkesper/BRAZANELL';
+    const path = 'index.html';
+    const apiBase = `https://api.github.com/repos/${repo}/contents/${path}`;
+    const metaRes = await fetch(apiBase, { headers:{ Authorization:`token ${token}`, Accept:'application/vnd.github+json' } });
+    const meta = await metaRes.json();
+    if (!meta.sha) throw new Error(meta.message||'Erro ao buscar SHA');
+    const content = btoa(unescape(encodeURIComponent(newHtml)));
+    const putRes = await fetch(apiBase, {
+      method:'PUT',
+      headers:{ Authorization:`token ${token}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json' },
+      body: JSON.stringify({ message:'Atualização automática de preços e modelos', content, sha: meta.sha })
+    });
+    if (!putRes.ok) { const e=await putRes.json(); throw new Error(e.message||putRes.status); }
+    if (status) status.textContent='✅ Publicado! Site atualiza em ~1 min automaticamente.';
+    if (!silent) toast('Publicado no GitHub! ✅', 'green');
+    return true;
+  } catch(e) {
+    console.error(e);
+    if (status) status.textContent='❌ Erro: '+e.message;
+    if (!silent) toast('Erro ao publicar: '+e.message, 'red');
+    return false;
+  }
+}
+
+function gerarSiteAtualizado() {
+  const status = document.getElementById('publishStatus');
+  status.style.display = 'block';
+  const token = localStorage.getItem('cellos_gh_token')||'';
+  if (token) { publicarGitHub(); return; }
+  status.textContent = '⏳ Gerando arquivo...';
   fetch(window.location.href)
     .then(r => r.text())
     .then(html => {
-      // Remove inject anterior
-      html = html.replace(/<script id="cellos-inject">[\s\S]*?<\/script>/g, '');
-      // Injeta antes do </head>
-      html = html.replace('</head>', injectScript + '\n</head>');
-
-      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const newHtml = _buildInjectHtml(html);
+      const blob = new Blob([newHtml], { type: 'text/html;charset=utf-8' });
       const url  = URL.createObjectURL(blob);
       const a    = document.createElement('a');
       a.href = url; a.download = 'index.html';
       document.body.appendChild(a); a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-
       status.textContent = '✅ Baixado! Me manda o arquivo para subir no site.';
       toast('Site gerado! ✅', 'green');
     })
