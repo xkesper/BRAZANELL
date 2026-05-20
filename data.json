@@ -1675,7 +1675,7 @@
       "id": "s22",
       "brand": "Samsung",
       "icon": "🌀",
-      "name": "Galaxy A15 5G",
+      "name": "Galaxy A15 4G/5G",
       "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a15-5g.jpg",
       "servicos": [
         {
@@ -1698,7 +1698,8 @@
           "nome": "Reparo de Câmera",
           "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "s23",
@@ -4176,10 +4177,6 @@
         {
           "nome": "Troca de Conector de Carga",
           "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
         }
       ]
     },
@@ -4200,10 +4197,6 @@
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
           "preco": 0
         }
       ]
@@ -4226,10 +4219,6 @@
         {
           "nome": "Troca de Conector de Carga",
           "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
         }
       ]
     },
@@ -4250,10 +4239,6 @@
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
           "preco": 0
         }
       ]
@@ -4276,10 +4261,6 @@
         {
           "nome": "Troca de Conector de Carga",
           "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
         }
       ]
     },
@@ -4300,10 +4281,6 @@
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
           "preco": 0
         }
       ]
@@ -4326,10 +4303,6 @@
         {
           "nome": "Troca de Conector de Carga",
           "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
         }
       ]
     },
@@ -4351,10 +4324,6 @@
         {
           "nome": "Troca de Conector de Carga",
           "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
         }
       ]
     },
@@ -4364,6 +4333,27 @@
       "icon": "🟦",
       "name": "Infinix Hot 60i",
       "imgData": "https://fdn2.gsmarena.com/vv/bigpic/infinix-hot-60i.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "brand": "Samsung",
+      "icon": "🌀",
+      "name": "Galaxy A15",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a15.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
