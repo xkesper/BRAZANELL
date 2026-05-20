@@ -666,17 +666,12 @@ input[type="file"]#mImgFile{display:none;}
             <input type="text" id="estSearch" placeholder="🔍 Buscar modelo ou tipo..." class="fi" style="flex:1;min-width:200px;" oninput="renderEstoque()">
             <select id="estFiltroTipo" class="fi" style="max-width:180px;" onchange="renderEstoque()">
               <option value="">Todos os tipos</option>
-              <option value="Tela">Tela (LCD)</option>
+              <option value="Tela LCD">Tela LCD</option>
               <option value="OLED">OLED</option>
               <option value="Soft OLED">Soft OLED</option>
             </select>
           </div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Modelo</th><th>Tipo</th><th style="text-align:right;">Preço</th><th style="text-align:center;">Quantidade</th><th style="width:80px;"></th></tr></thead>
-              <tbody id="estoque-tbody"></tbody>
-            </table>
-          </div>
+          <div id="estoque-list"></div>
         </div>
       </div>
 
@@ -954,7 +949,7 @@ input[type="file"]#mImgFile{display:none;}
       <div class="fg"><label class="fl">Modelo do aparelho *</label><input class="fi" id="estModelo" placeholder="Ex: iPhone 15 Pro"></div>
       <div class="fg"><label class="fl">Tipo da peça *</label>
         <select class="fs" id="estTipo">
-          <option value="Tela">Tela (LCD)</option>
+          <option value="Tela LCD">Tela LCD</option>
           <option value="OLED">OLED</option>
           <option value="Soft OLED">Soft OLED</option>
           <option value="Bateria">Bateria</option>
@@ -1209,15 +1204,15 @@ function saveEstoque(d) { localStorage.setItem(ESTOQUE_KEY, JSON.stringify(d)); 
 function defaultEstoque() {
   return [
     // iPhones pré-12 (tela única)
-    { id:'e1',  modelo:'iPhone 8',          tipo:'Tela',       preco:250, qtd:0 },
-    { id:'e2',  modelo:'iPhone 8 Plus',     tipo:'Tela',       preco:280, qtd:0 },
-    { id:'e3',  modelo:'iPhone X',          tipo:'Tela',       preco:350, qtd:0 },
-    { id:'e4',  modelo:'iPhone XR',         tipo:'Tela',       preco:300, qtd:0 },
-    { id:'e5',  modelo:'iPhone XS',         tipo:'Tela',       preco:380, qtd:0 },
-    { id:'e6',  modelo:'iPhone XS Max',     tipo:'Tela',       preco:420, qtd:0 },
-    { id:'e7',  modelo:'iPhone 11',         tipo:'Tela',       preco:320, qtd:0 },
-    { id:'e8',  modelo:'iPhone 11 Pro',     tipo:'Tela',       preco:450, qtd:0 },
-    { id:'e9',  modelo:'iPhone 11 Pro Max', tipo:'Tela',       preco:480, qtd:0 },
+    { id:'e1',  modelo:'iPhone 8',          tipo:'Tela LCD',  preco:250, qtd:0 },
+    { id:'e2',  modelo:'iPhone 8 Plus',     tipo:'Tela LCD',       preco:280, qtd:0 },
+    { id:'e3',  modelo:'iPhone X',          tipo:'Tela LCD',  preco:350, qtd:0 },
+    { id:'e4',  modelo:'iPhone XR',         tipo:'Tela LCD',       preco:300, qtd:0 },
+    { id:'e5',  modelo:'iPhone XS',         tipo:'Tela LCD',       preco:380, qtd:0 },
+    { id:'e6',  modelo:'iPhone XS Max',     tipo:'Tela LCD',       preco:420, qtd:0 },
+    { id:'e7',  modelo:'iPhone 11',         tipo:'Tela LCD',       preco:320, qtd:0 },
+    { id:'e8',  modelo:'iPhone 11 Pro',     tipo:'Tela LCD',       preco:450, qtd:0 },
+    { id:'e9',  modelo:'iPhone 11 Pro Max', tipo:'Tela LCD',       preco:480, qtd:0 },
     // iPhones 12+ (OLED + Soft OLED)
     { id:'e10', modelo:'iPhone 12',         tipo:'OLED',       preco:400, qtd:0 },
     { id:'e11', modelo:'iPhone 12',         tipo:'Soft OLED',  preco:0,   qtd:0 },
@@ -1990,46 +1985,99 @@ function delModelo(id) {
 // ═══════════════════════════════════════════════
 // ESTOQUE
 // ═══════════════════════════════════════════════
+let _estoqueAbertos = new Set();
+
 function renderEstoque() {
-  const tbody = document.getElementById('estoque-tbody');
-  if (!tbody) return;
+  const container = document.getElementById('estoque-list');
+  if (!container) return;
   const items = loadEstoque();
   const search = (document.getElementById('estSearch')?.value || '').toLowerCase().trim();
   const filtroTipo = document.getElementById('estFiltroTipo')?.value || '';
-  const filtered = items.filter(it => {
-    const matchTipo = !filtroTipo || it.tipo === filtroTipo;
-    const matchSearch = !search || (it.modelo||'').toLowerCase().includes(search) || (it.tipo||'').toLowerCase().includes(search);
-    return matchTipo && matchSearch;
-  });
-  // Stats
+
+  // Stats globais
   document.getElementById('est-total').textContent = items.length;
   document.getElementById('est-disp').textContent = items.filter(i => (i.qtd||0) > 0).length;
   document.getElementById('est-zero').textContent = items.filter(i => (i.qtd||0) === 0).length;
-  const valor = items.reduce((s,i) => s + ((i.preco||0) * (i.qtd||0)), 0);
-  document.getElementById('est-valor').textContent = fmtR(valor);
-  if (!filtered.length) {
-    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--text3);">Nenhuma peça encontrada</td></tr>';
+  const valorTotal = items.reduce((s,i) => s + ((i.preco||0) * (i.qtd||0)), 0);
+  document.getElementById('est-valor').textContent = fmtR(valorTotal);
+
+  // Agrupa por modelo, preservando ordem de aparição no defaultEstoque
+  const grupos = {};
+  const ordem = [];
+  items.forEach(it => {
+    const m = it.modelo || 'Sem modelo';
+    if (!grupos[m]) { grupos[m] = []; ordem.push(m); }
+    grupos[m].push(it);
+  });
+
+  // Filtra modelos pela busca/tipo
+  const modelosFiltrados = ordem.filter(modelo => {
+    const pecas = grupos[modelo];
+    const passaTipo = !filtroTipo || pecas.some(p => p.tipo === filtroTipo);
+    const passaBusca = !search || modelo.toLowerCase().includes(search) || pecas.some(p => (p.tipo||'').toLowerCase().includes(search));
+    return passaTipo && passaBusca;
+  });
+
+  if (!modelosFiltrados.length) {
+    container.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text3);">Nenhum modelo encontrado</div>';
     return;
   }
-  tbody.innerHTML = filtered.map(it => {
-    const semEstoque = (it.qtd||0) === 0;
-    const tipoColor = it.tipo === 'OLED' ? 'var(--accent)' : it.tipo === 'Soft OLED' ? 'var(--amber)' : 'var(--text2)';
-    return `<tr>
-      <td><strong>${esc(it.modelo||'')}</strong></td>
-      <td><span style="color:${tipoColor};font-weight:600;font-size:12px;">${esc(it.tipo||'')}</span></td>
-      <td style="text-align:right;">
-        <input type="number" min="0" step="0.01" value="${it.preco||0}" onchange="atualizarEstoqueCampo('${it.id}','preco',this.value)" style="width:90px;text-align:right;padding:5px 8px;border:1px solid var(--border);background:var(--bg3);color:var(--text);border-radius:6px;font-size:13px;">
-      </td>
-      <td style="text-align:center;">
+
+  // Se busca/filtro ativos, abre todos automaticamente
+  const forceOpen = !!(search || filtroTipo);
+
+  container.innerHTML = modelosFiltrados.map(modelo => {
+    const pecas = grupos[modelo];
+    const aberto = forceOpen || _estoqueAbertos.has(modelo);
+    const totalQtd = pecas.reduce((s,p) => s + (p.qtd||0), 0);
+    const valorModelo = pecas.reduce((s,p) => s + ((p.preco||0)*(p.qtd||0)), 0);
+    const semEstoque = totalQtd === 0;
+    const safeId = modelo.replace(/[^a-zA-Z0-9]/g,'_');
+
+    const linhas = pecas.map(it => {
+      const sEst = (it.qtd||0) === 0;
+      const cor = it.tipo === 'OLED' ? 'var(--accent)' : it.tipo === 'Soft OLED' ? 'var(--amber)' : it.tipo === 'Tela LCD' ? 'var(--text2)' : 'var(--text2)';
+      return `<div style="display:grid;grid-template-columns:1fr auto auto auto;gap:12px;align-items:center;padding:10px 14px;border-top:1px solid var(--border);">
+        <div><span style="color:${cor};font-weight:700;font-size:13px;">${esc(it.tipo||'')}</span></div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="color:var(--text3);font-size:11px;">R$</span>
+          <input type="number" min="0" step="0.01" value="${it.preco||0}" onchange="atualizarEstoqueCampo('${it.id}','preco',this.value)" style="width:80px;text-align:right;padding:5px 8px;border:1px solid var(--border);background:var(--bg3);color:var(--text);border-radius:6px;font-size:13px;">
+        </div>
         <div style="display:inline-flex;align-items:center;gap:4px;">
           <button onclick="ajustarQtd('${it.id}',-1)" style="width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--text);cursor:pointer;font-size:14px;font-weight:700;">−</button>
-          <input type="number" min="0" step="1" value="${it.qtd||0}" onchange="atualizarEstoqueCampo('${it.id}','qtd',this.value)" style="width:60px;text-align:center;padding:5px;border:1px solid var(--border);background:var(--bg3);color:${semEstoque?'var(--red)':'var(--green)'};font-weight:700;border-radius:6px;font-size:13px;">
+          <input type="number" min="0" step="1" value="${it.qtd||0}" onchange="atualizarEstoqueCampo('${it.id}','qtd',this.value)" style="width:50px;text-align:center;padding:5px;border:1px solid var(--border);background:var(--bg3);color:${sEst?'var(--red)':'var(--green)'};font-weight:700;border-radius:6px;font-size:13px;">
           <button onclick="ajustarQtd('${it.id}',1)" style="width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--text);cursor:pointer;font-size:14px;font-weight:700;">+</button>
         </div>
-      </td>
-      <td><button class="btn btn-ghost btn-sm" onclick="editEstoque('${it.id}')" style="padding:5px 10px;font-size:12px;">Editar</button></td>
-    </tr>`;
+        <button class="btn btn-ghost btn-sm" onclick="editEstoque('${it.id}')" style="padding:4px 10px;font-size:11px;">⋯</button>
+      </div>`;
+    }).join('');
+
+    return `<div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:10px;">
+      <div onclick="toggleEstoqueModelo('${safeId}','${modelo.replace(/'/g,"\\'")}')" style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;user-select:none;background:var(--bg2);">
+        <div style="display:flex;align-items:center;gap:10px;flex:1;">
+          <span style="font-size:13px;color:var(--text3);transition:transform .2s;${aberto?'transform:rotate(90deg);':''}">▶</span>
+          <strong style="font-size:15px;">${esc(modelo)}</strong>
+          <span style="font-size:11px;color:var(--text3);background:var(--bg4);padding:2px 8px;border-radius:10px;">${pecas.length} ${pecas.length===1?'peça':'peças'}</span>
+        </div>
+        <div style="display:flex;gap:14px;align-items:center;font-size:12px;">
+          <span style="color:${semEstoque?'var(--red)':'var(--green)'};font-weight:700;">${totalQtd} un</span>
+          <span style="color:var(--accent);font-weight:600;">${fmtR(valorModelo)}</span>
+        </div>
+      </div>
+      ${aberto ? `<div>${linhas}<div style="padding:10px 14px;border-top:1px solid var(--border);"><button class="btn btn-ghost btn-sm" onclick="openEstoqueModalParaModelo('${modelo.replace(/'/g,"\\'")}')" style="font-size:11px;width:100%;">+ Adicionar peça pra ${esc(modelo)}</button></div></div>` : ''}
+    </div>`;
   }).join('');
+}
+
+function toggleEstoqueModelo(safeId, modelo) {
+  if (_estoqueAbertos.has(modelo)) _estoqueAbertos.delete(modelo);
+  else _estoqueAbertos.add(modelo);
+  renderEstoque();
+}
+
+function openEstoqueModalParaModelo(modelo) {
+  openEstoqueModal();
+  setTimeout(() => { document.getElementById('estModelo').value = modelo; }, 50);
 }
 
 function atualizarEstoqueCampo(id, campo, valor) {
@@ -2838,7 +2886,7 @@ initFirebase();
 checkAndShowCustomerTracking();
 renderCatalog();
 // Sincroniza dados remotos do GitHub (não bloqueia render inicial)
-carregarDadosRemoto().then(updated => { if (updated) { renderCatalog(); if (document.getElementById('estoque-tbody')) renderEstoque(); } });
+carregarDadosRemoto().then(updated => { if (updated) { renderCatalog(); if (document.getElementById('estoque-list')) renderEstoque(); } });
 </script>
 </body>
 </html>

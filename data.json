@@ -1,5 +1,5 @@
 {
-  "version": 1779500000000,
+  "version": 1779600000000,
   "modelos": [
     {
       "id": "a1",
@@ -3475,63 +3475,63 @@
     {
       "id": "e1",
       "modelo": "iPhone 8",
-      "tipo": "Tela",
+      "tipo": "Tela LCD",
       "preco": 250,
       "qtd": 0
     },
     {
       "id": "e2",
       "modelo": "iPhone 8 Plus",
-      "tipo": "Tela",
+      "tipo": "Tela LCD",
       "preco": 280,
       "qtd": 0
     },
     {
       "id": "e3",
       "modelo": "iPhone X",
-      "tipo": "Tela",
+      "tipo": "Tela LCD",
       "preco": 350,
       "qtd": 0
     },
     {
       "id": "e4",
       "modelo": "iPhone XR",
-      "tipo": "Tela",
+      "tipo": "Tela LCD",
       "preco": 300,
       "qtd": 0
     },
     {
       "id": "e5",
       "modelo": "iPhone XS",
-      "tipo": "Tela",
+      "tipo": "Tela LCD",
       "preco": 380,
       "qtd": 0
     },
     {
       "id": "e6",
       "modelo": "iPhone XS Max",
-      "tipo": "Tela",
+      "tipo": "Tela LCD",
       "preco": 420,
       "qtd": 0
     },
     {
       "id": "e7",
       "modelo": "iPhone 11",
-      "tipo": "Tela",
+      "tipo": "Tela LCD",
       "preco": 320,
       "qtd": 0
     },
     {
       "id": "e8",
       "modelo": "iPhone 11 Pro",
-      "tipo": "Tela",
+      "tipo": "Tela LCD",
       "preco": 450,
       "qtd": 0
     },
     {
       "id": "e9",
       "modelo": "iPhone 11 Pro Max",
-      "tipo": "Tela",
+      "tipo": "Tela LCD",
       "preco": 480,
       "qtd": 0
     },
