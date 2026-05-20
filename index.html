@@ -1096,7 +1096,7 @@ function loadModelos() {
       var upd = {};
       if (d.imgData && m.imgData !== d.imgData && !(m.imgData||'').startsWith('data:'))
         upd.imgData = d.imgData;
-      if (!m._customServicos && d.servicos && JSON.stringify(m.servicos) !== JSON.stringify(d.servicos))
+      if (!m._customServicos && d.servicos && JSON.stringify(m.servicos||[]) !== JSON.stringify(d.servicos))
         upd.servicos = d.servicos;
       if (Object.keys(upd).length) { stored[i] = Object.assign({}, m, upd); changed = true; }
     });
@@ -1392,7 +1392,7 @@ function renderCatalog() {
       </div>
       <div class="model-brand">${esc(m.brand)}</div>
       <div class="model-name">${esc(m.name)}</div>
-      <div class="model-count">${m.servicos.length} serviços</div>
+      <div class="model-count">${(m.servicos||[]).length} serviços</div>
     </div>`).join('');
 }
 
@@ -1443,7 +1443,7 @@ function renderOrcBody(m, step) {
   body.innerHTML = `
     <div class="orc-section-title">Selecione os reparos necessários</div>
     <div class="service-list">
-      ${m.servicos.map((s,i) => `
+      ${(m.servicos||[]).map((s,i) => `
         <div class="service-item ${selectedServicos.has(i)?'selected':''}" onclick="toggleServico(${i})">
           <div class="service-left">
             <div class="service-check">
@@ -1668,7 +1668,7 @@ function criarCardAdmin(m) {
       </div>
     </div>
     <div class="model-list-admin">
-      ${m.servicos.map(s=>`
+      ${(m.servicos||[]).map(s=>`
         <div class="mla-item">
           <span class="mla-name">${esc(s.nome)}</span>
           <span class="mla-count">${fmtR(s.preco)}</span>
