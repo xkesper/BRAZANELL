@@ -1,5 +1,5 @@
 {
-  "version": 1779600000000,
+  "version": 1779700000000,
   "modelos": [
     {
       "id": "a1",
@@ -3462,6 +3462,381 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 280
+        }
+      ]
+    },
+    {
+      "id": "x8",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi 9",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-9.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 140
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 80
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 70
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 95
+        }
+      ]
+    },
+    {
+      "id": "x9",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi 9C",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-9c.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 135
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 75
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 68
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 90
+        }
+      ]
+    },
+    {
+      "id": "x10",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi 10A",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-10a.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 140
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 80
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 70
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 95
+        }
+      ]
+    },
+    {
+      "id": "x11",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi 10C",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-10c.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 145
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 82
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 72
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 98
+        }
+      ]
+    },
+    {
+      "id": "x12",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi 14C",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-14c.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 160
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 90
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 75
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 105
+        }
+      ]
+    },
+    {
+      "id": "x13",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi 15C",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-15c.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 170
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 95
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 78
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 110
+        }
+      ]
+    },
+    {
+      "id": "x14",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi Note 14 Pro 5G",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-14-pro-5g.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 260
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 135
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 95
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 160
+        }
+      ]
+    },
+    {
+      "id": "x15",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi Note 15",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-15-5g.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 245
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 125
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 90
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 150
+        }
+      ]
+    },
+    {
+      "id": "x16",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Poco X5",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x5-5g.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 210
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 115
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 88
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 130
+        }
+      ]
+    },
+    {
+      "id": "x17",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Poco X5 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x5-pro-5g.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 240
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 125
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 92
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 145
+        }
+      ]
+    },
+    {
+      "id": "x18",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Poco X6 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x6-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 130
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 95
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 150
+        }
+      ]
+    },
+    {
+      "id": "x19",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Poco X7",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x7.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 240
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 130
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 95
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 150
+        }
+      ]
+    },
+    {
+      "id": "x20",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Poco X7 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x7-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 270
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 140
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 100
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 165
+        }
+      ]
+    },
+    {
+      "id": "x21",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Poco X8",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x8.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 260
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 135
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 98
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 160
+        }
+      ]
+    },
+    {
+      "id": "x22",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Poco X8 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x8-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 290
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 145
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 105
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 180
         }
       ]
     }
