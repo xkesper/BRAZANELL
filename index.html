@@ -98,9 +98,12 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
   padding:7px 14px;border-radius:20px;font-size:12.5px;font-weight:500;cursor:pointer;
   border:1px solid var(--border2);background:var(--bg2);color:var(--text2);
   transition:all .15s;
+  display:inline-flex;align-items:center;gap:7px;
 }
 .brand-tab:hover{border-color:var(--accent);color:var(--accent);}
 .brand-tab.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+.brand-tab img.brand-logo{width:16px;height:16px;display:block;object-fit:contain;}
+.brand-tab svg.brand-logo{width:16px;height:16px;display:block;}
 
 /* Grid de modelos */
 .models-grid{
@@ -1510,6 +1513,27 @@ function showAP(id) {
 let activeBrand = 'all';
 let _adminActiveBrand = 'all';
 
+// Mapa de marca -> slug no simpleicons.org
+const BRAND_LOGO_SLUGS = {
+  'Apple': 'apple', 'Samsung': 'samsung', 'Motorola': 'motorola',
+  'Xiaomi': 'xiaomi', 'Poco': 'xiaomi', 'Redmi': 'xiaomi',
+  'Huawei': 'huawei', 'Honor': 'honor', 'Realme': 'realme',
+  'OnePlus': 'oneplus', 'Oppo': 'oppo', 'Vivo': 'vivo',
+  'Asus': 'asus', 'LG': 'lg', 'Sony': 'sony', 'Google': 'google',
+  'Nokia': 'nokia', 'Lenovo': 'lenovo'
+};
+function brandLogoHtml(brand, fallbackEmoji) {
+  if (brand === 'all') {
+    return '<svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>';
+  }
+  const slug = BRAND_LOGO_SLUGS[brand];
+  if (slug) {
+    const fb = (fallbackEmoji||'📱').replace(/'/g, '&#39;');
+    return `<img class="brand-logo" src="https://cdn.simpleicons.org/${slug}/ffffff" alt="" onerror="this.outerHTML='<span>${fb}</span>'">`;
+  }
+  return `<span>${fallbackEmoji||'📱'}</span>`;
+}
+
 let _lastBrandsKey = '';
 function renderCatalog() {
   const modelos = loadModelos();
@@ -1526,7 +1550,7 @@ function renderCatalog() {
     const tabs = document.getElementById('brandTabs');
     tabs.innerHTML = brands.map(b => `
       <div class="brand-tab ${activeBrand===b?'active':''}" onclick="setBrand('${b.replace(/'/g,"\\'")}')">
-        ${b === 'all' ? '📱 Todos' : (modelos.find(m=>m.brand===b)?.icon||'📱')+' '+b}
+        ${brandLogoHtml(b, modelos.find(m=>m.brand===b)?.icon)}<span>${b === 'all' ? 'Todos' : esc(b)}</span>
       </div>`).join('');
   } else {
     // Só atualiza classe active
@@ -1791,10 +1815,10 @@ function renderAdminModelos() {
     <div class="brand-tabs" style="margin-bottom:16px;">
       ${brands.map(b => {
         const count = b === 'all' ? modelos.length : modelos.filter(m => m.brand === b).length;
-        const icon = b === 'all' ? '📱' : (modelos.find(m => m.brand === b)?.icon || '📱');
+        const fallback = b === 'all' ? '📱' : (modelos.find(m => m.brand === b)?.icon || '📱');
         const label = b === 'all' ? 'Todos' : b;
         return `<div class="brand-tab ${_adminActiveBrand===b?'active':''}" onclick="_adminActiveBrand='${b.replace(/'/g,"\\'")}';renderAdminModelos()">
-          ${icon} ${label} <span style="font-size:10px;opacity:0.55;margin-left:2px;">(${count})</span>
+          ${brandLogoHtml(b, fallback)}<span>${esc(label)} <span style="font-size:10px;opacity:0.55;margin-left:2px;">(${count})</span></span>
         </div>`;
       }).join('')}
     </div>
