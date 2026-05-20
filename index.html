@@ -1420,6 +1420,11 @@ function defaultModelos() {
     { id:'r3',  brand:'Realme', icon:'🟡', name:'Realme C71',       imgData:g('realme-c71'), servicos:s(0,0,0,0,0) },
     { id:'r4',  brand:'Realme', icon:'🟡', name:'Realme C75',       imgData:g('realme-c75'), servicos:s(0,0,0,0,0) },
     { id:'r5',  brand:'Realme', icon:'🟡', name:'Realme C85',       imgData:g('realme-c85'), servicos:s(0,0,0,0,0) },
+    // ── INFINIX ────────────────────────────────────
+    { id:'i1',  brand:'Infinix', icon:'🟦', name:'Infinix Smart 8 Pro', imgData:g('infinix-smart-8-pro'), servicos:s(0,0,0,0,0) },
+    { id:'i2',  brand:'Infinix', icon:'🟦', name:'Infinix Hot 40',      imgData:g('infinix-hot-40'), servicos:s(0,0,0,0,0) },
+    { id:'i3',  brand:'Infinix', icon:'🟦', name:'Infinix Hot 50',      imgData:g('infinix-hot-50-4g'), servicos:s(0,0,0,0,0) },
+    { id:'i4',  brand:'Infinix', icon:'🟦', name:'Infinix Hot 60i',     imgData:g('infinix-hot-60i'), servicos:s(0,0,0,0,0) },
   ];
 }
 
@@ -1522,7 +1527,8 @@ let _adminActiveBrand = 'all';
 
 // SVGs inline para marcas que não estão no simpleicons
 const CUSTOM_BRAND_LOGOS = {
-  'Realme': '<svg class="brand-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="5" fill="#FFCB00"/><text x="12" y="17.5" text-anchor="middle" font-family="Arial Black, Helvetica, sans-serif" font-size="16" fill="#000" font-weight="900">r</text></svg>'
+  'Realme': '<svg class="brand-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="5" fill="#FFCB00"/><text x="12" y="17.5" text-anchor="middle" font-family="Arial Black, Helvetica, sans-serif" font-size="16" fill="#000" font-weight="900">r</text></svg>',
+  'Infinix': '<svg class="brand-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="5" fill="#0E69B1"/><text x="12" y="18" text-anchor="middle" font-family="Arial Black, Helvetica, sans-serif" font-size="17" fill="white" font-weight="900">X</text></svg>'
 };
 // Mapa de marca -> slug no simpleicons.org
 const BRAND_LOGO_SLUGS = {

@@ -1,5 +1,5 @@
 {
-  "version": 1780100000000,
+  "version": 1780200000000,
   "modelos": [
     {
       "id": "a1",
@@ -3944,6 +3944,106 @@
       "icon": "🟡",
       "name": "Realme C85",
       "imgData": "https://fdn2.gsmarena.com/vv/bigpic/realme-c85.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "i1",
+      "brand": "Infinix",
+      "icon": "🟦",
+      "name": "Infinix Smart 8 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/infinix-smart-8-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "i2",
+      "brand": "Infinix",
+      "icon": "🟦",
+      "name": "Infinix Hot 40",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/infinix-hot-40.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "i3",
+      "brand": "Infinix",
+      "icon": "🟦",
+      "name": "Infinix Hot 50",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/infinix-hot-50-4g.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "i4",
+      "brand": "Infinix",
+      "icon": "🟦",
+      "name": "Infinix Hot 60i",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/infinix-hot-60i.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
