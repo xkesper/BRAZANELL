@@ -1,5 +1,5 @@
 {
-  "version": 1780200000000,
+  "version": 1779320646932,
   "modelos": [
     {
       "id": "a1",
@@ -1561,7 +1561,8 @@
           "nome": "Reparo de Câmera",
           "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "s22",
@@ -3856,10 +3857,6 @@
         {
           "nome": "Troca de Conector de Carga",
           "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
         }
       ]
     },
@@ -3880,10 +3877,6 @@
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
           "preco": 0
         }
       ]
@@ -3906,10 +3899,6 @@
         {
           "nome": "Troca de Conector de Carga",
           "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
         }
       ]
     },
@@ -3930,10 +3919,6 @@
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
           "preco": 0
         }
       ]
@@ -3956,10 +3941,6 @@
         {
           "nome": "Troca de Conector de Carga",
           "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
         }
       ]
     },
@@ -3980,10 +3961,6 @@
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
           "preco": 0
         }
       ]
@@ -4006,10 +3983,6 @@
         {
           "nome": "Troca de Conector de Carga",
           "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
         }
       ]
     },
@@ -4031,10 +4004,6 @@
         {
           "nome": "Troca de Conector de Carga",
           "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
         }
       ]
     },
@@ -4055,10 +4024,6 @@
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
           "preco": 0
         }
       ]
