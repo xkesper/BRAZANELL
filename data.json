@@ -1,5 +1,5 @@
 {
-  "version": 1779900000000,
+  "version": 1780000000000,
   "modelos": [
     {
       "id": "a1",
@@ -3819,6 +3819,31 @@
       "icon": "🔴",
       "name": "Poco X8 Pro",
       "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x8-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "r1",
+      "brand": "Realme",
+      "icon": "🟡",
+      "name": "Realme C61",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/realme-c61.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
