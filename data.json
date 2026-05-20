@@ -1,5 +1,5 @@
 {
-  "version": 1779237350952,
+  "version": 1779300000000,
   "modelos": [
     {
       "id": "a1",
@@ -27,6 +27,10 @@
         {
           "nome": "Troca de Tampa Traseira",
           "preco": 180
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ],
       "_customServicos": true
@@ -57,6 +61,10 @@
         {
           "nome": "Troca de Tampa Traseira",
           "preco": 190
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ],
       "_customServicos": true
@@ -83,6 +91,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 220
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -108,6 +124,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 200
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -133,6 +157,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 230
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -158,6 +190,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 250
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -183,6 +223,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 230
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -208,6 +256,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 270
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -233,6 +289,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 280
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -258,6 +322,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 260
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -283,6 +355,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 245
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -308,6 +388,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 290
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -333,6 +421,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 310
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -358,6 +454,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 280
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -383,6 +487,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 265
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -408,6 +520,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 320
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -433,6 +553,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 340
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -458,6 +586,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 310
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -483,6 +619,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 325
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -508,6 +652,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 360
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -533,6 +685,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 380
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -558,6 +718,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 340
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -583,6 +751,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 360
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -608,6 +784,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 400
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -633,6 +817,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 430
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -658,6 +850,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 370
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -683,6 +883,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 390
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -708,6 +916,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 450
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },
@@ -733,6 +949,14 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 480
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
         }
       ]
     },

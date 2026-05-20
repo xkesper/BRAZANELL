@@ -1096,8 +1096,14 @@ function loadModelos() {
       var upd = {};
       if (d.imgData && m.imgData !== d.imgData && !(m.imgData||'').startsWith('data:'))
         upd.imgData = d.imgData;
-      if (!m._customServicos && d.servicos && JSON.stringify(m.servicos) !== JSON.stringify(d.servicos))
+      if (!m._customServicos && d.servicos && JSON.stringify(m.servicos||[]) !== JSON.stringify(d.servicos))
         upd.servicos = d.servicos;
+      else if (d.servicos && Array.isArray(m.servicos)) {
+        // Mesmo com preços customizados, adiciona serviços novos do default que estejam faltando
+        var nomes = m.servicos.map(function(x){ return (x.nome||'').toLowerCase().trim(); });
+        var novos = d.servicos.filter(function(x){ return nomes.indexOf((x.nome||'').toLowerCase().trim()) === -1; });
+        if (novos.length) upd.servicos = m.servicos.concat(novos.map(function(x){ return {nome:x.nome, preco:0}; }));
+      }
       if (Object.keys(upd).length) { stored[i] = Object.assign({}, m, upd); changed = true; }
     });
     if (changed) localStorage.setItem(MODELOS_KEY, JSON.stringify(stored));
@@ -1112,38 +1118,40 @@ function saveConfigData(d) { localStorage.setItem(CONFIG_KEY, JSON.stringify(d))
 
 function defaultModelos() {
   var s = function(t,b,c,cam,tam){ var r=[{nome:'Troca de Tela/Display',preco:t},{nome:'Troca de Bateria',preco:b},{nome:'Troca de Conector de Carga',preco:c}]; if(cam) r.push({nome:'Reparo de Câmera',preco:cam}); if(tam) r.push({nome:'Troca de Tampa Traseira',preco:tam}); return r; };
+  // Helper para iPhones: inclui sempre Tampa Traseira + Flex de Aproximidade (use 0 para "sob consulta")
+  var ap = function(t,b,c,cam,tam,flex){ var r=[{nome:'Troca de Tela/Display',preco:t},{nome:'Troca de Bateria',preco:b},{nome:'Troca de Conector de Carga',preco:c}]; if(cam) r.push({nome:'Reparo de Câmera',preco:cam}); r.push({nome:'Troca de Tampa Traseira',preco:tam||0}); r.push({nome:'Troca de Flex de Aproximidade',preco:flex||0}); return r; };
   var g = function(n){ return 'https://fdn2.gsmarena.com/vv/bigpic/'+n+'.jpg'; };
   return [
     // ── APPLE ──────────────────────────────────────
-    { id:'a1',  brand:'Apple', icon:'🍎', name:'iPhone 8',          imgData:g('apple-iphone-8'), servicos:s(250,150,120,180,90) },
-    { id:'a2',  brand:'Apple', icon:'🍎', name:'iPhone 8 Plus',     imgData:g('apple-iphone-8-plus'), servicos:s(280,160,120,190,95) },
-    { id:'a3',  brand:'Apple', icon:'🍎', name:'iPhone X',          imgData:g('apple-iphone-x'), servicos:s(350,180,130,220,0) },
-    { id:'a4',  brand:'Apple', icon:'🍎', name:'iPhone XR',         imgData:g('apple-iphone-xr'), servicos:s(300,170,130,200,0) },
-    { id:'a5',  brand:'Apple', icon:'🍎', name:'iPhone XS',         imgData:g('apple-iphone-xs'), servicos:s(380,190,135,230,0) },
-    { id:'a6',  brand:'Apple', icon:'🍎', name:'iPhone XS Max',     imgData:g('apple-iphone-xs-max'), servicos:s(420,200,140,250,0) },
-    { id:'a7',  brand:'Apple', icon:'🍎', name:'iPhone 11',         imgData:g('apple-iphone-11'), servicos:s(320,190,130,230,0) },
-    { id:'a8',  brand:'Apple', icon:'🍎', name:'iPhone 11 Pro',     imgData:g('apple-iphone-11-pro'), servicos:s(450,200,140,270,0) },
-    { id:'a9',  brand:'Apple', icon:'🍎', name:'iPhone 11 Pro Max', imgData:g('apple-iphone-11-pro'), servicos:s(480,210,145,280,0) },
-    { id:'a10', brand:'Apple', icon:'🍎', name:'iPhone 12',         imgData:g('apple-iphone-12'), servicos:s(400,200,140,260,0) },
-    { id:'a11', brand:'Apple', icon:'🍎', name:'iPhone 12 Mini',    imgData:g('apple-iphone-12-mini'), servicos:s(380,190,135,245,0) },
-    { id:'a12', brand:'Apple', icon:'🍎', name:'iPhone 12 Pro',     imgData:g('apple-iphone-12-pro'), servicos:s(480,220,150,290,0) },
-    { id:'a13', brand:'Apple', icon:'🍎', name:'iPhone 12 Pro Max', imgData:g('apple-iphone-12-pro-max'), servicos:s(520,230,155,310,0) },
-    { id:'a14', brand:'Apple', icon:'🍎', name:'iPhone 13',         imgData:g('apple-iphone-13'), servicos:s(450,220,150,280,0) },
-    { id:'a15', brand:'Apple', icon:'🍎', name:'iPhone 13 Mini',    imgData:g('apple-iphone-13-mini'), servicos:s(420,210,145,265,0) },
-    { id:'a16', brand:'Apple', icon:'🍎', name:'iPhone 13 Pro',     imgData:g('apple-iphone-13-pro'), servicos:s(550,240,160,320,0) },
-    { id:'a17', brand:'Apple', icon:'🍎', name:'iPhone 13 Pro Max', imgData:g('apple-iphone-13-pro-max'), servicos:s(600,250,165,340,0) },
-    { id:'a18', brand:'Apple', icon:'🍎', name:'iPhone 14',         imgData:g('apple-iphone-14'), servicos:s(520,240,160,310,0) },
-    { id:'a19', brand:'Apple', icon:'🍎', name:'iPhone 14 Plus',    imgData:g('apple-iphone-14-plus'), servicos:s(560,250,165,325,0) },
-    { id:'a20', brand:'Apple', icon:'🍎', name:'iPhone 14 Pro',     imgData:g('apple-iphone-14-pro'), servicos:s(650,260,170,360,0) },
-    { id:'a21', brand:'Apple', icon:'🍎', name:'iPhone 14 Pro Max', imgData:g('apple-iphone-14-pro-max-'), servicos:s(700,270,175,380,0) },
-    { id:'a22', brand:'Apple', icon:'🍎', name:'iPhone 15',         imgData:g('apple-iphone-15'), servicos:s(600,260,170,340,0) },
-    { id:'a23', brand:'Apple', icon:'🍎', name:'iPhone 15 Plus',    imgData:g('apple-iphone-15-plus-'), servicos:s(650,270,175,360,0) },
-    { id:'a24', brand:'Apple', icon:'🍎', name:'iPhone 15 Pro',     imgData:g('apple-iphone-15-pro'), servicos:s(750,280,180,400,0) },
-    { id:'a25', brand:'Apple', icon:'🍎', name:'iPhone 15 Pro Max', imgData:g('apple-iphone-15-pro-max'), servicos:s(820,300,190,430,0) },
-    { id:'a26', brand:'Apple', icon:'🍎', name:'iPhone 16',         imgData:g('apple-iphone-16'), servicos:s(680,280,180,370,0) },
-    { id:'a27', brand:'Apple', icon:'🍎', name:'iPhone 16 Plus',    imgData:g('apple-iphone-16-plus'), servicos:s(720,290,185,390,0) },
-    { id:'a28', brand:'Apple', icon:'🍎', name:'iPhone 16 Pro',     imgData:g('apple-iphone-16-pro'), servicos:s(850,310,200,450,0) },
-    { id:'a29', brand:'Apple', icon:'🍎', name:'iPhone 16 Pro Max', imgData:g('apple-iphone-16-pro-max'), servicos:s(920,330,210,480,0) },
+    { id:'a1',  brand:'Apple', icon:'🍎', name:'iPhone 8',          imgData:g('apple-iphone-8'), servicos:ap(250,150,120,180,90,0) },
+    { id:'a2',  brand:'Apple', icon:'🍎', name:'iPhone 8 Plus',     imgData:g('apple-iphone-8-plus'), servicos:ap(280,160,120,190,95,0) },
+    { id:'a3',  brand:'Apple', icon:'🍎', name:'iPhone X',          imgData:g('apple-iphone-x'), servicos:ap(350,180,130,220,0,0) },
+    { id:'a4',  brand:'Apple', icon:'🍎', name:'iPhone XR',         imgData:g('apple-iphone-xr'), servicos:ap(300,170,130,200,0,0) },
+    { id:'a5',  brand:'Apple', icon:'🍎', name:'iPhone XS',         imgData:g('apple-iphone-xs'), servicos:ap(380,190,135,230,0,0) },
+    { id:'a6',  brand:'Apple', icon:'🍎', name:'iPhone XS Max',     imgData:g('apple-iphone-xs-max'), servicos:ap(420,200,140,250,0,0) },
+    { id:'a7',  brand:'Apple', icon:'🍎', name:'iPhone 11',         imgData:g('apple-iphone-11'), servicos:ap(320,190,130,230,0,0) },
+    { id:'a8',  brand:'Apple', icon:'🍎', name:'iPhone 11 Pro',     imgData:g('apple-iphone-11-pro'), servicos:ap(450,200,140,270,0,0) },
+    { id:'a9',  brand:'Apple', icon:'🍎', name:'iPhone 11 Pro Max', imgData:g('apple-iphone-11-pro'), servicos:ap(480,210,145,280,0,0) },
+    { id:'a10', brand:'Apple', icon:'🍎', name:'iPhone 12',         imgData:g('apple-iphone-12'), servicos:ap(400,200,140,260,0,0) },
+    { id:'a11', brand:'Apple', icon:'🍎', name:'iPhone 12 Mini',    imgData:g('apple-iphone-12-mini'), servicos:ap(380,190,135,245,0,0) },
+    { id:'a12', brand:'Apple', icon:'🍎', name:'iPhone 12 Pro',     imgData:g('apple-iphone-12-pro'), servicos:ap(480,220,150,290,0,0) },
+    { id:'a13', brand:'Apple', icon:'🍎', name:'iPhone 12 Pro Max', imgData:g('apple-iphone-12-pro-max'), servicos:ap(520,230,155,310,0,0) },
+    { id:'a14', brand:'Apple', icon:'🍎', name:'iPhone 13',         imgData:g('apple-iphone-13'), servicos:ap(450,220,150,280,0,0) },
+    { id:'a15', brand:'Apple', icon:'🍎', name:'iPhone 13 Mini',    imgData:g('apple-iphone-13-mini'), servicos:ap(420,210,145,265,0,0) },
+    { id:'a16', brand:'Apple', icon:'🍎', name:'iPhone 13 Pro',     imgData:g('apple-iphone-13-pro'), servicos:ap(550,240,160,320,0,0) },
+    { id:'a17', brand:'Apple', icon:'🍎', name:'iPhone 13 Pro Max', imgData:g('apple-iphone-13-pro-max'), servicos:ap(600,250,165,340,0,0) },
+    { id:'a18', brand:'Apple', icon:'🍎', name:'iPhone 14',         imgData:g('apple-iphone-14'), servicos:ap(520,240,160,310,0,0) },
+    { id:'a19', brand:'Apple', icon:'🍎', name:'iPhone 14 Plus',    imgData:g('apple-iphone-14-plus'), servicos:ap(560,250,165,325,0,0) },
+    { id:'a20', brand:'Apple', icon:'🍎', name:'iPhone 14 Pro',     imgData:g('apple-iphone-14-pro'), servicos:ap(650,260,170,360,0,0) },
+    { id:'a21', brand:'Apple', icon:'🍎', name:'iPhone 14 Pro Max', imgData:g('apple-iphone-14-pro-max-'), servicos:ap(700,270,175,380,0,0) },
+    { id:'a22', brand:'Apple', icon:'🍎', name:'iPhone 15',         imgData:g('apple-iphone-15'), servicos:ap(600,260,170,340,0,0) },
+    { id:'a23', brand:'Apple', icon:'🍎', name:'iPhone 15 Plus',    imgData:g('apple-iphone-15-plus-'), servicos:ap(650,270,175,360,0,0) },
+    { id:'a24', brand:'Apple', icon:'🍎', name:'iPhone 15 Pro',     imgData:g('apple-iphone-15-pro'), servicos:ap(750,280,180,400,0,0) },
+    { id:'a25', brand:'Apple', icon:'🍎', name:'iPhone 15 Pro Max', imgData:g('apple-iphone-15-pro-max'), servicos:ap(820,300,190,430,0,0) },
+    { id:'a26', brand:'Apple', icon:'🍎', name:'iPhone 16',         imgData:g('apple-iphone-16'), servicos:ap(680,280,180,370,0,0) },
+    { id:'a27', brand:'Apple', icon:'🍎', name:'iPhone 16 Plus',    imgData:g('apple-iphone-16-plus'), servicos:ap(720,290,185,390,0,0) },
+    { id:'a28', brand:'Apple', icon:'🍎', name:'iPhone 16 Pro',     imgData:g('apple-iphone-16-pro'), servicos:ap(850,310,200,450,0,0) },
+    { id:'a29', brand:'Apple', icon:'🍎', name:'iPhone 16 Pro Max', imgData:g('apple-iphone-16-pro-max'), servicos:ap(920,330,210,480,0,0) },
     // ── SAMSUNG SÉRIE A ────────────────────────────
     { id:'s1',  brand:'Samsung', icon:'🌀', name:'Galaxy A01',      imgData:g('samsung-galaxy-a01'), servicos:s(120,80,70,90,0) },
     { id:'s2',  brand:'Samsung', icon:'🌀', name:'Galaxy A01 Core', imgData:g('samsung-galaxy-a01core-sm-a013'), servicos:s(110,75,65,80,0) },
