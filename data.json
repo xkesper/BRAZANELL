@@ -1,5 +1,5 @@
 {
-  "version": 1779300000000,
+  "version": 1779400000000,
   "modelos": [
     {
       "id": "a1",
@@ -312,6 +312,10 @@
           "preco": 400
         },
         {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
           "nome": "Troca de Bateria",
           "preco": 200
         },
@@ -343,6 +347,10 @@
         {
           "nome": "Troca de Tela/Display",
           "preco": 380
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
         },
         {
           "nome": "Troca de Bateria",
@@ -378,6 +386,10 @@
           "preco": 480
         },
         {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
           "nome": "Troca de Bateria",
           "preco": 220
         },
@@ -409,6 +421,10 @@
         {
           "nome": "Troca de Tela/Display",
           "preco": 520
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
         },
         {
           "nome": "Troca de Bateria",
@@ -444,6 +460,10 @@
           "preco": 450
         },
         {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
           "nome": "Troca de Bateria",
           "preco": 220
         },
@@ -475,6 +495,10 @@
         {
           "nome": "Troca de Tela/Display",
           "preco": 420
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
         },
         {
           "nome": "Troca de Bateria",
@@ -510,6 +534,10 @@
           "preco": 550
         },
         {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
           "nome": "Troca de Bateria",
           "preco": 240
         },
@@ -541,6 +569,10 @@
         {
           "nome": "Troca de Tela/Display",
           "preco": 600
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
         },
         {
           "nome": "Troca de Bateria",
@@ -576,6 +608,10 @@
           "preco": 520
         },
         {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
           "nome": "Troca de Bateria",
           "preco": 240
         },
@@ -607,6 +643,10 @@
         {
           "nome": "Troca de Tela/Display",
           "preco": 560
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
         },
         {
           "nome": "Troca de Bateria",
@@ -642,6 +682,10 @@
           "preco": 650
         },
         {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
           "nome": "Troca de Bateria",
           "preco": 260
         },
@@ -673,6 +717,10 @@
         {
           "nome": "Troca de Tela/Display",
           "preco": 700
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
         },
         {
           "nome": "Troca de Bateria",
@@ -708,6 +756,10 @@
           "preco": 600
         },
         {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
           "nome": "Troca de Bateria",
           "preco": 260
         },
@@ -739,6 +791,10 @@
         {
           "nome": "Troca de Tela/Display",
           "preco": 650
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
         },
         {
           "nome": "Troca de Bateria",
@@ -774,6 +830,10 @@
           "preco": 750
         },
         {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
           "nome": "Troca de Bateria",
           "preco": 280
         },
@@ -805,6 +865,10 @@
         {
           "nome": "Troca de Tela/Display",
           "preco": 820
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
         },
         {
           "nome": "Troca de Bateria",
@@ -840,6 +904,10 @@
           "preco": 680
         },
         {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
           "nome": "Troca de Bateria",
           "preco": 280
         },
@@ -871,6 +939,10 @@
         {
           "nome": "Troca de Tela/Display",
           "preco": 720
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
         },
         {
           "nome": "Troca de Bateria",
@@ -906,6 +978,10 @@
           "preco": 850
         },
         {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
           "nome": "Troca de Bateria",
           "preco": 310
         },
@@ -937,6 +1013,10 @@
         {
           "nome": "Troca de Tela/Display",
           "preco": 920
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
         },
         {
           "nome": "Troca de Bateria",
