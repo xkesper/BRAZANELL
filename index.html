@@ -1425,8 +1425,41 @@ function defaultModelos() {
     { id:'i2',  brand:'Infinix', icon:'🟦', name:'Infinix Hot 40',      imgData:g('infinix-hot-40'), servicos:s(0,0,0,0,0) },
     { id:'i3',  brand:'Infinix', icon:'🟦', name:'Infinix Hot 50',      imgData:g('infinix-hot-50-4g'), servicos:s(0,0,0,0,0) },
     { id:'i4',  brand:'Infinix', icon:'🟦', name:'Infinix Hot 60i',     imgData:g('infinix-hot-60i'), servicos:s(0,0,0,0,0) },
-  ];
+  ].map(function(m){
+    // Adiciona "Troca de Tela/Display Oled" automaticamente nos modelos originalmente OLED
+    if (OLED_MODEL_IDS.has(m.id) && Array.isArray(m.servicos)) {
+      var nomes = m.servicos.map(function(x){ return (x.nome||'').toLowerCase().trim(); });
+      if (nomes.indexOf('troca de tela/display oled') === -1) {
+        var idx = nomes.indexOf('troca de tela/display');
+        var oledItem = { nome:'Troca de Tela/Display Oled', preco:0 };
+        if (idx >= 0) m.servicos.splice(idx+1, 0, oledItem);
+        else m.servicos.unshift(oledItem);
+      }
+    }
+    return m;
+  });
 }
+
+// IDs dos modelos originalmente com tela OLED/AMOLED
+const OLED_MODEL_IDS = new Set([
+  // Apple OLED
+  'a3','a5','a6','a8','a9',
+  'a10','a11','a12','a13','a14','a15','a16','a17',
+  'a18','a19','a20','a21','a22','a23','a24','a25',
+  'a26','a27','a28','a29',
+  // Samsung Galaxy S (todos AMOLED)
+  'ss1','ss2','ss3','ss4','ss5','ss6','ss7',
+  // Samsung Galaxy A com AMOLED (médio/topo de linha)
+  's20','s21','s22','s23','s26','s29','s30',
+  's31','s32','s34','s35','s36','s37','s38',
+  's39','s40','s41','s42','s43','s44','s45','s46','s47',
+  's50','s51','s52','s53','s54','s55','s56',
+  // Motorola pOLED
+  'm10','m30','m33','m34',
+  // Xiaomi/Redmi/Poco AMOLED
+  'x1','x2','x3','x6','x7','x14','x15',
+  'x16','x17','x18','x19','x20','x21','x22'
+]);
 
 function genId() { return '_'+Math.random().toString(36).slice(2,9); }
 
