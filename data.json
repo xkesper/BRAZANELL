@@ -1,5 +1,5 @@
 {
-  "version": 1779700000000,
+  "version": 1779800000000,
   "modelos": [
     {
       "id": "a1",
@@ -2595,7 +2595,7 @@
       "brand": "Xiaomi",
       "icon": "🔴",
       "name": "Redmi Note 12",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-12.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-12-5g.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -2645,7 +2645,7 @@
       "brand": "Xiaomi",
       "icon": "🔴",
       "name": "Redmi Note 14",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-14.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-14-5g.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
