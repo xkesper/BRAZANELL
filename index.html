@@ -1520,11 +1520,15 @@ function showAP(id) {
 let activeBrand = 'all';
 let _adminActiveBrand = 'all';
 
+// SVGs inline para marcas que não estão no simpleicons
+const CUSTOM_BRAND_LOGOS = {
+  'Realme': '<svg class="brand-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="5" fill="#FFCB00"/><text x="12" y="17.5" text-anchor="middle" font-family="Arial Black, Helvetica, sans-serif" font-size="16" fill="#000" font-weight="900">r</text></svg>'
+};
 // Mapa de marca -> slug no simpleicons.org
 const BRAND_LOGO_SLUGS = {
   'Apple': 'apple', 'Samsung': 'samsung', 'Motorola': 'motorola',
   'Xiaomi': 'xiaomi', 'Poco': 'xiaomi', 'Redmi': 'xiaomi',
-  'Huawei': 'huawei', 'Honor': 'honor', 'Realme': 'realme',
+  'Huawei': 'huawei', 'Honor': 'honor',
   'OnePlus': 'oneplus', 'Oppo': 'oppo', 'Vivo': 'vivo',
   'Asus': 'asus', 'LG': 'lg', 'Sony': 'sony', 'Google': 'google',
   'Nokia': 'nokia', 'Lenovo': 'lenovo'
@@ -1533,6 +1537,7 @@ function brandLogoHtml(brand, fallbackEmoji) {
   if (brand === 'all') {
     return '<svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>';
   }
+  if (CUSTOM_BRAND_LOGOS[brand]) return CUSTOM_BRAND_LOGOS[brand];
   const slug = BRAND_LOGO_SLUGS[brand];
   if (slug) {
     const fb = (fallbackEmoji||'📱').replace(/'/g, '&#39;');
