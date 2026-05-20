@@ -1,5 +1,5 @@
 {
-  "version": 1747600000000,
+  "version": 1779237337501,
   "modelos": [
     {
       "id": "a1",
@@ -10,7 +10,7 @@
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
-          "preco": 250
+          "preco": 200
         },
         {
           "nome": "Troca de Bateria",
@@ -26,9 +26,10 @@
         },
         {
           "nome": "Troca de Tampa Traseira",
-          "preco": 90
+          "preco": 180
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "a2",
