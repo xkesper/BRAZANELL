@@ -1,5 +1,5 @@
 {
-  "version": 1779237337501,
+  "version": 1779237350952,
   "modelos": [
     {
       "id": "a1",
@@ -40,15 +40,15 @@
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
-          "preco": 280
+          "preco": 220
         },
         {
           "nome": "Troca de Bateria",
-          "preco": 160
+          "preco": 170
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 120
+          "preco": 130
         },
         {
           "nome": "Reparo de Câmera",
@@ -56,9 +56,10 @@
         },
         {
           "nome": "Troca de Tampa Traseira",
-          "preco": 95
+          "preco": 190
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "a3",
