@@ -1,5 +1,5 @@
 {
-  "version": 1779320652861,
+  "version": 1779320666949,
   "modelos": [
     {
       "id": "a1",
@@ -1539,11 +1539,11 @@
       ]
     },
     {
-      "id": "s21",
+      "id": "s22",
       "brand": "Samsung",
       "icon": "🌀",
-      "name": "Galaxy A15",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a15.jpg",
+      "name": "Galaxy A15 4G/5G",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a15-5g.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1563,31 +1563,6 @@
         }
       ],
       "_customServicos": true
-    },
-    {
-      "id": "s22",
-      "brand": "Samsung",
-      "icon": "🌀",
-      "name": "Galaxy A15 5G",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a15-5g.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        }
-      ]
     },
     {
       "id": "s23",
@@ -4024,6 +3999,31 @@
         },
         {
           "nome": "Troca de Conector de Carga",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "brand": "Samsung",
+      "icon": "🌀",
+      "name": "Galaxy A15",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a15.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
           "preco": 0
         }
       ]
