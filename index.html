@@ -1816,7 +1816,8 @@ function salvarModelo() {
   renderAdminModelos();
   renderCatalog();
   toast('Modelo salvo!', 'green');
-  if (localStorage.getItem('cellos_gh_token')) setTimeout(()=>publicarGitHub(true), 500);
+  if (localStorage.getItem('cellos_gh_token')) setTimeout(()=>publicarGitHub(false), 500);
+  else toast('Configure token GitHub em Config para sincronizar entre aparelhos', 'amber');
 }
 
 function editModelo(id) {
