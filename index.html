@@ -591,6 +591,10 @@ input[type="file"]#mImgFile{display:none;}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
           Modelos & Preços
         </button>
+        <button class="anav" onclick="showAP('estoque')" id="an-estoque">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          Estoque
+        </button>
         <button class="anav" onclick="showAP('os')" id="an-os">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           Ordens de Serviço
@@ -639,6 +643,40 @@ input[type="file"]#mImgFile{display:none;}
         </div>
         <div class="admin-content">
           <div id="adminModelos"></div>
+        </div>
+      </div>
+
+      <!-- ── Estoque ── -->
+      <div class="ap" id="ap-estoque">
+        <div class="admin-topbar">
+          <div><h1>Estoque de Peças</h1><div class="sub">Controle de telas: preço e quantidade — sincroniza em todos os aparelhos</div></div>
+          <button class="btn btn-primary" onclick="openEstoqueModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nova Peça
+          </button>
+        </div>
+        <div class="admin-content">
+          <div class="stats-row">
+            <div class="stat"><div class="slabel">Total de itens</div><div class="sval" id="est-total">0</div></div>
+            <div class="stat"><div class="slabel">Em estoque</div><div class="sval" style="color:var(--green)" id="est-disp">0</div></div>
+            <div class="stat"><div class="slabel">Sem estoque</div><div class="sval" style="color:var(--red)" id="est-zero">0</div></div>
+            <div class="stat"><div class="slabel">Valor total</div><div class="sval" style="color:var(--accent)" id="est-valor">R$0</div></div>
+          </div>
+          <div style="margin:14px 0 10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+            <input type="text" id="estSearch" placeholder="🔍 Buscar modelo ou tipo..." class="fi" style="flex:1;min-width:200px;" oninput="renderEstoque()">
+            <select id="estFiltroTipo" class="fi" style="max-width:180px;" onchange="renderEstoque()">
+              <option value="">Todos os tipos</option>
+              <option value="Tela">Tela (LCD)</option>
+              <option value="OLED">OLED</option>
+              <option value="Soft OLED">Soft OLED</option>
+            </select>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Modelo</th><th>Tipo</th><th style="text-align:right;">Preço</th><th style="text-align:center;">Quantidade</th><th style="width:80px;"></th></tr></thead>
+              <tbody id="estoque-tbody"></tbody>
+            </table>
+          </div>
         </div>
       </div>
 
@@ -904,6 +942,42 @@ input[type="file"]#mImgFile{display:none;}
   </div>
 </div>
 
+<!-- Modal: Nova/Editar Peça (Estoque) -->
+<div class="amodal-overlay" id="estoqueModal" onclick="closeEstoqueFora(event)">
+  <div class="amodal" style="max-width:480px;">
+    <div class="amodal-head">
+      <h2 id="estoqueModalTitle">Nova Peça</h2>
+      <button class="close-btn" onclick="closeEstoqueModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="amodal-body">
+      <input type="hidden" id="estEditId">
+      <div class="fg"><label class="fl">Modelo do aparelho *</label><input class="fi" id="estModelo" placeholder="Ex: iPhone 15 Pro"></div>
+      <div class="fg"><label class="fl">Tipo da peça *</label>
+        <select class="fs" id="estTipo">
+          <option value="Tela">Tela (LCD)</option>
+          <option value="OLED">OLED</option>
+          <option value="Soft OLED">Soft OLED</option>
+          <option value="Bateria">Bateria</option>
+          <option value="Conector de Carga">Conector de Carga</option>
+          <option value="Tampa Traseira">Tampa Traseira</option>
+          <option value="Flex de Aproximidade">Flex de Aproximidade</option>
+          <option value="Câmera">Câmera</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Preço (R$) *</label><input type="number" class="fi" id="estPreco" placeholder="0.00" min="0" step="0.01"></div>
+      <div class="fg"><label class="fl">Quantidade em estoque *</label><input type="number" class="fi" id="estQtd" placeholder="0" min="0" step="1"></div>
+    </div>
+    <div class="amodal-foot" style="justify-content:space-between;">
+      <button class="btn btn-ghost" id="estBtnExcluir" onclick="excluirEstoque()" style="color:var(--red);display:none;">Excluir</button>
+      <div style="display:flex;gap:8px;margin-left:auto;">
+        <button class="btn btn-ghost" onclick="closeEstoqueModal()">Cancelar</button>
+        <button class="btn btn-primary" onclick="salvarEstoque()">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Modal: Detalhe Pedido -->
 <div class="amodal-overlay" id="pedidoModal" onclick="closePedidoFora(event)">
   <div class="amodal">
@@ -1077,6 +1151,7 @@ function debouncedSearch() {
 const MODELOS_KEY = 'cellos_modelos_v1';
 const PEDIDOS_KEY = 'cellos_pedidos_v1';
 const CONFIG_KEY  = 'cellos_config_v1';
+const ESTOQUE_KEY = 'cellos_estoque_v1';
 
 function loadModelos() {
   try {
@@ -1115,6 +1190,77 @@ function loadPedidos() { try { return JSON.parse(localStorage.getItem(PEDIDOS_KE
 function savePedidos(d) { localStorage.setItem(PEDIDOS_KEY, JSON.stringify(d)); }
 function loadConfig() { try { return JSON.parse(localStorage.getItem(CONFIG_KEY)) || { nome:'CellOS', whats:'', msg:'' }; } catch { return { nome:'CellOS', whats:'', msg:'' }; } }
 function saveConfigData(d) { localStorage.setItem(CONFIG_KEY, JSON.stringify(d)); }
+
+function loadEstoque() {
+  try {
+    var stored = JSON.parse(localStorage.getItem(ESTOQUE_KEY));
+    if (!stored) return defaultEstoque();
+    // Adiciona itens novos do defaultEstoque que não estão no stored
+    var def = defaultEstoque();
+    var storedIds = new Set(stored.map(function(e){ return e.id; }));
+    var changed = false;
+    def.forEach(function(d){ if (!storedIds.has(d.id)) { stored.push(d); changed = true; } });
+    if (changed) localStorage.setItem(ESTOQUE_KEY, JSON.stringify(stored));
+    return stored;
+  } catch { return defaultEstoque(); }
+}
+function saveEstoque(d) { localStorage.setItem(ESTOQUE_KEY, JSON.stringify(d)); }
+
+function defaultEstoque() {
+  return [
+    // iPhones pré-12 (tela única)
+    { id:'e1',  modelo:'iPhone 8',          tipo:'Tela',       preco:250, qtd:0 },
+    { id:'e2',  modelo:'iPhone 8 Plus',     tipo:'Tela',       preco:280, qtd:0 },
+    { id:'e3',  modelo:'iPhone X',          tipo:'Tela',       preco:350, qtd:0 },
+    { id:'e4',  modelo:'iPhone XR',         tipo:'Tela',       preco:300, qtd:0 },
+    { id:'e5',  modelo:'iPhone XS',         tipo:'Tela',       preco:380, qtd:0 },
+    { id:'e6',  modelo:'iPhone XS Max',     tipo:'Tela',       preco:420, qtd:0 },
+    { id:'e7',  modelo:'iPhone 11',         tipo:'Tela',       preco:320, qtd:0 },
+    { id:'e8',  modelo:'iPhone 11 Pro',     tipo:'Tela',       preco:450, qtd:0 },
+    { id:'e9',  modelo:'iPhone 11 Pro Max', tipo:'Tela',       preco:480, qtd:0 },
+    // iPhones 12+ (OLED + Soft OLED)
+    { id:'e10', modelo:'iPhone 12',         tipo:'OLED',       preco:400, qtd:0 },
+    { id:'e11', modelo:'iPhone 12',         tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e12', modelo:'iPhone 12 Mini',    tipo:'OLED',       preco:380, qtd:0 },
+    { id:'e13', modelo:'iPhone 12 Mini',    tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e14', modelo:'iPhone 12 Pro',     tipo:'OLED',       preco:480, qtd:0 },
+    { id:'e15', modelo:'iPhone 12 Pro',     tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e16', modelo:'iPhone 12 Pro Max', tipo:'OLED',       preco:520, qtd:0 },
+    { id:'e17', modelo:'iPhone 12 Pro Max', tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e18', modelo:'iPhone 13',         tipo:'OLED',       preco:450, qtd:0 },
+    { id:'e19', modelo:'iPhone 13',         tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e20', modelo:'iPhone 13 Mini',    tipo:'OLED',       preco:420, qtd:0 },
+    { id:'e21', modelo:'iPhone 13 Mini',    tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e22', modelo:'iPhone 13 Pro',     tipo:'OLED',       preco:550, qtd:0 },
+    { id:'e23', modelo:'iPhone 13 Pro',     tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e24', modelo:'iPhone 13 Pro Max', tipo:'OLED',       preco:600, qtd:0 },
+    { id:'e25', modelo:'iPhone 13 Pro Max', tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e26', modelo:'iPhone 14',         tipo:'OLED',       preco:520, qtd:0 },
+    { id:'e27', modelo:'iPhone 14',         tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e28', modelo:'iPhone 14 Plus',    tipo:'OLED',       preco:560, qtd:0 },
+    { id:'e29', modelo:'iPhone 14 Plus',    tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e30', modelo:'iPhone 14 Pro',     tipo:'OLED',       preco:650, qtd:0 },
+    { id:'e31', modelo:'iPhone 14 Pro',     tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e32', modelo:'iPhone 14 Pro Max', tipo:'OLED',       preco:700, qtd:0 },
+    { id:'e33', modelo:'iPhone 14 Pro Max', tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e34', modelo:'iPhone 15',         tipo:'OLED',       preco:600, qtd:0 },
+    { id:'e35', modelo:'iPhone 15',         tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e36', modelo:'iPhone 15 Plus',    tipo:'OLED',       preco:650, qtd:0 },
+    { id:'e37', modelo:'iPhone 15 Plus',    tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e38', modelo:'iPhone 15 Pro',     tipo:'OLED',       preco:750, qtd:0 },
+    { id:'e39', modelo:'iPhone 15 Pro',     tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e40', modelo:'iPhone 15 Pro Max', tipo:'OLED',       preco:820, qtd:0 },
+    { id:'e41', modelo:'iPhone 15 Pro Max', tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e42', modelo:'iPhone 16',         tipo:'OLED',       preco:680, qtd:0 },
+    { id:'e43', modelo:'iPhone 16',         tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e44', modelo:'iPhone 16 Plus',    tipo:'OLED',       preco:720, qtd:0 },
+    { id:'e45', modelo:'iPhone 16 Plus',    tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e46', modelo:'iPhone 16 Pro',     tipo:'OLED',       preco:850, qtd:0 },
+    { id:'e47', modelo:'iPhone 16 Pro',     tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e48', modelo:'iPhone 16 Pro Max', tipo:'OLED',       preco:920, qtd:0 },
+    { id:'e49', modelo:'iPhone 16 Pro Max', tipo:'Soft OLED',  preco:0,   qtd:0 },
+  ];
+}
 
 function defaultModelos() {
   var s = function(t,b,c,cam,tam){ var r=[{nome:'Troca de Tela/Display',preco:t},{nome:'Troca de Bateria',preco:b},{nome:'Troca de Conector de Carga',preco:c}]; if(cam) r.push({nome:'Reparo de Câmera',preco:cam}); if(tam) r.push({nome:'Troca de Tampa Traseira',preco:tam}); return r; };
@@ -1345,6 +1491,7 @@ function showAP(id) {
   if (id === 'pedidos') renderPedidos();
   if (id === 'config') { loadConfigForm(); loadFbConfigForm(); }
   if (id === 'os') renderAdminOS();
+  if (id === 'estoque') renderEstoque();
 }
 
 // ═══════════════════════════════════════════════
@@ -1841,6 +1988,122 @@ function delModelo(id) {
 }
 
 // ═══════════════════════════════════════════════
+// ESTOQUE
+// ═══════════════════════════════════════════════
+function renderEstoque() {
+  const tbody = document.getElementById('estoque-tbody');
+  if (!tbody) return;
+  const items = loadEstoque();
+  const search = (document.getElementById('estSearch')?.value || '').toLowerCase().trim();
+  const filtroTipo = document.getElementById('estFiltroTipo')?.value || '';
+  const filtered = items.filter(it => {
+    const matchTipo = !filtroTipo || it.tipo === filtroTipo;
+    const matchSearch = !search || (it.modelo||'').toLowerCase().includes(search) || (it.tipo||'').toLowerCase().includes(search);
+    return matchTipo && matchSearch;
+  });
+  // Stats
+  document.getElementById('est-total').textContent = items.length;
+  document.getElementById('est-disp').textContent = items.filter(i => (i.qtd||0) > 0).length;
+  document.getElementById('est-zero').textContent = items.filter(i => (i.qtd||0) === 0).length;
+  const valor = items.reduce((s,i) => s + ((i.preco||0) * (i.qtd||0)), 0);
+  document.getElementById('est-valor').textContent = fmtR(valor);
+  if (!filtered.length) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--text3);">Nenhuma peça encontrada</td></tr>';
+    return;
+  }
+  tbody.innerHTML = filtered.map(it => {
+    const semEstoque = (it.qtd||0) === 0;
+    const tipoColor = it.tipo === 'OLED' ? 'var(--accent)' : it.tipo === 'Soft OLED' ? 'var(--amber)' : 'var(--text2)';
+    return `<tr>
+      <td><strong>${esc(it.modelo||'')}</strong></td>
+      <td><span style="color:${tipoColor};font-weight:600;font-size:12px;">${esc(it.tipo||'')}</span></td>
+      <td style="text-align:right;">
+        <input type="number" min="0" step="0.01" value="${it.preco||0}" onchange="atualizarEstoqueCampo('${it.id}','preco',this.value)" style="width:90px;text-align:right;padding:5px 8px;border:1px solid var(--border);background:var(--bg3);color:var(--text);border-radius:6px;font-size:13px;">
+      </td>
+      <td style="text-align:center;">
+        <div style="display:inline-flex;align-items:center;gap:4px;">
+          <button onclick="ajustarQtd('${it.id}',-1)" style="width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--text);cursor:pointer;font-size:14px;font-weight:700;">−</button>
+          <input type="number" min="0" step="1" value="${it.qtd||0}" onchange="atualizarEstoqueCampo('${it.id}','qtd',this.value)" style="width:60px;text-align:center;padding:5px;border:1px solid var(--border);background:var(--bg3);color:${semEstoque?'var(--red)':'var(--green)'};font-weight:700;border-radius:6px;font-size:13px;">
+          <button onclick="ajustarQtd('${it.id}',1)" style="width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--text);cursor:pointer;font-size:14px;font-weight:700;">+</button>
+        </div>
+      </td>
+      <td><button class="btn btn-ghost btn-sm" onclick="editEstoque('${it.id}')" style="padding:5px 10px;font-size:12px;">Editar</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function atualizarEstoqueCampo(id, campo, valor) {
+  const items = loadEstoque();
+  const idx = items.findIndex(i => i.id === id);
+  if (idx < 0) return;
+  items[idx][campo] = campo === 'preco' ? parseFloat(valor)||0 : parseInt(valor)||0;
+  saveEstoque(items);
+  renderEstoque();
+  agendarSyncEstoque();
+}
+
+function ajustarQtd(id, delta) {
+  const items = loadEstoque();
+  const idx = items.findIndex(i => i.id === id);
+  if (idx < 0) return;
+  items[idx].qtd = Math.max(0, (items[idx].qtd||0) + delta);
+  saveEstoque(items);
+  renderEstoque();
+  agendarSyncEstoque();
+}
+
+let _syncEstoqueTimer = null;
+function agendarSyncEstoque() {
+  if (!localStorage.getItem('cellos_gh_token')) return;
+  clearTimeout(_syncEstoqueTimer);
+  _syncEstoqueTimer = setTimeout(() => publicarGitHub(true), 1500);
+}
+
+function openEstoqueModal(item) {
+  document.getElementById('estoqueModalTitle').textContent = item ? 'Editar Peça' : 'Nova Peça';
+  document.getElementById('estEditId').value = item ? item.id : '';
+  document.getElementById('estModelo').value = item ? (item.modelo||'') : '';
+  document.getElementById('estTipo').value = item ? (item.tipo||'Tela') : 'Tela';
+  document.getElementById('estPreco').value = item ? (item.preco||0) : '';
+  document.getElementById('estQtd').value = item ? (item.qtd||0) : '';
+  document.getElementById('estBtnExcluir').style.display = item ? '' : 'none';
+  document.getElementById('estoqueModal').classList.add('open');
+}
+function closeEstoqueModal() { document.getElementById('estoqueModal').classList.remove('open'); }
+function closeEstoqueFora(e) { if (e.target===document.getElementById('estoqueModal')) closeEstoqueModal(); }
+function editEstoque(id) { const it = loadEstoque().find(x=>x.id===id); if (it) openEstoqueModal(it); }
+function excluirEstoque() {
+  const id = document.getElementById('estEditId').value;
+  if (!id) return;
+  if (!confirm('Excluir esta peça do estoque?')) return;
+  saveEstoque(loadEstoque().filter(i=>i.id!==id));
+  closeEstoqueModal();
+  renderEstoque();
+  agendarSyncEstoque();
+  toast('Peça removida', 'amber');
+}
+function salvarEstoque() {
+  const modelo = document.getElementById('estModelo').value.trim();
+  const tipo = document.getElementById('estTipo').value;
+  const preco = parseFloat(document.getElementById('estPreco').value)||0;
+  const qtd = parseInt(document.getElementById('estQtd').value)||0;
+  if (!modelo) { toast('Preencha o modelo', 'red'); return; }
+  const items = loadEstoque();
+  const editId = document.getElementById('estEditId').value;
+  if (editId) {
+    const idx = items.findIndex(i=>i.id===editId);
+    if (idx>=0) items[idx] = {...items[idx], modelo, tipo, preco, qtd};
+  } else {
+    items.push({id:'e'+Date.now(), modelo, tipo, preco, qtd});
+  }
+  saveEstoque(items);
+  closeEstoqueModal();
+  renderEstoque();
+  agendarSyncEstoque();
+  toast('Peça salva!', 'green');
+}
+
+// ═══════════════════════════════════════════════
 // IMAGE UPLOAD
 // ═══════════════════════════════════════════════
 function handleImgUpload(event) {
@@ -2066,6 +2329,7 @@ async function carregarDadosRemoto() {
     if (data.version > local) {
       localStorage.setItem(MODELOS_KEY, JSON.stringify(data.modelos));
       if (data.config) localStorage.setItem(CONFIG_KEY, JSON.stringify(data.config));
+      if (Array.isArray(data.estoque)) localStorage.setItem(ESTOQUE_KEY, JSON.stringify(data.estoque));
       localStorage.setItem(DATA_VER_KEY, String(data.version));
       return true;
     }
@@ -2090,7 +2354,8 @@ async function publicarGitHub(silent) {
     modelos: loadModelos().map(m =>
       (m.imgData && m.imgData.startsWith('data:')) ? {...m, imgData:''} : m
     ),
-    config: loadConfig()
+    config: loadConfig(),
+    estoque: loadEstoque()
   };
   const apiBase = `https://api.github.com/repos/${GH_REPO_SYNC}/contents/${GH_DATA_FILE}`;
   try {
@@ -2573,7 +2838,7 @@ initFirebase();
 checkAndShowCustomerTracking();
 renderCatalog();
 // Sincroniza dados remotos do GitHub (não bloqueia render inicial)
-carregarDadosRemoto().then(updated => { if (updated) renderCatalog(); });
+carregarDadosRemoto().then(updated => { if (updated) { renderCatalog(); if (document.getElementById('estoque-tbody')) renderEstoque(); } });
 </script>
 </body>
 </html>

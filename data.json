@@ -1,5 +1,5 @@
 {
-  "version": 1779400000000,
+  "version": 1779500000000,
   "modelos": [
     {
       "id": "a1",
@@ -3470,5 +3470,350 @@
     "nome": "BRAZANELL",
     "whats": "41997232440",
     "msg": ""
-  }
+  },
+  "estoque": [
+    {
+      "id": "e1",
+      "modelo": "iPhone 8",
+      "tipo": "Tela",
+      "preco": 250,
+      "qtd": 0
+    },
+    {
+      "id": "e2",
+      "modelo": "iPhone 8 Plus",
+      "tipo": "Tela",
+      "preco": 280,
+      "qtd": 0
+    },
+    {
+      "id": "e3",
+      "modelo": "iPhone X",
+      "tipo": "Tela",
+      "preco": 350,
+      "qtd": 0
+    },
+    {
+      "id": "e4",
+      "modelo": "iPhone XR",
+      "tipo": "Tela",
+      "preco": 300,
+      "qtd": 0
+    },
+    {
+      "id": "e5",
+      "modelo": "iPhone XS",
+      "tipo": "Tela",
+      "preco": 380,
+      "qtd": 0
+    },
+    {
+      "id": "e6",
+      "modelo": "iPhone XS Max",
+      "tipo": "Tela",
+      "preco": 420,
+      "qtd": 0
+    },
+    {
+      "id": "e7",
+      "modelo": "iPhone 11",
+      "tipo": "Tela",
+      "preco": 320,
+      "qtd": 0
+    },
+    {
+      "id": "e8",
+      "modelo": "iPhone 11 Pro",
+      "tipo": "Tela",
+      "preco": 450,
+      "qtd": 0
+    },
+    {
+      "id": "e9",
+      "modelo": "iPhone 11 Pro Max",
+      "tipo": "Tela",
+      "preco": 480,
+      "qtd": 0
+    },
+    {
+      "id": "e10",
+      "modelo": "iPhone 12",
+      "tipo": "OLED",
+      "preco": 400,
+      "qtd": 0
+    },
+    {
+      "id": "e11",
+      "modelo": "iPhone 12",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e12",
+      "modelo": "iPhone 12 Mini",
+      "tipo": "OLED",
+      "preco": 380,
+      "qtd": 0
+    },
+    {
+      "id": "e13",
+      "modelo": "iPhone 12 Mini",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e14",
+      "modelo": "iPhone 12 Pro",
+      "tipo": "OLED",
+      "preco": 480,
+      "qtd": 0
+    },
+    {
+      "id": "e15",
+      "modelo": "iPhone 12 Pro",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e16",
+      "modelo": "iPhone 12 Pro Max",
+      "tipo": "OLED",
+      "preco": 520,
+      "qtd": 0
+    },
+    {
+      "id": "e17",
+      "modelo": "iPhone 12 Pro Max",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e18",
+      "modelo": "iPhone 13",
+      "tipo": "OLED",
+      "preco": 450,
+      "qtd": 0
+    },
+    {
+      "id": "e19",
+      "modelo": "iPhone 13",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e20",
+      "modelo": "iPhone 13 Mini",
+      "tipo": "OLED",
+      "preco": 420,
+      "qtd": 0
+    },
+    {
+      "id": "e21",
+      "modelo": "iPhone 13 Mini",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e22",
+      "modelo": "iPhone 13 Pro",
+      "tipo": "OLED",
+      "preco": 550,
+      "qtd": 0
+    },
+    {
+      "id": "e23",
+      "modelo": "iPhone 13 Pro",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e24",
+      "modelo": "iPhone 13 Pro Max",
+      "tipo": "OLED",
+      "preco": 600,
+      "qtd": 0
+    },
+    {
+      "id": "e25",
+      "modelo": "iPhone 13 Pro Max",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e26",
+      "modelo": "iPhone 14",
+      "tipo": "OLED",
+      "preco": 520,
+      "qtd": 0
+    },
+    {
+      "id": "e27",
+      "modelo": "iPhone 14",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e28",
+      "modelo": "iPhone 14 Plus",
+      "tipo": "OLED",
+      "preco": 560,
+      "qtd": 0
+    },
+    {
+      "id": "e29",
+      "modelo": "iPhone 14 Plus",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e30",
+      "modelo": "iPhone 14 Pro",
+      "tipo": "OLED",
+      "preco": 650,
+      "qtd": 0
+    },
+    {
+      "id": "e31",
+      "modelo": "iPhone 14 Pro",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e32",
+      "modelo": "iPhone 14 Pro Max",
+      "tipo": "OLED",
+      "preco": 700,
+      "qtd": 0
+    },
+    {
+      "id": "e33",
+      "modelo": "iPhone 14 Pro Max",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e34",
+      "modelo": "iPhone 15",
+      "tipo": "OLED",
+      "preco": 600,
+      "qtd": 0
+    },
+    {
+      "id": "e35",
+      "modelo": "iPhone 15",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e36",
+      "modelo": "iPhone 15 Plus",
+      "tipo": "OLED",
+      "preco": 650,
+      "qtd": 0
+    },
+    {
+      "id": "e37",
+      "modelo": "iPhone 15 Plus",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e38",
+      "modelo": "iPhone 15 Pro",
+      "tipo": "OLED",
+      "preco": 750,
+      "qtd": 0
+    },
+    {
+      "id": "e39",
+      "modelo": "iPhone 15 Pro",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e40",
+      "modelo": "iPhone 15 Pro Max",
+      "tipo": "OLED",
+      "preco": 820,
+      "qtd": 0
+    },
+    {
+      "id": "e41",
+      "modelo": "iPhone 15 Pro Max",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e42",
+      "modelo": "iPhone 16",
+      "tipo": "OLED",
+      "preco": 680,
+      "qtd": 0
+    },
+    {
+      "id": "e43",
+      "modelo": "iPhone 16",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e44",
+      "modelo": "iPhone 16 Plus",
+      "tipo": "OLED",
+      "preco": 720,
+      "qtd": 0
+    },
+    {
+      "id": "e45",
+      "modelo": "iPhone 16 Plus",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e46",
+      "modelo": "iPhone 16 Pro",
+      "tipo": "OLED",
+      "preco": 850,
+      "qtd": 0
+    },
+    {
+      "id": "e47",
+      "modelo": "iPhone 16 Pro",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    },
+    {
+      "id": "e48",
+      "modelo": "iPhone 16 Pro Max",
+      "tipo": "OLED",
+      "preco": 920,
+      "qtd": 0
+    },
+    {
+      "id": "e49",
+      "modelo": "iPhone 16 Pro Max",
+      "tipo": "Soft OLED",
+      "preco": 0,
+      "qtd": 0
+    }
+  ]
 }
