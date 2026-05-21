@@ -1,5 +1,5 @@
 {
-  "version": 1779326523706,
+  "version": 1779326559987,
   "modelos": [
     {
       "id": "a1",
@@ -268,33 +268,34 @@
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
-          "preco": 0
+          "preco": 280
         },
         {
           "nome": "Troca de Tela/Display Oled",
-          "preco": 0
+          "preco": 450
         },
         {
           "nome": "Troca de Bateria",
-          "preco": 0
+          "preco": 200
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
+          "preco": 170
         },
         {
           "nome": "Reparo de Câmera",
-          "preco": 0
+          "preco": 350
         },
         {
           "nome": "Troca de Tampa Traseira",
-          "preco": 0
+          "preco": 300
         },
         {
           "nome": "Troca de Flex de Aproximidade",
-          "preco": 0
+          "preco": 150
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "a9",
