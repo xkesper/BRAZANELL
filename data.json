@@ -1,5 +1,5 @@
 {
-  "version": 1779837745420,
+  "version": 1779837806520,
   "modelos": [
     {
       "id": "a1",
@@ -647,10 +647,6 @@
           "preco": 0
         },
         {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
-        },
-        {
           "nome": "Troca de Bateria",
           "preco": 0
         },
@@ -669,8 +665,13 @@
         {
           "nome": "Troca de Flex de Aproximidade",
           "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "a18",
