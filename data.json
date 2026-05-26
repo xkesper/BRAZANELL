@@ -1,5 +1,5 @@
 {
-  "version": 1779838548306,
+  "version": 1779838560172,
   "modelos": [
     {
       "id": "s1",
@@ -507,25 +507,26 @@
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 170
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 95
+        },
+        {
+          "nome": "Reparo de Câmera",
           "preco": 0
         },
         {
           "nome": "Troca de Tela/Display Oled",
           "preco": 0
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "s21",
