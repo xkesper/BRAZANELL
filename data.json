@@ -1,5 +1,5 @@
 {
-  "version": 1779838380991,
+  "version": 1779838383732,
   "modelos": [
     {
       "id": "s1",
@@ -277,7 +277,7 @@
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 100
+          "preco": 120
         },
         {
           "nome": "Reparo de Câmera",
