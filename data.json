@@ -1,5 +1,5 @@
 {
-  "version": 1779838515732,
+  "version": 1779838548306,
   "modelos": [
     {
       "id": "s1",
@@ -485,6 +485,10 @@
         },
         {
           "nome": "Troca de Conector de Carga",
+          "preco": 95
+        },
+        {
+          "nome": "Botao Power (Biometria)",
           "preco": 95
         },
         {
