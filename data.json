@@ -1,5 +1,5 @@
 {
-  "version": 1779838492476,
+  "version": 1779838504159,
   "modelos": [
     {
       "id": "s1",
@@ -451,15 +451,15 @@
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
-          "preco": 230
+          "preco": 240
         },
         {
           "nome": "Troca de Bateria",
-          "preco": 150
+          "preco": 160
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 90
+          "preco": 95
         },
         {
           "nome": "Reparo de Câmera",
