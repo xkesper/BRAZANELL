@@ -1,5 +1,5 @@
 {
-  "version": 1780356493902,
+  "version": 1780356507067,
   "modelos": [
     {
       "id": "s1",
@@ -1247,7 +1247,8 @@
           "nome": "Reparo de Câmera",
           "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "ss1",
