@@ -1,5 +1,5 @@
 {
-  "version": 1780356452515,
+  "version": 1780356461748,
   "modelos": [
     {
       "id": "s1",
@@ -1081,25 +1081,26 @@
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
-          "preco": 0
+          "preco": 280
         },
         {
           "nome": "Troca de Tela/Display Oled",
-          "preco": 0
+          "preco": 500
         },
         {
           "nome": "Troca de Bateria",
-          "preco": 0
+          "preco": 180
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
+          "preco": 120
         },
         {
           "nome": "Reparo de Câmera",
           "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "s43",
