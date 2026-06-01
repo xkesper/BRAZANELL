@@ -1,5 +1,5 @@
 {
-  "version": 1780356507067,
+  "version": 1780356523278,
   "modelos": [
     {
       "id": "s1",
@@ -1258,26 +1258,27 @@
       "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-5g.jpg",
       "servicos": [
         {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
           "nome": "Troca de Tela/Display Oled",
           "preco": 0
         },
         {
           "nome": "Troca de Bateria",
-          "preco": 0
+          "preco": 250
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
+          "preco": 200
         },
         {
           "nome": "Reparo de Câmera",
           "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "ss2",
