@@ -1,5 +1,5 @@
 {
-  "version": 1780359052573,
+  "version": 1780367311592,
   "modelos": [
     {
       "id": "s1",
@@ -840,6 +840,36 @@
       "_customServicos": true
     },
     {
+      "id": "s54",
+      "brand": "Samsung",
+      "icon": "🌀",
+      "name": "Galaxy A30s",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a30s.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 230
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 180
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 95
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
       "id": "s33",
       "brand": "Samsung",
       "icon": "🌀",
@@ -1536,35 +1566,6 @@
       ]
     },
     {
-      "id": "s54",
-      "brand": "Samsung",
-      "icon": "🌀",
-      "name": "Galaxy A30s",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a30s.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        }
-      ]
-    },
-    {
       "id": "s55",
       "brand": "Samsung",
       "icon": "🌀",
@@ -1686,6 +1687,64 @@
       "icon": "🌀",
       "name": "Galaxy S22",
       "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s22-5g-.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "brand": "Samsung",
+      "icon": "🌀",
+      "name": "Galaxy A15",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a15.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "s37",
+      "brand": "Samsung",
+      "icon": "🌀",
+      "name": "Galaxy A50",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a50-sm-a505f-ds.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -4392,64 +4451,6 @@
         }
       ],
       "_customServicos": true
-    },
-    {
-      "id": "s21",
-      "brand": "Samsung",
-      "icon": "🌀",
-      "name": "Galaxy A15",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a15.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        }
-      ]
-    },
-    {
-      "id": "s37",
-      "brand": "Samsung",
-      "icon": "🌀",
-      "name": "Galaxy A50",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a50-sm-a505f-ds.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        }
-      ]
     }
   ],
   "config": {
