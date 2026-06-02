@@ -1,5 +1,5 @@
 {
-  "version": 1780358627187,
+  "version": 1780358735428,
   "modelos": [
     {
       "id": "s1",
@@ -2363,16 +2363,16 @@
           "preco": 250
         },
         {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
           "nome": "Troca de Tampa Traseira",
           "preco": 350
         },
         {
           "nome": "Troca de Flex de Aproximidade",
           "preco": 200
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
         },
         {
           "nome": "Troca de Tela/Display Oled",
