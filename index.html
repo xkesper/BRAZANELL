@@ -1146,10 +1146,11 @@ function debouncedSearch() {
 // ═══════════════════════════════════════════════
 // STORAGE
 // ═══════════════════════════════════════════════
-const MODELOS_KEY = 'cellos_modelos_v1';
-const PEDIDOS_KEY = 'cellos_pedidos_v1';
-const CONFIG_KEY  = 'cellos_config_v1';
-const ESTOQUE_KEY = 'cellos_estoque_v1';
+const MODELOS_KEY   = 'cellos_modelos_v1';
+const PEDIDOS_KEY   = 'cellos_pedidos_v1';
+const CONFIG_KEY    = 'cellos_config_v1';
+const ESTOQUE_KEY   = 'cellos_estoque_v1';
+const DELETED_KEY   = 'cellos_deleted_ids';
 
 function loadModelos() {
   try {
@@ -1160,8 +1161,9 @@ function loadModelos() {
     def.forEach(function(m){ defMap[m.id] = m; });
     var changed = false;
     var storedIds = stored.map(function(m){ return m.id; });
+    var deletedIds = JSON.parse(localStorage.getItem(DELETED_KEY) || '[]');
     def.forEach(function(m){
-      if (storedIds.indexOf(m.id) === -1) { stored.push(m); changed = true; }
+      if (storedIds.indexOf(m.id) === -1 && deletedIds.indexOf(String(m.id)) === -1) { stored.push(m); changed = true; }
     });
     stored.forEach(function(m, i){
       var d = defMap[m.id];
@@ -2067,6 +2069,9 @@ function editModelo(id) {
 }
 function delModelo(id) {
   if (!confirm('Excluir este modelo do catálogo?')) return;
+  var deleted = JSON.parse(localStorage.getItem(DELETED_KEY) || '[]');
+  if (deleted.indexOf(String(id)) === -1) deleted.push(String(id));
+  localStorage.setItem(DELETED_KEY, JSON.stringify(deleted));
   saveModelos(loadModelos().filter(m=>String(m.id)!==String(id)));
   renderAdminModelos(); renderCatalog();
   toast('Modelo removido', 'amber');
