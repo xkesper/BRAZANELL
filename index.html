@@ -2067,7 +2067,7 @@ function editModelo(id) {
 }
 function delModelo(id) {
   if (!confirm('Excluir este modelo do catálogo?')) return;
-  saveModelos(loadModelos().filter(m=>m.id!==id));
+  saveModelos(loadModelos().filter(m=>String(m.id)!==String(id)));
   renderAdminModelos(); renderCatalog();
   toast('Modelo removido', 'amber');
 }
