@@ -2,6 +2,18 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<script id="cellos-restore">
+(function(){
+  var VER=1748300000000;
+  var stored=parseInt(localStorage.getItem('cellos_ver')||'0');
+  if(stored<VER){
+    localStorage.setItem('cellos_modelos_v1',"[{\"id\":\"a1\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 8\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":250},{\"nome\":\"Troca de Bateria\",\"preco\":150},{\"nome\":\"Troca de Conector de Carga\",\"preco\":120},{\"nome\":\"Reparo de Câmera\",\"preco\":180},{\"nome\":\"Troca de Tampa Traseira\",\"preco\":90}]},{\"id\":\"a2\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 8 Plus\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8-plus.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":280},{\"nome\":\"Troca de Bateria\",\"preco\":160},{\"nome\":\"Troca de Conector de Carga\",\"preco\":120},{\"nome\":\"Reparo de Câmera\",\"preco\":190},{\"nome\":\"Troca de Tampa Traseira\",\"preco\":95}]},{\"id\":\"a3\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone X\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-x.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":350},{\"nome\":\"Troca de Bateria\",\"preco\":180},{\"nome\":\"Troca de Conector de Carga\",\"preco\":130},{\"nome\":\"Reparo de Câmera\",\"preco\":220}]},{\"id\":\"a4\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone XR\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xr.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":300},{\"nome\":\"Troca de Bateria\",\"preco\":170},{\"nome\":\"Troca de Conector de Carga\",\"preco\":130},{\"nome\":\"Reparo de Câmera\",\"preco\":200}]},{\"id\":\"a5\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone XS\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xs.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":380},{\"nome\":\"Troca de Bateria\",\"preco\":190},{\"nome\":\"Troca de Conector de Carga\",\"preco\":135},{\"nome\":\"Reparo de Câmera\",\"preco\":230}]},{\"id\":\"a6\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone XS Max\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xs-max.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":420},{\"nome\":\"Troca de Bateria\",\"preco\":200},{\"nome\":\"Troca de Conector de Carga\",\"preco\":140},{\"nome\":\"Reparo de Câmera\",\"preco\":250}]},{\"id\":\"a7\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 11\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":320},{\"nome\":\"Troca de Bateria\",\"preco\":190},{\"nome\":\"Troca de Conector de Carga\",\"preco\":130},{\"nome\":\"Reparo de Câmera\",\"preco\":230}]},{\"id\":\"a8\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 11 Pro\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":450},{\"nome\":\"Troca de Bateria\",\"preco\":200},{\"nome\":\"Troca de Conector de Carga\",\"preco\":140},{\"nome\":\"Reparo de Câmera\",\"preco\":270}]},{\"id\":\"a9\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 11 Pro Max\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":480},{\"nome\":\"Troca de Bateria\",\"preco\":210},{\"nome\":\"Troca de Conector de Carga\",\"preco\":145},{\"nome\":\"Reparo de Câmera\",\"preco\":280}]},{\"id\":\"a10\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 12\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":400},{\"nome\":\"Troca de Bateria\",\"preco\":200},{\"nome\":\"Troca de Conector de Carga\",\"preco\":140},{\"nome\":\"Reparo de Câmera\",\"preco\":260}]},{\"id\":\"a11\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 12 Mini\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":380},{\"nome\":\"Troca de Bateria\",\"preco\":190},{\"nome\":\"Troca de Conector de Carga\",\"preco\":135},{\"nome\":\"Reparo de Câmera\",\"preco\":245}]},{\"id\":\"a12\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 12 Pro\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":480},{\"nome\":\"Troca de Bateria\",\"preco\":220},{\"nome\":\"Troca de Conector de Carga\",\"preco\":150},{\"nome\":\"Reparo de Câmera\",\"preco\":290}]},{\"id\":\"a13\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 12 Pro Max\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":520},{\"nome\":\"Troca de Bateria\",\"preco\":230},{\"nome\":\"Troca de Conector de Carga\",\"preco\":155},{\"nome\":\"Reparo de Câmera\",\"preco\":310}]},{\"id\":\"a14\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 13\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":450},{\"nome\":\"Troca de Bateria\",\"preco\":220},{\"nome\":\"Troca de Conector de Carga\",\"preco\":150},{\"nome\":\"Reparo de Câmera\",\"preco\":280}]},{\"id\":\"a15\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 13 Mini\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":420},{\"nome\":\"Troca de Bateria\",\"preco\":210},{\"nome\":\"Troca de Conector de Carga\",\"preco\":145},{\"nome\":\"Reparo de Câmera\",\"preco\":265}]},{\"id\":\"a16\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 13 Pro\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":550},{\"nome\":\"Troca de Bateria\",\"preco\":240},{\"nome\":\"Troca de Conector de Carga\",\"preco\":160},{\"nome\":\"Reparo de Câmera\",\"preco\":320}]},{\"id\":\"a17\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 13 Pro Max\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":600},{\"nome\":\"Troca de Bateria\",\"preco\":250},{\"nome\":\"Troca de Conector de Carga\",\"preco\":165},{\"nome\":\"Reparo de Câmera\",\"preco\":340}]},{\"id\":\"a18\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 14\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":520},{\"nome\":\"Troca de Bateria\",\"preco\":240},{\"nome\":\"Troca de Conector de Carga\",\"preco\":160},{\"nome\":\"Reparo de Câmera\",\"preco\":310}]},{\"id\":\"a19\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 14 Plus\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-plus.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":560},{\"nome\":\"Troca de Bateria\",\"preco\":250},{\"nome\":\"Troca de Conector de Carga\",\"preco\":165},{\"nome\":\"Reparo de Câmera\",\"preco\":325}]},{\"id\":\"a20\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 14 Pro\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":650},{\"nome\":\"Troca de Bateria\",\"preco\":260},{\"nome\":\"Troca de Conector de Carga\",\"preco\":170},{\"nome\":\"Reparo de Câmera\",\"preco\":360}]},{\"id\":\"a21\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 14 Pro Max\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":700},{\"nome\":\"Troca de Bateria\",\"preco\":270},{\"nome\":\"Troca de Conector de Carga\",\"preco\":175},{\"nome\":\"Reparo de Câmera\",\"preco\":380}]},{\"id\":\"a22\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 15\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":600},{\"nome\":\"Troca de Bateria\",\"preco\":260},{\"nome\":\"Troca de Conector de Carga\",\"preco\":170},{\"nome\":\"Reparo de Câmera\",\"preco\":340}]},{\"id\":\"a23\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 15 Plus\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-plus-.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":650},{\"nome\":\"Troca de Bateria\",\"preco\":270},{\"nome\":\"Troca de Conector de Carga\",\"preco\":175},{\"nome\":\"Reparo de Câmera\",\"preco\":360}]},{\"id\":\"a24\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 15 Pro\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":750},{\"nome\":\"Troca de Bateria\",\"preco\":280},{\"nome\":\"Troca de Conector de Carga\",\"preco\":180},{\"nome\":\"Reparo de Câmera\",\"preco\":400}]},{\"id\":\"a25\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 15 Pro Max\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":820},{\"nome\":\"Troca de Bateria\",\"preco\":300},{\"nome\":\"Troca de Conector de Carga\",\"preco\":190},{\"nome\":\"Reparo de Câmera\",\"preco\":430}]},{\"id\":\"a26\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 16\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":680},{\"nome\":\"Troca de Bateria\",\"preco\":280},{\"nome\":\"Troca de Conector de Carga\",\"preco\":180},{\"nome\":\"Reparo de Câmera\",\"preco\":370}]},{\"id\":\"a27\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 16 Plus\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-plus.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":720},{\"nome\":\"Troca de Bateria\",\"preco\":290},{\"nome\":\"Troca de Conector de Carga\",\"preco\":185},{\"nome\":\"Reparo de Câmera\",\"preco\":390}]},{\"id\":\"a28\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 16 Pro\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":850},{\"nome\":\"Troca de Bateria\",\"preco\":310},{\"nome\":\"Troca de Conector de Carga\",\"preco\":200},{\"nome\":\"Reparo de Câmera\",\"preco\":450}]},{\"id\":\"a29\",\"brand\":\"Apple\",\"icon\":\"🍎\",\"name\":\"iPhone 16 Pro Max\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro-max.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":920},{\"nome\":\"Troca de Bateria\",\"preco\":330},{\"nome\":\"Troca de Conector de Carga\",\"preco\":210},{\"nome\":\"Reparo de Câmera\",\"preco\":480}]},{\"id\":\"s1\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A01\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a01.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":120},{\"nome\":\"Troca de Bateria\",\"preco\":80},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":90}]},{\"id\":\"s2\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A01 Core\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a01core-sm-a013.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":110},{\"nome\":\"Troca de Bateria\",\"preco\":75},{\"nome\":\"Troca de Conector de Carga\",\"preco\":65},{\"nome\":\"Reparo de Câmera\",\"preco\":80}]},{\"id\":\"s3\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A02\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a02.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":120},{\"nome\":\"Troca de Bateria\",\"preco\":80},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":90}]},{\"id\":\"s4\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A02s\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a02s-sm-a025-new.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":130},{\"nome\":\"Troca de Bateria\",\"preco\":85},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":95}]},{\"id\":\"s5\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A03\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a03.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":130},{\"nome\":\"Troca de Bateria\",\"preco\":85},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":95}]},{\"id\":\"s6\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A03 Core\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a03-core.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":120},{\"nome\":\"Troca de Bateria\",\"preco\":80},{\"nome\":\"Troca de Conector de Carga\",\"preco\":65},{\"nome\":\"Reparo de Câmera\",\"preco\":85}]},{\"id\":\"s7\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A03s\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a03s.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":140},{\"nome\":\"Troca de Bateria\",\"preco\":85},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":95}]},{\"id\":\"s8\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A04\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a04.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":140},{\"nome\":\"Troca de Bateria\",\"preco\":85},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":100}]},{\"id\":\"s9\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A04e\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a04e.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":130},{\"nome\":\"Troca de Bateria\",\"preco\":80},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":90}]},{\"id\":\"s10\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A04s\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a04s.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":150},{\"nome\":\"Troca de Bateria\",\"preco\":90},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":105}]},{\"id\":\"s11\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A05\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a05.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":150},{\"nome\":\"Troca de Bateria\",\"preco\":90},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":105}]},{\"id\":\"s12\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A05s\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a05s.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":160},{\"nome\":\"Troca de Bateria\",\"preco\":95},{\"nome\":\"Troca de Conector de Carga\",\"preco\":80},{\"nome\":\"Reparo de Câmera\",\"preco\":110}]},{\"id\":\"s13\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A10\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a10.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":140},{\"nome\":\"Troca de Bateria\",\"preco\":85},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":95}]},{\"id\":\"s14\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A10s\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a10s.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":150},{\"nome\":\"Troca de Bateria\",\"preco\":90},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":100}]},{\"id\":\"s15\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A11\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a11.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":160},{\"nome\":\"Troca de Bateria\",\"preco\":90},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":105}]},{\"id\":\"s16\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A12\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a12-sm-a125.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":170},{\"nome\":\"Troca de Bateria\",\"preco\":95},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":110}]},{\"id\":\"s17\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A13\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a13.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":180},{\"nome\":\"Troca de Bateria\",\"preco\":100},{\"nome\":\"Troca de Conector de Carga\",\"preco\":80},{\"nome\":\"Reparo de Câmera\",\"preco\":115}]},{\"id\":\"s18\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A13 5G\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a13-5g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":190},{\"nome\":\"Troca de Bateria\",\"preco\":105},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":120}]},{\"id\":\"s19\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A14\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a14-4g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":190},{\"nome\":\"Troca de Bateria\",\"preco\":100},{\"nome\":\"Troca de Conector de Carga\",\"preco\":80},{\"nome\":\"Reparo de Câmera\",\"preco\":115}]},{\"id\":\"s20\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A14 5G\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a14-5g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":200},{\"nome\":\"Troca de Bateria\",\"preco\":110},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":125}]},{\"id\":\"s21\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A15\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a15.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":200},{\"nome\":\"Troca de Bateria\",\"preco\":110},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":120}]},{\"id\":\"s22\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A15 5G\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a15-5g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":210},{\"nome\":\"Troca de Bateria\",\"preco\":115},{\"nome\":\"Troca de Conector de Carga\",\"preco\":90},{\"nome\":\"Reparo de Câmera\",\"preco\":130}]},{\"id\":\"s23\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A20\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a20.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":150},{\"nome\":\"Troca de Bateria\",\"preco\":90},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":100}]},{\"id\":\"s24\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A20s\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a20s-sm-a207.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":155},{\"nome\":\"Troca de Bateria\",\"preco\":90},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":105}]},{\"id\":\"s25\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A21s\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a21s.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":170},{\"nome\":\"Troca de Bateria\",\"preco\":95},{\"nome\":\"Troca de Conector de Carga\",\"preco\":80},{\"nome\":\"Reparo de Câmera\",\"preco\":110}]},{\"id\":\"s26\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A22\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a22.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":190},{\"nome\":\"Troca de Bateria\",\"preco\":100},{\"nome\":\"Troca de Conector de Carga\",\"preco\":80},{\"nome\":\"Reparo de Câmera\",\"preco\":115}]},{\"id\":\"s27\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A22 5G\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a22-5g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":200},{\"nome\":\"Troca de Bateria\",\"preco\":105},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":120}]},{\"id\":\"s28\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A23\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a23.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":200},{\"nome\":\"Troca de Bateria\",\"preco\":105},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":120}]},{\"id\":\"s29\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A24\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a24-4g-2.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":210},{\"nome\":\"Troca de Bateria\",\"preco\":110},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":125}]},{\"id\":\"s30\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A25\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a25.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":220},{\"nome\":\"Troca de Bateria\",\"preco\":115},{\"nome\":\"Troca de Conector de Carga\",\"preco\":90},{\"nome\":\"Reparo de Câmera\",\"preco\":130}]},{\"id\":\"s31\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A31\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a31.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":180},{\"nome\":\"Troca de Bateria\",\"preco\":100},{\"nome\":\"Troca de Conector de Carga\",\"preco\":80},{\"nome\":\"Reparo de Câmera\",\"preco\":115}]},{\"id\":\"s32\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A32 4g\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a32-4g-new.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":200},{\"nome\":\"Troca de Bateria\",\"preco\":110},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":120}]},{\"id\":\"s33\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A32 5G\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a32-5g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":210},{\"nome\":\"Troca de Bateria\",\"preco\":115},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":125}]},{\"id\":\"s34\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A33\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a33-5g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":220},{\"nome\":\"Troca de Bateria\",\"preco\":115},{\"nome\":\"Troca de Conector de Carga\",\"preco\":90},{\"nome\":\"Reparo de Câmera\",\"preco\":130}]},{\"id\":\"s35\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A34\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a34.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":250},{\"nome\":\"Troca de Bateria\",\"preco\":130},{\"nome\":\"Troca de Conector de Carga\",\"preco\":95},{\"nome\":\"Reparo de Câmera\",\"preco\":150}]},{\"id\":\"s36\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A35\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a35.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":260},{\"nome\":\"Troca de Bateria\",\"preco\":135},{\"nome\":\"Troca de Conector de Carga\",\"preco\":100},{\"nome\":\"Reparo de Câmera\",\"preco\":155}]},{\"id\":\"s38\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A50\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a50s.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":190},{\"nome\":\"Troca de Bateria\",\"preco\":105},{\"nome\":\"Troca de Conector de Carga\",\"preco\":80},{\"nome\":\"Reparo de Câmera\",\"preco\":120}]},{\"id\":\"s39\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A51\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a51-sm-a515.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":200},{\"nome\":\"Troca de Bateria\",\"preco\":110},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":125}]},{\"id\":\"s40\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A52\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a52-4g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":220},{\"nome\":\"Troca de Bateria\",\"preco\":120},{\"nome\":\"Troca de Conector de Carga\",\"preco\":90},{\"nome\":\"Reparo de Câmera\",\"preco\":135}]},{\"id\":\"s41\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A52s 5G\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a52s-5g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":230},{\"nome\":\"Troca de Bateria\",\"preco\":125},{\"nome\":\"Troca de Conector de Carga\",\"preco\":90},{\"nome\":\"Reparo de Câmera\",\"preco\":140}]},{\"id\":\"s42\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A53\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a53-5g-.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":240},{\"nome\":\"Troca de Bateria\",\"preco\":130},{\"nome\":\"Troca de Conector de Carga\",\"preco\":95},{\"nome\":\"Reparo de Câmera\",\"preco\":145}]},{\"id\":\"s43\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A54\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a54.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":280},{\"nome\":\"Troca de Bateria\",\"preco\":140},{\"nome\":\"Troca de Conector de Carga\",\"preco\":100},{\"nome\":\"Reparo de Câmera\",\"preco\":160}]},{\"id\":\"s44\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A55\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a55.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":300},{\"nome\":\"Troca de Bateria\",\"preco\":150},{\"nome\":\"Troca de Conector de Carga\",\"preco\":110},{\"nome\":\"Reparo de Câmera\",\"preco\":170}]},{\"id\":\"s45\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A71\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a71.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":220},{\"nome\":\"Troca de Bateria\",\"preco\":120},{\"nome\":\"Troca de Conector de Carga\",\"preco\":90},{\"nome\":\"Reparo de Câmera\",\"preco\":135}]},{\"id\":\"s46\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A72\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a72-4g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":230},{\"nome\":\"Troca de Bateria\",\"preco\":125},{\"nome\":\"Troca de Conector de Carga\",\"preco\":90},{\"nome\":\"Reparo de Câmera\",\"preco\":140}]},{\"id\":\"s47\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A73\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a73-5g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":250},{\"nome\":\"Troca de Bateria\",\"preco\":130},{\"nome\":\"Troca de Conector de Carga\",\"preco\":95},{\"nome\":\"Reparo de Câmera\",\"preco\":150}]},{\"id\":\"ss1\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy S23\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-5g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":480},{\"nome\":\"Troca de Bateria\",\"preco\":200},{\"nome\":\"Troca de Conector de Carga\",\"preco\":140},{\"nome\":\"Reparo de Câmera\",\"preco\":290}]},{\"id\":\"ss2\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy S23 FE\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-fe.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":400},{\"nome\":\"Troca de Bateria\",\"preco\":180},{\"nome\":\"Troca de Conector de Carga\",\"preco\":130},{\"nome\":\"Reparo de Câmera\",\"preco\":240}]},{\"id\":\"ss3\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy S24\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-5g-.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":550},{\"nome\":\"Troca de Bateria\",\"preco\":220},{\"nome\":\"Troca de Conector de Carga\",\"preco\":150},{\"nome\":\"Reparo de Câmera\",\"preco\":320}]},{\"id\":\"ss4\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy S24 FE\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-fe.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":440},{\"nome\":\"Troca de Bateria\",\"preco\":190},{\"nome\":\"Troca de Conector de Carga\",\"preco\":135},{\"nome\":\"Reparo de Câmera\",\"preco\":260}]},{\"id\":\"m10\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G84\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g84.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":200},{\"nome\":\"Troca de Bateria\",\"preco\":110},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":130}]},{\"id\":\"m11\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G54\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g54.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":180},{\"nome\":\"Troca de Bateria\",\"preco\":100},{\"nome\":\"Troca de Conector de Carga\",\"preco\":80},{\"nome\":\"Reparo de Câmera\",\"preco\":120}]},{\"id\":\"m13\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G34\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g34-china.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":160},{\"nome\":\"Troca de Bateria\",\"preco\":90},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":110}]},{\"id\":\"m14\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G24\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g24.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":150},{\"nome\":\"Troca de Bateria\",\"preco\":85},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":100}]},{\"id\":\"m15\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G14\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/mototola-g14.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":140},{\"nome\":\"Troca de Bateria\",\"preco\":80},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":95}]},{\"id\":\"m16\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G13\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g13.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":145},{\"nome\":\"Troca de Bateria\",\"preco\":80},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":95}]},{\"id\":\"m17\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G23\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g23-r.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":155},{\"nome\":\"Troca de Bateria\",\"preco\":85},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":100}]},{\"id\":\"m18\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G53\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g53.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":175},{\"nome\":\"Troca de Bateria\",\"preco\":95},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":115}]},{\"id\":\"m19\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G73\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g73.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":190},{\"nome\":\"Troca de Bateria\",\"preco\":105},{\"nome\":\"Troca de Conector de Carga\",\"preco\":80},{\"nome\":\"Reparo de Câmera\",\"preco\":125}]},{\"id\":\"m20\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G Power\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g-power-2024.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":170},{\"nome\":\"Troca de Bateria\",\"preco\":95},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":110}]},{\"id\":\"m21\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto E13\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-e13.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":120},{\"nome\":\"Troca de Bateria\",\"preco\":75},{\"nome\":\"Troca de Conector de Carga\",\"preco\":65},{\"nome\":\"Reparo de Câmera\",\"preco\":85}]},{\"id\":\"m22\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto E22\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-e22.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":130},{\"nome\":\"Troca de Bateria\",\"preco\":80},{\"nome\":\"Troca de Conector de Carga\",\"preco\":65},{\"nome\":\"Reparo de Câmera\",\"preco\":90}]},{\"id\":\"x1\",\"brand\":\"Xiaomi\",\"icon\":\"🔴\",\"name\":\"Redmi Note 12\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-12.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":190},{\"nome\":\"Troca de Bateria\",\"preco\":110},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":120}]},{\"id\":\"x2\",\"brand\":\"Xiaomi\",\"icon\":\"🔴\",\"name\":\"Redmi Note 13\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-13.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":210},{\"nome\":\"Troca de Bateria\",\"preco\":115},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":130}]},{\"id\":\"x3\",\"brand\":\"Xiaomi\",\"icon\":\"🔴\",\"name\":\"Redmi Note 14\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-14.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":230},{\"nome\":\"Troca de Bateria\",\"preco\":120},{\"nome\":\"Troca de Conector de Carga\",\"preco\":90},{\"nome\":\"Reparo de Câmera\",\"preco\":140}]},{\"id\":\"x4\",\"brand\":\"Xiaomi\",\"icon\":\"🔴\",\"name\":\"Redmi 12\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-12.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":160},{\"nome\":\"Troca de Bateria\",\"preco\":90},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":105}]},{\"id\":\"x5\",\"brand\":\"Xiaomi\",\"icon\":\"🔴\",\"name\":\"Redmi 13C\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-13c.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":150},{\"nome\":\"Troca de Bateria\",\"preco\":85},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":100}]},{\"id\":\"x6\",\"brand\":\"Xiaomi\",\"icon\":\"🔴\",\"name\":\"Poco M6 Pro\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-m6-pro.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":200},{\"nome\":\"Troca de Bateria\",\"preco\":110},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":125}]},{\"id\":\"x7\",\"brand\":\"Xiaomi\",\"icon\":\"🔴\",\"name\":\"Poco X6\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x6.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":220},{\"nome\":\"Troca de Bateria\",\"preco\":120},{\"nome\":\"Troca de Conector de Carga\",\"preco\":90},{\"nome\":\"Reparo de Câmera\",\"preco\":135}]},{\"id\":\"s37\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A50\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a50-sm-a505f-ds.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":180},{\"nome\":\"Troca de Bateria\",\"preco\":100},{\"nome\":\"Troca de Conector de Carga\",\"preco\":80},{\"nome\":\"Reparo de Câmera\",\"preco\":115}]},{\"id\":\"m23\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G05\",\"imgData\":\"img/g05.png\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":130},{\"nome\":\"Troca de Bateria\",\"preco\":80},{\"nome\":\"Troca de Conector de Carga\",\"preco\":68},{\"nome\":\"Reparo de Câmera\",\"preco\":88}]},{\"id\":\"m24\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G10\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g10.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":140},{\"nome\":\"Troca de Bateria\",\"preco\":82},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":92}]},{\"id\":\"m25\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G15\",\"imgData\":\"img/g15.png\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":140},{\"nome\":\"Troca de Bateria\",\"preco\":82},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":92}]},{\"id\":\"m26\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G20\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g20-.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":145},{\"nome\":\"Troca de Bateria\",\"preco\":83},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":94}]},{\"id\":\"m27\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G22\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g22.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":155},{\"nome\":\"Troca de Bateria\",\"preco\":87},{\"nome\":\"Troca de Conector de Carga\",\"preco\":72},{\"nome\":\"Reparo de Câmera\",\"preco\":102}]},{\"id\":\"m28\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G30\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g30.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":155},{\"nome\":\"Troca de Bateria\",\"preco\":88},{\"nome\":\"Troca de Conector de Carga\",\"preco\":72},{\"nome\":\"Reparo de Câmera\",\"preco\":104}]},{\"id\":\"m29\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G35\",\"imgData\":\"img/g35.png\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":160},{\"nome\":\"Troca de Bateria\",\"preco\":90},{\"nome\":\"Troca de Conector de Carga\",\"preco\":74},{\"nome\":\"Reparo de Câmera\",\"preco\":108}]},{\"id\":\"m30\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G52\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g52.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":170},{\"nome\":\"Troca de Bateria\",\"preco\":95},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":112}]},{\"id\":\"m31\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G55\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g55.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":185},{\"nome\":\"Troca de Bateria\",\"preco\":102},{\"nome\":\"Troca de Conector de Carga\",\"preco\":78},{\"nome\":\"Reparo de Câmera\",\"preco\":120}]},{\"id\":\"m32\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G60\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g60.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":195},{\"nome\":\"Troca de Bateria\",\"preco\":108},{\"nome\":\"Troca de Conector de Carga\",\"preco\":80},{\"nome\":\"Reparo de Câmera\",\"preco\":126}]},{\"id\":\"m33\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G75\",\"imgData\":\"img/g75.png\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":210},{\"nome\":\"Troca de Bateria\",\"preco\":115},{\"nome\":\"Troca de Conector de Carga\",\"preco\":84},{\"nome\":\"Reparo de Câmera\",\"preco\":132}]},{\"id\":\"m34\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto G85\",\"imgData\":\"img/g85.png\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":225},{\"nome\":\"Troca de Bateria\",\"preco\":122},{\"nome\":\"Troca de Conector de Carga\",\"preco\":88},{\"nome\":\"Reparo de Câmera\",\"preco\":138}]},{\"id\":\"m35\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto E20\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-e20.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":118},{\"nome\":\"Troca de Bateria\",\"preco\":74},{\"nome\":\"Troca de Conector de Carga\",\"preco\":63},{\"nome\":\"Reparo de Câmera\",\"preco\":82}]},{\"id\":\"m36\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto E32\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-e32.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":128},{\"nome\":\"Troca de Bateria\",\"preco\":78},{\"nome\":\"Troca de Conector de Carga\",\"preco\":65},{\"nome\":\"Reparo de Câmera\",\"preco\":88}]},{\"id\":\"m37\",\"brand\":\"Motorola\",\"icon\":\"〽️\",\"name\":\"Moto E40\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-e40-r.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":132},{\"nome\":\"Troca de Bateria\",\"preco\":80},{\"nome\":\"Troca de Conector de Carga\",\"preco\":66},{\"nome\":\"Reparo de Câmera\",\"preco\":90}]},{\"id\":\"s48\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A06\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a06.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":120},{\"nome\":\"Troca de Bateria\",\"preco\":70},{\"nome\":\"Troca de Conector de Carga\",\"preco\":60},{\"nome\":\"Reparo de Câmera\",\"preco\":80}]},{\"id\":\"s49\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A07\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a07.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":130},{\"nome\":\"Troca de Bateria\",\"preco\":72},{\"nome\":\"Troca de Conector de Carga\",\"preco\":62},{\"nome\":\"Reparo de Câmera\",\"preco\":85}]},{\"id\":\"s50\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A16\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a16-4g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":150},{\"nome\":\"Troca de Bateria\",\"preco\":80},{\"nome\":\"Troca de Conector de Carga\",\"preco\":68},{\"nome\":\"Reparo de Câmera\",\"preco\":95}]},{\"id\":\"s51\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A17\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a17.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":155},{\"nome\":\"Troca de Bateria\",\"preco\":82},{\"nome\":\"Troca de Conector de Carga\",\"preco\":70},{\"nome\":\"Reparo de Câmera\",\"preco\":98}]},{\"id\":\"s52\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A26\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a26-5g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":170},{\"nome\":\"Troca de Bateria\",\"preco\":90},{\"nome\":\"Troca de Conector de Carga\",\"preco\":75},{\"nome\":\"Reparo de Câmera\",\"preco\":108}]},{\"id\":\"s53\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A30\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a30-sm-a305.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":160},{\"nome\":\"Troca de Bateria\",\"preco\":85},{\"nome\":\"Troca de Conector de Carga\",\"preco\":72},{\"nome\":\"Reparo de Câmera\",\"preco\":102}]},{\"id\":\"s54\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A30s\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a30s.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":165},{\"nome\":\"Troca de Bateria\",\"preco\":87},{\"nome\":\"Troca de Conector de Carga\",\"preco\":73},{\"nome\":\"Reparo de Câmera\",\"preco\":105}]},{\"id\":\"s55\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A36\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a36-5g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":190},{\"nome\":\"Troca de Bateria\",\"preco\":100},{\"nome\":\"Troca de Conector de Carga\",\"preco\":80},{\"nome\":\"Reparo de Câmera\",\"preco\":120}]},{\"id\":\"s56\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy A56\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a56-5g.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":210},{\"nome\":\"Troca de Bateria\",\"preco\":110},{\"nome\":\"Troca de Conector de Carga\",\"preco\":85},{\"nome\":\"Reparo de Câmera\",\"preco\":130}]},{\"id\":\"ss5\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy S20 FE\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s20-fe.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":380},{\"nome\":\"Troca de Bateria\",\"preco\":170},{\"nome\":\"Troca de Conector de Carga\",\"preco\":125},{\"nome\":\"Reparo de Câmera\",\"preco\":220}]},{\"id\":\"ss6\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy S21 FE\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s21-fe-5g-.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":400},{\"nome\":\"Troca de Bateria\",\"preco\":180},{\"nome\":\"Troca de Conector de Carga\",\"preco\":130},{\"nome\":\"Reparo de Câmera\",\"preco\":240}]},{\"id\":\"ss7\",\"brand\":\"Samsung\",\"icon\":\"🌀\",\"name\":\"Galaxy S22\",\"imgData\":\"https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s22-5g-.jpg\",\"servicos\":[{\"nome\":\"Troca de Tela/Display\",\"preco\":480},{\"nome\":\"Troca de Bateria\",\"preco\":200},{\"nome\":\"Troca de Conector de Carga\",\"preco\":140},{\"nome\":\"Reparo de Câmera\",\"preco\":280}]}]");
+    localStorage.setItem('cellos_config_v1','{"nome":"BRAZANELL","whats":"41997232440","msg":""}');
+    localStorage.setItem('cellos_admin_pw','sakkat22');
+    localStorage.setItem('cellos_ver',VER);
+  }
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>BRAZANELL OS</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -86,9 +98,12 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
   padding:7px 14px;border-radius:20px;font-size:12.5px;font-weight:500;cursor:pointer;
   border:1px solid var(--border2);background:var(--bg2);color:var(--text2);
   transition:all .15s;
+  display:inline-flex;align-items:center;gap:7px;
 }
 .brand-tab:hover{border-color:var(--accent);color:var(--accent);}
 .brand-tab.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+.brand-tab img.brand-logo{width:16px;height:16px;display:block;object-fit:contain;}
+.brand-tab svg.brand-logo{width:16px;height:16px;display:block;}
 
 /* Grid de modelos */
 .models-grid{
@@ -579,6 +594,14 @@ input[type="file"]#mImgFile{display:none;}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
           Modelos & Preços
         </button>
+        <button class="anav" onclick="showAP('estoque')" id="an-estoque">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          Estoque
+        </button>
+        <button class="anav" onclick="showAP('os')" id="an-os">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Ordens de Serviço
+        </button>
         <button class="anav" onclick="showAP('config')" id="an-config">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
           Configurações
@@ -623,6 +646,49 @@ input[type="file"]#mImgFile{display:none;}
         </div>
         <div class="admin-content">
           <div id="adminModelos"></div>
+        </div>
+      </div>
+
+      <!-- ── Estoque ── -->
+      <div class="ap" id="ap-estoque">
+        <div class="admin-topbar">
+          <div><h1>Estoque de Peças</h1><div class="sub">Controle de telas: preço e quantidade — sincroniza em todos os aparelhos</div></div>
+          <button class="btn btn-primary" onclick="openEstoqueModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nova Peça
+          </button>
+        </div>
+        <div class="admin-content">
+          <div class="stats-row">
+            <div class="stat"><div class="slabel">Total de itens</div><div class="sval" id="est-total">0</div></div>
+            <div class="stat"><div class="slabel">Em estoque</div><div class="sval" style="color:var(--green)" id="est-disp">0</div></div>
+            <div class="stat"><div class="slabel">Sem estoque</div><div class="sval" style="color:var(--red)" id="est-zero">0</div></div>
+            <div class="stat"><div class="slabel">Valor total</div><div class="sval" style="color:var(--accent)" id="est-valor">R$0</div></div>
+          </div>
+          <div style="margin:14px 0 10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+            <input type="text" id="estSearch" placeholder="🔍 Buscar modelo ou tipo..." class="fi" style="flex:1;min-width:200px;" oninput="renderEstoque()">
+            <select id="estFiltroTipo" class="fi" style="max-width:180px;" onchange="renderEstoque()">
+              <option value="">Todos os tipos</option>
+              <option value="Tela LCD">Tela LCD</option>
+              <option value="OLED">OLED</option>
+              <option value="Soft OLED">Soft OLED</option>
+            </select>
+          </div>
+          <div id="estoque-list"></div>
+        </div>
+      </div>
+
+      <!-- ── Ordens de Serviço ── -->
+      <div class="ap" id="ap-os">
+        <div class="admin-topbar">
+          <div><h1>Ordens de Serviço</h1><div class="sub">Gerencie reparos e acompanhamento de clientes</div></div>
+          <button class="btn btn-primary" onclick="openOSModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nova OS
+          </button>
+        </div>
+        <div class="admin-content">
+          <div id="adminOS"></div>
         </div>
       </div>
 
@@ -704,20 +770,45 @@ input[type="file"]#mImgFile{display:none;}
               </div>
               <div style="background:var(--bg3);border:1px solid rgba(74,222,128,.2);border-radius:var(--r-lg);padding:18px;display:flex;flex-direction:column;gap:12px;">
                 <div style="font-size:13px;color:var(--text2);line-height:1.6;">
-                  Gera um novo arquivo <strong style="color:var(--text)">index.html</strong> com todos os seus modelos, fotos e preços já embutidos. Suba esse arquivo no Netlify e <strong style="color:var(--green)">todo mundo vai ver suas alterações.</strong>
+                  Com o token configurado, <strong style="color:var(--green)">toda alteração de preço é enviada automaticamente</strong> para todos os aparelhos. Os outros dispositivos veem as mudanças ao recarregar o site.
                 </div>
-                <div style="background:var(--bg4);border-radius:var(--r);padding:10px 12px;font-size:12px;color:var(--text3);line-height:1.7;">
-                  <strong style="color:var(--text2);">Como usar:</strong><br>
-                  1. Clique em "Gerar e baixar site"<br>
-                  2. Renomeie o arquivo para <code style="color:var(--amber)">index.html</code><br>
-                  3. Suba no Netlify (na pasta do projeto)<br>
-                  4. Pronto — clientes verão tudo atualizado ✅
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <label class="fl" style="font-size:12px;">Token do GitHub <span style="color:var(--text3);font-weight:400;">(opcional — ativa publicação automática)</span></label>
+                  <div style="display:flex;gap:8px;align-items:center;">
+                    <input class="fi" id="cfgGhToken" type="password" placeholder="ghp_xxxxxxxxxxxx" style="flex:1;font-family:monospace;font-size:12px;"
+                      oninput="localStorage.setItem('cellos_gh_token',this.value.trim());atualizarBotaoPublicar()">
+                    <button class="btn" onclick="document.getElementById('cfgGhToken').type=document.getElementById('cfgGhToken').type==='password'?'text':'password'" style="padding:8px 10px;font-size:11px;">👁</button>
+                  </div>
+                  <div id="ghTokenInfo" style="font-size:11px;color:var(--text3);line-height:1.6;"></div>
                 </div>
-                <button class="btn" onclick="gerarSiteAtualizado()" style="background:var(--green);color:#000;font-weight:700;font-size:14px;padding:12px 20px;width:fit-content;">
+                <button class="btn" id="btnPublicar" onclick="gerarSiteAtualizado()" style="background:var(--green);color:#000;font-weight:700;font-size:14px;padding:12px 20px;width:fit-content;">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:15px;height:15px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  Gerar e baixar site atualizado
+                  <span id="btnPublicarTxt">Gerar e baixar site atualizado</span>
                 </button>
                 <div id="publishStatus" style="font-size:12px;color:var(--green);display:none;"></div>
+              </div>
+            </div>
+
+          </div>
+
+            <!-- Firebase config -->
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">🔥 Firebase — Acompanhamento Online</div>
+              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;display:flex;flex-direction:column;gap:12px;">
+                <div style="font-size:13px;color:var(--text2);line-height:1.6;">Configure o Firebase para o cliente acompanhar a OS em tempo real pelo celular.</div>
+                <div style="background:var(--bg4);border-radius:var(--r);padding:10px 12px;font-size:12px;color:var(--text3);line-height:1.8;">
+                  <strong style="color:var(--text2)">Como configurar (5 min):</strong><br>
+                  1. Acesse <strong style="color:var(--accent)">console.firebase.google.com</strong><br>
+                  2. Crie um projeto → ative o <strong>Realtime Database</strong> (modo teste)<br>
+                  3. Em Configurações do projeto → Seus apps → Web → copie o objeto <code style="color:var(--amber)">firebaseConfig</code><br>
+                  4. Cole no campo abaixo e salve
+                </div>
+                <div id="fbStatus" style="font-size:12px;padding:6px 10px;border-radius:6px;display:none;"></div>
+                <textarea class="fi" id="fbConfigInput" rows="5" placeholder='Cole aqui o objeto firebaseConfig, ex:&#10;{&#10;  "apiKey": "...",&#10;  "authDomain": "...",&#10;  "databaseURL": "...",&#10;  "projectId": "..."&#10;}' style="font-family:var(--mono);font-size:11px;resize:vertical;"></textarea>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-primary" onclick="salvarFbConfig()" style="flex:1;">Salvar e Conectar</button>
+                  <button class="btn btn-ghost" onclick="testarFbConfig()" style="flex:1;">Testar Conexão</button>
+                </div>
               </div>
             </div>
 
@@ -729,15 +820,57 @@ input[type="file"]#mImgFile{display:none;}
   </div>
 </div>
 
-<!-- Modal: Confirmar Exclusão -->
-<div id="delConfirmModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:300;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r-lg);padding:28px;max-width:360px;width:100%;text-align:center;">
-    <div style="font-size:32px;margin-bottom:12px;">🗑️</div>
-    <div style="font-size:16px;font-weight:600;margin-bottom:8px;">Excluir modelo?</div>
-    <div style="font-size:14px;color:var(--text2);margin-bottom:24px;">Isso vai remover <strong id="delConfirmName"></strong> do catálogo.</div>
-    <div style="display:flex;gap:10px;justify-content:center;">
-      <button class="btn btn-ghost" onclick="delCancel()">Cancelar</button>
-      <button class="btn btn-danger" onclick="delConfirm()">Excluir</button>
+<!-- Modal: OS -->
+<div class="amodal-overlay" id="osModal" onclick="closeOSFora(event)" style="align-items:flex-start;padding-top:40px;">
+  <div class="amodal" style="max-width:600px;width:100%;max-height:90vh;overflow-y:auto;">
+    <div class="amodal-head">
+      <h2 id="osModalTitle">Nova Ordem de Serviço</h2>
+      <button class="close-btn" onclick="closeOSModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="amodal-body" style="display:flex;flex-direction:column;gap:16px;">
+      <!-- Cliente -->
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:6px;">Dados do Cliente</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div class="fg"><label class="fl">Nome *</label><input class="fi" id="osCliente" placeholder="Nome completo"></div>
+        <div class="fg"><label class="fl">Telefone / WhatsApp</label><input class="fi" id="osTelefone" placeholder="(00) 00000-0000"></div>
+      </div>
+      <!-- Aparelho -->
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:6px;">Aparelho</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div class="fg"><label class="fl">Modelo</label><input class="fi" id="osModelo" placeholder="Ex: iPhone 14, Galaxy A54"></div>
+        <div class="fg"><label class="fl">Status</label>
+          <select class="fs" id="osStatus">
+            <option value="aguardando">⏳ Aguardando Avaliação</option>
+            <option value="orcamento">💬 Orçamento Enviado</option>
+            <option value="aprovado">✅ Orçamento Aprovado</option>
+            <option value="reparo">🔧 Em Reparo</option>
+            <option value="pronto">🎉 Pronto para Retirada</option>
+            <option value="entregue">📦 Entregue</option>
+          </select>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div class="fg"><label class="fl">Valor do Orçamento (R$)</label><input class="fi" id="osOrcamento" type="number" step="0.01" placeholder="0,00"></div>
+        <div class="fg"><label class="fl">Previsão de entrega</label><input class="fi" id="osDataPrevista" type="date"></div>
+      </div>
+      <div class="fg"><label class="fl">Problema relatado pelo cliente</label><textarea class="fi" id="osProblema" rows="2" placeholder="Descreva o problema..." style="resize:vertical;"></textarea></div>
+      <!-- Checklist -->
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:6px;">Condições ao Receber</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;" id="osChecklistGrid"></div>
+      <!-- Fotos -->
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:6px;">Fotos do Aparelho <span style="color:var(--text3);font-weight:400;text-transform:none;">(máx. 6)</span></div>
+      <div class="os-photo-grid" id="osFotoGrid"></div>
+      <button type="button" class="os-add-photo" onclick="addFotoOS()" style="width:100%;padding:14px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Adicionar fotos
+      </button>
+      <input type="file" id="osFotoInput" accept="image/*" multiple style="display:none" onchange="handleFotoInput(this)">
+      <!-- Observações -->
+      <div class="fg"><label class="fl">Observações internas</label><textarea class="fi" id="osObs" rows="2" placeholder="Anotações técnicas, peças necessárias..." style="resize:vertical;"></textarea></div>
+    </div>
+    <div class="amodal-foot">
+      <button class="btn btn-ghost" onclick="closeOSModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="salvarOS()">Salvar OS</button>
     </div>
   </div>
 </div>
@@ -803,6 +936,42 @@ input[type="file"]#mImgFile{display:none;}
     <div class="amodal-foot">
       <button class="btn btn-ghost" onclick="closeModeloModal()">Cancelar</button>
       <button class="btn btn-primary" onclick="salvarModelo()">Salvar modelo</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Nova/Editar Peça (Estoque) -->
+<div class="amodal-overlay" id="estoqueModal" onclick="closeEstoqueFora(event)">
+  <div class="amodal" style="max-width:480px;">
+    <div class="amodal-head">
+      <h2 id="estoqueModalTitle">Nova Peça</h2>
+      <button class="close-btn" onclick="closeEstoqueModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="amodal-body">
+      <input type="hidden" id="estEditId">
+      <div class="fg"><label class="fl">Modelo do aparelho *</label><input class="fi" id="estModelo" placeholder="Ex: iPhone 15 Pro"></div>
+      <div class="fg"><label class="fl">Tipo da peça *</label>
+        <select class="fs" id="estTipo">
+          <option value="Tela LCD">Tela LCD</option>
+          <option value="OLED">OLED</option>
+          <option value="Soft OLED">Soft OLED</option>
+          <option value="Bateria">Bateria</option>
+          <option value="Conector de Carga">Conector de Carga</option>
+          <option value="Tampa Traseira">Tampa Traseira</option>
+          <option value="Flex de Aproximidade">Flex de Aproximidade</option>
+          <option value="Câmera">Câmera</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Preço (R$) *</label><input type="number" class="fi" id="estPreco" placeholder="0.00" min="0" step="0.01"></div>
+      <div class="fg"><label class="fl">Quantidade em estoque *</label><input type="number" class="fi" id="estQtd" placeholder="0" min="0" step="1"></div>
+    </div>
+    <div class="amodal-foot" style="justify-content:space-between;">
+      <button class="btn btn-ghost" id="estBtnExcluir" onclick="excluirEstoque()" style="color:var(--red);display:none;">Excluir</button>
+      <div style="display:flex;gap:8px;margin-left:auto;">
+        <button class="btn btn-ghost" onclick="closeEstoqueModal()">Cancelar</button>
+        <button class="btn btn-primary" onclick="salvarEstoque()">Salvar</button>
+      </div>
     </div>
   </div>
 </div>
@@ -899,10 +1068,70 @@ input[type="file"]#mImgFile{display:none;}
   50%{box-shadow:0 4px 28px rgba(37,211,102,0.7),0 0 0 8px rgba(37,211,102,0.1);}
 }
 .login-box{position:relative;}
+
+/* ══ OS TRACKING ══════════════════════════════ */
+.os-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.os-badge.aguardando{background:var(--amber-dim);color:var(--amber);}
+.os-badge.orcamento{background:rgba(139,92,246,.15);color:#a78bfa;}
+.os-badge.aprovado{background:var(--accent-dim);color:var(--accent);}
+.os-badge.reparo{background:rgba(251,146,60,.12);color:#fb923c;}
+.os-badge.pronto{background:var(--green-dim);color:var(--green);}
+.os-badge.entregue{background:rgba(82,82,91,.2);color:var(--text2);}
+.os-timeline{display:flex;align-items:flex-start;gap:0;}
+.os-step{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:60px;}
+.os-step-dot{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;border:2px solid var(--border2);background:var(--bg3);color:var(--text3);transition:.3s;flex-shrink:0;}
+.os-step-dot.done{background:var(--green);border-color:var(--green);color:#000;}
+.os-step-dot.current{background:var(--accent);border-color:var(--accent);color:#000;box-shadow:0 0 0 4px rgba(34,211,238,.2);}
+.os-step-label{font-size:9px;color:var(--text3);text-align:center;font-weight:500;line-height:1.3;}
+.os-step-label.done{color:var(--green);}
+.os-step-label.current{color:var(--accent);font-weight:600;}
+.os-step-line{flex:1;height:2px;background:var(--border2);margin-top:15px;min-width:8px;}
+.os-step-line.done{background:var(--green);}
+.os-photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;}
+.os-photo-wrap{position:relative;aspect-ratio:1;border-radius:var(--r);overflow:hidden;background:var(--bg3);border:1px solid var(--border);}
+.os-photo-wrap img{width:100%;height:100%;object-fit:cover;}
+.os-photo-del{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.75);border:none;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:11px;}
+.os-add-photo{aspect-ratio:1;border-radius:var(--r);border:1.5px dashed var(--border2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;color:var(--text3);font-size:11px;transition:.2s;background:transparent;}
+.os-add-photo:hover{border-color:var(--accent);color:var(--accent);}
+.os-check-item{display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--bg3);border-radius:var(--r);border:1px solid var(--border);font-size:12px;cursor:pointer;transition:.2s;user-select:none;}
+.os-check-item.checked{background:rgba(34,211,238,.07);border-color:rgba(34,211,238,.25);color:var(--accent);}
+.os-check-box{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;transition:.2s;}
+.os-check-item.checked .os-check-box{background:var(--accent);border-color:var(--accent);color:#000;}
+#customerTrackPage{position:fixed;inset:0;z-index:2000;background:var(--bg);overflow-y:auto;display:none;}
+.ct-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10;}
+.ct-body{max-width:620px;margin:0 auto;padding:24px 16px;}
+.ct-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;margin-bottom:14px;}
+.ct-card h3{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px;}
+.ct-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.ct-row:last-child{border-bottom:none;}
+.ct-row-label{color:var(--text3);}
+.ct-row-val{font-weight:500;}
 </style>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
 <!-- Toast -->
 <div class="toast" id="toast"><div class="toast-dot" id="toastDot"></div><span id="toastMsg"></span></div>
+
+<!-- Página de acompanhamento do cliente -->
+<div id="customerTrackPage">
+  <div class="ct-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;color:var(--accent)"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <div>
+      <div style="font-size:15px;font-weight:700" id="ctShopName">Ordem de Serviço</div>
+      <div style="font-size:12px;color:var(--text3)">Código: <span id="ctCode" style="font-family:var(--mono);color:var(--accent)"></span></div>
+    </div>
+  </div>
+  <div class="ct-body" id="ctBody">
+    <div style="text-align:center;padding:60px 20px;color:var(--text3)">
+      <div style="font-size:32px;margin-bottom:12px">⏳</div>
+      <div>Carregando informações...</div>
+    </div>
+  </div>
+</div>
 
 <script>
 // ═══════════════════════════════════════════════
@@ -920,53 +1149,160 @@ function debouncedSearch() {
 const MODELOS_KEY = 'cellos_modelos_v1';
 const PEDIDOS_KEY = 'cellos_pedidos_v1';
 const CONFIG_KEY  = 'cellos_config_v1';
+const ESTOQUE_KEY = 'cellos_estoque_v1';
 
-function loadModelos() { try { return JSON.parse(localStorage.getItem(MODELOS_KEY)) || defaultModelos(); } catch { return defaultModelos(); } }
+function loadModelos() {
+  try {
+    var stored = JSON.parse(localStorage.getItem(MODELOS_KEY));
+    if (!stored) return defaultModelos();
+    var def = defaultModelos();
+    var defMap = {};
+    def.forEach(function(m){ defMap[m.id] = m; });
+    var changed = false;
+    var storedIds = stored.map(function(m){ return m.id; });
+    def.forEach(function(m){
+      if (storedIds.indexOf(m.id) === -1) { stored.push(m); changed = true; }
+    });
+    stored.forEach(function(m, i){
+      var d = defMap[m.id];
+      if (!d) return;
+      var upd = {};
+      if (d.imgData && m.imgData !== d.imgData && !(m.imgData||'').startsWith('data:'))
+        upd.imgData = d.imgData;
+      if (!m._customServicos && d.servicos && JSON.stringify(m.servicos||[]) !== JSON.stringify(d.servicos))
+        upd.servicos = d.servicos;
+      else if (d.servicos && Array.isArray(m.servicos)) {
+        // Mesmo com preços customizados, adiciona serviços novos do default que estejam faltando
+        var nomes = m.servicos.map(function(x){ return (x.nome||'').toLowerCase().trim(); });
+        var novos = d.servicos.filter(function(x){ return nomes.indexOf((x.nome||'').toLowerCase().trim()) === -1; });
+        if (novos.length) upd.servicos = m.servicos.concat(novos.map(function(x){ return {nome:x.nome, preco:0}; }));
+      }
+      if (Object.keys(upd).length) { stored[i] = Object.assign({}, m, upd); changed = true; }
+    });
+    if (changed) localStorage.setItem(MODELOS_KEY, JSON.stringify(stored));
+    return stored;
+  } catch { return defaultModelos(); }
+}
 function saveModelos(d) { localStorage.setItem(MODELOS_KEY, JSON.stringify(d)); }
 function loadPedidos() { try { return JSON.parse(localStorage.getItem(PEDIDOS_KEY)) || []; } catch { return []; } }
 function savePedidos(d) { localStorage.setItem(PEDIDOS_KEY, JSON.stringify(d)); }
 function loadConfig() { try { return JSON.parse(localStorage.getItem(CONFIG_KEY)) || { nome:'CellOS', whats:'', msg:'' }; } catch { return { nome:'CellOS', whats:'', msg:'' }; } }
 function saveConfigData(d) { localStorage.setItem(CONFIG_KEY, JSON.stringify(d)); }
 
+function loadEstoque() {
+  try {
+    var stored = JSON.parse(localStorage.getItem(ESTOQUE_KEY));
+    if (!stored) return defaultEstoque();
+    // Adiciona itens novos do defaultEstoque que não estão no stored
+    var def = defaultEstoque();
+    var storedIds = new Set(stored.map(function(e){ return e.id; }));
+    var changed = false;
+    def.forEach(function(d){ if (!storedIds.has(d.id)) { stored.push(d); changed = true; } });
+    if (changed) localStorage.setItem(ESTOQUE_KEY, JSON.stringify(stored));
+    return stored;
+  } catch { return defaultEstoque(); }
+}
+function saveEstoque(d) { localStorage.setItem(ESTOQUE_KEY, JSON.stringify(d)); }
+
+function defaultEstoque() {
+  return [
+    // iPhones pré-12 (tela única)
+    { id:'e1',  modelo:'iPhone 8',          tipo:'Tela LCD',  preco:250, qtd:0 },
+    { id:'e2',  modelo:'iPhone 8 Plus',     tipo:'Tela LCD',       preco:280, qtd:0 },
+    { id:'e3',  modelo:'iPhone X',          tipo:'Tela LCD',  preco:350, qtd:0 },
+    { id:'e4',  modelo:'iPhone XR',         tipo:'Tela LCD',       preco:300, qtd:0 },
+    { id:'e5',  modelo:'iPhone XS',         tipo:'Tela LCD',       preco:380, qtd:0 },
+    { id:'e6',  modelo:'iPhone XS Max',     tipo:'Tela LCD',       preco:420, qtd:0 },
+    { id:'e7',  modelo:'iPhone 11',         tipo:'Tela LCD',       preco:320, qtd:0 },
+    { id:'e8',  modelo:'iPhone 11 Pro',     tipo:'Tela LCD',       preco:450, qtd:0 },
+    { id:'e9',  modelo:'iPhone 11 Pro Max', tipo:'Tela LCD',       preco:480, qtd:0 },
+    // iPhones 12+ (OLED + Soft OLED)
+    { id:'e10', modelo:'iPhone 12',         tipo:'OLED',       preco:400, qtd:0 },
+    { id:'e11', modelo:'iPhone 12',         tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e12', modelo:'iPhone 12 Mini',    tipo:'OLED',       preco:380, qtd:0 },
+    { id:'e13', modelo:'iPhone 12 Mini',    tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e14', modelo:'iPhone 12 Pro',     tipo:'OLED',       preco:480, qtd:0 },
+    { id:'e15', modelo:'iPhone 12 Pro',     tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e16', modelo:'iPhone 12 Pro Max', tipo:'OLED',       preco:520, qtd:0 },
+    { id:'e17', modelo:'iPhone 12 Pro Max', tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e18', modelo:'iPhone 13',         tipo:'OLED',       preco:450, qtd:0 },
+    { id:'e19', modelo:'iPhone 13',         tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e20', modelo:'iPhone 13 Mini',    tipo:'OLED',       preco:420, qtd:0 },
+    { id:'e21', modelo:'iPhone 13 Mini',    tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e22', modelo:'iPhone 13 Pro',     tipo:'OLED',       preco:550, qtd:0 },
+    { id:'e23', modelo:'iPhone 13 Pro',     tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e24', modelo:'iPhone 13 Pro Max', tipo:'OLED',       preco:600, qtd:0 },
+    { id:'e25', modelo:'iPhone 13 Pro Max', tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e26', modelo:'iPhone 14',         tipo:'OLED',       preco:520, qtd:0 },
+    { id:'e27', modelo:'iPhone 14',         tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e28', modelo:'iPhone 14 Plus',    tipo:'OLED',       preco:560, qtd:0 },
+    { id:'e29', modelo:'iPhone 14 Plus',    tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e30', modelo:'iPhone 14 Pro',     tipo:'OLED',       preco:650, qtd:0 },
+    { id:'e31', modelo:'iPhone 14 Pro',     tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e32', modelo:'iPhone 14 Pro Max', tipo:'OLED',       preco:700, qtd:0 },
+    { id:'e33', modelo:'iPhone 14 Pro Max', tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e34', modelo:'iPhone 15',         tipo:'OLED',       preco:600, qtd:0 },
+    { id:'e35', modelo:'iPhone 15',         tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e36', modelo:'iPhone 15 Plus',    tipo:'OLED',       preco:650, qtd:0 },
+    { id:'e37', modelo:'iPhone 15 Plus',    tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e38', modelo:'iPhone 15 Pro',     tipo:'OLED',       preco:750, qtd:0 },
+    { id:'e39', modelo:'iPhone 15 Pro',     tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e40', modelo:'iPhone 15 Pro Max', tipo:'OLED',       preco:820, qtd:0 },
+    { id:'e41', modelo:'iPhone 15 Pro Max', tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e42', modelo:'iPhone 16',         tipo:'OLED',       preco:680, qtd:0 },
+    { id:'e43', modelo:'iPhone 16',         tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e44', modelo:'iPhone 16 Plus',    tipo:'OLED',       preco:720, qtd:0 },
+    { id:'e45', modelo:'iPhone 16 Plus',    tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e46', modelo:'iPhone 16 Pro',     tipo:'OLED',       preco:850, qtd:0 },
+    { id:'e47', modelo:'iPhone 16 Pro',     tipo:'Soft OLED',  preco:0,   qtd:0 },
+    { id:'e48', modelo:'iPhone 16 Pro Max', tipo:'OLED',       preco:920, qtd:0 },
+    { id:'e49', modelo:'iPhone 16 Pro Max', tipo:'Soft OLED',  preco:0,   qtd:0 },
+  ];
+}
+
 function defaultModelos() {
-  var s = function(t,b,c,cam,tam){ var r=[{nome:'Troca de Tela/Display',preco:t},{nome:'Troca de Bateria',preco:b},{nome:'Troca de Conector de Carga',preco:c}]; if(cam) r.push({nome:'Reparo de Câmera',preco:cam}); if(tam) r.push({nome:'Troca de Tampa Traseira',preco:tam}); return r; };
+  // Todos preços iniciam em 0 (Sob consulta) — admin define pelo painel
+  var s = function(t,b,c,cam,tam){ var r=[{nome:'Troca de Tela/Display',preco:0},{nome:'Troca de Bateria',preco:0},{nome:'Troca de Conector de Carga',preco:0}]; if(cam) r.push({nome:'Reparo de Câmera',preco:0}); if(tam) r.push({nome:'Troca de Tampa Traseira',preco:0}); return r; };
+  // Helper para iPhones: inclui sempre Tampa Traseira + Flex de Aproximidade
+  // oled: passe um número (mesmo 0) para incluir "Tela Oled Premium"; omita para não incluir
+  var ap = function(t,b,c,cam,tam,flex,oled){ var r=[{nome:'Troca de Tela/Display',preco:0}]; if(arguments.length>=7) r.push({nome:'Troca de Tela/Display Oled Premium',preco:0}); r.push({nome:'Troca de Bateria',preco:0},{nome:'Troca de Conector de Carga',preco:0}); if(cam) r.push({nome:'Reparo de Câmera',preco:0}); r.push({nome:'Troca de Tampa Traseira',preco:0}); r.push({nome:'Troca de Flex de Aproximidade',preco:0}); return r; };
   var g = function(n){ return 'https://fdn2.gsmarena.com/vv/bigpic/'+n+'.jpg'; };
   return [
     // ── APPLE ──────────────────────────────────────
-    { id:'a1',  brand:'Apple', icon:'🍎', name:'iPhone 8',          imgData:g('apple-iphone-8'), servicos:s(250,150,120,180,90) },
-    { id:'a2',  brand:'Apple', icon:'🍎', name:'iPhone 8 Plus',     imgData:g('apple-iphone-8-plus'), servicos:s(280,160,120,190,95) },
-    { id:'a3',  brand:'Apple', icon:'🍎', name:'iPhone X',          imgData:g('apple-iphone-x'), servicos:s(350,180,130,220,0) },
-    { id:'a4',  brand:'Apple', icon:'🍎', name:'iPhone XR',         imgData:g('apple-iphone-xr'), servicos:s(300,170,130,200,0) },
-    { id:'a5',  brand:'Apple', icon:'🍎', name:'iPhone XS',         imgData:g('apple-iphone-xs'), servicos:s(380,190,135,230,0) },
-    { id:'a6',  brand:'Apple', icon:'🍎', name:'iPhone XS Max',     imgData:g('apple-iphone-xs-max'), servicos:s(420,200,140,250,0) },
-    { id:'a7',  brand:'Apple', icon:'🍎', name:'iPhone 11',         imgData:g('apple-iphone-11'), servicos:s(320,190,130,230,0) },
-    { id:'a8',  brand:'Apple', icon:'🍎', name:'iPhone 11 Pro',     imgData:g('apple-iphone-11-pro'), servicos:s(450,200,140,270,0) },
-    { id:'a9',  brand:'Apple', icon:'🍎', name:'iPhone 11 Pro Max', imgData:g('apple-iphone-11-pro-max'), servicos:s(480,210,145,280,0) },
-    { id:'a10', brand:'Apple', icon:'🍎', name:'iPhone 12',         imgData:g('apple-iphone-12'), servicos:s(400,200,140,260,0) },
-    { id:'a11', brand:'Apple', icon:'🍎', name:'iPhone 12 Mini',    imgData:g('apple-iphone-12-mini'), servicos:s(380,190,135,245,0) },
-    { id:'a12', brand:'Apple', icon:'🍎', name:'iPhone 12 Pro',     imgData:g('apple-iphone-12-pro'), servicos:s(480,220,150,290,0) },
-    { id:'a13', brand:'Apple', icon:'🍎', name:'iPhone 12 Pro Max', imgData:g('apple-iphone-12-pro-max'), servicos:s(520,230,155,310,0) },
-    { id:'a14', brand:'Apple', icon:'🍎', name:'iPhone 13',         imgData:g('apple-iphone-13'), servicos:s(450,220,150,280,0) },
-    { id:'a15', brand:'Apple', icon:'🍎', name:'iPhone 13 Mini',    imgData:g('apple-iphone-13-mini'), servicos:s(420,210,145,265,0) },
-    { id:'a16', brand:'Apple', icon:'🍎', name:'iPhone 13 Pro',     imgData:g('apple-iphone-13-pro'), servicos:s(550,240,160,320,0) },
-    { id:'a17', brand:'Apple', icon:'🍎', name:'iPhone 13 Pro Max', imgData:g('apple-iphone-13-pro-max'), servicos:s(600,250,165,340,0) },
-    { id:'a18', brand:'Apple', icon:'🍎', name:'iPhone 14',         imgData:g('apple-iphone-14'), servicos:s(520,240,160,310,0) },
-    { id:'a19', brand:'Apple', icon:'🍎', name:'iPhone 14 Plus',    imgData:g('apple-iphone-14-plus'), servicos:s(560,250,165,325,0) },
-    { id:'a20', brand:'Apple', icon:'🍎', name:'iPhone 14 Pro',     imgData:g('apple-iphone-14-pro'), servicos:s(650,260,170,360,0) },
-    { id:'a21', brand:'Apple', icon:'🍎', name:'iPhone 14 Pro Max', imgData:g('apple-iphone-14-pro-max'), servicos:s(700,270,175,380,0) },
-    { id:'a22', brand:'Apple', icon:'🍎', name:'iPhone 15',         imgData:g('apple-iphone-15'), servicos:s(600,260,170,340,0) },
-    { id:'a23', brand:'Apple', icon:'🍎', name:'iPhone 15 Plus',    imgData:g('apple-iphone-15-plus'), servicos:s(650,270,175,360,0) },
-    { id:'a24', brand:'Apple', icon:'🍎', name:'iPhone 15 Pro',     imgData:g('apple-iphone-15-pro'), servicos:s(750,280,180,400,0) },
-    { id:'a25', brand:'Apple', icon:'🍎', name:'iPhone 15 Pro Max', imgData:g('apple-iphone-15-pro-max'), servicos:s(820,300,190,430,0) },
-    { id:'a26', brand:'Apple', icon:'🍎', name:'iPhone 16',         imgData:g('apple-iphone-16'), servicos:s(680,280,180,370,0) },
-    { id:'a27', brand:'Apple', icon:'🍎', name:'iPhone 16 Plus',    imgData:g('apple-iphone-16-plus'), servicos:s(720,290,185,390,0) },
-    { id:'a28', brand:'Apple', icon:'🍎', name:'iPhone 16 Pro',     imgData:g('apple-iphone-16-pro'), servicos:s(850,310,200,450,0) },
-    { id:'a29', brand:'Apple', icon:'🍎', name:'iPhone 16 Pro Max', imgData:g('apple-iphone-16-pro-max'), servicos:s(920,330,210,480,0) },
+    { id:'a1',  brand:'Apple', icon:'🍎', name:'iPhone 8',          imgData:g('apple-iphone-8'), servicos:ap(250,150,120,180,90,0) },
+    { id:'a2',  brand:'Apple', icon:'🍎', name:'iPhone 8 Plus',     imgData:g('apple-iphone-8-plus'), servicos:ap(280,160,120,190,95,0) },
+    { id:'a3',  brand:'Apple', icon:'🍎', name:'iPhone X',          imgData:g('apple-iphone-x'), servicos:ap(350,180,130,220,0,0) },
+    { id:'a4',  brand:'Apple', icon:'🍎', name:'iPhone XR',         imgData:g('apple-iphone-xr'), servicos:ap(300,170,130,200,0,0) },
+    { id:'a5',  brand:'Apple', icon:'🍎', name:'iPhone XS',         imgData:g('apple-iphone-xs'), servicos:ap(380,190,135,230,0,0) },
+    { id:'a6',  brand:'Apple', icon:'🍎', name:'iPhone XS Max',     imgData:g('apple-iphone-xs-max'), servicos:ap(420,200,140,250,0,0) },
+    { id:'a7',  brand:'Apple', icon:'🍎', name:'iPhone 11',         imgData:g('apple-iphone-11'), servicos:ap(320,190,130,230,0,0) },
+    { id:'a8',  brand:'Apple', icon:'🍎', name:'iPhone 11 Pro',     imgData:g('apple-iphone-11-pro'), servicos:ap(450,200,140,270,0,0) },
+    { id:'a9',  brand:'Apple', icon:'🍎', name:'iPhone 11 Pro Max', imgData:g('apple-iphone-11-pro'), servicos:ap(480,210,145,280,0,0) },
+    { id:'a10', brand:'Apple', icon:'🍎', name:'iPhone 12',         imgData:g('apple-iphone-12'), servicos:ap(400,200,140,260,0,0,0) },
+    { id:'a11', brand:'Apple', icon:'🍎', name:'iPhone 12 Mini',    imgData:g('apple-iphone-12-mini'), servicos:ap(380,190,135,245,0,0,0) },
+    { id:'a12', brand:'Apple', icon:'🍎', name:'iPhone 12 Pro',     imgData:g('apple-iphone-12-pro'), servicos:ap(480,220,150,290,0,0,0) },
+    { id:'a13', brand:'Apple', icon:'🍎', name:'iPhone 12 Pro Max', imgData:g('apple-iphone-12-pro-max'), servicos:ap(520,230,155,310,0,0,0) },
+    { id:'a14', brand:'Apple', icon:'🍎', name:'iPhone 13',         imgData:g('apple-iphone-13'), servicos:ap(450,220,150,280,0,0,0) },
+    { id:'a15', brand:'Apple', icon:'🍎', name:'iPhone 13 Mini',    imgData:g('apple-iphone-13-mini'), servicos:ap(420,210,145,265,0,0,0) },
+    { id:'a16', brand:'Apple', icon:'🍎', name:'iPhone 13 Pro',     imgData:g('apple-iphone-13-pro'), servicos:ap(550,240,160,320,0,0,0) },
+    { id:'a17', brand:'Apple', icon:'🍎', name:'iPhone 13 Pro Max', imgData:g('apple-iphone-13-pro-max'), servicos:ap(600,250,165,340,0,0,0) },
+    { id:'a18', brand:'Apple', icon:'🍎', name:'iPhone 14',         imgData:g('apple-iphone-14'), servicos:ap(520,240,160,310,0,0,0) },
+    { id:'a19', brand:'Apple', icon:'🍎', name:'iPhone 14 Plus',    imgData:g('apple-iphone-14-plus'), servicos:ap(560,250,165,325,0,0,0) },
+    { id:'a20', brand:'Apple', icon:'🍎', name:'iPhone 14 Pro',     imgData:g('apple-iphone-14-pro'), servicos:ap(650,260,170,360,0,0,0) },
+    { id:'a21', brand:'Apple', icon:'🍎', name:'iPhone 14 Pro Max', imgData:g('apple-iphone-14-pro-max-'), servicos:ap(700,270,175,380,0,0,0) },
+    { id:'a22', brand:'Apple', icon:'🍎', name:'iPhone 15',         imgData:g('apple-iphone-15'), servicos:ap(600,260,170,340,0,0,0) },
+    { id:'a23', brand:'Apple', icon:'🍎', name:'iPhone 15 Plus',    imgData:g('apple-iphone-15-plus-'), servicos:ap(650,270,175,360,0,0,0) },
+    { id:'a24', brand:'Apple', icon:'🍎', name:'iPhone 15 Pro',     imgData:g('apple-iphone-15-pro'), servicos:ap(750,280,180,400,0,0,0) },
+    { id:'a25', brand:'Apple', icon:'🍎', name:'iPhone 15 Pro Max', imgData:g('apple-iphone-15-pro-max'), servicos:ap(820,300,190,430,0,0,0) },
+    { id:'a26', brand:'Apple', icon:'🍎', name:'iPhone 16',         imgData:g('apple-iphone-16'), servicos:ap(680,280,180,370,0,0,0) },
+    { id:'a27', brand:'Apple', icon:'🍎', name:'iPhone 16 Plus',    imgData:g('apple-iphone-16-plus'), servicos:ap(720,290,185,390,0,0,0) },
+    { id:'a28', brand:'Apple', icon:'🍎', name:'iPhone 16 Pro',     imgData:g('apple-iphone-16-pro'), servicos:ap(850,310,200,450,0,0,0) },
+    { id:'a29', brand:'Apple', icon:'🍎', name:'iPhone 16 Pro Max', imgData:g('apple-iphone-16-pro-max'), servicos:ap(920,330,210,480,0,0,0) },
     // ── SAMSUNG SÉRIE A ────────────────────────────
     { id:'s1',  brand:'Samsung', icon:'🌀', name:'Galaxy A01',      imgData:g('samsung-galaxy-a01'), servicos:s(120,80,70,90,0) },
-    { id:'s2',  brand:'Samsung', icon:'🌀', name:'Galaxy A01 Core', imgData:g('samsung-galaxy-a01-core'), servicos:s(110,75,65,80,0) },
+    { id:'s2',  brand:'Samsung', icon:'🌀', name:'Galaxy A01 Core', imgData:g('samsung-galaxy-a01core-sm-a013'), servicos:s(110,75,65,80,0) },
     { id:'s3',  brand:'Samsung', icon:'🌀', name:'Galaxy A02',      imgData:g('samsung-galaxy-a02'), servicos:s(120,80,70,90,0) },
-    { id:'s4',  brand:'Samsung', icon:'🌀', name:'Galaxy A02s',     imgData:g('samsung-galaxy-a02s'), servicos:s(130,85,70,95,0) },
+    { id:'s4',  brand:'Samsung', icon:'🌀', name:'Galaxy A02s',     imgData:g('samsung-galaxy-a02s-sm-a025-new'), servicos:s(130,85,70,95,0) },
     { id:'s5',  brand:'Samsung', icon:'🌀', name:'Galaxy A03',      imgData:g('samsung-galaxy-a03'), servicos:s(130,85,70,95,0) },
     { id:'s6',  brand:'Samsung', icon:'🌀', name:'Galaxy A03 Core', imgData:g('samsung-galaxy-a03-core'), servicos:s(120,80,65,85,0) },
     { id:'s7',  brand:'Samsung', icon:'🌀', name:'Galaxy A03s',     imgData:g('samsung-galaxy-a03s'), servicos:s(140,85,70,95,0) },
@@ -978,66 +1314,152 @@ function defaultModelos() {
     { id:'s13', brand:'Samsung', icon:'🌀', name:'Galaxy A10',      imgData:g('samsung-galaxy-a10'), servicos:s(140,85,70,95,0) },
     { id:'s14', brand:'Samsung', icon:'🌀', name:'Galaxy A10s',     imgData:g('samsung-galaxy-a10s'), servicos:s(150,90,70,100,0) },
     { id:'s15', brand:'Samsung', icon:'🌀', name:'Galaxy A11',      imgData:g('samsung-galaxy-a11'), servicos:s(160,90,75,105,0) },
-    { id:'s16', brand:'Samsung', icon:'🌀', name:'Galaxy A12',      imgData:g('samsung-galaxy-a12'), servicos:s(170,95,75,110,0) },
+    { id:'s16', brand:'Samsung', icon:'🌀', name:'Galaxy A12',      imgData:g('samsung-galaxy-a12-sm-a125'), servicos:s(170,95,75,110,0) },
     { id:'s17', brand:'Samsung', icon:'🌀', name:'Galaxy A13',      imgData:g('samsung-galaxy-a13'), servicos:s(180,100,80,115,0) },
     { id:'s18', brand:'Samsung', icon:'🌀', name:'Galaxy A13 5G',   imgData:g('samsung-galaxy-a13-5g'), servicos:s(190,105,85,120,0) },
-    { id:'s19', brand:'Samsung', icon:'🌀', name:'Galaxy A14',      imgData:g('samsung-galaxy-a14'), servicos:s(190,100,80,115,0) },
+    { id:'s19', brand:'Samsung', icon:'🌀', name:'Galaxy A14',      imgData:g('samsung-galaxy-a14-4g'), servicos:s(190,100,80,115,0) },
     { id:'s20', brand:'Samsung', icon:'🌀', name:'Galaxy A14 5G',   imgData:g('samsung-galaxy-a14-5g'), servicos:s(200,110,85,125,0) },
     { id:'s21', brand:'Samsung', icon:'🌀', name:'Galaxy A15',      imgData:g('samsung-galaxy-a15'), servicos:s(200,110,85,120,0) },
     { id:'s22', brand:'Samsung', icon:'🌀', name:'Galaxy A15 5G',   imgData:g('samsung-galaxy-a15-5g'), servicos:s(210,115,90,130,0) },
     { id:'s23', brand:'Samsung', icon:'🌀', name:'Galaxy A20',      imgData:g('samsung-galaxy-a20'), servicos:s(150,90,75,100,0) },
-    { id:'s24', brand:'Samsung', icon:'🌀', name:'Galaxy A20s',     imgData:g('samsung-galaxy-a20s'), servicos:s(155,90,75,105,0) },
+    { id:'s24', brand:'Samsung', icon:'🌀', name:'Galaxy A20s',     imgData:g('samsung-galaxy-a20s-sm-a207'), servicos:s(155,90,75,105,0) },
     { id:'s25', brand:'Samsung', icon:'🌀', name:'Galaxy A21s',     imgData:g('samsung-galaxy-a21s'), servicos:s(170,95,80,110,0) },
     { id:'s26', brand:'Samsung', icon:'🌀', name:'Galaxy A22',      imgData:g('samsung-galaxy-a22'), servicos:s(190,100,80,115,0) },
     { id:'s27', brand:'Samsung', icon:'🌀', name:'Galaxy A22 5G',   imgData:g('samsung-galaxy-a22-5g'), servicos:s(200,105,85,120,0) },
     { id:'s28', brand:'Samsung', icon:'🌀', name:'Galaxy A23',      imgData:g('samsung-galaxy-a23'), servicos:s(200,105,85,120,0) },
-    { id:'s29', brand:'Samsung', icon:'🌀', name:'Galaxy A24',      imgData:g('samsung-galaxy-a24'), servicos:s(210,110,85,125,0) },
+    { id:'s29', brand:'Samsung', icon:'🌀', name:'Galaxy A24',      imgData:g('samsung-galaxy-a24-4g-2'), servicos:s(210,110,85,125,0) },
     { id:'s30', brand:'Samsung', icon:'🌀', name:'Galaxy A25',      imgData:g('samsung-galaxy-a25'), servicos:s(220,115,90,130,0) },
     { id:'s31', brand:'Samsung', icon:'🌀', name:'Galaxy A31',      imgData:g('samsung-galaxy-a31'), servicos:s(180,100,80,115,0) },
-    { id:'s32', brand:'Samsung', icon:'🌀', name:'Galaxy A32',      imgData:g('samsung-galaxy-a32'), servicos:s(200,110,85,120,0) },
+    { id:'s32', brand:'Samsung', icon:'🌀', name:'Galaxy A32',      imgData:g('samsung-galaxy-a32-4g-new'), servicos:s(200,110,85,120,0) },
     { id:'s33', brand:'Samsung', icon:'🌀', name:'Galaxy A32 5G',   imgData:g('samsung-galaxy-a32-5g'), servicos:s(210,115,85,125,0) },
     { id:'s34', brand:'Samsung', icon:'🌀', name:'Galaxy A33',      imgData:g('samsung-galaxy-a33-5g'), servicos:s(220,115,90,130,0) },
-    { id:'s35', brand:'Samsung', icon:'🌀', name:'Galaxy A34',      imgData:g('samsung-galaxy-a34-5g'), servicos:s(250,130,95,150,0) },
+    { id:'s35', brand:'Samsung', icon:'🌀', name:'Galaxy A34',      imgData:g('samsung-galaxy-a34'), servicos:s(250,130,95,150,0) },
     { id:'s36', brand:'Samsung', icon:'🌀', name:'Galaxy A35',      imgData:g('samsung-galaxy-a35'), servicos:s(260,135,100,155,0) },
-    { id:'s37', brand:'Samsung', icon:'🌀', name:'Galaxy A50',      imgData:g('samsung-galaxy-a50'), servicos:s(180,100,80,115,0) },
+    { id:'s37', brand:'Samsung', icon:'🌀', name:'Galaxy A50',      imgData:g('samsung-galaxy-a50-sm-a505f-ds'), servicos:s(180,100,80,115,0) },
     { id:'s38', brand:'Samsung', icon:'🌀', name:'Galaxy A50s',     imgData:g('samsung-galaxy-a50s'), servicos:s(190,105,80,120,0) },
-    { id:'s39', brand:'Samsung', icon:'🌀', name:'Galaxy A51',      imgData:g('samsung-galaxy-a51'), servicos:s(200,110,85,125,0) },
-    { id:'s40', brand:'Samsung', icon:'🌀', name:'Galaxy A52',      imgData:g('samsung-galaxy-a52'), servicos:s(220,120,90,135,0) },
+    { id:'s39', brand:'Samsung', icon:'🌀', name:'Galaxy A51',      imgData:g('samsung-galaxy-a51-sm-a515'), servicos:s(200,110,85,125,0) },
+    { id:'s40', brand:'Samsung', icon:'🌀', name:'Galaxy A52',      imgData:g('samsung-galaxy-a52-4g'), servicos:s(220,120,90,135,0) },
     { id:'s41', brand:'Samsung', icon:'🌀', name:'Galaxy A52s 5G',  imgData:g('samsung-galaxy-a52s-5g'), servicos:s(230,125,90,140,0) },
-    { id:'s42', brand:'Samsung', icon:'🌀', name:'Galaxy A53',      imgData:g('samsung-galaxy-a53-5g'), servicos:s(240,130,95,145,0) },
+    { id:'s42', brand:'Samsung', icon:'🌀', name:'Galaxy A53',      imgData:g('samsung-galaxy-a53-5g-'), servicos:s(240,130,95,145,0) },
     { id:'s43', brand:'Samsung', icon:'🌀', name:'Galaxy A54',      imgData:g('samsung-galaxy-a54'), servicos:s(280,140,100,160,0) },
     { id:'s44', brand:'Samsung', icon:'🌀', name:'Galaxy A55',      imgData:g('samsung-galaxy-a55'), servicos:s(300,150,110,170,0) },
     { id:'s45', brand:'Samsung', icon:'🌀', name:'Galaxy A71',      imgData:g('samsung-galaxy-a71'), servicos:s(220,120,90,135,0) },
-    { id:'s46', brand:'Samsung', icon:'🌀', name:'Galaxy A72',      imgData:g('samsung-galaxy-a72'), servicos:s(230,125,90,140,0) },
+    { id:'s46', brand:'Samsung', icon:'🌀', name:'Galaxy A72',      imgData:g('samsung-galaxy-a72-4g'), servicos:s(230,125,90,140,0) },
     { id:'s47', brand:'Samsung', icon:'🌀', name:'Galaxy A73',      imgData:g('samsung-galaxy-a73-5g'), servicos:s(250,130,95,150,0) },
+    { id:'s48', brand:'Samsung', icon:'🌀', name:'Galaxy A06',      imgData:g('samsung-galaxy-a06'), servicos:s(120,70,60,80,0) },
+    { id:'s49', brand:'Samsung', icon:'🌀', name:'Galaxy A07',      imgData:g('samsung-galaxy-a07'), servicos:s(130,72,62,85,0) },
+    { id:'s50', brand:'Samsung', icon:'🌀', name:'Galaxy A16',      imgData:g('samsung-galaxy-a16-4g'), servicos:s(150,80,68,95,0) },
+    { id:'s51', brand:'Samsung', icon:'🌀', name:'Galaxy A17',      imgData:g('samsung-galaxy-a17'), servicos:s(155,82,70,98,0) },
+    { id:'s52', brand:'Samsung', icon:'🌀', name:'Galaxy A26',      imgData:g('samsung-galaxy-a26-5g'), servicos:s(170,90,75,108,0) },
+    { id:'s53', brand:'Samsung', icon:'🌀', name:'Galaxy A30',      imgData:g('samsung-galaxy-a30-sm-a305'), servicos:s(160,85,72,102,0) },
+    { id:'s54', brand:'Samsung', icon:'🌀', name:'Galaxy A30s',     imgData:g('samsung-galaxy-a30s'), servicos:s(165,87,73,105,0) },
+    { id:'s55', brand:'Samsung', icon:'🌀', name:'Galaxy A36',      imgData:g('samsung-galaxy-a36-5g'), servicos:s(190,100,80,120,0) },
+    { id:'s56', brand:'Samsung', icon:'🌀', name:'Galaxy A56',      imgData:g('samsung-galaxy-a56-5g'), servicos:s(210,110,85,130,0) },
     // ── SAMSUNG SÉRIE S ────────────────────────────
-    { id:'ss1', brand:'Samsung', icon:'🌀', name:'Galaxy S23',      imgData:g('samsung-galaxy-s23'), servicos:s(480,200,140,290,0) },
+    { id:'ss1', brand:'Samsung', icon:'🌀', name:'Galaxy S23',      imgData:g('samsung-galaxy-s23-5g'), servicos:s(480,200,140,290,0) },
     { id:'ss2', brand:'Samsung', icon:'🌀', name:'Galaxy S23 FE',   imgData:g('samsung-galaxy-s23-fe'), servicos:s(400,180,130,240,0) },
-    { id:'ss3', brand:'Samsung', icon:'🌀', name:'Galaxy S24',      imgData:g('samsung-galaxy-s24'), servicos:s(550,220,150,320,0) },
+    { id:'ss3', brand:'Samsung', icon:'🌀', name:'Galaxy S24',      imgData:g('samsung-galaxy-s24-5g-'), servicos:s(550,220,150,320,0) },
     { id:'ss4', brand:'Samsung', icon:'🌀', name:'Galaxy S24 FE',   imgData:g('samsung-galaxy-s24-fe'), servicos:s(440,190,135,260,0) },
+    { id:'ss5', brand:'Samsung', icon:'🌀', name:'Galaxy S20 FE',   imgData:g('samsung-galaxy-s20-fe'), servicos:s(380,170,125,220,0) },
+    { id:'ss6', brand:'Samsung', icon:'🌀', name:'Galaxy S21 FE',   imgData:g('samsung-galaxy-s21-fe-5g-'), servicos:s(400,180,130,240,0) },
+    { id:'ss7', brand:'Samsung', icon:'🌀', name:'Galaxy S22',      imgData:g('samsung-galaxy-s22-5g-'), servicos:s(480,200,140,280,0) },
     // ── MOTOROLA ───────────────────────────────────
     { id:'m10', brand:'Motorola', icon:'〽️', name:'Moto G84',      imgData:g('motorola-moto-g84'), servicos:s(200,110,85,130,0) },
     { id:'m11', brand:'Motorola', icon:'〽️', name:'Moto G54',      imgData:g('motorola-moto-g54'), servicos:s(180,100,80,120,0) },
-    { id:'m13', brand:'Motorola', icon:'〽️', name:'Moto G34',      imgData:g('motorola-moto-g34'), servicos:s(160,90,75,110,0) },
+    { id:'m13', brand:'Motorola', icon:'〽️', name:'Moto G34',      imgData:g('motorola-moto-g34-china'), servicos:s(160,90,75,110,0) },
     { id:'m14', brand:'Motorola', icon:'〽️', name:'Moto G24',      imgData:g('motorola-moto-g24'), servicos:s(150,85,70,100,0) },
-    { id:'m15', brand:'Motorola', icon:'〽️', name:'Moto G14',      imgData:g('motorola-moto-g14'), servicos:s(140,80,70,95,0) },
+    { id:'m15', brand:'Motorola', icon:'〽️', name:'Moto G14',      imgData:g('mototola-g14'), servicos:s(140,80,70,95,0) },
     { id:'m16', brand:'Motorola', icon:'〽️', name:'Moto G13',      imgData:g('motorola-moto-g13'), servicos:s(145,80,70,95,0) },
-    { id:'m17', brand:'Motorola', icon:'〽️', name:'Moto G23',      imgData:g('motorola-moto-g23'), servicos:s(155,85,70,100,0) },
+    { id:'m17', brand:'Motorola', icon:'〽️', name:'Moto G23',      imgData:g('motorola-moto-g23-r'), servicos:s(155,85,70,100,0) },
     { id:'m18', brand:'Motorola', icon:'〽️', name:'Moto G53',      imgData:g('motorola-moto-g53'), servicos:s(175,95,75,115,0) },
     { id:'m19', brand:'Motorola', icon:'〽️', name:'Moto G73',      imgData:g('motorola-moto-g73'), servicos:s(190,105,80,125,0) },
     { id:'m20', brand:'Motorola', icon:'〽️', name:'Moto G Power',  imgData:g('motorola-moto-g-power-2024'), servicos:s(170,95,75,110,0) },
     { id:'m21', brand:'Motorola', icon:'〽️', name:'Moto E13',      imgData:g('motorola-moto-e13'), servicos:s(120,75,65,85,0) },
     { id:'m22', brand:'Motorola', icon:'〽️', name:'Moto E22',      imgData:g('motorola-moto-e22'), servicos:s(130,80,65,90,0) },
+    { id:'m23', brand:'Motorola', icon:'〽️', name:'Moto G05',      imgData:'img/g05.png', servicos:s(130,80,68,88,0) },
+    { id:'m24', brand:'Motorola', icon:'〽️', name:'Moto G10',      imgData:g('motorola-moto-g10'), servicos:s(140,82,70,92,0) },
+    { id:'m25', brand:'Motorola', icon:'〽️', name:'Moto G15',      imgData:'img/g15.png', servicos:s(140,82,70,92,0) },
+    { id:'m26', brand:'Motorola', icon:'〽️', name:'Moto G20',      imgData:g('motorola-moto-g20-'), servicos:s(145,83,70,94,0) },
+    { id:'m27', brand:'Motorola', icon:'〽️', name:'Moto G22',      imgData:g('motorola-moto-g22'), servicos:s(155,87,72,102,0) },
+    { id:'m28', brand:'Motorola', icon:'〽️', name:'Moto G30',      imgData:g('motorola-moto-g30'), servicos:s(155,88,72,104,0) },
+    { id:'m29', brand:'Motorola', icon:'〽️', name:'Moto G35',      imgData:'img/g35.png', servicos:s(160,90,74,108,0) },
+    { id:'m30', brand:'Motorola', icon:'〽️', name:'Moto G52',      imgData:g('motorola-moto-g52'), servicos:s(170,95,75,112,0) },
+    { id:'m31', brand:'Motorola', icon:'〽️', name:'Moto G55',      imgData:g('motorola-moto-g55'), servicos:s(185,102,78,120,0) },
+    { id:'m32', brand:'Motorola', icon:'〽️', name:'Moto G60',      imgData:g('motorola-moto-g60'), servicos:s(195,108,80,126,0) },
+    { id:'m33', brand:'Motorola', icon:'〽️', name:'Moto G75',      imgData:'img/g75.png', servicos:s(210,115,84,132,0) },
+    { id:'m34', brand:'Motorola', icon:'〽️', name:'Moto G85',      imgData:'img/g85.png', servicos:s(225,122,88,138,0) },
+    { id:'m35', brand:'Motorola', icon:'〽️', name:'Moto E20',      imgData:g('motorola-moto-e20'), servicos:s(118,74,63,82,0) },
+    { id:'m36', brand:'Motorola', icon:'〽️', name:'Moto E32',      imgData:g('motorola-moto-e32'), servicos:s(128,78,65,88,0) },
+    { id:'m37', brand:'Motorola', icon:'〽️', name:'Moto E40',      imgData:g('motorola-moto-e40-r'), servicos:s(132,80,66,90,0) },
     // ── XIAOMI ─────────────────────────────────────
-    { id:'x1',  brand:'Xiaomi', icon:'🔴', name:'Redmi Note 12',    imgData:g('xiaomi-redmi-note-12'), servicos:s(190,110,85,120,0) },
+    { id:'x1',  brand:'Xiaomi', icon:'🔴', name:'Redmi Note 12',    imgData:g('xiaomi-redmi-note-12-5g'), servicos:s(190,110,85,120,0) },
     { id:'x2',  brand:'Xiaomi', icon:'🔴', name:'Redmi Note 13',    imgData:g('xiaomi-redmi-note-13'), servicos:s(210,115,85,130,0) },
-    { id:'x3',  brand:'Xiaomi', icon:'🔴', name:'Redmi Note 14',    imgData:g('xiaomi-redmi-note-14'), servicos:s(230,120,90,140,0) },
+    { id:'x3',  brand:'Xiaomi', icon:'🔴', name:'Redmi Note 14',    imgData:g('xiaomi-redmi-note-14-5g'), servicos:s(230,120,90,140,0) },
     { id:'x4',  brand:'Xiaomi', icon:'🔴', name:'Redmi 12',         imgData:g('xiaomi-redmi-12'), servicos:s(160,90,75,105,0) },
     { id:'x5',  brand:'Xiaomi', icon:'🔴', name:'Redmi 13C',        imgData:g('xiaomi-redmi-13c'), servicos:s(150,85,70,100,0) },
     { id:'x6',  brand:'Xiaomi', icon:'🔴', name:'Poco M6 Pro',      imgData:g('xiaomi-poco-m6-pro'), servicos:s(200,110,85,125,0) },
     { id:'x7',  brand:'Xiaomi', icon:'🔴', name:'Poco X6',          imgData:g('xiaomi-poco-x6'), servicos:s(220,120,90,135,0) },
-  ];
+    { id:'x8',  brand:'Xiaomi', icon:'🔴', name:'Redmi 9',          imgData:g('xiaomi-redmi-9'), servicos:s(140,80,70,95,0) },
+    { id:'x9',  brand:'Xiaomi', icon:'🔴', name:'Redmi 9C',         imgData:g('xiaomi-redmi-9c'), servicos:s(135,75,68,90,0) },
+    { id:'x10', brand:'Xiaomi', icon:'🔴', name:'Redmi 10A',        imgData:g('xiaomi-redmi-10a'), servicos:s(140,80,70,95,0) },
+    { id:'x11', brand:'Xiaomi', icon:'🔴', name:'Redmi 10C',        imgData:g('xiaomi-redmi-10c'), servicos:s(145,82,72,98,0) },
+    { id:'x12', brand:'Xiaomi', icon:'🔴', name:'Redmi 14C',        imgData:g('xiaomi-redmi-14c'), servicos:s(160,90,75,105,0) },
+    { id:'x13', brand:'Xiaomi', icon:'🔴', name:'Redmi 15C',        imgData:g('xiaomi-redmi-15c'), servicos:s(170,95,78,110,0) },
+    { id:'x14', brand:'Xiaomi', icon:'🔴', name:'Redmi Note 14 Pro 5G', imgData:g('xiaomi-redmi-note-14-pro-5g'), servicos:s(260,135,95,160,0) },
+    { id:'x15', brand:'Xiaomi', icon:'🔴', name:'Redmi Note 15',    imgData:g('xiaomi-redmi-note-15-5g'), servicos:s(245,125,90,150,0) },
+    { id:'x16', brand:'Xiaomi', icon:'🔴', name:'Poco X5',          imgData:g('xiaomi-poco-x5-5g'), servicos:s(210,115,88,130,0) },
+    { id:'x17', brand:'Xiaomi', icon:'🔴', name:'Poco X5 Pro',      imgData:g('xiaomi-poco-x5-pro-5g'), servicos:s(240,125,92,145,0) },
+    { id:'x18', brand:'Xiaomi', icon:'🔴', name:'Poco X6 Pro',      imgData:g('xiaomi-poco-x6-pro'), servicos:s(250,130,95,150,0) },
+    { id:'x19', brand:'Xiaomi', icon:'🔴', name:'Poco X7',          imgData:g('xiaomi-poco-x7'), servicos:s(240,130,95,150,0) },
+    { id:'x20', brand:'Xiaomi', icon:'🔴', name:'Poco X7 Pro',      imgData:g('xiaomi-poco-x7-pro'), servicos:s(270,140,100,165,0) },
+    { id:'x21', brand:'Xiaomi', icon:'🔴', name:'Poco X8',          imgData:g('xiaomi-poco-x8'), servicos:s(260,135,98,160,0) },
+    { id:'x22', brand:'Xiaomi', icon:'🔴', name:'Poco X8 Pro',      imgData:g('xiaomi-poco-x8-pro'), servicos:s(290,145,105,180,0) },
+    // ── REALME ─────────────────────────────────────
+    { id:'r1',  brand:'Realme', icon:'🟡', name:'Realme C61',       imgData:g('realme-c61'), servicos:s(0,0,0,0,0) },
+    { id:'r2',  brand:'Realme', icon:'🟡', name:'Realme C55',       imgData:g('realme-c55'), servicos:s(0,0,0,0,0) },
+    { id:'r3',  brand:'Realme', icon:'🟡', name:'Realme C71',       imgData:g('realme-c71'), servicos:s(0,0,0,0,0) },
+    { id:'r4',  brand:'Realme', icon:'🟡', name:'Realme C75',       imgData:g('realme-c75'), servicos:s(0,0,0,0,0) },
+    { id:'r5',  brand:'Realme', icon:'🟡', name:'Realme C85',       imgData:g('realme-c85'), servicos:s(0,0,0,0,0) },
+    // ── INFINIX ────────────────────────────────────
+    { id:'i1',  brand:'Infinix', icon:'🟦', name:'Infinix Smart 8 Pro', imgData:g('infinix-smart-8-pro'), servicos:s(0,0,0,0,0) },
+    { id:'i2',  brand:'Infinix', icon:'🟦', name:'Infinix Hot 40',      imgData:g('infinix-hot-40'), servicos:s(0,0,0,0,0) },
+    { id:'i3',  brand:'Infinix', icon:'🟦', name:'Infinix Hot 50',      imgData:g('infinix-hot-50-4g'), servicos:s(0,0,0,0,0) },
+    { id:'i4',  brand:'Infinix', icon:'🟦', name:'Infinix Hot 60i',     imgData:g('infinix-hot-60i'), servicos:s(0,0,0,0,0) },
+  ].map(function(m){
+    // Adiciona "Troca de Tela/Display Oled" automaticamente nos modelos originalmente OLED
+    if (OLED_MODEL_IDS.has(m.id) && Array.isArray(m.servicos)) {
+      var nomes = m.servicos.map(function(x){ return (x.nome||'').toLowerCase().trim(); });
+      if (nomes.indexOf('troca de tela/display oled') === -1) {
+        var idx = nomes.indexOf('troca de tela/display');
+        var oledItem = { nome:'Troca de Tela/Display Oled', preco:0 };
+        if (idx >= 0) m.servicos.splice(idx+1, 0, oledItem);
+        else m.servicos.unshift(oledItem);
+      }
+    }
+    return m;
+  });
 }
+
+// IDs dos modelos originalmente com tela OLED/AMOLED
+const OLED_MODEL_IDS = new Set([
+  // Apple OLED
+  'a3','a5','a6','a8','a9',
+  'a10','a11','a12','a13','a14','a15','a16','a17',
+  'a18','a19','a20','a21','a22','a23','a24','a25',
+  'a26','a27','a28','a29',
+  // Samsung Galaxy S (todos AMOLED)
+  'ss1','ss2','ss3','ss4','ss5','ss6','ss7',
+  // Samsung Galaxy A com AMOLED (médio/topo de linha)
+  's20','s21','s22','s23','s26','s29','s30',
+  's31','s32','s34','s35','s36','s37','s38',
+  's39','s40','s41','s42','s43','s44','s45','s46','s47',
+  's50','s51','s52','s53','s54','s55','s56',
+  // Motorola pOLED
+  'm10','m30','m33','m34',
+  // Xiaomi/Redmi/Poco AMOLED
+  'x1','x2','x3','x6','x7','x14','x15',
+  'x16','x17','x18','x19','x20','x21','x22'
+]);
 
 function genId() { return '_'+Math.random().toString(36).slice(2,9); }
 
@@ -1125,7 +1547,9 @@ function showAP(id) {
   document.getElementById('an-'+id).classList.add('active');
   if (id === 'modelos') renderAdminModelos();
   if (id === 'pedidos') renderPedidos();
-  if (id === 'config') loadConfigForm();
+  if (id === 'config') { loadConfigForm(); loadFbConfigForm(); }
+  if (id === 'os') renderAdminOS();
+  if (id === 'estoque') renderEstoque();
 }
 
 // ═══════════════════════════════════════════════
@@ -1133,6 +1557,33 @@ function showAP(id) {
 // ═══════════════════════════════════════════════
 let activeBrand = 'all';
 let _adminActiveBrand = 'all';
+
+// SVGs inline para marcas que não estão no simpleicons
+const CUSTOM_BRAND_LOGOS = {
+  'Realme': '<svg class="brand-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="5" fill="#FFCB00"/><text x="12" y="17.5" text-anchor="middle" font-family="Arial Black, Helvetica, sans-serif" font-size="16" fill="#000" font-weight="900">r</text></svg>',
+  'Infinix': '<svg class="brand-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="5" fill="#0E69B1"/><text x="12" y="18" text-anchor="middle" font-family="Arial Black, Helvetica, sans-serif" font-size="17" fill="white" font-weight="900">X</text></svg>'
+};
+// Mapa de marca -> slug no simpleicons.org
+const BRAND_LOGO_SLUGS = {
+  'Apple': 'apple', 'Samsung': 'samsung', 'Motorola': 'motorola',
+  'Xiaomi': 'xiaomi', 'Poco': 'xiaomi', 'Redmi': 'xiaomi',
+  'Huawei': 'huawei', 'Honor': 'honor',
+  'OnePlus': 'oneplus', 'Oppo': 'oppo', 'Vivo': 'vivo',
+  'Asus': 'asus', 'LG': 'lg', 'Sony': 'sony', 'Google': 'google',
+  'Nokia': 'nokia', 'Lenovo': 'lenovo'
+};
+function brandLogoHtml(brand, fallbackEmoji) {
+  if (brand === 'all') {
+    return '<svg class="brand-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>';
+  }
+  if (CUSTOM_BRAND_LOGOS[brand]) return CUSTOM_BRAND_LOGOS[brand];
+  const slug = BRAND_LOGO_SLUGS[brand];
+  if (slug) {
+    const fb = (fallbackEmoji||'📱').replace(/'/g, '&#39;');
+    return `<img class="brand-logo" src="https://cdn.simpleicons.org/${slug}/ffffff" alt="" onerror="this.outerHTML='<span>${fb}</span>'">`;
+  }
+  return `<span>${fallbackEmoji||'📱'}</span>`;
+}
 
 let _lastBrandsKey = '';
 function renderCatalog() {
@@ -1150,7 +1601,7 @@ function renderCatalog() {
     const tabs = document.getElementById('brandTabs');
     tabs.innerHTML = brands.map(b => `
       <div class="brand-tab ${activeBrand===b?'active':''}" onclick="setBrand('${b.replace(/'/g,"\\'")}')">
-        ${b === 'all' ? '📱 Todos' : (modelos.find(m=>m.brand===b)?.icon||'📱')+' '+b}
+        ${brandLogoHtml(b, modelos.find(m=>m.brand===b)?.icon)}<span>${b === 'all' ? 'Todos' : esc(b)}</span>
       </div>`).join('');
   } else {
     // Só atualiza classe active
@@ -1182,7 +1633,7 @@ function renderCatalog() {
       </div>
       <div class="model-brand">${esc(m.brand)}</div>
       <div class="model-name">${esc(m.name)}</div>
-      <div class="model-count">${m.servicos.length} serviços</div>
+      <div class="model-count">${(m.servicos||[]).length} serviços</div>
     </div>`).join('');
 }
 
@@ -1233,7 +1684,7 @@ function renderOrcBody(m, step) {
   body.innerHTML = `
     <div class="orc-section-title">Selecione os reparos necessários</div>
     <div class="service-list">
-      ${m.servicos.map((s,i) => `
+      ${(m.servicos||[]).map((s,i) => `
         <div class="service-item ${selectedServicos.has(i)?'selected':''}" onclick="toggleServico(${i})">
           <div class="service-left">
             <div class="service-check">
@@ -1415,10 +1866,10 @@ function renderAdminModelos() {
     <div class="brand-tabs" style="margin-bottom:16px;">
       ${brands.map(b => {
         const count = b === 'all' ? modelos.length : modelos.filter(m => m.brand === b).length;
-        const icon = b === 'all' ? '📱' : (modelos.find(m => m.brand === b)?.icon || '📱');
+        const fallback = b === 'all' ? '📱' : (modelos.find(m => m.brand === b)?.icon || '📱');
         const label = b === 'all' ? 'Todos' : b;
         return `<div class="brand-tab ${_adminActiveBrand===b?'active':''}" onclick="_adminActiveBrand='${b.replace(/'/g,"\\'")}';renderAdminModelos()">
-          ${icon} ${label} <span style="font-size:10px;opacity:0.55;margin-left:2px;">(${count})</span>
+          ${brandLogoHtml(b, fallback)}<span>${esc(label)} <span style="font-size:10px;opacity:0.55;margin-left:2px;">(${count})</span></span>
         </div>`;
       }).join('')}
     </div>
@@ -1458,7 +1909,7 @@ function criarCardAdmin(m) {
       </div>
     </div>
     <div class="model-list-admin">
-      ${m.servicos.map(s=>`
+      ${(m.servicos||[]).map(s=>`
         <div class="mla-item">
           <span class="mla-name">${esc(s.nome)}</span>
           <span class="mla-count">${fmtR(s.preco)}</span>
@@ -1597,15 +2048,17 @@ function salvarModelo() {
   const editId = document.getElementById('mEditId').value;
   if (editId) {
     const idx = modelos.findIndex(m=>m.id===editId);
-    if (idx>=0) modelos[idx] = {...modelos[idx], brand, icon, imgData, name, servicos};
+    if (idx>=0) modelos[idx] = {...modelos[idx], brand, icon, imgData, name, servicos, _customServicos: true};
   } else {
-    modelos.push({id:genId(), brand, icon, imgData, name, servicos});
+    modelos.push({id:genId(), brand, icon, imgData, name, servicos, _customServicos: true});
   }
   saveModelos(modelos);
   closeModeloModal();
   renderAdminModelos();
   renderCatalog();
   toast('Modelo salvo!', 'green');
+  if (localStorage.getItem('cellos_gh_token')) setTimeout(()=>publicarGitHub(false), 500);
+  else toast('Configure token GitHub em Config para sincronizar entre aparelhos', 'amber');
 }
 
 function editModelo(id) {
@@ -1613,24 +2066,179 @@ function editModelo(id) {
   if (m) openModeloModal(m);
 }
 function delModelo(id) {
-  const m = loadModelos().find(x => x.id === id);
-  if (!m) return;
-  _delPendingId = id;
-  document.getElementById('delConfirmName').textContent = m.name;
-  document.getElementById('delConfirmModal').style.display = 'flex';
-}
-let _delPendingId = null;
-function delConfirm() {
-  if (!_delPendingId) return;
-  saveModelos(loadModelos().filter(m => m.id !== _delPendingId));
-  _delPendingId = null;
-  document.getElementById('delConfirmModal').style.display = 'none';
+  if (!confirm('Excluir este modelo do catálogo?')) return;
+  saveModelos(loadModelos().filter(m=>m.id!==id));
   renderAdminModelos(); renderCatalog();
   toast('Modelo removido', 'amber');
 }
-function delCancel() {
-  _delPendingId = null;
-  document.getElementById('delConfirmModal').style.display = 'none';
+
+// ═══════════════════════════════════════════════
+// ESTOQUE
+// ═══════════════════════════════════════════════
+let _estoqueAbertos = new Set();
+
+function renderEstoque() {
+  const container = document.getElementById('estoque-list');
+  if (!container) return;
+  const items = loadEstoque();
+  const search = (document.getElementById('estSearch')?.value || '').toLowerCase().trim();
+  const filtroTipo = document.getElementById('estFiltroTipo')?.value || '';
+
+  // Stats globais
+  document.getElementById('est-total').textContent = items.length;
+  document.getElementById('est-disp').textContent = items.filter(i => (i.qtd||0) > 0).length;
+  document.getElementById('est-zero').textContent = items.filter(i => (i.qtd||0) === 0).length;
+  const valorTotal = items.reduce((s,i) => s + ((i.preco||0) * (i.qtd||0)), 0);
+  document.getElementById('est-valor').textContent = fmtR(valorTotal);
+
+  // Agrupa por modelo, preservando ordem de aparição no defaultEstoque
+  const grupos = {};
+  const ordem = [];
+  items.forEach(it => {
+    const m = it.modelo || 'Sem modelo';
+    if (!grupos[m]) { grupos[m] = []; ordem.push(m); }
+    grupos[m].push(it);
+  });
+
+  // Filtra modelos pela busca/tipo
+  const modelosFiltrados = ordem.filter(modelo => {
+    const pecas = grupos[modelo];
+    const passaTipo = !filtroTipo || pecas.some(p => p.tipo === filtroTipo);
+    const passaBusca = !search || modelo.toLowerCase().includes(search) || pecas.some(p => (p.tipo||'').toLowerCase().includes(search));
+    return passaTipo && passaBusca;
+  });
+
+  if (!modelosFiltrados.length) {
+    container.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text3);">Nenhum modelo encontrado</div>';
+    return;
+  }
+
+  // Se busca/filtro ativos, abre todos automaticamente
+  const forceOpen = !!(search || filtroTipo);
+
+  container.innerHTML = modelosFiltrados.map(modelo => {
+    const pecas = grupos[modelo];
+    const aberto = forceOpen || _estoqueAbertos.has(modelo);
+    const totalQtd = pecas.reduce((s,p) => s + (p.qtd||0), 0);
+    const valorModelo = pecas.reduce((s,p) => s + ((p.preco||0)*(p.qtd||0)), 0);
+    const semEstoque = totalQtd === 0;
+    const safeId = modelo.replace(/[^a-zA-Z0-9]/g,'_');
+
+    const linhas = pecas.map(it => {
+      const sEst = (it.qtd||0) === 0;
+      const cor = it.tipo === 'OLED' ? 'var(--accent)' : it.tipo === 'Soft OLED' ? 'var(--amber)' : it.tipo === 'Tela LCD' ? 'var(--text2)' : 'var(--text2)';
+      return `<div style="display:grid;grid-template-columns:1fr auto auto auto;gap:12px;align-items:center;padding:10px 14px;border-top:1px solid var(--border);">
+        <div><span style="color:${cor};font-weight:700;font-size:13px;">${esc(it.tipo||'')}</span></div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <span style="color:var(--text3);font-size:11px;">R$</span>
+          <input type="number" min="0" step="0.01" value="${it.preco||0}" onchange="atualizarEstoqueCampo('${it.id}','preco',this.value)" style="width:80px;text-align:right;padding:5px 8px;border:1px solid var(--border);background:var(--bg3);color:var(--text);border-radius:6px;font-size:13px;">
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:4px;">
+          <button onclick="ajustarQtd('${it.id}',-1)" style="width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--text);cursor:pointer;font-size:14px;font-weight:700;">−</button>
+          <input type="number" min="0" step="1" value="${it.qtd||0}" onchange="atualizarEstoqueCampo('${it.id}','qtd',this.value)" style="width:50px;text-align:center;padding:5px;border:1px solid var(--border);background:var(--bg3);color:${sEst?'var(--red)':'var(--green)'};font-weight:700;border-radius:6px;font-size:13px;">
+          <button onclick="ajustarQtd('${it.id}',1)" style="width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--bg3);color:var(--text);cursor:pointer;font-size:14px;font-weight:700;">+</button>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="editEstoque('${it.id}')" style="padding:4px 10px;font-size:11px;">⋯</button>
+      </div>`;
+    }).join('');
+
+    return `<div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:10px;">
+      <div onclick="toggleEstoqueModelo('${safeId}','${modelo.replace(/'/g,"\\'")}')" style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;user-select:none;background:var(--bg2);">
+        <div style="display:flex;align-items:center;gap:10px;flex:1;">
+          <span style="font-size:13px;color:var(--text3);transition:transform .2s;${aberto?'transform:rotate(90deg);':''}">▶</span>
+          <strong style="font-size:15px;">${esc(modelo)}</strong>
+          <span style="font-size:11px;color:var(--text3);background:var(--bg4);padding:2px 8px;border-radius:10px;">${pecas.length} ${pecas.length===1?'peça':'peças'}</span>
+        </div>
+        <div style="display:flex;gap:14px;align-items:center;font-size:12px;">
+          <span style="color:${semEstoque?'var(--red)':'var(--green)'};font-weight:700;">${totalQtd} un</span>
+          <span style="color:var(--accent);font-weight:600;">${fmtR(valorModelo)}</span>
+        </div>
+      </div>
+      ${aberto ? `<div>${linhas}<div style="padding:10px 14px;border-top:1px solid var(--border);"><button class="btn btn-ghost btn-sm" onclick="openEstoqueModalParaModelo('${modelo.replace(/'/g,"\\'")}')" style="font-size:11px;width:100%;">+ Adicionar peça pra ${esc(modelo)}</button></div></div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function toggleEstoqueModelo(safeId, modelo) {
+  if (_estoqueAbertos.has(modelo)) _estoqueAbertos.delete(modelo);
+  else _estoqueAbertos.add(modelo);
+  renderEstoque();
+}
+
+function openEstoqueModalParaModelo(modelo) {
+  openEstoqueModal();
+  setTimeout(() => { document.getElementById('estModelo').value = modelo; }, 50);
+}
+
+function atualizarEstoqueCampo(id, campo, valor) {
+  const items = loadEstoque();
+  const idx = items.findIndex(i => i.id === id);
+  if (idx < 0) return;
+  items[idx][campo] = campo === 'preco' ? parseFloat(valor)||0 : parseInt(valor)||0;
+  saveEstoque(items);
+  renderEstoque();
+  agendarSyncEstoque();
+}
+
+function ajustarQtd(id, delta) {
+  const items = loadEstoque();
+  const idx = items.findIndex(i => i.id === id);
+  if (idx < 0) return;
+  items[idx].qtd = Math.max(0, (items[idx].qtd||0) + delta);
+  saveEstoque(items);
+  renderEstoque();
+  agendarSyncEstoque();
+}
+
+let _syncEstoqueTimer = null;
+function agendarSyncEstoque() {
+  if (!localStorage.getItem('cellos_gh_token')) return;
+  clearTimeout(_syncEstoqueTimer);
+  _syncEstoqueTimer = setTimeout(() => publicarGitHub(true), 1500);
+}
+
+function openEstoqueModal(item) {
+  document.getElementById('estoqueModalTitle').textContent = item ? 'Editar Peça' : 'Nova Peça';
+  document.getElementById('estEditId').value = item ? item.id : '';
+  document.getElementById('estModelo').value = item ? (item.modelo||'') : '';
+  document.getElementById('estTipo').value = item ? (item.tipo||'Tela') : 'Tela';
+  document.getElementById('estPreco').value = item ? (item.preco||0) : '';
+  document.getElementById('estQtd').value = item ? (item.qtd||0) : '';
+  document.getElementById('estBtnExcluir').style.display = item ? '' : 'none';
+  document.getElementById('estoqueModal').classList.add('open');
+}
+function closeEstoqueModal() { document.getElementById('estoqueModal').classList.remove('open'); }
+function closeEstoqueFora(e) { if (e.target===document.getElementById('estoqueModal')) closeEstoqueModal(); }
+function editEstoque(id) { const it = loadEstoque().find(x=>x.id===id); if (it) openEstoqueModal(it); }
+function excluirEstoque() {
+  const id = document.getElementById('estEditId').value;
+  if (!id) return;
+  if (!confirm('Excluir esta peça do estoque?')) return;
+  saveEstoque(loadEstoque().filter(i=>i.id!==id));
+  closeEstoqueModal();
+  renderEstoque();
+  agendarSyncEstoque();
+  toast('Peça removida', 'amber');
+}
+function salvarEstoque() {
+  const modelo = document.getElementById('estModelo').value.trim();
+  const tipo = document.getElementById('estTipo').value;
+  const preco = parseFloat(document.getElementById('estPreco').value)||0;
+  const qtd = parseInt(document.getElementById('estQtd').value)||0;
+  if (!modelo) { toast('Preencha o modelo', 'red'); return; }
+  const items = loadEstoque();
+  const editId = document.getElementById('estEditId').value;
+  if (editId) {
+    const idx = items.findIndex(i=>i.id===editId);
+    if (idx>=0) items[idx] = {...items[idx], modelo, tipo, preco, qtd};
+  } else {
+    items.push({id:'e'+Date.now(), modelo, tipo, preco, qtd});
+  }
+  saveEstoque(items);
+  closeEstoqueModal();
+  renderEstoque();
+  agendarSyncEstoque();
+  toast('Peça salva!', 'green');
 }
 
 // ═══════════════════════════════════════════════
@@ -1723,6 +2331,9 @@ function loadConfigForm() {
   document.getElementById('cfgNome').value = cfg.nome||'';
   document.getElementById('cfgWhats').value = cfg.whats||'';
   document.getElementById('cfgMsg').value = cfg.msg||'';
+  const el = document.getElementById('cfgGhToken');
+  if (el) el.value = localStorage.getItem('cellos_gh_token')||'';
+  atualizarBotaoPublicar();
 }
 function salvarConfig() {
   saveConfigData({
@@ -1731,6 +2342,31 @@ function salvarConfig() {
     msg: document.getElementById('cfgMsg').value,
   });
   document.getElementById('pubNomeEmpresa').textContent = document.getElementById('cfgNome').value || 'CellOS';
+}
+
+function atualizarBotaoPublicar() {
+  const token = localStorage.getItem('cellos_gh_token')||'';
+  const btn = document.getElementById('btnPublicarTxt');
+  const info = document.getElementById('ghTokenInfo');
+  if (!btn) return;
+  if (token) {
+    btn.textContent = '🚀 Sincronizar agora';
+    if (info) info.innerHTML = '✅ Token configurado — toda vez que você editar um preço, sincroniza automático em todos os aparelhos.';
+  } else {
+    btn.textContent = 'Sincronizar (sem token)';
+    if (info) info.innerHTML = '⚠️ Sem token a sincronização não funciona. <a href="https://github.com/settings/tokens/new?scopes=repo&description=CellOS" target="_blank" style="color:var(--accent);">Criar token no GitHub ↗</a>';
+  }
+}
+
+function carregarConfigAdmin() {
+  const c = loadConfig();
+  const el = id => document.getElementById(id);
+  if (el('cfgNome')) el('cfgNome').value = c.nome||'';
+  if (el('cfgWhats')) el('cfgWhats').value = c.whats||'';
+  if (el('cfgMsg')) el('cfgMsg').value = c.msg||'';
+  const token = localStorage.getItem('cellos_gh_token')||'';
+  if (el('cfgGhToken')) el('cfgGhToken').value = token;
+  atualizarBotaoPublicar();
 }
 
 // ═══════════════════════════════════════════════
@@ -1814,68 +2450,533 @@ function importarBackup(event) {
 }
 
 // ═══════════════════════════════════════════════
-// GERAR SITE ATUALIZADO
+// SINCRONIZAÇÃO REMOTA (data.json no GitHub)
 // ═══════════════════════════════════════════════
-function gerarSiteAtualizado() {
-  const status = document.getElementById('publishStatus');
-  status.style.display = 'block';
-  status.textContent = '⏳ Gerando arquivo...';
+const GH_REPO_SYNC = 'xkesper/BRAZANELL';
+const GH_DATA_FILE = 'data.json';
+const DATA_VER_KEY = 'cellos_data_ver';
+const RAW_DATA_URL = `https://raw.githubusercontent.com/${GH_REPO_SYNC}/main/${GH_DATA_FILE}`;
 
-  const modelos = loadModelos();
-  const config  = loadConfig();
-  const senha   = localStorage.getItem(SENHA_KEY) || 'sakkat22';
-  const versao  = Date.now();
-
-  // Remove base64 para manter o arquivo leve
-  const modelosLeve = modelos.map(m =>
-    (m.imgData && m.imgData.startsWith('data:')) ? {...m, imgData:''} : m
-  );
-
-  // Script de inject com controle de versão — atualiza TODOS os visitantes
-  const injectScript = `<script id="cellos-inject">
-(function(){
-  var VER=${versao};
-  var stored=parseInt(localStorage.getItem('cellos_ver')||'0');
-  if(stored<VER){
-    localStorage.setItem('${MODELOS_KEY}',${JSON.stringify(JSON.stringify(modelosLeve))});
-    localStorage.setItem('${CONFIG_KEY}',${JSON.stringify(JSON.stringify(config))});
-    localStorage.setItem('${SENHA_KEY}','${senha}');
-    localStorage.setItem('cellos_ver',VER);
+async function carregarDadosRemoto() {
+  try {
+    const res = await fetch(`${RAW_DATA_URL}?t=${Date.now()}`, { cache: 'no-store' });
+    if (!res.ok) return false;
+    const data = await res.json();
+    if (!data || !data.version || !Array.isArray(data.modelos)) return false;
+    const local = parseInt(localStorage.getItem(DATA_VER_KEY) || '0');
+    if (data.version > local) {
+      localStorage.setItem(MODELOS_KEY, JSON.stringify(data.modelos));
+      if (data.config) localStorage.setItem(CONFIG_KEY, JSON.stringify(data.config));
+      if (Array.isArray(data.estoque)) localStorage.setItem(ESTOQUE_KEY, JSON.stringify(data.estoque));
+      localStorage.setItem(DATA_VER_KEY, String(data.version));
+      return true;
+    }
+    return false;
+  } catch(e) {
+    console.warn('Sync remoto falhou:', e.message);
+    return false;
   }
-})();
-<\/script>`;
+}
 
-  // Busca o HTML original do servidor (evita capturar DOM renderizado)
-  fetch(window.location.href)
-    .then(r => r.text())
-    .then(html => {
-      // Remove inject anterior
-      html = html.replace(/<script id="cellos-inject">[\s\S]*?<\/script>/g, '');
-      // Injeta antes do </head>
-      html = html.replace('</head>', injectScript + '\n</head>');
-
-      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-      const url  = URL.createObjectURL(blob);
-      const a    = document.createElement('a');
-      a.href = url; a.download = 'index.html';
-      document.body.appendChild(a); a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-
-      status.textContent = '✅ Baixado! Me manda o arquivo para subir no site.';
-      toast('Site gerado! ✅', 'green');
-    })
-    .catch(e => {
-      console.error(e);
-      status.textContent = '❌ Erro ao gerar: ' + e.message;
-      toast('Erro ao gerar site', 'red');
+async function publicarGitHub(silent) {
+  const token = localStorage.getItem('cellos_gh_token') || '';
+  if (!token) {
+    if (!silent) toast('Configure o token do GitHub em Config primeiro', 'amber');
+    return false;
+  }
+  const status = document.getElementById('publishStatus');
+  if (status && !silent) { status.style.display = 'block'; status.textContent = '⏳ Sincronizando...'; }
+  const version = Date.now();
+  const data = {
+    version,
+    modelos: loadModelos().map(m =>
+      (m.imgData && m.imgData.startsWith('data:')) ? {...m, imgData:''} : m
+    ),
+    config: loadConfig(),
+    estoque: loadEstoque()
+  };
+  const apiBase = `https://api.github.com/repos/${GH_REPO_SYNC}/contents/${GH_DATA_FILE}`;
+  try {
+    let sha = null;
+    try {
+      const metaRes = await fetch(apiBase, { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json' } });
+      if (metaRes.ok) { const m = await metaRes.json(); if (m && m.sha) sha = m.sha; }
+    } catch(e) {}
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+    const body = { message: `Atualização ${new Date().toLocaleString('pt-BR')}`, content };
+    if (sha) body.sha = sha;
+    const res = await fetch(apiBase, {
+      method: 'PUT',
+      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
     });
+    if (!res.ok) { const err = await res.json(); throw new Error(err.message || res.status); }
+    localStorage.setItem(DATA_VER_KEY, String(version));
+    if (status && !silent) status.textContent = '✅ Sincronizado! Outros aparelhos vão atualizar ao recarregar.';
+    if (!silent) toast('Sincronizado em todos os aparelhos! ✅', 'green');
+    return true;
+  } catch(e) {
+    console.error('Publish failed:', e);
+    if (status && !silent) status.textContent = '❌ Erro: ' + e.message;
+    if (!silent) toast('Erro ao sincronizar: ' + e.message, 'red');
+    return false;
+  }
+}
+
+function gerarSiteAtualizado() { publicarGitHub(); }
+
+// ═══════════════════════════════════════════════
+// ORDENS DE SERVIÇO (OS)
+// ═══════════════════════════════════════════════
+const OS_KEY = 'cellos_os_v1';
+const FB_CFG_KEY = 'cellos_fb_config_v1';
+
+const OS_STATUS_MAP = {
+  aguardando: { label:'Aguardando Avaliação', icon:'⏳' },
+  orcamento:  { label:'Orçamento Enviado',    icon:'💬' },
+  aprovado:   { label:'Orçamento Aprovado',   icon:'✅' },
+  reparo:     { label:'Em Reparo',            icon:'🔧' },
+  pronto:     { label:'Pronto! ✨',           icon:'🎉' },
+  entregue:   { label:'Entregue',             icon:'📦' },
+};
+const OS_STEPS = ['aguardando','orcamento','aprovado','reparo','pronto','entregue'];
+
+const CHECKLIST_ITEMS = [
+  { key:'tela',      label:'Tela trincada/quebrada' },
+  { key:'carcaca',   label:'Carcaça amassada/riscada' },
+  { key:'camera',    label:'Câmera danificada' },
+  { key:'lente',     label:'Lente da câmera' },
+  { key:'bateria',   label:'Bateria/Inflada' },
+  { key:'conector',  label:'Conector de carga' },
+  { key:'microfone', label:'Microfone' },
+  { key:'tampa',     label:'Tampa trincada' },
+  { key:'agua',      label:'Sem ligar/Oxidação/Água' },
+];
+
+function loadOS() { try { return JSON.parse(localStorage.getItem(OS_KEY)) || []; } catch { return []; } }
+function saveOS(d) { localStorage.setItem(OS_KEY, JSON.stringify(d)); }
+
+function gerarCodigoOS() {
+  const lista = loadOS();
+  const ano = new Date().getFullYear();
+  const num = String(lista.length + 1).padStart(3,'0');
+  return 'OS-' + ano + '-' + num;
+}
+
+function compressImage(file, cb) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      let w = img.width, h = img.height, max = 900;
+      if (w > max) { h = h * max / w; w = max; }
+      if (h > max) { w = w * max / h; h = max; }
+      const c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      c.getContext('2d').drawImage(img, 0, 0, w, h);
+      cb(c.toDataURL('image/jpeg', 0.72));
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── Firebase ────────────────────────────────────
+let fbApp = null, fbDb = null, fbAuth = null, fbShopId = null;
+
+function loadFbConfig() { try { return JSON.parse(localStorage.getItem(FB_CFG_KEY)); } catch { return null; } }
+function saveFbConfigData(cfg) { localStorage.setItem(FB_CFG_KEY, JSON.stringify(cfg)); }
+
+async function initFirebase(cfg) {
+  cfg = cfg || loadFbConfig();
+  if (!cfg || !cfg.apiKey || !cfg.databaseURL) return false;
+  try {
+    if (!window.firebase) return false;
+    if (!fbApp) {
+      fbApp = firebase.initializeApp(cfg);
+      fbDb = firebase.database(fbApp);
+      fbAuth = firebase.auth(fbApp);
+    }
+    if (!fbAuth.currentUser) await fbAuth.signInAnonymously();
+    fbShopId = fbAuth.currentUser.uid;
+    localStorage.setItem('cellos_shop_id', fbShopId);
+    return true;
+  } catch(e) { console.error('Firebase:', e); return false; }
+}
+
+function getShopId() {
+  return fbShopId || localStorage.getItem('cellos_shop_id') || '';
+}
+
+async function syncOSToFirebase(os) {
+  if (!fbDb) return;
+  const sid = getShopId(); if (!sid) return;
+  const osLeve = {...os, fotos: (os.fotos||[]).map(f => f.startsWith('data:') ? f : f)};
+  try { await fbDb.ref('shops/' + sid + '/os/' + os.id).set(osLeve); } catch(e) { console.error(e); }
+}
+
+async function deleteOSFromFirebase(id) {
+  if (!fbDb) return;
+  const sid = getShopId(); if (!sid) return;
+  try { await fbDb.ref('shops/' + sid + '/os/' + id).remove(); } catch(e) { console.error(e); }
+}
+
+function getOSTrackingURL(os) {
+  // Encode key data in URL (sem fotos — muito pesado)
+  const payload = {
+    codigo: os.codigo,
+    status: os.status,
+    cliente: os.cliente ? os.cliente.nome : '',
+    modelo: os.modelo || '',
+    orcamento: os.orcamento || '',
+    problema: os.problema || '',
+    dataPrevista: os.dataPrevista || '',
+    dataEntrada: os.dataEntrada || '',
+    observacoes: os.observacoes || '',
+    checklist: os.checklist || {},
+    loja: (loadConfig().nome || 'Assistência Técnica'),
+    fotos: (os.fotos || []).slice(0, 3), // até 3 fotos pequenas no link
+  };
+  try {
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    return window.location.origin + window.location.pathname + '?os=' + encoded;
+  } catch(e) {
+    // fallback sem fotos se URL ficar grande
+    payload.fotos = [];
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    return window.location.origin + window.location.pathname + '?os=' + encoded;
+  }
+}
+
+function loadFbConfigForm() {
+  const cfg = loadFbConfig();
+  const el = document.getElementById('fbConfigInput');
+  if (el && cfg) el.value = JSON.stringify(cfg, null, 2);
+  const st = document.getElementById('fbStatus');
+  if (st && getShopId()) {
+    st.style.display = 'block';
+    st.style.background = 'var(--green-dim)';
+    st.style.color = 'var(--green)';
+    st.textContent = '✅ Firebase conectado — Shop ID: ' + getShopId();
+  }
+}
+
+function salvarFbConfig() {
+  const raw = document.getElementById('fbConfigInput').value.trim();
+  const fbSt = document.getElementById('fbStatus');
+  try {
+    const cfg = JSON.parse(raw);
+    if (!cfg.apiKey || !cfg.databaseURL) throw new Error('Campos obrigatórios ausentes (apiKey, databaseURL)');
+    saveFbConfigData(cfg);
+    fbSt.style.display = 'block';
+    fbSt.style.background = 'var(--accent-dim)';
+    fbSt.style.color = 'var(--accent)';
+    fbSt.textContent = '⏳ Conectando ao Firebase...';
+    initFirebase(cfg).then(ok => {
+      fbSt.textContent = ok ? '✅ Firebase conectado! Acompanhamento em tempo real ativo.' : '❌ Falha na conexão. Verifique o config.';
+      fbSt.style.background = ok ? 'var(--green-dim)' : 'var(--red-dim)';
+      fbSt.style.color = ok ? 'var(--green)' : 'var(--red)';
+    });
+  } catch(e) {
+    fbSt.style.display = 'block';
+    fbSt.style.background = 'var(--red-dim)';
+    fbSt.style.color = 'var(--red)';
+    fbSt.textContent = '❌ JSON inválido: ' + e.message;
+  }
+}
+
+function testarFbConfig() {
+  const fbSt = document.getElementById('fbStatus');
+  fbSt.style.display = 'block';
+  initFirebase().then(ok => {
+    fbSt.style.background = ok ? 'var(--green-dim)' : 'var(--red-dim)';
+    fbSt.style.color = ok ? 'var(--green)' : 'var(--red)';
+    fbSt.textContent = ok ? '✅ Conectado! Shop ID: ' + getShopId() : '❌ Não conectado. Configure o Firebase primeiro.';
+  });
+}
+
+// ── Admin OS ────────────────────────────────────
+let osModalId = null, osFotosTemp = [];
+
+function renderAdminOS() {
+  const lista = loadOS();
+  const el = document.getElementById('adminOS');
+  if (!el) return;
+  if (!lista.length) {
+    el.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text3)"><div style="font-size:48px;margin-bottom:16px">📋</div><div style="font-size:16px;font-weight:600;color:var(--text2);margin-bottom:8px">Nenhuma OS criada</div><div style="font-size:13px">Clique em "Nova OS" para começar</div></div>';
+    return;
+  }
+  const total = lista.length;
+  const abertas = lista.filter(o => o.status !== 'entregue').length;
+  const prontos = lista.filter(o => o.status === 'pronto').length;
+  el.innerHTML = '<div class="stats-row" style="margin-bottom:20px">' +
+    '<div class="stat"><div class="slabel">Total OS</div><div class="sval">' + total + '</div></div>' +
+    '<div class="stat"><div class="slabel">Em aberto</div><div class="sval" style="color:var(--accent)">' + abertas + '</div></div>' +
+    '<div class="stat"><div class="slabel">Prontos</div><div class="sval" style="color:var(--green)">' + prontos + '</div></div>' +
+    '</div><div style="display:flex;flex-direction:column;gap:12px;">' +
+    lista.slice().reverse().map(renderOSCard).join('') + '</div>';
+}
+
+function renderOSCard(os) {
+  const st = OS_STATUS_MAP[os.status] || OS_STATUS_MAP.aguardando;
+  const currentIdx = OS_STEPS.indexOf(os.status);
+  const statusBtns = OS_STEPS.map(s => {
+    const si = OS_STATUS_MAP[s]; const i = OS_STEPS.indexOf(s);
+    const active = s === os.status, done = i < currentIdx;
+    return '<button onclick="quickStatusOS(\'' + os.id + '\',\'' + s + '\')" style="padding:3px 9px;border-radius:20px;font-size:10px;font-weight:600;border:1.5px solid;cursor:pointer;background:' + (active?'var(--accent)':done?'var(--green-dim)':'transparent') + ';color:' + (active?'#000':done?'var(--green)':'var(--text3)') + ';border-color:' + (active?'var(--accent)':done?'var(--green)':'var(--border2)') + '">' + si.icon + ' ' + si.label + '</button>';
+  }).join('');
+  const fotos = (os.fotos||[]).length ? '<div class="os-photo-grid" style="grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:5px;margin-top:8px;">' + os.fotos.map(f => '<div class="os-photo-wrap"><img src="' + f + '"></div>').join('') + '</div>' : '';
+  return '<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;display:flex;flex-direction:column;gap:10px;">' +
+    '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">' +
+      '<div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-weight:700;color:var(--accent)">' + esc(os.codigo) + '</span><span class="os-badge ' + os.status + '">' + st.icon + ' ' + st.label + '</span></div>' +
+      '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
+        '<button class="btn btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="copiarLinkOS(\'' + os.id + '\')">🔗 Link</button>' +
+        '<button class="btn btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="enviarWhats(\'' + os.id + '\')">WhatsApp</button>' +
+        '<button class="btn btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="openOSModal(\'' + os.id + '\')">Editar</button>' +
+        '<button class="btn" style="padding:5px 11px;font-size:11px;background:var(--red-dim);color:var(--red);border:1px solid rgba(248,113,113,.2);" onclick="deleteOS(\'' + os.id + '\')">✕</button>' +
+      '</div>' +
+    '</div>' +
+    '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;font-size:12px;">' +
+      '<div><span style="color:var(--text3)">Cliente: </span><strong>' + esc(os.cliente.nome) + '</strong></div>' +
+      '<div><span style="color:var(--text3)">Tel: </span>' + esc(os.cliente.telefone||'—') + '</div>' +
+      '<div><span style="color:var(--text3)">Modelo: </span>' + esc(os.modelo||'—') + '</div>' +
+      '<div><span style="color:var(--text3)">Orçamento: </span><strong style="color:var(--green)">' + (os.orcamento ? 'R$ ' + Number(os.orcamento).toFixed(2) : '—') + '</strong></div>' +
+      '<div><span style="color:var(--text3)">Entrada: </span>' + (os.dataEntrada||'—') + '</div>' +
+      '<div><span style="color:var(--text3)">Previsão: </span>' + (os.dataPrevista||'—') + '</div>' +
+    '</div>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:5px;">' + statusBtns + '</div>' +
+    fotos +
+  '</div>';
+}
+
+function quickStatusOS(id, status) {
+  const lista = loadOS();
+  const idx = lista.findIndex(o => o.id === id);
+  if (idx < 0) return;
+  lista[idx].status = status;
+  lista[idx].historico = lista[idx].historico || [];
+  lista[idx].historico.push({ status, data: new Date().toISOString() });
+  saveOS(lista);
+  syncOSToFirebase(lista[idx]);
+  renderAdminOS();
+  toast('Status → ' + OS_STATUS_MAP[status].label, 'green');
+}
+
+function copiarLinkOS(id) {
+  const os = loadOS().find(o => o.id === id);
+  if (!os) return;
+  const url = getOSTrackingURL(os);
+  navigator.clipboard.writeText(url).then(() => toast('Link copiado! ✅', 'green'));
+}
+
+function enviarWhats(id) {
+  const os = loadOS().find(o => o.id === id);
+  if (!os) return;
+  const cfg = loadConfig();
+  const url = getOSTrackingURL(os);
+  const tel = (os.cliente.telefone||'').replace(/\D/g,'');
+  const msg = encodeURIComponent('Olá ' + os.cliente.nome + '! 👋\nSua OS *' + os.codigo + '* foi aberta.\nAcompanhe em tempo real:\n' + url);
+  window.open('https://wa.me/' + (tel||cfg.whats||'') + '?text=' + msg, '_blank');
+}
+
+function deleteOS(id) {
+  if (!confirm('Excluir esta OS? Esta ação não pode ser desfeita.')) return;
+  saveOS(loadOS().filter(o => o.id !== id));
+  deleteOSFromFirebase(id);
+  renderAdminOS();
+  toast('OS removida', 'red');
+}
+
+// ── OS Modal ────────────────────────────────────
+function openOSModal(id) {
+  osModalId = id || null;
+  osFotosTemp = [];
+  const lista = loadOS();
+  const os = id ? lista.find(o => o.id === id) : null;
+  document.getElementById('osModalTitle').textContent = os ? 'Editar OS — ' + os.codigo : 'Nova Ordem de Serviço';
+  document.getElementById('osCliente').value = os?.cliente?.nome || '';
+  document.getElementById('osTelefone').value = os?.cliente?.telefone || '';
+  document.getElementById('osModelo').value = os?.modelo || '';
+  document.getElementById('osStatus').value = os?.status || 'aguardando';
+  document.getElementById('osOrcamento').value = os?.orcamento || '';
+  document.getElementById('osProblema').value = os?.problema || '';
+  document.getElementById('osObs').value = os?.observacoes || '';
+  document.getElementById('osDataPrevista').value = os?.dataPrevista || '';
+  // Checklist
+  const grid = document.getElementById('osChecklistGrid');
+  grid.innerHTML = CHECKLIST_ITEMS.map(item => {
+    const checked = os?.checklist?.[item.key] || false;
+    return '<div class="os-check-item' + (checked?' checked':'') + '" id="osCkW_' + item.key + '" onclick="toggleOsCk(\'' + item.key + '\')">' +
+      '<input type="checkbox" id="osCk_' + item.key + '"' + (checked?' checked':'') + '>' +
+      '<div class="os-check-box">' + (checked?'✓':'') + '</div>' +
+      '<span>' + item.label + '</span></div>';
+  }).join('');
+  osFotosTemp = os?.fotos ? [...os.fotos] : [];
+  renderOSFotos();
+  const modal = document.getElementById('osModal');
+  modal.classList.add('open');
+}
+
+function closeOSModal() {
+  document.getElementById('osModal').classList.remove('open');
+}
+
+function closeOSFora(e) { if (e.target === document.getElementById('osModal')) closeOSModal(); }
+
+function toggleOsCk(key) {
+  const cb = document.getElementById('osCk_' + key);
+  cb.checked = !cb.checked;
+  const wrap = document.getElementById('osCkW_' + key);
+  wrap.classList.toggle('checked', cb.checked);
+  wrap.querySelector('.os-check-box').textContent = cb.checked ? '✓' : '';
+}
+
+function renderOSFotos() {
+  const grid = document.getElementById('osFotoGrid');
+  grid.innerHTML = osFotosTemp.map((f, i) =>
+    '<div class="os-photo-wrap"><img src="' + f + '"><button class="os-photo-del" onclick="removeFotoOS(' + i + ')">✕</button></div>'
+  ).join('');
+}
+
+function addFotoOS() { document.getElementById('osFotoInput').click(); }
+
+function handleFotoInput(input) {
+  Array.from(input.files).forEach(file => {
+    if (osFotosTemp.length >= 6) return;
+    compressImage(file, b64 => { osFotosTemp.push(b64); renderOSFotos(); });
+  });
+  input.value = '';
+}
+
+function removeFotoOS(idx) { osFotosTemp.splice(idx, 1); renderOSFotos(); }
+
+async function salvarOS() {
+  const nome = document.getElementById('osCliente').value.trim();
+  if (!nome) { toast('Informe o nome do cliente', 'red'); return; }
+  const checklist = {};
+  CHECKLIST_ITEMS.forEach(i => { checklist[i.key] = document.getElementById('osCk_' + i.key).checked; });
+  const lista = loadOS();
+  const isNew = !osModalId;
+  const existing = osModalId ? lista.find(o => o.id === osModalId) : null;
+  const os = {
+    id: osModalId || ('os_' + Date.now()),
+    codigo: existing?.codigo || gerarCodigoOS(),
+    dataEntrada: existing?.dataEntrada || new Date().toISOString().slice(0,10),
+    dataPrevista: document.getElementById('osDataPrevista').value,
+    cliente: { nome, telefone: document.getElementById('osTelefone').value.trim() },
+    modelo: document.getElementById('osModelo').value.trim(),
+    status: document.getElementById('osStatus').value,
+    orcamento: document.getElementById('osOrcamento').value,
+    problema: document.getElementById('osProblema').value.trim(),
+    observacoes: document.getElementById('osObs').value.trim(),
+    checklist,
+    fotos: [...osFotosTemp],
+    historico: existing?.historico || [{ status:'aguardando', data:new Date().toISOString() }],
+  };
+  if (osModalId) { const idx = lista.findIndex(o => o.id === osModalId); lista[idx] = os; }
+  else lista.push(os);
+  saveOS(lista);
+  await syncOSToFirebase(os);
+  closeOSModal();
+  renderAdminOS();
+  toast(isNew ? 'OS ' + os.codigo + ' criada! ✅' : 'OS atualizada!', 'green');
+}
+
+// ── Customer Tracking ────────────────────────────
+let fbListener = null;
+
+function checkAndShowCustomerTracking() {
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get('os');
+  if (!raw) return;
+
+  const page = document.getElementById('customerTrackPage');
+  page.style.display = 'block';
+
+  // Tenta decodificar payload da URL (novo formato)
+  try {
+    const json = decodeURIComponent(escape(atob(raw)));
+    const os = JSON.parse(json);
+    if (os && os.codigo) {
+      document.getElementById('ctCode').textContent = os.codigo;
+      document.getElementById('ctShopName').textContent = os.loja || 'Ordem de Serviço';
+      renderCustomerOS(os);
+      return;
+    }
+  } catch(e) {}
+
+  // Fallback: tenta Firebase (se configurado) ou localStorage
+  document.getElementById('ctCode').textContent = raw;
+  const fbCfg = loadFbConfig();
+  const shopId = params.get('shop');
+  if (fbCfg && fbCfg.apiKey && shopId && window.firebase) {
+    initFirebase(fbCfg).then(ok => {
+      if (!ok) { showOSLocal(raw); return; }
+      if (fbListener) fbListener();
+      fbListener = firebase.database(fbApp).ref('shops/' + shopId + '/os')
+        .orderByChild('codigo').equalTo(raw)
+        .on('value', snap => {
+          const data = snap.val();
+          if (!data) { document.getElementById('ctBody').innerHTML = '<div style="text-align:center;padding:60px;color:var(--text3)">OS não encontrada.</div>'; return; }
+          renderCustomerOS(Object.values(data)[0]);
+        });
+    });
+  } else {
+    showOSLocal(raw);
+  }
+}
+
+function showOSLocal(osCode) {
+  const os = loadOS().find(o => o.codigo === osCode);
+  if (os) renderCustomerOS(os);
+  else document.getElementById('ctBody').innerHTML = '<div style="text-align:center;padding:60px;color:var(--text3)">OS não encontrada.</div>';
+}
+
+function renderCustomerOS(os) {
+  const cfg = loadConfig();
+  document.getElementById('ctShopName').textContent = cfg.nome || 'Ordem de Serviço';
+  const st = OS_STATUS_MAP[os.status] || OS_STATUS_MAP.aguardando;
+  const currentIdx = OS_STEPS.indexOf(os.status);
+  const ckChecked = CHECKLIST_ITEMS.filter(i => os.checklist?.[i.key]);
+  const timeline = OS_STEPS.map((s, i) => {
+    const si = OS_STATUS_MAP[s];
+    const done = i < currentIdx, curr = i === currentIdx;
+    return (i > 0 ? '<div class="os-step-line' + (done||curr?' done':'') + '"></div>' : '') +
+      '<div class="os-step"><div class="os-step-dot' + (done?' done':'') + (curr?' current':'') + '">' + (done?'✓':si.icon) + '</div>' +
+      '<div class="os-step-label' + (done?' done':'') + (curr?' current':'') + '">' + si.label + '</div></div>';
+  }).join('');
+  document.getElementById('ctBody').innerHTML =
+    '<div class="ct-card" style="text-align:center;padding:28px 20px;">' +
+      '<div style="font-size:52px;margin-bottom:10px">' + st.icon + '</div>' +
+      '<div style="font-size:22px;font-weight:700;margin-bottom:6px">' + st.label + '</div>' +
+      '<div style="color:var(--text3);font-size:13px">Atualização em tempo real</div>' +
+    '</div>' +
+    '<div class="ct-card"><h3>Progresso do Reparo</h3><div class="os-timeline">' + timeline + '</div></div>' +
+    '<div class="ct-card"><h3>Dados do Aparelho</h3>' +
+      '<div class="ct-row"><span class="ct-row-label">Modelo</span><span class="ct-row-val">' + esc(os.modelo||'—') + '</span></div>' +
+      '<div class="ct-row"><span class="ct-row-label">Problema</span><span class="ct-row-val">' + esc(os.problema||'—') + '</span></div>' +
+      '<div class="ct-row"><span class="ct-row-label">Data de entrada</span><span class="ct-row-val">' + (os.dataEntrada||'—') + '</span></div>' +
+      '<div class="ct-row"><span class="ct-row-label">Previsão</span><span class="ct-row-val">' + (os.dataPrevista||'—') + '</span></div>' +
+      (os.orcamento ? '<div class="ct-row"><span class="ct-row-label">Orçamento</span><span class="ct-row-val" style="color:var(--green);font-weight:700">R$ ' + Number(os.orcamento).toFixed(2) + '</span></div>' : '') +
+    '</div>' +
+    (ckChecked.length ? '<div class="ct-card"><h3>Condições ao Receber</h3><div style="display:flex;flex-direction:column;gap:8px;">' +
+      ckChecked.map(i => '<div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2)"><span>⚠️</span>' + i.label + '</div>').join('') +
+    '</div></div>' : '') +
+    (os.fotos&&os.fotos.length ? '<div class="ct-card"><h3>Fotos do Aparelho (entrada)</h3><div class="os-photo-grid">' +
+      os.fotos.map(f => '<div class="os-photo-wrap"><img src="' + f + '"></div>').join('') +
+    '</div></div>' : '') +
+    (os.observacoes ? '<div class="ct-card"><h3>Observações</h3><div style="font-size:13px;color:var(--text2);line-height:1.6">' + esc(os.observacoes) + '</div></div>' : '') +
+    '<div style="height:40px;"></div>';
 }
 
 // ═══════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════
+initFirebase();
+checkAndShowCustomerTracking();
 renderCatalog();
+// Sincroniza dados remotos do GitHub (não bloqueia render inicial)
+carregarDadosRemoto().then(updated => { if (updated) { renderCatalog(); if (document.getElementById('estoque-list')) renderEstoque(); } });
 </script>
 </body>
 </html>
