@@ -1,5 +1,5 @@
 {
-  "version": 1781055257691,
+  "version": 1781055298140,
   "modelos": [
     {
       "id": "s1",
@@ -2720,38 +2720,43 @@
       "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg",
       "servicos": [
         {
+          "nome": "Troca de Tela/Display LCD",
+          "preco": 560
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 1100
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 280
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 380
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 250
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 700
+        },
+        {
           "nome": "Troca de Tela/Display",
           "preco": 0
         },
         {
           "nome": "Troca de Tela/Display Oled",
           "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "a26",
