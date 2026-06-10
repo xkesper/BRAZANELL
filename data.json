@@ -1,5 +1,5 @@
 {
-  "version": 1781054668958,
+  "version": 1781054878729,
   "modelos": [
     {
       "id": "s1",
@@ -2092,7 +2092,7 @@
         },
         {
           "nome": "Troca de Tela/Display Oled",
-          "preco": 550
+          "preco": 600
         },
         {
           "nome": "Troca de Bateria",
