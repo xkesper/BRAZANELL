@@ -1,5 +1,5 @@
 {
-  "version": 1781055365086,
+  "version": 1781055409416,
   "modelos": [
     {
       "id": "s1",
@@ -2556,37 +2556,38 @@
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
-          "preco": 0
+          "preco": 550
         },
         {
           "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
+          "preco": 980
         },
         {
           "nome": "Troca de Bateria",
-          "preco": 0
+          "preco": 300
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
+          "preco": 280
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 380
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 240
         },
         {
           "nome": "Reparo de Câmera",
           "preco": 0
         },
         {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
+          "nome": "Troca de Tela/Display Oled Premium",
           "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "a22",
