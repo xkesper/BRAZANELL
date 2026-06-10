@@ -1,5 +1,5 @@
 {
-  "version": 1781054590923,
+  "version": 1781054596195,
   "modelos": [
     {
       "id": "s1",
@@ -3532,7 +3532,7 @@
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
-          "preco": 240
+          "preco": 230
         },
         {
           "nome": "Troca de Bateria",
