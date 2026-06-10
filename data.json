@@ -1,5 +1,5 @@
 {
-  "version": 1781054665003,
+  "version": 1781054668958,
   "modelos": [
     {
       "id": "s1",
@@ -1910,7 +1910,7 @@
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 150
+          "preco": 170
         },
         {
           "nome": "Troca de Tampa Traseira",
