@@ -1,5 +1,5 @@
 {
-  "version": 1782776732732,
+  "version": 1782776963925,
   "modelos": [
     {
       "id": "m10",
@@ -3837,10 +3837,6 @@
         },
         {
           "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
           "preco": 0
         }
       ],
