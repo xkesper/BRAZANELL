@@ -1,5 +1,5 @@
 {
-  "version": 1782775315987,
+  "version": 1782775331838,
   "modelos": [
     {
       "id": "m10",
@@ -1171,21 +1171,22 @@
         },
         {
           "nome": "Troca de Tela/Display Oled",
-          "preco": 0
+          "preco": 520
         },
         {
           "nome": "Troca de Bateria",
-          "preco": 0
+          "preco": 200
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
+          "preco": 150
         },
         {
           "nome": "Reparo de Câmera",
           "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "me3",
