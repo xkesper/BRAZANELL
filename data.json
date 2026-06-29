@@ -1,5 +1,5 @@
 {
-  "version": 1782776534394,
+  "version": 1782776732732,
   "modelos": [
     {
       "id": "m10",
@@ -3799,10 +3799,6 @@
         },
         {
           "nome": "Troca de Flex de Aproximidade",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
           "preco": 0
         }
       ],
