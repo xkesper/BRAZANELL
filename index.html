@@ -1173,12 +1173,6 @@ function loadModelos() {
         upd.imgData = d.imgData;
       if (!m._customServicos && d.servicos && JSON.stringify(m.servicos||[]) !== JSON.stringify(d.servicos))
         upd.servicos = d.servicos;
-      else if (d.servicos && Array.isArray(m.servicos)) {
-        // Mesmo com preços customizados, adiciona serviços novos do default que estejam faltando
-        var nomes = m.servicos.map(function(x){ return (x.nome||'').toLowerCase().trim(); });
-        var novos = d.servicos.filter(function(x){ return nomes.indexOf((x.nome||'').toLowerCase().trim()) === -1; });
-        if (novos.length) upd.servicos = m.servicos.concat(novos.map(function(x){ return {nome:x.nome, preco:0}; }));
-      }
       if (Object.keys(upd).length) { stored[i] = Object.assign({}, m, upd); changed = true; }
     });
     if (changed) localStorage.setItem(MODELOS_KEY, JSON.stringify(stored));
