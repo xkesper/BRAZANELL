@@ -1,5 +1,5 @@
 {
-  "version": 1782776978911,
+  "version": 1782776981360,
   "modelos": [
     {
       "id": "a1",
@@ -669,10 +669,6 @@
         },
         {
           "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
           "preco": 0
         }
       ],
