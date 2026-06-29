@@ -1,5 +1,5 @@
 {
-  "version": 1781055624608,
+  "version": 1782774749563,
   "modelos": [
     {
       "id": "s1",
@@ -1349,7 +1349,7 @@
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy S24",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-5g-.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-5g.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1458,7 +1458,7 @@
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy A16",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a16-4g.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a16-5g.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1517,7 +1517,7 @@
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy A26",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a26-5g.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a26.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1546,36 +1546,37 @@
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy A30",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a30-sm-a305.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a30.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
-          "preco": 0
+          "preco": 230
         },
         {
           "nome": "Troca de Tela/Display Oled",
-          "preco": 0
+          "preco": 350
         },
         {
           "nome": "Troca de Bateria",
-          "preco": 0
+          "preco": 170
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
+          "preco": 95
         },
         {
           "nome": "Reparo de Câmera",
-          "preco": 0
+          "preco": 180
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "s55",
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy A36",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a36-5g.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a36.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1604,7 +1605,7 @@
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy A56",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a56-5g.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a56-5g-sm-a566b.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1633,7 +1634,7 @@
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy S20 FE",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s20-fe.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s20-fe-5g.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1662,7 +1663,7 @@
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy S21 FE",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s21-fe-5g-.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s21-fe-5g.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1691,7 +1692,7 @@
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy S22",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s22-5g-.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s22-5g.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display Oled",
@@ -2986,7 +2987,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G34",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g34-china.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g34.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -3038,7 +3039,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G14",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/mototola-g14.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g14.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -3090,7 +3091,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G23",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g23-r.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g23.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -3439,7 +3440,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G05",
-      "imgData": "img/g05.png",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g05.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -3491,7 +3492,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G15",
-      "imgData": "img/g15.png",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g15.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -3517,7 +3518,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G20",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g20-.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g20.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -3594,7 +3595,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G35",
-      "imgData": "img/g35.png",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g35.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -3701,7 +3702,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G75",
-      "imgData": "img/g75.png",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g75.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -3730,7 +3731,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G85",
-      "imgData": "img/g85.png",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g85.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -4443,6 +4444,522 @@
         }
       ],
       "_customServicos": true
+    },
+    {
+      "id": "m38",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G15 Power",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g15-power.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m39",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G31",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g31.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m40",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G32",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g32.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m41",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G40 Fusion",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g40-fusion.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m42",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G41",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g41.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m43",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G42",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g42.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m44",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G50",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g50-5g.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m45",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G51",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g-5g-2022.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m46",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G62",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g62.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m47",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G71",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g-5g-2022.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m48",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G72",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g72-r.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m49",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G82",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g82.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m50",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto G200 5G",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g200-5g-glacier-green.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m51",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto E7",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-e7.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m52",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto E7 Plus",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-e7-plus.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "m53",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto E7 Power",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-e7-power.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "me1",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto Edge 20",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-edge-20.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "me2",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto Edge 30",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-edge-30.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "me3",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto Edge 40",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-edge-40.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "me4",
+      "brand": "Motorola",
+      "icon": "〽️",
+      "name": "Moto Edge 50",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-edge-50.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
     }
   ],
   "config": {
