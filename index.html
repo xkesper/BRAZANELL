@@ -2018,7 +2018,7 @@ function addSrvRow(s) {
     </div>
     <input type="text" placeholder="Nome do serviço/peça" value="${esc(s?.nome||'')}" class="srv-nome">
     <input type="number" placeholder="R$ preço" value="${s?.preco||''}" min="0" step="0.01" class="srv-preco" style="text-align:right">
-    <button class="rm" onclick="this.closest('.srv-row').remove()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
+    <button class="rm" onclick="_removerServicoRow(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
 
   // Drag events
   row.addEventListener('dragstart', e => {
@@ -2053,13 +2053,37 @@ function addSrvRow(s) {
 }
 let dragSrc = null;
 
+function _removerServicoRow(btn) {
+  btn.closest('.srv-row').remove();
+  // Salva imediatamente sem fechar o modal
+  const brand = document.getElementById('mBrand').value || document.getElementById('mNewBrand').value.trim();
+  const name  = document.getElementById('mName').value.trim();
+  if (!brand || !name) return;
+  const icon    = document.getElementById('mIcon').value.trim() || '📱';
+  const imgData = document.getElementById('mImgData').value || '';
+  const servicos = [];
+  document.querySelectorAll('#srvListAdmin .srv-row').forEach(r => {
+    const nome = r.querySelector('.srv-nome').value.trim();
+    const preco = parseFloat(r.querySelector('.srv-preco').value) || 0;
+    if (nome) servicos.push({nome, preco});
+  });
+  const modelos = loadModelos();
+  const editId = document.getElementById('mEditId').value;
+  if (editId) {
+    const idx = modelos.findIndex(m => m.id === editId);
+    if (idx >= 0) modelos[idx] = {...modelos[idx], brand, icon, imgData, name, servicos, _customServicos: true};
+    saveModelos(modelos);
+    renderCatalog();
+  }
+}
+
 function salvarModelo() {
   const brand = document.getElementById('mBrand').value || document.getElementById('mNewBrand').value.trim();
   const icon  = document.getElementById('mIcon').value.trim()||'📱';
   const name  = document.getElementById('mName').value.trim();
   const imgData = document.getElementById('mImgData').value||'';
   if (!brand||!name) { toast('Preencha marca e modelo', 'red'); return; }
-  const rows = document.querySelectorAll('.srv-row');
+  const rows = document.querySelectorAll('#srvListAdmin .srv-row');
   const servicos = [];
   rows.forEach(r => {
     const nome = r.querySelector('.srv-nome').value.trim();
