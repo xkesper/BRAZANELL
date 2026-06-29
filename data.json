@@ -1,5 +1,5 @@
 {
-  "version": 1782775850477,
+  "version": 1782775853884,
   "modelos": [
     {
       "id": "m10",
@@ -3862,10 +3862,6 @@
           "preco": 0
         },
         {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        },
-        {
           "nome": "Troca de Tela/Display Oled Premium",
           "preco": 0
         },
@@ -3888,8 +3884,13 @@
         {
           "nome": "Troca de Flex de Aproximidade",
           "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "a23",
