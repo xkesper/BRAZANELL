@@ -1,6 +1,1169 @@
 {
-  "version": 1782776968462,
+  "version": 1782776972566,
   "modelos": [
+    {
+      "id": "a1",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 8",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 190
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 150
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 120
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 180
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 180
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 120
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a2",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 8 Plus",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8-plus.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 220
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 150
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 130
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 200
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 190
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 120
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a3",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone X",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-x.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 170
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 150
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 220
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 140
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a4",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone XR",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xr.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Tela/Display Premium",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 180
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 170
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 200
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 150
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 200
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a5",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone XS",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xs.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 170
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 170
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 200
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 140
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a6",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone XS Max",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xs-max.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 280
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 400
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 180
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 190
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 150
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a7",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 11",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display Premium",
+          "preco": 320
+        },
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 270
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 190
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 160
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 250
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 150
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a8",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 11 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 280
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 450
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 200
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 170
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 150
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a9",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 11 Pro Max",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 320
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 480
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 200
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 170
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 280
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 160
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a10",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 12",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 600
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 200
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 180
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 170
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a11",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 12 Mini",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 380
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 620
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 200
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 180
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a12",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 12 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 600
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 200
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 190
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 400
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 170
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a13",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 12 Pro Max",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 380
+        },
+        {
+          "nome": "Troca de Tela/Display Soft Oled Premium",
+          "preco": 650
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 220
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 400
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 180
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a14",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 13",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 650
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 220
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 200
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 180
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a15",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 13 Mini",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 380
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 650
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 380
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 250
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a16",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 13 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "a17",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 13 Pro Max",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 480
+        },
+        {
+          "nome": "Troca de Tela/Display Soft Oled Premium",
+          "preco": 750
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 200
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a18",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 14",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 400
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 680
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 250
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a19",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 14 Plus",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-plus.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a20",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 14 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 500
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 950
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 280
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 350
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a21",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 14 Pro Max",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 550
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 980
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 280
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 380
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 240
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a22",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 15",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a23",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 15 Plus",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-plus-.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a24",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 15 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 450
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 950
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 380
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 250
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a25",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 15 Pro Max",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display LCD",
+          "preco": 560
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 1100
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 280
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 380
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 250
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 700
+        },
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a26",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 16",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 580
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 950
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 250
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 350
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 250
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
+    {
+      "id": "a27",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 16 Plus",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-plus.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "a28",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 16 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "a29",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 16 Pro Max",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro-max.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 600
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 1350
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 400
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 300
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 380
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        }
+      ],
+      "_customServicos": true
+    },
     {
       "id": "m10",
       "brand": "Motorola",
@@ -3001,1173 +4164,6 @@
         {
           "nome": "Reparo de Câmera",
           "preco": 200
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a1",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 8",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 190
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 150
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 120
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 180
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 180
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 120
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a2",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 8 Plus",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-8-plus.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 220
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 150
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 130
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 200
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 190
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 120
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a3",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone X",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-x.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 350
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 170
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 150
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 220
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 140
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a4",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone XR",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xr.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Tela/Display Premium",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 180
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 170
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 200
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 150
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 200
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a5",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone XS",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xs.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 350
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 170
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 170
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 200
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 140
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a6",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone XS Max",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-xs-max.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 280
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 400
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 180
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 190
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 150
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a7",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 11",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display Premium",
-          "preco": 320
-        },
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 270
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 190
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 160
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 250
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 350
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 150
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a8",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 11 Pro",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 280
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 450
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 200
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 170
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 350
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 150
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a9",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 11 Pro Max",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-11-pro.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 320
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 480
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 200
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 170
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 280
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 160
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a10",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 12",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 350
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 600
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 200
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 180
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 170
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a11",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 12 Mini",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-mini.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 380
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 620
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 200
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 350
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 180
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a12",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 12 Pro",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 350
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 600
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 200
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 190
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 400
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 170
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a13",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 12 Pro Max",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro-max.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 380
-        },
-        {
-          "nome": "Troca de Tela/Display Soft Oled Premium",
-          "preco": 650
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 220
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 400
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 350
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 180
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a14",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 13",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 350
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 650
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 220
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 200
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 350
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 180
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a15",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 13 Mini",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-mini.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 380
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 650
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 380
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 250
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a16",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 13 Pro",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 0
-        }
-      ]
-    },
-    {
-      "id": "a17",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 13 Pro Max",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 480
-        },
-        {
-          "nome": "Troca de Tela/Display Soft Oled Premium",
-          "preco": 750
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 350
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 200
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a18",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 14",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 400
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 680
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 250
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a19",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 14 Plus",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-plus.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a20",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 14 Pro",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 500
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 950
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 280
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 350
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a21",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 14 Pro Max",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-14-pro-max-.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 550
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 980
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 280
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 380
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 240
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a22",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 15",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a23",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 15 Plus",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-plus-.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a24",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 15 Pro",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 450
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 950
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 380
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 250
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a25",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 15 Pro Max",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-15-pro-max.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display LCD",
-          "preco": 560
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 1100
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 280
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 380
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 250
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 700
-        },
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a26",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 16",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 580
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 950
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 250
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 350
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 250
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        }
-      ],
-      "_customServicos": true
-    },
-    {
-      "id": "a27",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 16 Plus",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-plus.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 0
-        }
-      ]
-    },
-    {
-      "id": "a28",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 16 Pro",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 0
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 0
-        }
-      ]
-    },
-    {
-      "id": "a29",
-      "brand": "Apple",
-      "icon": "🍎",
-      "name": "iPhone 16 Pro Max",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16-pro-max.jpg",
-      "servicos": [
-        {
-          "nome": "Troca de Tela/Display",
-          "preco": 600
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 1350
-        },
-        {
-          "nome": "Troca de Bateria",
-          "preco": 400
-        },
-        {
-          "nome": "Troca de Conector de Carga",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Flex de Aproximidade",
-          "preco": 300
-        },
-        {
-          "nome": "Troca de Tampa Traseira",
-          "preco": 380
-        },
-        {
-          "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
-          "preco": 0
         }
       ],
       "_customServicos": true
