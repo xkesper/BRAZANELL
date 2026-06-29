@@ -1,5 +1,5 @@
 {
-  "version": 1782776975138,
+  "version": 1782776978911,
   "modelos": [
     {
       "id": "a1",
@@ -711,10 +711,6 @@
         },
         {
           "nome": "Reparo de Câmera",
-          "preco": 0
-        },
-        {
-          "nome": "Troca de Tela/Display Oled",
           "preco": 0
         }
       ],
