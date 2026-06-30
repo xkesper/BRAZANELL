@@ -1,5 +1,5 @@
 {
-  "version": 1782821458275,
+  "version": 1782821469888,
   "modelos": [
     {
       "id": "a1",
@@ -4962,7 +4962,7 @@
       "id": "e1",
       "modelo": "iPhone 8",
       "tipo": "Tela LCD",
-      "preco": 249.98,
+      "preco": 69.9,
       "qtd": 1
     },
     {
