@@ -726,6 +726,9 @@ input[type="file"]#mImgFile{display:none;}
         </div>
         <div class="admin-content">
 
+          <!-- Totais semanais e mensais -->
+          <div id="vendaStatBar" style="margin-bottom:18px;"></div>
+
           <!-- Navegação de data -->
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
             <button class="btn btn-ghost btn-sm" onclick="_vendaDiaAnterior()">&#8592;</button>
@@ -2199,13 +2202,50 @@ function _irParaDia(iso) {
   renderVendas();
 }
 
+function _semanaIso(iso) {
+  const d = new Date(iso + 'T12:00:00');
+  const dow = d.getDay(); // 0=Dom
+  const seg = new Date(d); seg.setDate(d.getDate() - (dow === 0 ? 6 : dow - 1));
+  const dom = new Date(seg); dom.setDate(seg.getDate() + 6);
+  return [seg.toISOString().slice(0,10), dom.toISOString().slice(0,10)];
+}
+
 function renderVendas() {
   const hoje = _dataHoje();
   document.getElementById('vendaDataLabel').textContent = _fmtDiaLabel(_vendaDiaAtual);
   document.getElementById('vendaBtnProximo').disabled = _vendaDiaAtual >= hoje;
   document.getElementById('vendaForm').style.display  = _vendaDiaAtual === hoje ? '' : 'none';
 
-  const vendas = loadVendas().filter(v => v.data === _vendaDiaAtual);
+  const todasVendas = loadVendas();
+
+  // Totais semana e mês relativos ao dia visualizado
+  const [segIso, domIso] = _semanaIso(_vendaDiaAtual);
+  const mesAtual = _vendaDiaAtual.slice(0, 7); // "YYYY-MM"
+  let totalSemana = 0, totalMes = 0;
+  todasVendas.forEach(v => {
+    if (v.data >= segIso && v.data <= domIso) totalSemana += v.valor;
+    if (v.data.startsWith(mesAtual)) totalMes += v.valor;
+  });
+
+  const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  const [y, m] = mesAtual.split('-');
+  const mesLabel = `${meses[parseInt(m)-1]}/${y}`;
+  const [segD] = segIso.split('-').slice(2); const [domD] = domIso.split('-').slice(2);
+  const semLabel = `${segD}–${domD}/${m}`;
+
+  document.getElementById('vendaStatBar').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-lg);padding:14px 16px;">
+        <div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;">Semana <span style="font-weight:400;opacity:.7;">${semLabel}</span></div>
+        <div style="font-size:20px;font-weight:800;color:var(--text);">${fmtR(totalSemana)}</div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-lg);padding:14px 16px;">
+        <div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;">Mês <span style="font-weight:400;opacity:.7;">${mesLabel}</span></div>
+        <div style="font-size:20px;font-weight:800;color:var(--accent);">${fmtR(totalMes)}</div>
+      </div>
+    </div>`;
+
+  const vendas = todasVendas.filter(v => v.data === _vendaDiaAtual);
 
   // Resumo por pagamento
   const totais = {};
