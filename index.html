@@ -2817,8 +2817,10 @@ function importarBackup(event) {
 // ═══════════════════════════════════════════════
 const GH_REPO_SYNC = 'xkesper/BRAZANELL';
 const GH_DATA_FILE = 'data.json';
+const GH_OS_FILE   = 'os.json';
 const DATA_VER_KEY = 'cellos_data_ver';
 const RAW_DATA_URL = `https://raw.githubusercontent.com/${GH_REPO_SYNC}/main/${GH_DATA_FILE}`;
+const RAW_OS_URL   = `https://raw.githubusercontent.com/${GH_REPO_SYNC}/main/${GH_OS_FILE}`;
 
 async function carregarDadosRemoto() {
   try {
@@ -2887,6 +2889,37 @@ async function publicarGitHub(silent) {
 }
 
 function gerarSiteAtualizado() { publicarGitHub(); }
+
+async function pushOSTracking() {
+  const token = localStorage.getItem('cellos_gh_token');
+  if (!token) return;
+  const cfg = loadConfig();
+  const orders = loadOS().map(o => ({
+    id: o.id, codigo: o.codigo, status: o.status,
+    cliente: o.cliente, modelo: o.modelo||'', problema: o.problema||'',
+    orcamento: o.orcamento||'', dataEntrada: o.dataEntrada||'',
+    dataPrevista: o.dataPrevista||'', observacoes: o.observacoes||'',
+    checklist: o.checklist||{}, historico: o.historico||[],
+    updatedAt: Date.now()
+  }));
+  const payload = { shop: cfg.nome||'CellOS', updated: Date.now(), orders };
+  const apiBase = `https://api.github.com/repos/${GH_REPO_SYNC}/contents/${GH_OS_FILE}`;
+  try {
+    let sha = null;
+    try {
+      const r = await fetch(apiBase, { headers:{ Authorization:`token ${token}`, Accept:'application/vnd.github+json' } });
+      if (r.ok) { const m = await r.json(); if (m && m.sha) sha = m.sha; }
+    } catch(e) {}
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    const body = { message:'OS update', content };
+    if (sha) body.sha = sha;
+    await fetch(apiBase, {
+      method:'PUT',
+      headers:{ Authorization:`token ${token}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json' },
+      body: JSON.stringify(body)
+    });
+  } catch(e) { console.warn('pushOSTracking:', e.message); }
+}
 
 // ═══════════════════════════════════════════════
 // ORDENS DE SERVIÇO (OS)
@@ -2985,30 +3018,7 @@ async function deleteOSFromFirebase(id) {
 }
 
 function getOSTrackingURL(os) {
-  // Encode key data in URL (sem fotos — muito pesado)
-  const payload = {
-    codigo: os.codigo,
-    status: os.status,
-    cliente: os.cliente ? os.cliente.nome : '',
-    modelo: os.modelo || '',
-    orcamento: os.orcamento || '',
-    problema: os.problema || '',
-    dataPrevista: os.dataPrevista || '',
-    dataEntrada: os.dataEntrada || '',
-    observacoes: os.observacoes || '',
-    checklist: os.checklist || {},
-    loja: (loadConfig().nome || 'Assistência Técnica'),
-    fotos: (os.fotos || []).slice(0, 3), // até 3 fotos pequenas no link
-  };
-  try {
-    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
-    return window.location.origin + window.location.pathname + '?os=' + encoded;
-  } catch(e) {
-    // fallback sem fotos se URL ficar grande
-    payload.fotos = [];
-    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
-    return window.location.origin + window.location.pathname + '?os=' + encoded;
-  }
+  return window.location.origin + window.location.pathname + '?os=' + encodeURIComponent(os.codigo);
 }
 
 function loadFbConfigForm() {
@@ -3121,6 +3131,7 @@ function quickStatusOS(id, status) {
   lista[idx].historico.push({ status, data: new Date().toISOString() });
   saveOS(lista);
   syncOSToFirebase(lista[idx]);
+  pushOSTracking();
   renderAdminOS();
   toast('Status → ' + OS_STATUS_MAP[status].label, 'green');
 }
@@ -3146,6 +3157,7 @@ function deleteOS(id) {
   if (!confirm('Excluir esta OS? Esta ação não pode ser desfeita.')) return;
   saveOS(loadOS().filter(o => o.id !== id));
   deleteOSFromFirebase(id);
+  pushOSTracking();
   renderAdminOS();
   toast('OS removida', 'red');
 }
@@ -3240,6 +3252,7 @@ async function salvarOS() {
   else lista.push(os);
   saveOS(lista);
   await syncOSToFirebase(os);
+  pushOSTracking();
   closeOSModal();
   renderAdminOS();
   toast(isNew ? 'OS ' + os.codigo + ' criada! ✅' : 'OS atualizada!', 'green');
@@ -3247,20 +3260,38 @@ async function salvarOS() {
 
 // ── Customer Tracking ────────────────────────────
 let fbListener = null;
+let _ctRefreshTimer = null;
+let _ctCodigo = null;
 
 function checkAndShowCustomerTracking() {
   const params = new URLSearchParams(window.location.search);
+
+  // Modo busca pública
+  if (params.has('buscar')) {
+    showBuscarOS();
+    return;
+  }
+
   const raw = params.get('os');
   if (!raw) return;
 
   const page = document.getElementById('customerTrackPage');
   page.style.display = 'block';
 
-  // Tenta decodificar payload da URL (novo formato)
+  // Código simples (ex: OS-2025-001)
+  if (raw.includes('OS-') || raw.includes('os-')) {
+    _ctCodigo = decodeURIComponent(raw).toUpperCase();
+    document.getElementById('ctCode').textContent = _ctCodigo;
+    _buscarOSRemoto(_ctCodigo);
+    return;
+  }
+
+  // Legado: base64
   try {
     const json = decodeURIComponent(escape(atob(raw)));
     const os = JSON.parse(json);
     if (os && os.codigo) {
+      _ctCodigo = os.codigo;
       document.getElementById('ctCode').textContent = os.codigo;
       document.getElementById('ctShopName').textContent = os.loja || 'Ordem de Serviço';
       renderCustomerOS(os);
@@ -3268,51 +3299,126 @@ function checkAndShowCustomerTracking() {
     }
   } catch(e) {}
 
-  // Fallback: tenta Firebase (se configurado) ou localStorage
+  // Firebase fallback
+  _ctCodigo = raw;
   document.getElementById('ctCode').textContent = raw;
   const fbCfg = loadFbConfig();
   const shopId = params.get('shop');
   if (fbCfg && fbCfg.apiKey && shopId && window.firebase) {
     initFirebase(fbCfg).then(ok => {
-      if (!ok) { showOSLocal(raw); return; }
+      if (!ok) { _buscarOSRemoto(raw); return; }
       if (fbListener) fbListener();
       fbListener = firebase.database(fbApp).ref('shops/' + shopId + '/os')
         .orderByChild('codigo').equalTo(raw)
         .on('value', snap => {
           const data = snap.val();
-          if (!data) { document.getElementById('ctBody').innerHTML = '<div style="text-align:center;padding:60px;color:var(--text3)">OS não encontrada.</div>'; return; }
+          if (!data) { _buscarOSRemoto(raw); return; }
           renderCustomerOS(Object.values(data)[0]);
         });
     });
   } else {
-    showOSLocal(raw);
+    _buscarOSRemoto(raw);
   }
 }
 
-function showOSLocal(osCode) {
-  const os = loadOS().find(o => o.codigo === osCode);
-  if (os) renderCustomerOS(os);
-  else document.getElementById('ctBody').innerHTML = '<div style="text-align:center;padding:60px;color:var(--text3)">OS não encontrada.</div>';
+async function _buscarOSRemoto(codigo) {
+  const el = document.getElementById('ctBody');
+  try {
+    const res = await fetch(RAW_OS_URL + '?t=' + Date.now(), { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.shop) document.getElementById('ctShopName').textContent = data.shop;
+      const os = (data.orders || []).find(o => o.codigo === codigo);
+      if (os) { renderCustomerOS(os); _agendarRefreshCT(); return; }
+    }
+  } catch(e) {}
+  // Fallback localStorage
+  const os = loadOS().find(o => o.codigo === codigo);
+  if (os) { renderCustomerOS(os); }
+  else el.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text3);"><div style="font-size:40px;margin-bottom:12px">🔍</div><div style="font-size:15px;font-weight:600;color:var(--text2);margin-bottom:6px">OS não encontrada</div><div style="font-size:13px;">Verifique o código com a assistência técnica.</div></div>';
+}
+
+function _agendarRefreshCT() {
+  if (_ctRefreshTimer) clearTimeout(_ctRefreshTimer);
+  _ctRefreshTimer = setTimeout(() => {
+    if (_ctCodigo) _buscarOSRemoto(_ctCodigo);
+  }, 30000);
+}
+
+function showBuscarOS() {
+  const page = document.getElementById('customerTrackPage');
+  page.style.display = 'block';
+  document.getElementById('ctShopName').textContent = loadConfig().nome || 'Acompanhar OS';
+  document.getElementById('ctCode').textContent = '';
+  document.getElementById('ctBody').innerHTML = `
+    <div class="ct-card" style="max-width:400px;margin:40px auto;">
+      <h3>Acompanhar minha ordem de serviço</h3>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="font-size:13px;color:var(--text2);">Digite o código que a assistência técnica forneceu:</div>
+        <input class="fi" id="buscaCodigoInput" placeholder="Ex: OS-2025-001" style="font-family:var(--mono);font-size:16px;text-align:center;letter-spacing:.05em;"
+          onkeydown="if(event.key==='Enter')buscarOSPorCodigo()">
+        <button class="btn btn-primary" onclick="buscarOSPorCodigo()" style="width:100%;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:15px;height:15px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Buscar OS
+        </button>
+        <div id="buscaStatus" style="font-size:12px;color:var(--text3);text-align:center;min-height:16px;"></div>
+      </div>
+    </div>`;
+}
+
+async function buscarOSPorCodigo() {
+  const input = document.getElementById('buscaCodigoInput');
+  const codigo = (input?.value || '').trim().toUpperCase();
+  if (!codigo) return;
+  const st = document.getElementById('buscaStatus');
+  if (st) st.textContent = 'Buscando...';
+  _ctCodigo = codigo;
+  document.getElementById('ctCode').textContent = codigo;
+  try {
+    const res = await fetch(RAW_OS_URL + '?t=' + Date.now(), { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.shop) document.getElementById('ctShopName').textContent = data.shop;
+      const os = (data.orders || []).find(o => o.codigo === codigo);
+      if (os) { renderCustomerOS(os); _agendarRefreshCT(); return; }
+    }
+  } catch(e) {}
+  const os = loadOS().find(o => o.codigo === codigo);
+  if (os) { renderCustomerOS(os); return; }
+  if (st) st.textContent = 'OS não encontrada. Verifique o código.';
 }
 
 function renderCustomerOS(os) {
   const cfg = loadConfig();
-  document.getElementById('ctShopName').textContent = cfg.nome || 'Ordem de Serviço';
+  if (!document.getElementById('ctShopName').textContent || document.getElementById('ctShopName').textContent === 'Ordem de Serviço')
+    document.getElementById('ctShopName').textContent = cfg.nome || 'Ordem de Serviço';
   const st = OS_STATUS_MAP[os.status] || OS_STATUS_MAP.aguardando;
   const currentIdx = OS_STEPS.indexOf(os.status);
   const ckChecked = CHECKLIST_ITEMS.filter(i => os.checklist?.[i.key]);
+  const agora = new Date().toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+
+  // Timeline vertical
   const timeline = OS_STEPS.map((s, i) => {
     const si = OS_STATUS_MAP[s];
     const done = i < currentIdx, curr = i === currentIdx;
+    const hist = (os.historico||[]).filter(h => h.status === s);
+    const dataHist = hist.length ? '<div style="font-size:10px;color:var(--text3);margin-top:2px;">' + new Date(hist[hist.length-1].data).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) + '</div>' : '';
     return (i > 0 ? '<div class="os-step-line' + (done||curr?' done':'') + '"></div>' : '') +
       '<div class="os-step"><div class="os-step-dot' + (done?' done':'') + (curr?' current':'') + '">' + (done?'✓':si.icon) + '</div>' +
-      '<div class="os-step-label' + (done?' done':'') + (curr?' current':'') + '">' + si.label + '</div></div>';
+      '<div class="os-step-label' + (done?' done':'') + (curr?' current':'') + '">' + si.label + dataHist + '</div></div>';
   }).join('');
+
+  const isPronto = os.status === 'pronto';
   document.getElementById('ctBody').innerHTML =
-    '<div class="ct-card" style="text-align:center;padding:28px 20px;">' +
-      '<div style="font-size:52px;margin-bottom:10px">' + st.icon + '</div>' +
-      '<div style="font-size:22px;font-weight:700;margin-bottom:6px">' + st.label + '</div>' +
-      '<div style="color:var(--text3);font-size:13px">Atualização em tempo real</div>' +
+    (isPronto ? '<div class="ct-card" style="text-align:center;padding:20px;background:var(--green-dim);border-color:var(--green);">' +
+      '<div style="font-size:42px;margin-bottom:8px">🎉</div>' +
+      '<div style="font-size:20px;font-weight:800;color:var(--green);margin-bottom:4px">Seu aparelho está pronto!</div>' +
+      '<div style="font-size:13px;color:var(--text2);">Venha buscar na assistência técnica.</div>' +
+    '</div>' : '') +
+    '<div class="ct-card" style="text-align:center;padding:24px 20px;">' +
+      '<div style="font-size:48px;margin-bottom:8px">' + st.icon + '</div>' +
+      '<div style="font-size:20px;font-weight:700;margin-bottom:4px">' + st.label + '</div>' +
+      '<div style="color:var(--text3);font-size:12px;">Atualizado às ' + agora + ' · <span style="cursor:pointer;color:var(--accent);text-decoration:underline;" onclick="_atualizarManualCT()">Atualizar agora</span></div>' +
     '</div>' +
     '<div class="ct-card"><h3>Progresso do Reparo</h3><div class="os-timeline">' + timeline + '</div></div>' +
     '<div class="ct-card"><h3>Dados do Aparelho</h3>' +
@@ -3329,7 +3435,11 @@ function renderCustomerOS(os) {
       os.fotos.map(f => '<div class="os-photo-wrap"><img src="' + f + '"></div>').join('') +
     '</div></div>' : '') +
     (os.observacoes ? '<div class="ct-card"><h3>Observações</h3><div style="font-size:13px;color:var(--text2);line-height:1.6">' + esc(os.observacoes) + '</div></div>' : '') +
-    '<div style="height:40px;"></div>';
+    '<div style="text-align:center;padding:20px 0 40px;font-size:12px;color:var(--text3);">Atualização automática a cada 30 segundos</div>';
+}
+
+function _atualizarManualCT() {
+  if (_ctCodigo) _buscarOSRemoto(_ctCodigo);
 }
 
 // ═══════════════════════════════════════════════
