@@ -3148,9 +3148,11 @@ function enviarWhats(id) {
   if (!os) return;
   const cfg = loadConfig();
   const url = getOSTrackingURL(os);
-  const tel = (os.cliente.telefone||'').replace(/\D/g,'');
+  let tel = (os.cliente.telefone||'').replace(/\D/g,'');
+  if (tel && !tel.startsWith('55')) tel = '55' + tel;
+  const fallback = cfg.whats ? (cfg.whats.startsWith('55') ? cfg.whats : '55' + cfg.whats) : '';
   const msg = encodeURIComponent('Olá ' + os.cliente.nome + '! 👋\nSua OS *' + os.codigo + '* foi aberta.\nAcompanhe em tempo real:\n' + url);
-  window.open('https://wa.me/' + (tel||cfg.whats||'') + '?text=' + msg, '_blank');
+  window.open('https://wa.me/' + (tel||fallback) + '?text=' + msg, '_blank');
 }
 
 function deleteOS(id) {
