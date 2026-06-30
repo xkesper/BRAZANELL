@@ -3506,7 +3506,7 @@ function renderCustomerOS(os) {
   const isPronto = os.status === 'pronto';
   document.getElementById('ctBody').innerHTML =
     (isPronto ? '<div class="ct-card" style="text-align:center;padding:20px;background:var(--green-dim);border-color:var(--green);">' +
-      '<div style="font-size:42px;margin-bottom:8px">🎉</div>' +
+      '<img src="assets/mascote.png" alt="Pronto" style="width:110px;height:auto;margin:0 auto 10px;display:block;">' +
       '<div style="font-size:20px;font-weight:800;color:var(--green);margin-bottom:4px">Seu aparelho está pronto!</div>' +
       '<div style="font-size:13px;color:var(--text2);">Venha buscar na assistência técnica.</div>' +
     '</div>' : '') +
