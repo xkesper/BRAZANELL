@@ -3663,6 +3663,14 @@ carregarDadosRemoto().then(updated => { if (updated) { renderCatalog(); if (docu
 // Sync OS e Caixa entre dispositivos
 pullOS().then(updated => { if (updated) renderAdminOS(); });
 pullCaixa().then(updated => { if (updated) renderVendas(); });
+
+// Polling automático a cada 30s (só quando há token configurado)
+setInterval(() => {
+  if (!localStorage.getItem('cellos_gh_token')) return;
+  if (document.hidden) return; // não policia quando a aba está em background
+  pullOS().then(updated => { if (updated) { renderAdminOS(); toast('OS atualizada de outro dispositivo', 'accent'); } });
+  pullCaixa().then(updated => { if (updated) { renderVendas(); toast('Caixa atualizada de outro dispositivo', 'accent'); } });
+}, 30000);
 </script>
 </body>
 </html>
