@@ -433,6 +433,19 @@ input[type="file"]#mImgFile{display:none;}
 }
 .srv-row.dragging{opacity:.4;}
 .srv-row.drag-over{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent);}
+.venda-pag{background:var(--bg3);border:1px solid var(--border);color:var(--text2);border-radius:var(--r);padding:6px 12px;font-size:12px;cursor:pointer;transition:all .15s;}
+.venda-pag:hover{border-color:var(--accent);color:var(--accent);}
+.venda-pag.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);font-weight:600;}
+.venda-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);margin-bottom:6px;}
+.venda-item-desc{flex:1;font-size:13px;color:var(--text);}
+.venda-item-pag{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600;white-space:nowrap;}
+.venda-item-val{font-size:13px;font-weight:700;color:var(--text);min-width:72px;text-align:right;}
+.venda-item-del{background:none;border:none;cursor:pointer;color:var(--text3);padding:3px;border-radius:5px;display:flex;}
+.venda-item-del:hover{color:var(--red);background:var(--red-dim);}
+.venda-resumo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:8px;}
+.venda-resumo-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;}
+.venda-resumo-label{font-size:11px;color:var(--text3);margin-bottom:4px;}
+.venda-resumo-val{font-size:15px;font-weight:700;color:var(--text);}
 .drag-handle{
   display:flex;flex-direction:column;gap:3px;align-items:center;justify-content:center;
   cursor:grab;padding:2px;color:var(--text3);
@@ -602,6 +615,10 @@ input[type="file"]#mImgFile{display:none;}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           Ordens de Serviço
         </button>
+        <button class="anav" onclick="showAP('vendas')" id="an-vendas">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Caixa do Dia
+        </button>
         <button class="anav" onclick="showAP('config')" id="an-config">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
           Configurações
@@ -689,6 +706,46 @@ input[type="file"]#mImgFile{display:none;}
         </div>
         <div class="admin-content">
           <div id="adminOS"></div>
+        </div>
+      </div>
+
+      <!-- ── Vendas ── -->
+      <div class="ap" id="ap-vendas">
+        <div class="admin-topbar">
+          <div><h1>Caixa do Dia</h1><div class="sub">Controle manual de vendas e formas de pagamento</div></div>
+        </div>
+        <div class="admin-content">
+
+          <!-- Navegação de data -->
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+            <button class="btn btn-ghost btn-sm" onclick="_vendaDiaAnterior()">&#8592;</button>
+            <span id="vendaDataLabel" style="font-size:13px;font-weight:600;color:var(--text);min-width:130px;text-align:center;"></span>
+            <button class="btn btn-ghost btn-sm" onclick="_vendaDiaProximo()" id="vendaBtnProximo">&#8594;</button>
+          </div>
+
+          <!-- Formulário de registro -->
+          <div id="vendaForm" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px;margin-bottom:20px;display:flex;flex-direction:column;gap:12px;">
+            <div style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;">Nova venda</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <input class="fi" id="vendaDesc" placeholder="Descrição (ex: Troca de tela iPhone 11)" style="flex:2;min-width:180px;" onkeydown="if(event.key==='Enter')addVenda()">
+              <input class="fi" id="vendaValor" type="number" placeholder="R$ valor" min="0" step="0.01" style="flex:1;min-width:100px;max-width:140px;" onkeydown="if(event.key==='Enter')addVenda()">
+            </div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;" id="vendaPagBtns">
+              <button class="venda-pag active" data-pag="dinheiro"   onclick="_selPag(this)">💵 Dinheiro</button>
+              <button class="venda-pag"        data-pag="pix"        onclick="_selPag(this)">⚡ Pix</button>
+              <button class="venda-pag"        data-pag="credito_vista"      onclick="_selPag(this)">💳 Crédito à vista</button>
+              <button class="venda-pag"        data-pag="credito_parcelado"  onclick="_selPag(this)">💳 Crédito parcelado</button>
+              <button class="venda-pag"        data-pag="debito"     onclick="_selPag(this)">💳 Débito</button>
+            </div>
+            <button class="btn btn-primary" onclick="addVenda()" style="align-self:flex-start;">+ Registrar venda</button>
+          </div>
+
+          <!-- Resumo por forma de pagamento -->
+          <div id="vendaResumo" style="margin-bottom:20px;"></div>
+
+          <!-- Lista de vendas do dia -->
+          <div id="vendaLista"></div>
+
         </div>
       </div>
 
@@ -1151,6 +1208,7 @@ const PEDIDOS_KEY   = 'cellos_pedidos_v1';
 const CONFIG_KEY    = 'cellos_config_v1';
 const ESTOQUE_KEY   = 'cellos_estoque_v1';
 const DELETED_KEY   = 'cellos_deleted_ids';
+const VENDAS_KEY    = 'cellos_vendas_v1';
 
 function loadModelos() {
   try {
@@ -1566,6 +1624,7 @@ function showAP(id) {
   if (id === 'config') { loadConfigForm(); loadFbConfigForm(); }
   if (id === 'os') renderAdminOS();
   if (id === 'estoque') renderEstoque();
+  if (id === 'vendas') { _vendaDiaAtual = _dataHoje(); renderVendas(); }
 }
 
 // ═══════════════════════════════════════════════
@@ -1969,6 +2028,128 @@ function initGridDrag(grid) {
 }
 
 function renderAdmin() { renderPedidos(); }
+
+// ═══════════════════════════════════════════════
+// CAIXA DO DIA — CONTROLE DE VENDAS
+// ═══════════════════════════════════════════════
+let _vendaDiaAtual = _dataHoje();
+
+function _dataHoje() {
+  const d = new Date();
+  return d.toISOString().slice(0, 10);
+}
+function _fmtDiaLabel(iso) {
+  const hoje = _dataHoje();
+  const ontem = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  const [y, m, d] = iso.split('-');
+  const label = `${d}/${m}/${y}`;
+  if (iso === hoje) return `Hoje — ${label}`;
+  if (iso === ontem) return `Ontem — ${label}`;
+  return label;
+}
+function loadVendas()  { try { return JSON.parse(localStorage.getItem(VENDAS_KEY)) || []; } catch { return []; } }
+function saveVendas(d) { localStorage.setItem(VENDAS_KEY, JSON.stringify(d)); }
+
+function _selPag(btn) {
+  document.querySelectorAll('.venda-pag').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function _pagAtivo() {
+  const b = document.querySelector('.venda-pag.active');
+  return b ? b.dataset.pag : 'dinheiro';
+}
+function _pagLabel(pag) {
+  return {dinheiro:'💵 Dinheiro', pix:'⚡ Pix', credito_vista:'💳 Crédito à vista', credito_parcelado:'💳 Crédito parcelado', debito:'💳 Débito'}[pag] || pag;
+}
+function _pagColor(pag) {
+  return {dinheiro:'var(--green)', pix:'var(--accent)', credito_vista:'var(--amber)', credito_parcelado:'var(--amber)', debito:'#a78bfa'}[pag] || 'var(--text3)';
+}
+
+function addVenda() {
+  const desc  = document.getElementById('vendaDesc').value.trim();
+  const valor = parseFloat(document.getElementById('vendaValor').value) || 0;
+  if (!desc)  { toast('Informe a descrição da venda', 'red'); return; }
+  if (!valor) { toast('Informe o valor', 'red'); return; }
+  const vendas = loadVendas();
+  vendas.push({ id: genId(), ts: Date.now(), data: _vendaDiaAtual, desc, valor, pag: _pagAtivo() });
+  saveVendas(vendas);
+  document.getElementById('vendaDesc').value  = '';
+  document.getElementById('vendaValor').value = '';
+  renderVendas();
+  toast('Venda registrada!', 'green');
+}
+
+function delVenda(id) {
+  if (!confirm('Excluir esta venda?')) return;
+  saveVendas(loadVendas().filter(v => v.id !== id));
+  renderVendas();
+}
+
+function _vendaDiaAnterior() {
+  const d = new Date(_vendaDiaAtual + 'T12:00:00');
+  d.setDate(d.getDate() - 1);
+  _vendaDiaAtual = d.toISOString().slice(0, 10);
+  renderVendas();
+}
+function _vendaDiaProximo() {
+  const hoje = _dataHoje();
+  if (_vendaDiaAtual >= hoje) return;
+  const d = new Date(_vendaDiaAtual + 'T12:00:00');
+  d.setDate(d.getDate() + 1);
+  _vendaDiaAtual = d.toISOString().slice(0, 10);
+  renderVendas();
+}
+
+function renderVendas() {
+  const hoje = _dataHoje();
+  document.getElementById('vendaDataLabel').textContent = _fmtDiaLabel(_vendaDiaAtual);
+  document.getElementById('vendaBtnProximo').disabled = _vendaDiaAtual >= hoje;
+  document.getElementById('vendaForm').style.display  = _vendaDiaAtual === hoje ? '' : 'none';
+
+  const vendas = loadVendas().filter(v => v.data === _vendaDiaAtual);
+
+  // Resumo por pagamento
+  const totais = {};
+  let totalGeral = 0;
+  vendas.forEach(v => {
+    totais[v.pag] = (totais[v.pag] || 0) + v.valor;
+    totalGeral += v.valor;
+  });
+  const pagOrdem = ['dinheiro','pix','credito_vista','credito_parcelado','debito'];
+  const resumoEl = document.getElementById('vendaResumo');
+  if (!vendas.length) {
+    resumoEl.innerHTML = '<p style="color:var(--text3);font-size:13px;">Nenhuma venda registrada neste dia.</p>';
+  } else {
+    resumoEl.innerHTML = `
+      <div class="venda-resumo-grid">
+        ${pagOrdem.filter(p => totais[p]).map(p => `
+          <div class="venda-resumo-card">
+            <div class="venda-resumo-label">${_pagLabel(p)}</div>
+            <div class="venda-resumo-val" style="color:${_pagColor(p)}">${fmtR(totais[p])}</div>
+          </div>`).join('')}
+        <div class="venda-resumo-card" style="border-color:var(--accent)">
+          <div class="venda-resumo-label">Total do dia</div>
+          <div class="venda-resumo-val">${fmtR(totalGeral)}</div>
+        </div>
+      </div>`;
+  }
+
+  // Lista
+  const listaEl = document.getElementById('vendaLista');
+  if (!vendas.length) { listaEl.innerHTML = ''; return; }
+  listaEl.innerHTML = `
+    <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">${vendas.length} venda${vendas.length>1?'s':''}</div>
+    ${[...vendas].reverse().map(v => {
+      const hora = new Date(v.ts).toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+      return `<div class="venda-item">
+        <span style="font-size:11px;color:var(--text3);min-width:36px;">${hora}</span>
+        <span class="venda-item-desc">${esc(v.desc)}</span>
+        <span class="venda-item-pag" style="background:${_pagColor(v.pag)}22;color:${_pagColor(v.pag)}">${_pagLabel(v.pag)}</span>
+        <span class="venda-item-val">${fmtR(v.valor)}</span>
+        <button class="venda-item-del" onclick="delVenda('${v.id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>`;
+    }).join('')}`;
+}
 
 // Modal modelo
 function openModeloModal(modelo) {
