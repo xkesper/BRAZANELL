@@ -814,6 +814,21 @@ input[type="file"]#mImgFile{display:none;}
             </div>
             <div>
               <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">
+                💾 Armazenamento de fotos
+              </div>
+              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px;display:flex;flex-direction:column;gap:12px;">
+                <div style="font-size:13px;color:var(--text2);line-height:1.6;">
+                  O navegador tem espaço limitado (~5MB). Com o token do GitHub configurado, <strong style="color:var(--text)">novas fotos de OS já são enviadas automaticamente</strong> para o repositório em vez de ocupar espaço local.
+                </div>
+                <button class="btn btn-primary" onclick="migrarFotosParaGitHub()" style="width:fit-content;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Migrar fotos antigas para o GitHub
+                </button>
+                <div id="migrarFotosStatus" style="font-size:12px;display:none;"></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);">
                 🔒 Backup dos dados
               </div>
               <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px;display:flex;flex-direction:column;gap:14px;">
@@ -2925,6 +2940,7 @@ async function pushOSTracking() {
     orcamento: o.orcamento||'', dataEntrada: o.dataEntrada||'',
     dataPrevista: o.dataPrevista||'', observacoes: o.observacoes||'',
     checklist: o.checklist||{}, historico: o.historico||[],
+    fotos: (o.fotos||[]).filter(f => !f.startsWith('data:')),
     updatedAt: Date.now()
   }));
   const payload = { shop: cfg.nome||'CellOS', updated: Date.now(), orders };
@@ -3243,15 +3259,66 @@ function renderOSFotos() {
 
 function addFotoOS() { document.getElementById('osFotoInput').click(); }
 
+async function uploadFotoToGitHub(b64, filename) {
+  const token = localStorage.getItem('cellos_gh_token');
+  if (!token) return null;
+  const apiBase = `https://api.github.com/repos/${GH_REPO_SYNC}/contents/photos/${filename}`;
+  const base64Content = b64.split(',')[1];
+  try {
+    const res = await fetch(apiBase, {
+      method: 'PUT',
+      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'Foto OS', content: base64Content })
+    });
+    if (!res.ok) return null;
+    return `https://raw.githubusercontent.com/${GH_REPO_SYNC}/main/photos/${filename}`;
+  } catch(e) { console.warn('uploadFotoToGitHub:', e.message); return null; }
+}
+
 function handleFotoInput(input) {
   Array.from(input.files).forEach(file => {
     if (osFotosTemp.length >= 6) return;
-    compressImage(file, b64 => { osFotosTemp.push(b64); renderOSFotos(); });
+    compressImage(file, async b64 => {
+      osFotosTemp.push(b64);
+      renderOSFotos();
+      const filename = 'os_' + Date.now() + '_' + Math.random().toString(36).slice(2,8) + '.jpg';
+      const url = await uploadFotoToGitHub(b64, filename);
+      if (url) {
+        const i = osFotosTemp.indexOf(b64);
+        if (i !== -1) { osFotosTemp[i] = url; renderOSFotos(); }
+      }
+    });
   });
   input.value = '';
 }
 
 function removeFotoOS(idx) { osFotosTemp.splice(idx, 1); renderOSFotos(); }
+
+async function migrarFotosParaGitHub() {
+  const token = localStorage.getItem('cellos_gh_token');
+  const status = document.getElementById('migrarFotosStatus');
+  if (!token) { if (status) { status.style.display='block'; status.style.color='var(--red)'; status.textContent = 'Configure o token do GitHub primeiro.'; } return; }
+  const lista = loadOS();
+  let totalFotos = 0, migradas = 0;
+  lista.forEach(o => (o.fotos||[]).forEach(f => { if (f.startsWith('data:')) totalFotos++; }));
+  if (!totalFotos) { if (status) { status.style.display='block'; status.style.color='var(--green)'; status.textContent = 'Nenhuma foto antiga para migrar — já está tudo no GitHub!'; } return; }
+  if (status) { status.style.display='block'; status.style.color='var(--accent)'; }
+  for (const os of lista) {
+    if (!os.fotos || !os.fotos.length) continue;
+    for (let i = 0; i < os.fotos.length; i++) {
+      const f = os.fotos[i];
+      if (!f.startsWith('data:')) continue;
+      const filename = 'os_' + os.id + '_' + i + '_' + Date.now() + '.jpg';
+      const url = await uploadFotoToGitHub(f, filename);
+      if (url) { os.fotos[i] = url; migradas++; }
+      if (status) status.textContent = `Migrando... ${migradas}/${totalFotos}`;
+    }
+  }
+  saveOS(lista);
+  pushOSTracking();
+  renderStorageBar();
+  if (status) { status.style.color='var(--green)'; status.textContent = `✅ ${migradas} foto(s) migrada(s) para o GitHub! Espaço liberado.`; }
+}
 
 async function salvarOS() {
   const nome = document.getElementById('osCliente').value.trim();
