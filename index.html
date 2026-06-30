@@ -2993,10 +2993,20 @@ const CHECKLIST_ITEMS = [
 function loadOS() { try { return JSON.parse(localStorage.getItem(OS_KEY)) || []; } catch { return []; } }
 function saveOS(d) { localStorage.setItem(OS_KEY, JSON.stringify(d)); }
 
-function gerarCodigoOS() {
-  const lista = loadOS();
+async function gerarCodigoOS() {
   const ano = new Date().getFullYear();
-  const num = String(lista.length + 1).padStart(3,'0');
+  let maxNum = 0;
+  const checaLista = lista => (lista||[]).forEach(o => {
+    const m = (o.codigo||'').match(/OS-(\d{4})-(\d+)/);
+    if (m && parseInt(m[1]) === ano) maxNum = Math.max(maxNum, parseInt(m[2]));
+  });
+  checaLista(loadOS());
+  // Verifica também o os.json remoto, pra evitar colisão entre aparelhos diferentes
+  try {
+    const res = await fetch(RAW_OS_URL + '?t=' + Date.now(), { cache: 'no-store' });
+    if (res.ok) { const data = await res.json(); checaLista(data.orders); }
+  } catch(e) {}
+  const num = String(maxNum + 1).padStart(3,'0');
   return 'OS-' + ano + '-' + num;
 }
 
@@ -3328,9 +3338,10 @@ async function salvarOS() {
   const lista = loadOS();
   const isNew = !osModalId;
   const existing = osModalId ? lista.find(o => o.id === osModalId) : null;
+  const codigo = existing?.codigo || await gerarCodigoOS();
   const os = {
-    id: osModalId || ('os_' + Date.now()),
-    codigo: existing?.codigo || gerarCodigoOS(),
+    id: osModalId || ('os_' + Date.now() + '_' + Math.random().toString(36).slice(2,8)),
+    codigo,
     dataEntrada: existing?.dataEntrada || new Date().toISOString().slice(0,10),
     dataPrevista: document.getElementById('osDataPrevista').value,
     cliente: { nome, telefone: document.getElementById('osTelefone').value.trim() },
