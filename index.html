@@ -2149,6 +2149,7 @@ function addVenda() {
   document.getElementById('vendaDesc').value  = '';
   document.getElementById('vendaValor').value = '';
   renderVendas();
+  agendarSyncCaixa();
   toast('Venda registrada!', 'green');
 }
 
@@ -2156,6 +2157,7 @@ function delVenda(id) {
   if (!confirm('Excluir esta venda?')) return;
   saveVendas(loadVendas().filter(v => v.id !== id));
   renderVendas();
+  agendarSyncCaixa();
 }
 
 function _vendaDiaAnterior() {
@@ -2861,6 +2863,8 @@ const GH_OS_FILE   = 'os.json';
 const DATA_VER_KEY = 'cellos_data_ver';
 const RAW_DATA_URL = `https://raw.githubusercontent.com/${GH_REPO_SYNC}/main/${GH_DATA_FILE}`;
 const RAW_OS_URL   = `https://raw.githubusercontent.com/${GH_REPO_SYNC}/main/${GH_OS_FILE}`;
+const GH_CAIXA_FILE = 'caixa.json';
+const RAW_CAIXA_URL = `https://raw.githubusercontent.com/${GH_REPO_SYNC}/main/${GH_CAIXA_FILE}`;
 
 async function carregarDadosRemoto() {
   try {
@@ -2930,20 +2934,59 @@ async function publicarGitHub(silent) {
 
 function gerarSiteAtualizado() { publicarGitHub(); }
 
+// Merge OS lists: same id → newer updatedAt wins; different id → include both
+function _mergeOSLists(local, remote) {
+  const map = new Map();
+  (remote || []).forEach(o => map.set(o.id, o));
+  (local  || []).forEach(o => {
+    const rem = map.get(o.id);
+    if (!rem || (o.updatedAt || 0) >= (rem.updatedAt || 0)) map.set(o.id, o);
+  });
+  return [...map.values()];
+}
+
+// Pull OS from GitHub and merge into local (called on startup)
+async function pullOS() {
+  try {
+    const r = await fetch(RAW_OS_URL + '?t=' + Date.now(), { cache:'no-store' });
+    if (!r.ok) return false;
+    const data = await r.json();
+    const remote = data.orders || [];
+    if (!remote.length) return false;
+    const local = loadOS();
+    const merged = _mergeOSLists(local, remote);
+    saveOS(merged);
+    return merged.length !== local.length ||
+           merged.some(m => { const l = local.find(x => x.id === m.id); return !l || (m.updatedAt||0) > (l.updatedAt||0); });
+  } catch(e) { return false; }
+}
+
 async function pushOSTracking() {
   const token = localStorage.getItem('cellos_gh_token');
   if (!token) return;
   const cfg = loadConfig();
-  const orders = loadOS().map(o => ({
-    id: o.id, codigo: o.codigo, status: o.status,
-    cliente: o.cliente, modelo: o.modelo||'', problema: o.problema||'',
-    orcamento: o.orcamento||'', dataEntrada: o.dataEntrada||'',
-    dataPrevista: o.dataPrevista||'', observacoes: o.observacoes||'',
-    checklist: o.checklist||{}, historico: o.historico||[],
+
+  // Pull remote first to merge (prevents overwriting other devices' OS)
+  let remoteOrders = [];
+  try {
+    const r = await fetch(RAW_OS_URL + '?t=' + Date.now(), { cache:'no-store' });
+    if (r.ok) { const d = await r.json(); remoteOrders = d.orders || []; }
+  } catch(e) {}
+
+  const localOrders = loadOS().map(o => ({
+    ...o,
     fotos: (o.fotos||[]).filter(f => !f.startsWith('data:')),
-    updatedAt: Date.now()
+    updatedAt: o.updatedAt || Date.now()
   }));
-  const payload = { shop: cfg.nome||'CellOS', updated: Date.now(), orders };
+
+  const merged = _mergeOSLists(localOrders, remoteOrders);
+
+  // Save any remote-only items to local
+  const localIds = new Set(localOrders.map(o => o.id));
+  const remoteOnly = merged.filter(o => !localIds.has(o.id));
+  if (remoteOnly.length) saveOS([...loadOS(), ...remoteOnly]);
+
+  const payload = { shop: cfg.nome||'CellOS', updated: Date.now(), orders: merged };
   const apiBase = `https://api.github.com/repos/${GH_REPO_SYNC}/contents/${GH_OS_FILE}`;
   try {
     let sha = null;
@@ -2952,7 +2995,7 @@ async function pushOSTracking() {
       if (r.ok) { const m = await r.json(); if (m && m.sha) sha = m.sha; }
     } catch(e) {}
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
-    const body = { message:'OS update', content };
+    const body = { message:'OS sync', content };
     if (sha) body.sha = sha;
     await fetch(apiBase, {
       method:'PUT',
@@ -2960,6 +3003,65 @@ async function pushOSTracking() {
       body: JSON.stringify(body)
     });
   } catch(e) { console.warn('pushOSTracking:', e.message); }
+}
+
+// Pull Caixa from GitHub and merge into local (called on startup)
+async function pullCaixa() {
+  try {
+    const r = await fetch(RAW_CAIXA_URL + '?t=' + Date.now(), { cache:'no-store' });
+    if (!r.ok) return false;
+    const data = await r.json();
+    const remote = data.vendas || [];
+    if (!remote.length) return false;
+    const local = loadVendas();
+    const localIds = new Set(local.map(v => v.id));
+    const newItems = remote.filter(v => !localIds.has(v.id));
+    if (!newItems.length) return false;
+    saveVendas([...local, ...newItems]);
+    return true;
+  } catch(e) { return false; }
+}
+
+async function pushCaixa() {
+  const token = localStorage.getItem('cellos_gh_token');
+  if (!token) return;
+
+  // Pull remote first to merge
+  let remoteVendas = [];
+  try {
+    const r = await fetch(RAW_CAIXA_URL + '?t=' + Date.now(), { cache:'no-store' });
+    if (r.ok) { const d = await r.json(); remoteVendas = d.vendas || []; }
+  } catch(e) {}
+
+  const local = loadVendas();
+  const localIds = new Set(local.map(v => v.id));
+  const merged = [...local, ...remoteVendas.filter(v => !localIds.has(v.id))];
+  if (merged.length > local.length) saveVendas(merged);
+
+  const payload = { updated: Date.now(), vendas: merged };
+  const apiBase = `https://api.github.com/repos/${GH_REPO_SYNC}/contents/${GH_CAIXA_FILE}`;
+  try {
+    let sha = null;
+    try {
+      const r = await fetch(apiBase, { headers:{ Authorization:`token ${token}`, Accept:'application/vnd.github+json' } });
+      if (r.ok) { const m = await r.json(); if (m && m.sha) sha = m.sha; }
+    } catch(e) {}
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    const body = { message:'Caixa sync', content };
+    if (sha) body.sha = sha;
+    await fetch(apiBase, {
+      method:'PUT',
+      headers:{ Authorization:`token ${token}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json' },
+      body: JSON.stringify(body)
+    });
+  } catch(e) { console.warn('pushCaixa:', e.message); }
+}
+
+let _syncCaixaTimer = null;
+function agendarSyncCaixa() {
+  if (!localStorage.getItem('cellos_gh_token')) return;
+  clearTimeout(_syncCaixaTimer);
+  _syncCaixaTimer = setTimeout(() => pushCaixa(), 1500);
 }
 
 // ═══════════════════════════════════════════════
@@ -3178,6 +3280,7 @@ function quickStatusOS(id, status) {
   const idx = lista.findIndex(o => o.id === id);
   if (idx < 0) return;
   lista[idx].status = status;
+  lista[idx].updatedAt = Date.now();
   lista[idx].historico = lista[idx].historico || [];
   lista[idx].historico.push({ status, data: new Date().toISOString() });
   saveOS(lista);
@@ -3353,6 +3456,7 @@ async function salvarOS() {
     checklist,
     fotos: [...osFotosTemp],
     historico: existing?.historico || [{ status:'aguardando', data:new Date().toISOString() }],
+    updatedAt: Date.now(),
   };
   if (osModalId) { const idx = lista.findIndex(o => o.id === osModalId); lista[idx] = os; }
   else lista.push(os);
@@ -3556,6 +3660,9 @@ checkAndShowCustomerTracking();
 renderCatalog();
 // Sincroniza dados remotos do GitHub (não bloqueia render inicial)
 carregarDadosRemoto().then(updated => { if (updated) { renderCatalog(); if (document.getElementById('estoque-list')) renderEstoque(); } });
+// Sync OS e Caixa entre dispositivos
+pullOS().then(updated => { if (updated) renderAdminOS(); });
+pullCaixa().then(updated => { if (updated) renderVendas(); });
 </script>
 </body>
 </html>
