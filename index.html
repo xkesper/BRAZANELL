@@ -667,10 +667,16 @@ input[type="file"]#mImgFile{display:none;}
       <div class="ap" id="ap-modelos">
         <div class="admin-topbar">
           <div><h1>Modelos & Preços</h1><div class="sub">Gerencie o catálogo público</div></div>
-          <button class="btn btn-primary" onclick="openModeloModal()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            Novo Modelo
-          </button>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="position:relative;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position:absolute;left:9px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--text3);pointer-events:none"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input id="adminModeloSearch" class="fi" placeholder="Buscar modelo..." oninput="renderAdminModelos()" style="padding-left:30px;width:200px;height:34px;font-size:12px;">
+            </div>
+            <button class="btn btn-primary" onclick="openModeloModal()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Novo Modelo
+            </button>
+          </div>
         </div>
         <div class="admin-content">
           <div id="adminModelos"></div>
@@ -1985,7 +1991,9 @@ function renderAdminModelos() {
   }
 
   const brands = ['all', ...new Set(modelos.map(m => m.brand))];
-  const filtered = _adminActiveBrand === 'all' ? modelos : modelos.filter(m => m.brand === _adminActiveBrand);
+  const searchQ = (document.getElementById('adminModeloSearch')?.value || '').trim().toLowerCase();
+  let filtered = _adminActiveBrand === 'all' ? modelos : modelos.filter(m => m.brand === _adminActiveBrand);
+  if (searchQ) filtered = filtered.filter(m => m.name.toLowerCase().includes(searchQ) || (m.brand||'').toLowerCase().includes(searchQ));
 
   container.innerHTML = `
     <div class="brand-tabs" style="margin-bottom:16px;">
