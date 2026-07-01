@@ -3081,15 +3081,21 @@ const OS_STATUS_MAP = {
 const OS_STEPS = ['aguardando','orcamento','aprovado','reparo','pronto','entregue'];
 
 const CHECKLIST_ITEMS = [
-  { key:'tela',      label:'Tela trincada/quebrada' },
-  { key:'carcaca',   label:'Carcaça amassada/riscada' },
-  { key:'camera',    label:'Câmera danificada' },
-  { key:'lente',     label:'Lente da câmera' },
-  { key:'bateria',   label:'Bateria/Inflada' },
-  { key:'conector',  label:'Conector de carga' },
-  { key:'microfone', label:'Microfone' },
-  { key:'tampa',     label:'Tampa trincada' },
-  { key:'agua',      label:'Sem ligar/Oxidação/Água' },
+  { key:'tela',        label:'Tela trincada/quebrada' },
+  { key:'carcaca',     label:'Carcaça amassada/riscada' },
+  { key:'camera',      label:'Câmera danificada' },
+  { key:'lente',       label:'Lente da câmera' },
+  { key:'bateria',     label:'Bateria/Inflada' },
+  { key:'conector',    label:'Conector de carga' },
+  { key:'microfone',   label:'Microfone' },
+  { key:'altfalar',    label:'Alto falante campainha' },
+  { key:'auricular',   label:'Alto falante auricular' },
+  { key:'tampa',       label:'Tampa trincada' },
+  { key:'semligar',    label:'Sem ligar' },
+  { key:'oxidacao',    label:'Oxidação/Molhou' },
+  { key:'gaveta',      label:'Sem gaveta de chip' },
+  { key:'software',    label:'Software' },
+  { key:'conta',       label:'Conta Google' },
 ];
 
 function loadOS() { try { return JSON.parse(localStorage.getItem(OS_KEY)) || []; } catch { return []; } }
