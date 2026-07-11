@@ -2971,7 +2971,7 @@ async function pullOS() {
 
 async function pushOSTracking() {
   const token = localStorage.getItem('cellos_gh_token');
-  if (!token) return;
+  if (!token) { toast('Token GitHub não configurado — dados não serão sincronizados', 'amber'); return; }
   const cfg = loadConfig();
 
   // Pull remote first to merge (prevents overwriting other devices' OS)
@@ -3005,12 +3005,18 @@ async function pushOSTracking() {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
     const body = { message:'OS sync', content };
     if (sha) body.sha = sha;
-    await fetch(apiBase, {
+    const res = await fetch(apiBase, {
       method:'PUT',
       headers:{ Authorization:`token ${token}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json' },
       body: JSON.stringify(body)
     });
-  } catch(e) { console.warn('pushOSTracking:', e.message); }
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      console.warn('pushOSTracking HTTP', res.status, err.message);
+      if (res.status === 401 || res.status === 403) toast('Token GitHub inválido ou sem permissão — verifique em Config', 'red');
+      else toast('Falha ao sincronizar OS (' + res.status + ')', 'red');
+    }
+  } catch(e) { console.warn('pushOSTracking:', e.message); toast('Sem conexão para sincronizar OS', 'amber'); }
 }
 
 // Pull Caixa from GitHub and merge into local (called on startup)
@@ -3032,7 +3038,7 @@ async function pullCaixa() {
 
 async function pushCaixa() {
   const token = localStorage.getItem('cellos_gh_token');
-  if (!token) return;
+  if (!token) { toast('Token GitHub não configurado — Caixa não será sincronizado', 'amber'); return; }
 
   // Pull remote first to merge
   let remoteVendas = [];
@@ -3057,12 +3063,18 @@ async function pushCaixa() {
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
     const body = { message:'Caixa sync', content };
     if (sha) body.sha = sha;
-    await fetch(apiBase, {
+    const res = await fetch(apiBase, {
       method:'PUT',
       headers:{ Authorization:`token ${token}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json' },
       body: JSON.stringify(body)
     });
-  } catch(e) { console.warn('pushCaixa:', e.message); }
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      console.warn('pushCaixa HTTP', res.status, err.message);
+      if (res.status === 401 || res.status === 403) toast('Token GitHub inválido ou sem permissão — verifique em Config', 'red');
+      else toast('Falha ao sincronizar Caixa (' + res.status + ')', 'red');
+    }
+  } catch(e) { console.warn('pushCaixa:', e.message); toast('Sem conexão para sincronizar Caixa', 'amber'); }
 }
 
 let _syncCaixaTimer = null;
@@ -3674,14 +3686,21 @@ checkAndShowCustomerTracking();
 renderCatalog();
 // Sincroniza dados remotos do GitHub (não bloqueia render inicial)
 carregarDadosRemoto().then(updated => { if (updated) { renderCatalog(); if (document.getElementById('estoque-list')) renderEstoque(); } });
-// Sync OS e Caixa entre dispositivos
+// Sync OS e Caixa entre dispositivos (leitura não precisa de token — raw.githubusercontent.com é público)
 pullOS().then(updated => { if (updated) renderAdminOS(); });
 pullCaixa().then(updated => { if (updated) renderVendas(); });
 
-// Polling automático a cada 30s (só quando há token configurado)
+// Push inicial: garante que os arquivos existam no GitHub para outros dispositivos lerem
+if (localStorage.getItem('cellos_gh_token')) {
+  setTimeout(() => {
+    pushOSTracking();
+    pushCaixa();
+  }, 3000);
+}
+
+// Polling automático a cada 30s — pull sempre (leitura pública); push só se tiver token
 setInterval(() => {
-  if (!localStorage.getItem('cellos_gh_token')) return;
-  if (document.hidden) return; // não policia quando a aba está em background
+  if (document.hidden) return;
   pullOS().then(updated => { if (updated) { renderAdminOS(); toast('OS atualizada de outro dispositivo', 'accent'); } });
   pullCaixa().then(updated => { if (updated) { renderVendas(); toast('Caixa atualizada de outro dispositivo', 'accent'); } });
 }, 30000);
