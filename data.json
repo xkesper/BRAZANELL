@@ -1,5 +1,5 @@
 {
-  "version": 1782863030430,
+  "version": 1783731863304,
   "modelos": [
     {
       "id": "a1",
@@ -242,7 +242,7 @@
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 160
+          "preco": 170
         },
         {
           "nome": "Troca de Tampa Traseira",
@@ -1201,7 +1201,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G34",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g34.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g32.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1253,7 +1253,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G14",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g14.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g13.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1305,7 +1305,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G23",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g23.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g22.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1460,7 +1460,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G05",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g05.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g-2024.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1512,7 +1512,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G15",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g15.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g13.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1538,7 +1538,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G20",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g20.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g22.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1616,7 +1616,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G35",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g35.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g35-5g.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1672,7 +1672,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G55",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g55.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g55-5g.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1859,7 +1859,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G15 Power",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g15-power.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g13.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1884,7 +1884,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G31",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g31.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g30.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1940,7 +1940,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G40 Fusion",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g40-fusion.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g32.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1965,7 +1965,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G41",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g41.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g52.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -1995,7 +1995,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G42",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g42.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g52.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -2125,7 +2125,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto G72",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g72-r.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g73.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -2201,7 +2201,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto E7",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-e7.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-e-2020.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -2367,7 +2367,7 @@
       "brand": "Motorola",
       "icon": "〽️",
       "name": "Moto Edge 50",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-edge-50.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/motorola-edge-50-5g.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -3744,7 +3744,7 @@
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy S24",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-5g.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-5g-sm-s921.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -3773,7 +3773,7 @@
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy S24 FE",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s24-fe.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-fe.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -3802,7 +3802,7 @@
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy A06 4g",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a06.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a05s.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -4001,7 +4001,7 @@
       "brand": "Samsung",
       "icon": "🌀",
       "name": "Galaxy A56",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a56-5g-sm-a566b.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a35.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -4704,7 +4704,7 @@
       "brand": "Xiaomi",
       "icon": "🔴",
       "name": "Poco X8",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x8.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-x8-pro.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
@@ -4805,7 +4805,7 @@
       "brand": "Realme",
       "icon": "🟡",
       "name": "Realme C71",
-      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/realme-c71.jpg",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/realme-c75.jpg",
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
