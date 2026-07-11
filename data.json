@@ -1,5 +1,5 @@
 {
-  "version": 1783731922860,
+  "version": 1783736361024,
   "modelos": [
     {
       "id": "a1",
@@ -3658,20 +3658,16 @@
       "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a73-5g.jpg",
       "servicos": [
         {
-          "nome": "Troca de Tela/Display",
-          "preco": 0
-        },
-        {
           "nome": "Troca de Tela/Display Oled",
-          "preco": 0
+          "preco": 550
         },
         {
           "nome": "Troca de Bateria",
-          "preco": 0
+          "preco": 180
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
+          "preco": 130
         },
         {
           "nome": "Reparo de Câmera",
