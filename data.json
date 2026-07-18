@@ -1,5 +1,5 @@
 {
-  "version": 1783736474048,
+  "version": 1784417327557,
   "modelos": [
     {
       "id": "a1",
@@ -369,10 +369,6 @@
         {
           "nome": "Troca de Flex de Aproximidade",
           "preco": 170
-        },
-        {
-          "nome": "Troca de Tela/Display Oled Premium",
-          "preco": 0
         }
       ],
       "_customServicos": true
