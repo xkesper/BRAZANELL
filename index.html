@@ -536,6 +536,36 @@ input[type="file"]#mImgFile{display:none;}
   .stats-row{grid-template-columns:1fr 1fr;}
   .admin-sidebar{display:none;}
 }
+/* ══ Loja de Produtos ══ */
+.loja-grid-pub{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;padding:0 20px 40px;max-width:960px;margin:0 auto;}
+.loja-section-title{max-width:960px;margin:32px auto 16px;padding:0 20px;font-size:17px;font-weight:700;color:var(--text);}
+.loja-section-title span{color:var(--accent);}
+.loja-card-pub{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s;}
+.loja-card-pub:hover{transform:translateY(-2px);}
+.loja-card-pub .lc-img{width:100%;height:160px;object-fit:cover;background:var(--bg3);}
+.loja-card-pub .lc-img-ph{width:100%;height:160px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:40px;}
+.loja-card-pub .lc-body{padding:12px;flex:1;display:flex;flex-direction:column;gap:4px;}
+.loja-card-pub .lc-cat{font-size:10px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;}
+.loja-card-pub .lc-nome{font-size:13px;font-weight:600;color:var(--text);}
+.loja-card-pub .lc-preco{font-size:18px;font-weight:700;color:var(--green);margin:4px 0;}
+.loja-card-pub .lc-stock{font-size:11px;color:var(--text3);}
+.loja-card-pub .lc-btn{margin-top:8px;background:#25d366;color:#fff;border:none;border-radius:10px;padding:9px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;}
+.loja-admin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+.loja-admin-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
+.loja-admin-card .la-img{width:100%;height:130px;object-fit:cover;background:var(--bg3);}
+.loja-admin-card .la-img-ph{width:100%;height:130px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:32px;}
+.loja-admin-card .la-body{padding:10px;flex:1;display:flex;flex-direction:column;gap:3px;}
+.loja-admin-card .la-nome{font-size:13px;font-weight:600;}
+.loja-admin-card .la-cat{font-size:10px;color:var(--accent);font-weight:500;}
+.loja-admin-card .la-preco{font-size:15px;font-weight:700;color:var(--green);}
+.loja-admin-card .la-info{font-size:11px;color:var(--text3);}
+.loja-admin-card .la-foot{padding:8px 10px;display:flex;gap:6px;border-top:1px solid var(--border);}
+.loja-admin-card .la-foot button{flex:1;padding:6px;border-radius:8px;font-size:11px;font-weight:500;cursor:pointer;border:none;}
+.la-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;}
+.la-badge.ativo{background:#d1fae5;color:#065f46;}
+.la-badge.inativo{background:var(--bg3);color:var(--text3);}
+@media (prefers-color-scheme:dark){.la-badge.ativo{background:#064e3b;color:#6ee7b7;}}
+:root[data-theme="dark"] .la-badge.ativo{background:#064e3b;color:#6ee7b7;}
 </style>
 </head>
 <body>
@@ -573,6 +603,12 @@ input[type="file"]#mImgFile{display:none;}
   </div>
 
   <div class="models-grid" id="modelsGrid"></div>
+
+  <!-- Loja de Peças & Acessórios (público) -->
+  <div id="loja-pub-section" style="display:none;">
+    <div class="loja-section-title">Peças &amp; <span>Acessórios</span></div>
+    <div class="loja-grid-pub" id="loja-pub-grid"></div>
+  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
@@ -628,6 +664,10 @@ input[type="file"]#mImgFile{display:none;}
         <button class="anav" onclick="showAP('vendas')" id="an-vendas">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           Caixa do Dia
+        </button>
+        <button class="anav" onclick="showAP('loja')" id="an-loja">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Loja
         </button>
         <button class="anav" onclick="showAP('config')" id="an-config">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -928,6 +968,28 @@ input[type="file"]#mImgFile{display:none;}
         </div>
       </div>
 
+      <!-- ── Loja ── -->
+      <div class="ap" id="ap-loja">
+        <div class="admin-topbar">
+          <div><h1>Loja de Peças</h1><div class="sub">Produtos visíveis no catálogo público para clientes comprarem</div></div>
+          <button class="btn btn-primary" onclick="openLojaModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Novo Produto
+          </button>
+        </div>
+        <div class="admin-content">
+          <div style="display:flex;gap:10px;margin-bottom:14px;align-items:center;flex-wrap:wrap;">
+            <input type="text" id="lojaSearch" placeholder="🔍 Buscar produto..." class="fi" style="flex:1;min-width:180px;" oninput="renderAdminLoja()">
+            <select id="lojaFiltCat" class="fi" style="max-width:180px;" onchange="renderAdminLoja()">
+              <option value="">Todas as categorias</option>
+              <option>Telas</option><option>Baterias</option><option>Conectores</option>
+              <option>Câmeras</option><option>Capinhas & Acessórios</option><option>Outros</option>
+            </select>
+          </div>
+          <div class="loja-admin-grid" id="loja-admin-list"></div>
+        </div>
+      </div>
+
     </main>
   </div>
 </div>
@@ -1048,6 +1110,52 @@ input[type="file"]#mImgFile{display:none;}
     <div class="amodal-foot">
       <button class="btn btn-ghost" onclick="closeModeloModal()">Cancelar</button>
       <button class="btn btn-primary" onclick="salvarModelo()">Salvar modelo</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Produto da Loja -->
+<div class="amodal-overlay" id="lojaModal" onclick="closeLojaFora(event)">
+  <div class="amodal" style="max-width:500px;">
+    <div class="amodal-head">
+      <h2 id="lojaModalTitle">Novo Produto</h2>
+      <button class="close-btn" onclick="closeLojaModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="amodal-body">
+      <div class="fg"><label class="fl">Nome do produto *</label><input class="fi" id="lojaNome" placeholder="Ex: Tela Samsung A55"></div>
+      <div class="fg"><label class="fl">Categoria *</label>
+        <select class="fi" id="lojaCat">
+          <option value="">Selecione...</option>
+          <option>Telas</option><option>Baterias</option><option>Conectores</option>
+          <option>Câmeras</option><option>Capinhas & Acessórios</option><option>Outros</option>
+        </select>
+      </div>
+      <div class="fg"><label class="fl">Descrição</label><textarea class="fi" id="lojaDesc" rows="2" placeholder="Detalhe do produto..." style="resize:vertical;"></textarea></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="fg"><label class="fl">Preço (R$) *</label><input type="number" class="fi" id="lojaPreco" placeholder="0.00" min="0" step="0.01"></div>
+        <div class="fg"><label class="fl">Quantidade</label><input type="number" class="fi" id="lojaQtd" placeholder="0" min="0" step="1"></div>
+      </div>
+      <div class="fg">
+        <label class="fl">Imagem do produto</label>
+        <div id="lojaImgPreview" style="margin-bottom:8px;display:none;">
+          <img id="lojaImgPreviewImg" style="width:100%;max-height:200px;object-fit:cover;border-radius:10px;border:1px solid var(--border);">
+          <button onclick="removerImgLoja()" style="margin-top:6px;font-size:11px;color:var(--red);background:none;border:none;cursor:pointer;">✕ Remover imagem</button>
+        </div>
+        <input type="file" id="lojaImgInput" accept="image/*" style="display:none;" onchange="onLojaImgSelect(event)">
+        <button class="btn btn-ghost" onclick="document.getElementById('lojaImgInput').click()" id="lojaImgBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Escolher foto
+        </button>
+        <div id="lojaImgStatus" style="font-size:11px;color:var(--text3);margin-top:4px;"></div>
+      </div>
+      <div class="fg" style="display:flex;align-items:center;gap:10px;">
+        <input type="checkbox" id="lojaAtivo" checked style="width:16px;height:16px;accent-color:var(--accent);">
+        <label for="lojaAtivo" style="font-size:13px;cursor:pointer;">Visível no catálogo público</label>
+      </div>
+    </div>
+    <div class="amodal-foot">
+      <button class="btn btn-ghost" onclick="closeLojaModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="salvarProduto()" id="lojaModalSaveBtn">Salvar produto</button>
     </div>
   </div>
 </div>
@@ -2885,6 +2993,7 @@ async function carregarDadosRemoto() {
       localStorage.setItem(MODELOS_KEY, JSON.stringify(data.modelos));
       if (data.config) localStorage.setItem(CONFIG_KEY, JSON.stringify(data.config));
       if (Array.isArray(data.estoque)) localStorage.setItem(ESTOQUE_KEY, JSON.stringify(data.estoque));
+      if (Array.isArray(data.loja)) localStorage.setItem(LOJA_KEY, JSON.stringify(data.loja));
       localStorage.setItem(DATA_VER_KEY, String(data.version));
       return true;
     }
@@ -2910,7 +3019,8 @@ async function publicarGitHub(silent) {
       (m.imgData && m.imgData.startsWith('data:')) ? {...m, imgData:''} : m
     ),
     config: loadConfig(),
-    estoque: loadEstoque()
+    estoque: loadEstoque(),
+    loja: loadLoja()
   };
   const apiBase = `https://api.github.com/repos/${GH_REPO_SYNC}/contents/${GH_DATA_FILE}`;
   try {
@@ -3679,13 +3789,220 @@ function _atualizarManualCT() {
 }
 
 // ═══════════════════════════════════════════════
+// LOJA DE PRODUTOS
+// ═══════════════════════════════════════════════
+const LOJA_KEY = 'cellos_loja';
+function loadLoja() { try { return JSON.parse(localStorage.getItem(LOJA_KEY)) || []; } catch { return []; } }
+function saveLoja(list) { localStorage.setItem(LOJA_KEY, JSON.stringify(list)); }
+
+let _lojaModalId = null;
+let _lojaImgPendente = null; // { dataUrl, filename }
+
+function openLojaModal(id) {
+  _lojaModalId = id || null;
+  _lojaImgPendente = null;
+  const modal = document.getElementById('lojaModal');
+  document.getElementById('lojaModalTitle').textContent = id ? 'Editar Produto' : 'Novo Produto';
+  document.getElementById('lojaNome').value = '';
+  document.getElementById('lojaCat').value = '';
+  document.getElementById('lojaDesc').value = '';
+  document.getElementById('lojaPreco').value = '';
+  document.getElementById('lojaQtd').value = '';
+  document.getElementById('lojaAtivo').checked = true;
+  document.getElementById('lojaImgPreview').style.display = 'none';
+  document.getElementById('lojaImgStatus').textContent = '';
+  document.getElementById('lojaImgBtn').style.display = '';
+  document.getElementById('lojaModalSaveBtn').textContent = 'Salvar produto';
+  document.getElementById('lojaModalSaveBtn').disabled = false;
+  if (id) {
+    const p = loadLoja().find(x => x.id === id);
+    if (!p) return;
+    document.getElementById('lojaNome').value = p.nome || '';
+    document.getElementById('lojaCat').value = p.categoria || '';
+    document.getElementById('lojaDesc').value = p.descricao || '';
+    document.getElementById('lojaPreco').value = p.preco || '';
+    document.getElementById('lojaQtd').value = p.qtd !== undefined ? p.qtd : '';
+    document.getElementById('lojaAtivo').checked = p.ativo !== false;
+    if (p.imgUrl) {
+      document.getElementById('lojaImgPreviewImg').src = p.imgUrl;
+      document.getElementById('lojaImgPreview').style.display = '';
+      document.getElementById('lojaImgBtn').style.display = 'none';
+    }
+  }
+  modal.style.display = 'flex';
+}
+function closeLojaModal() { document.getElementById('lojaModal').style.display = 'none'; _lojaImgPendente = null; }
+function closeLojaFora(e) { if (e.target === document.getElementById('lojaModal')) closeLojaModal(); }
+
+function onLojaImgSelect(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    _lojaImgPendente = { dataUrl: ev.target.result, filename: 'loja_' + Date.now() + '_' + file.name.replace(/[^a-z0-9.]/gi,'_') };
+    document.getElementById('lojaImgPreviewImg').src = ev.target.result;
+    document.getElementById('lojaImgPreview').style.display = '';
+    document.getElementById('lojaImgBtn').style.display = 'none';
+    document.getElementById('lojaImgStatus').textContent = '📷 Imagem selecionada — será enviada ao salvar';
+  };
+  reader.readAsDataURL(file);
+  e.target.value = '';
+}
+function removerImgLoja() {
+  _lojaImgPendente = null;
+  document.getElementById('lojaImgPreview').style.display = 'none';
+  document.getElementById('lojaImgBtn').style.display = '';
+  document.getElementById('lojaImgStatus').textContent = '';
+  if (_lojaModalId) {
+    const list = loadLoja();
+    const idx = list.findIndex(x => x.id === _lojaModalId);
+    if (idx >= 0) { list[idx].imgUrl = ''; saveLoja(list); }
+  }
+}
+
+async function salvarProduto() {
+  const nome = document.getElementById('lojaNome').value.trim();
+  const cat  = document.getElementById('lojaCat').value;
+  if (!nome) { toast('Informe o nome do produto', 'red'); return; }
+  if (!cat)  { toast('Selecione a categoria', 'red'); return; }
+  const saveBtn = document.getElementById('lojaModalSaveBtn');
+  saveBtn.disabled = true;
+  saveBtn.textContent = 'Salvando...';
+
+  let imgUrl = '';
+  if (_lojaModalId) imgUrl = (loadLoja().find(x => x.id === _lojaModalId) || {}).imgUrl || '';
+
+  if (_lojaImgPendente) {
+    const status = document.getElementById('lojaImgStatus');
+    status.textContent = '⏳ Enviando imagem para o GitHub...';
+    const token = localStorage.getItem('cellos_gh_token');
+    if (!token) {
+      toast('Token GitHub necessário para enviar imagens — configure em Config', 'amber');
+    } else {
+      const uploaded = await uploadFotoToGitHub(_lojaImgPendente.dataUrl, _lojaImgPendente.filename);
+      if (uploaded) { imgUrl = uploaded; status.textContent = '✅ Imagem enviada!'; }
+      else { status.textContent = '⚠️ Falha no upload — produto salvo sem imagem'; }
+    }
+  }
+
+  const list = loadLoja();
+  const produto = {
+    id: _lojaModalId || ('p_' + Date.now()),
+    nome,
+    categoria: cat,
+    descricao: document.getElementById('lojaDesc').value.trim(),
+    preco: parseFloat(document.getElementById('lojaPreco').value) || 0,
+    qtd: parseInt(document.getElementById('lojaQtd').value) || 0,
+    ativo: document.getElementById('lojaAtivo').checked,
+    imgUrl,
+    updatedAt: Date.now(),
+  };
+  if (_lojaModalId) {
+    const idx = list.findIndex(x => x.id === _lojaModalId);
+    if (idx >= 0) list[idx] = produto; else list.push(produto);
+  } else {
+    list.push(produto);
+  }
+  saveLoja(list);
+  closeLojaModal();
+  renderAdminLoja();
+  renderLojaPublica();
+  if (localStorage.getItem('cellos_gh_token')) setTimeout(() => publicarGitHub(true), 800);
+  toast(_lojaModalId ? 'Produto atualizado!' : 'Produto adicionado!', 'green');
+}
+
+function deleteProduto(id) {
+  if (!confirm('Excluir este produto?')) return;
+  saveLoja(loadLoja().filter(p => p.id !== id));
+  renderAdminLoja();
+  renderLojaPublica();
+  if (localStorage.getItem('cellos_gh_token')) setTimeout(() => publicarGitHub(true), 800);
+  toast('Produto removido', 'red');
+}
+
+function toggleProdutoAtivo(id) {
+  const list = loadLoja();
+  const idx = list.findIndex(p => p.id === id);
+  if (idx < 0) return;
+  list[idx].ativo = !list[idx].ativo;
+  saveLoja(list);
+  renderAdminLoja();
+  renderLojaPublica();
+  if (localStorage.getItem('cellos_gh_token')) setTimeout(() => publicarGitHub(true), 1500);
+}
+
+function renderAdminLoja() {
+  const container = document.getElementById('loja-admin-list');
+  if (!container) return;
+  let list = loadLoja();
+  const search = (document.getElementById('lojaSearch')?.value || '').trim().toLowerCase();
+  const cat = document.getElementById('lojaFiltCat')?.value || '';
+  if (search) list = list.filter(p => p.nome.toLowerCase().includes(search) || (p.categoria||'').toLowerCase().includes(search));
+  if (cat) list = list.filter(p => p.categoria === cat);
+  if (!list.length) {
+    container.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text3);">Nenhum produto cadastrado ainda.<br><br><button class="btn btn-primary" onclick="openLojaModal()">+ Adicionar primeiro produto</button></div>';
+    return;
+  }
+  container.innerHTML = list.map(p => `
+    <div class="loja-admin-card">
+      ${p.imgUrl ? `<img class="la-img" src="${p.imgUrl}" onerror="this.style.display='none'">` : `<div class="la-img-ph">📦</div>`}
+      <div class="la-body">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px;">
+          <div class="la-nome">${p.nome}</div>
+          <span class="la-badge ${p.ativo ? 'ativo' : 'inativo'}">${p.ativo ? 'Ativo' : 'Oculto'}</span>
+        </div>
+        <div class="la-cat">${p.categoria}</div>
+        <div class="la-preco">R$ ${(p.preco||0).toFixed(2).replace('.',',')}</div>
+        <div class="la-info">${p.qtd !== undefined ? `Estoque: ${p.qtd} un.` : ''}</div>
+      </div>
+      <div class="la-foot">
+        <button onclick="toggleProdutoAtivo('${p.id}')" style="background:var(--bg3);color:var(--text2);">${p.ativo ? 'Ocultar' : 'Ativar'}</button>
+        <button onclick="openLojaModal('${p.id}')" style="background:var(--accent-dim);color:var(--accent);">Editar</button>
+        <button onclick="deleteProduto('${p.id}')" style="background:#fee2e2;color:#dc2626;">Excluir</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderLojaPublica() {
+  const section = document.getElementById('loja-pub-section');
+  const grid = document.getElementById('loja-pub-grid');
+  if (!section || !grid) return;
+  const cfg = loadConfig();
+  const whats = cfg.whats || '';
+  const list = loadLoja().filter(p => p.ativo && p.qtd > 0);
+  if (!list.length) { section.style.display = 'none'; return; }
+  section.style.display = '';
+  grid.innerHTML = list.map(p => {
+    const msg = encodeURIComponent(`Olá! Tenho interesse no produto: *${p.nome}* — R$ ${(p.preco||0).toFixed(2).replace('.',',')}. Ainda tem disponível?`);
+    const waLink = whats ? `https://wa.me/55${whats.replace(/\D/g,'')}?text=${msg}` : `https://wa.me/?text=${msg}`;
+    return `
+      <div class="loja-card-pub">
+        ${p.imgUrl ? `<img class="lc-img" src="${p.imgUrl}" onerror="this.style.display='none'">` : `<div class="lc-img-ph">📦</div>`}
+        <div class="lc-body">
+          <div class="lc-cat">${p.categoria}</div>
+          <div class="lc-nome">${p.nome}</div>
+          ${p.descricao ? `<div style="font-size:11px;color:var(--text3);">${p.descricao}</div>` : ''}
+          <div class="lc-preco">R$ ${(p.preco||0).toFixed(2).replace('.',',')}</div>
+          <div class="lc-stock">${p.qtd} em estoque</div>
+          <a href="${waLink}" target="_blank" class="lc-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.656 1.438 5.168L2 22l4.868-1.438A9.945 9.945 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.725 0-3.328-.47-4.7-1.284l-3.318.98.98-3.303A7.953 7.953 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+            Pedir via WhatsApp
+          </a>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════
 initFirebase();
 checkAndShowCustomerTracking();
 renderCatalog();
+renderLojaPublica();
 // Sincroniza dados remotos do GitHub (não bloqueia render inicial)
-carregarDadosRemoto().then(updated => { if (updated) { renderCatalog(); if (document.getElementById('estoque-list')) renderEstoque(); } });
+carregarDadosRemoto().then(updated => { if (updated) { renderCatalog(); renderLojaPublica(); if (document.getElementById('estoque-list')) renderEstoque(); } });
 // Sync OS e Caixa entre dispositivos (leitura não precisa de token — raw.githubusercontent.com é público)
 pullOS().then(updated => { if (updated) renderAdminOS(); });
 pullCaixa().then(updated => { if (updated) renderVendas(); });
