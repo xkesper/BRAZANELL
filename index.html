@@ -615,12 +615,6 @@ input[type="file"]#mImgFile{display:none;}
         <div class="home-card-desc">Peças, capinhas, carregadores e acessórios</div>
         <div class="home-card-cta">Ver catálogo →</div>
       </div>
-      <div class="home-card" onclick="goAparelhos()">
-        <div class="home-card-icon" style="background:#d1fae5;">📱</div>
-        <div class="home-card-title">Aparelhos</div>
-        <div class="home-card-desc">Celulares disponíveis para compra</div>
-        <div class="home-card-cta">Ver aparelhos →</div>
-      </div>
     </div>
   </div>
 </div>
@@ -701,9 +695,6 @@ input[type="file"]#mImgFile{display:none;}
     <div style="font-size:15px;font-weight:700;color:var(--text);">Aparelhos para Venda</div>
     <span class="admin-link" onclick="goAdmin()">⚙ Admin</span>
   </header>
-  <div style="max-width:960px;margin:20px auto 8px;padding:0 20px;">
-    <input type="text" id="vendaFiltSearch" placeholder="🔍 Buscar aparelho..." class="fi" style="width:100%;max-width:400px;" oninput="renderVendaPublica()">
-  </div>
   <div class="loja-grid-pub" id="venda-pub-grid" style="padding-bottom:60px;"></div>
   <div id="venda-pub-empty" style="display:none;text-align:center;padding:60px 20px;color:var(--text3);">
     <div style="font-size:40px;margin-bottom:12px;">📱</div>
@@ -4354,9 +4345,7 @@ function renderVendaPublica() {
   const empty = document.getElementById('venda-pub-empty');
   if (!grid) return;
   const cfg = loadConfig(); const whats = cfg.whats || '';
-  const search = (document.getElementById('vendaFiltSearch')?.value || '').toLowerCase();
   let list = loadVenda().filter(p => p.ativo && p.qtd > 0);
-  if (search) list = list.filter(p => p.nome.toLowerCase().includes(search));
   if (!list.length) { grid.innerHTML = ''; if (empty) empty.style.display = ''; return; }
   if (empty) empty.style.display = 'none';
   grid.innerHTML = list.map(p => _renderPubCard(p, whats, '📱')).join('');
