@@ -4457,7 +4457,14 @@ checkAndShowCustomerTracking();
 goHome();
 renderCatalog();
 // Sincroniza dados remotos do GitHub (não bloqueia render inicial)
-carregarDadosRemoto().then(updated => { if (updated) { renderCatalog(); if (document.getElementById('estoque-list')) renderEstoque(); } });
+carregarDadosRemoto().then(updated => {
+  if (updated) {
+    renderCatalog();
+    if (document.getElementById('estoque-list')) renderEstoque();
+    renderLojaPublica();
+    renderVendaPublica();
+  }
+});
 // Sync OS e Caixa entre dispositivos (leitura não precisa de token — raw.githubusercontent.com é público)
 pullOS().then(updated => { if (updated) renderAdminOS(); });
 pullCaixa().then(updated => { if (updated) renderVendas(); });
@@ -4475,6 +4482,15 @@ setInterval(() => {
   if (document.hidden) return;
   pullOS().then(updated => { if (updated) { renderAdminOS(); toast('OS atualizada de outro dispositivo', 'accent'); } });
   pullCaixa().then(updated => { if (updated) { renderVendas(); toast('Caixa atualizada de outro dispositivo', 'accent'); } });
+  carregarDadosRemoto().then(updated => {
+    if (!updated) return;
+    renderCatalog();
+    renderLojaPublica();
+    renderVendaPublica();
+    if (document.getElementById('estoque-list')) renderEstoque();
+    if (document.getElementById('venda-admin-list')) renderAdminVenda();
+    if (document.getElementById('loja-admin-list')) renderAdminLoja();
+  });
 }, 30000);
 </script>
 </body>
