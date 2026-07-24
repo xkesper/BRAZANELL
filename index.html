@@ -4287,9 +4287,9 @@ function openVendaModal(id) {
       document.getElementById('vendaImgRemBtn').style.display = '';
     }
   }
-  document.getElementById('vendaModal').style.display = 'flex';
+  document.getElementById('vendaModal').classList.add('open');
 }
-function closeVendaModal() { document.getElementById('vendaModal').style.display = 'none'; _vendaImgPendente = null; }
+function closeVendaModal() { document.getElementById('vendaModal').classList.remove('open'); _vendaImgPendente = null; }
 function closeVendaFora(e) { if (e.target === document.getElementById('vendaModal')) closeVendaModal(); }
 
 function onVendaImgSelect(e) {
