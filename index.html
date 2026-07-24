@@ -1162,7 +1162,11 @@ input[type="file"]#mImgFile{display:none;}
             <select id="lojaFiltCat" class="fi" style="max-width:180px;" onchange="renderAdminLoja()">
               <option value="">Todas as categorias</option>
               <option>Telas</option><option>Baterias</option><option>Conectores</option>
-              <option>Câmeras</option><option>Capinhas & Acessórios</option><option>Outros</option>
+              <option>Câmeras</option><option>Capinhas & Acessórios</option>
+              <option>Fone de Ouvido Sem Fio</option><option>Fone de Ouvido</option>
+              <option>Carregadores</option><option>Caixa de Som</option>
+              <option>Teclado</option><option>Mouse</option><option>Powerbank</option>
+              <option>Outros</option>
             </select>
           </div>
           <div class="loja-admin-grid" id="loja-admin-list"></div>
@@ -1306,7 +1310,11 @@ input[type="file"]#mImgFile{display:none;}
         <select class="fi" id="lojaCat">
           <option value="">Selecione...</option>
           <option>Telas</option><option>Baterias</option><option>Conectores</option>
-          <option>Câmeras</option><option>Capinhas & Acessórios</option><option>Outros</option>
+          <option>Câmeras</option><option>Capinhas & Acessórios</option>
+          <option>Fone de Ouvido Sem Fio</option><option>Fone de Ouvido</option>
+          <option>Carregadores</option><option>Caixa de Som</option>
+          <option>Teclado</option><option>Mouse</option><option>Powerbank</option>
+          <option>Outros</option>
         </select>
       </div>
       <div class="fg"><label class="fl">Descrição</label><textarea class="fi" id="lojaDesc" rows="2" placeholder="Detalhe do produto..." style="resize:vertical;"></textarea></div>
@@ -4119,9 +4127,9 @@ function openLojaModal(id) {
       document.getElementById('lojaImgBtn').style.display = 'none';
     }
   }
-  modal.style.display = 'flex';
+  modal.classList.add('open');
 }
-function closeLojaModal() { document.getElementById('lojaModal').style.display = 'none'; _lojaImgPendente = null; }
+function closeLojaModal() { document.getElementById('lojaModal').classList.remove('open'); _lojaImgPendente = null; }
 function closeLojaFora(e) { if (e.target === document.getElementById('lojaModal')) closeLojaModal(); }
 
 function onLojaImgSelect(e) {
