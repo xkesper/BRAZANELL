@@ -4137,11 +4137,22 @@ function onLojaImgSelect(e) {
   if (!file) return;
   const reader = new FileReader();
   reader.onload = ev => {
-    _lojaImgPendente = { dataUrl: ev.target.result, filename: 'loja_' + Date.now() + '_' + file.name.replace(/[^a-z0-9.]/gi,'_') };
-    document.getElementById('lojaImgPreviewImg').src = ev.target.result;
-    document.getElementById('lojaImgPreview').style.display = '';
-    document.getElementById('lojaImgBtn').style.display = 'none';
-    document.getElementById('lojaImgStatus').textContent = '📷 Imagem selecionada — será enviada ao salvar';
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const maxW = 900;
+      const scale = img.width > maxW ? maxW / img.width : 1;
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      const compressed = canvas.toDataURL('image/jpeg', 0.82);
+      _lojaImgPendente = { dataUrl: compressed };
+      document.getElementById('lojaImgPreviewImg').src = compressed;
+      document.getElementById('lojaImgPreview').style.display = '';
+      document.getElementById('lojaImgBtn').style.display = 'none';
+      document.getElementById('lojaImgStatus').textContent = '📷 Imagem pronta';
+    };
+    img.src = ev.target.result;
   };
   reader.readAsDataURL(file);
   e.target.value = '';
@@ -4170,18 +4181,7 @@ async function salvarProduto() {
   let imgUrl = '';
   if (_lojaModalId) imgUrl = (loadLoja().find(x => x.id === _lojaModalId) || {}).imgUrl || '';
 
-  if (_lojaImgPendente) {
-    const status = document.getElementById('lojaImgStatus');
-    status.textContent = '⏳ Enviando imagem para o GitHub...';
-    const token = localStorage.getItem('cellos_gh_token');
-    if (!token) {
-      toast('Token GitHub necessário para enviar imagens — configure em Config', 'amber');
-    } else {
-      const uploaded = await uploadFotoToGitHub(_lojaImgPendente.dataUrl, _lojaImgPendente.filename);
-      if (uploaded) { imgUrl = uploaded; status.textContent = '✅ Imagem enviada!'; }
-      else { status.textContent = '⚠️ Falha no upload — produto salvo sem imagem'; }
-    }
-  }
+  if (_lojaImgPendente) imgUrl = _lojaImgPendente.dataUrl;
 
   const list = loadLoja();
   const produto = {
