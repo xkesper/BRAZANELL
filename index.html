@@ -611,7 +611,22 @@ input[type="file"]#mImgFile{display:none;}
 /* ══ Public card gallery ══ */
 .va-gallery{display:flex;gap:5px;padding:6px 0 2px;overflow-x:auto;scrollbar-width:none;}
 .va-gallery::-webkit-scrollbar{display:none;}
-.va-gallery img{width:52px;height:52px;object-fit:cover;border-radius:6px;flex-shrink:0;border:1.5px solid var(--border);cursor:pointer;}
+.va-gallery img{width:52px;height:52px;object-fit:cover;border-radius:6px;flex-shrink:0;border:1.5px solid var(--border);cursor:pointer;transition:border-color .12s;}
+.va-gallery img.active-thumb{border-color:var(--accent);}
+.va-img-wrap{cursor:zoom-in;}
+/* ══ Lightbox ══ */
+#imgLightbox{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:9999;display:none;align-items:center;justify-content:center;padding:16px;}
+#imgLightbox.open{display:flex;}
+#imgLightboxImg{max-width:100%;max-height:calc(100vh - 80px);object-fit:contain;border-radius:8px;user-select:none;}
+#imgLightboxClose{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:20px;width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+#imgLightboxClose:hover{background:rgba(255,255,255,.28);}
+#imgLightboxCounter{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:6px;}
+#imgLightboxCounter span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);}
+#imgLightboxCounter span.cur{background:#fff;}
+#imgLightboxPrev,#imgLightboxNext{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;font-size:22px;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+#imgLightboxPrev{left:12px;}
+#imgLightboxNext{right:12px;}
+#imgLightboxPrev:hover,#imgLightboxNext:hover{background:rgba(255,255,255,.25);}
 .loja-admin-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
 .loja-admin-card .la-img{width:100%;height:130px;object-fit:cover;background:var(--bg3);}
 .loja-admin-card .la-img-ph{width:100%;height:130px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:32px;}
@@ -4517,17 +4532,18 @@ function _renderVendaAmzCard(p, whats) {
   const waLink = whats ? `https://wa.me/55${whats.replace(/\D/g,'')}?text=${msg}` : `https://wa.me/?text=${msg}`;
   const estoque = p.qtd > 1 ? `Em estoque (${p.qtd})` : 'Em estoque';
   const specs = [p.marca, p.memoria, p.cor, p.categoria].filter(Boolean);
-  return `<div class="venda-amz-card">
-    <div class="va-img-wrap">
-      ${p.imgUrl
-        ? `<img class="va-img" src="${p.imgUrl}" onerror="this.parentElement.innerHTML='<div class=\\'va-img-ph\\'>📱</div>'">`
-        : `<div class="va-img-ph">📱</div>`}
+  const extras = Array.isArray(p.fotos) ? p.fotos : [];
+  const allPhotos = [p.imgUrl, ...extras].filter(Boolean);
+  const photosJson = JSON.stringify(allPhotos).replace(/"/g, '&quot;');
+  return `<div class="venda-amz-card" data-photos="${photosJson}">
+    <div class="va-img-wrap" onclick="openLightbox(JSON.parse(this.closest('.venda-amz-card').dataset.photos),0)">
+      ${p.imgUrl ? `<img class="va-img" src="${p.imgUrl}">` : `<div class="va-img-ph">📱</div>`}
       <span class="va-badge">✔ ${estoque}</span>
     </div>
     <div class="va-body">
       <div class="va-nome">${p.nome}</div>
       ${specs.length ? `<div class="venda-spec-row">${specs.map(s=>`<span class="venda-spec-tag">${s}</span>`).join('')}</div>` : ''}
-      ${(Array.isArray(p.fotos) && p.fotos.length) ? `<div class="va-gallery">${p.fotos.map(f=>`<img src="${f}" onclick="event.stopPropagation();this.closest('.venda-amz-card').querySelector('.va-img').src='${f}'">`).join('')}</div>` : ''}
+      ${extras.length ? `<div class="va-gallery">${extras.map((f,i)=>`<img src="${f}" onclick="event.stopPropagation();vaThumbClick(this.closest('.venda-amz-card'),${i+1})" class="${i===0?'active-thumb':''}">`).join('')}</div>` : ''}
       ${p.descricao ? `<div class="va-desc">${p.descricao}</div>` : ''}
       <div class="va-preco-wrap">
         <div class="va-preco"><span class="va-preco-rs">R$</span>${reais}<sup style="font-size:13px;font-weight:600;">,${cents}</sup></div>
@@ -4584,6 +4600,48 @@ setInterval(() => {
     if (document.getElementById('loja-admin-list')) renderAdminLoja();
   });
 }, 30000);
+// ═══════════════════════════════════════════════
+// LIGHTBOX
+// ═══════════════════════════════════════════════
+let _lbPhotos = [];
+let _lbIdx = 0;
+
+function openLightbox(photos, startIdx) {
+  _lbPhotos = Array.isArray(photos) ? photos : [photos];
+  _lbIdx = startIdx || 0;
+  _renderLightbox();
+  document.getElementById('imgLightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('imgLightbox').classList.remove('open');
+}
+function _renderLightbox() {
+  document.getElementById('imgLightboxImg').src = _lbPhotos[_lbIdx];
+  const dots = document.getElementById('imgLightboxCounter');
+  dots.innerHTML = _lbPhotos.length > 1
+    ? _lbPhotos.map((_, i) => `<span class="${i === _lbIdx ? 'cur' : ''}"></span>`).join('')
+    : '';
+  document.getElementById('imgLightboxPrev').style.display = _lbPhotos.length > 1 ? '' : 'none';
+  document.getElementById('imgLightboxNext').style.display = _lbPhotos.length > 1 ? '' : 'none';
+}
+function lbPrev() { _lbIdx = (_lbIdx - 1 + _lbPhotos.length) % _lbPhotos.length; _renderLightbox(); }
+function lbNext() { _lbIdx = (_lbIdx + 1) % _lbPhotos.length; _renderLightbox(); }
+
+function vaThumbClick(cardEl, idx) {
+  const photos = JSON.parse(cardEl.dataset.photos || '[]');
+  const mainImg = cardEl.querySelector('.va-img');
+  if (mainImg && photos[idx]) mainImg.src = photos[idx];
+  cardEl.querySelectorAll('.va-gallery img').forEach((t, i) => t.classList.toggle('active-thumb', i === idx));
+}
 </script>
+
+<!-- Lightbox -->
+<div id="imgLightbox" onclick="if(event.target===this)closeLightbox()">
+  <button id="imgLightboxClose" onclick="closeLightbox()">✕</button>
+  <button id="imgLightboxPrev" onclick="lbPrev()">‹</button>
+  <img id="imgLightboxImg" onclick="event.stopPropagation()">
+  <button id="imgLightboxNext" onclick="lbNext()">›</button>
+  <div id="imgLightboxCounter"></div>
+</div>
 </body>
 </html>
