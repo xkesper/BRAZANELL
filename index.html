@@ -596,6 +596,22 @@ input[type="file"]#mImgFile{display:none;}
 .venda-img-rem{margin-top:6px;font-size:11px;color:var(--red);background:none;border:none;cursor:pointer;padding:0;}
 .venda-spec-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
 .venda-spec-tag{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:3px 10px;font-size:11px;color:var(--text2);}
+/* ══ Storage pills ══ */
+.vso-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px;}
+.vso{background:var(--bg3);border:1.5px solid var(--border);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .12s;}
+.vso:hover{border-color:var(--accent);color:var(--accent);}
+.vso.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+/* ══ Extra photos grid ══ */
+.venda-fotos-extras{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.vfe-slot{width:72px;height:72px;border-radius:10px;border:1.5px dashed var(--border);overflow:hidden;position:relative;cursor:pointer;flex-shrink:0;background:var(--bg3);display:flex;align-items:center;justify-content:center;transition:border-color .12s;}
+.vfe-slot:hover{border-color:var(--accent);}
+.vfe-slot img{width:100%;height:100%;object-fit:cover;display:block;}
+.vfe-slot .vfe-add{font-size:22px;color:var(--text3);}
+.vfe-rm{position:absolute;top:2px;right:2px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;}
+/* ══ Public card gallery ══ */
+.va-gallery{display:flex;gap:5px;padding:6px 0 2px;overflow-x:auto;scrollbar-width:none;}
+.va-gallery::-webkit-scrollbar{display:none;}
+.va-gallery img{width:52px;height:52px;object-fit:cover;border-radius:6px;flex-shrink:0;border:1.5px solid var(--border);cursor:pointer;}
 .loja-admin-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
 .loja-admin-card .la-img{width:100%;height:130px;object-fit:cover;background:var(--bg3);}
 .loja-admin-card .la-img-ph{width:100%;height:130px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:32px;}
@@ -1342,10 +1358,27 @@ input[type="file"]#mImgFile{display:none;}
           </select>
         </div>
       </div>
-      <!-- Memória + Cor -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div class="fg"><label class="fl">Armazenamento</label><input class="fi" id="vendaMemoria" placeholder="128GB, 256GB..."></div>
-        <div class="fg"><label class="fl">Cor</label><input class="fi" id="vendaCor" placeholder="Preto, Azul, Branco..."></div>
+      <!-- Armazenamento com pills -->
+      <div class="fg">
+        <label class="fl">Armazenamento</label>
+        <div class="vso-row" id="vendaStoragePills">
+          <button type="button" class="vso" onclick="setVendaStorage(this,'32GB')">32GB</button>
+          <button type="button" class="vso" onclick="setVendaStorage(this,'64GB')">64GB</button>
+          <button type="button" class="vso" onclick="setVendaStorage(this,'128GB')">128GB</button>
+          <button type="button" class="vso" onclick="setVendaStorage(this,'256GB')">256GB</button>
+          <button type="button" class="vso" onclick="setVendaStorage(this,'512GB')">512GB</button>
+          <button type="button" class="vso" onclick="setVendaStorage(this,'1TB')">1TB</button>
+          <button type="button" class="vso" onclick="setVendaStorage(this,'2TB')">2TB</button>
+        </div>
+        <input class="fi" id="vendaMemoria" placeholder="Ou digite personalizado..." oninput="syncStoragePill(this.value)">
+      </div>
+      <!-- Cor -->
+      <div class="fg"><label class="fl">Cor</label><input class="fi" id="vendaCor" placeholder="Preto, Azul intenso, Branco..."></div>
+      <!-- Fotos adicionais -->
+      <div class="fg">
+        <label class="fl">Fotos adicionais <span style="color:var(--text3);font-weight:400;font-size:11px;">(traseira, laterais — máx. 5)</span></label>
+        <div class="venda-fotos-extras" id="vendaFotosExtras"></div>
+        <input type="file" id="vendaFotoExtraInput" accept="image/*" style="display:none;" onchange="onVendaFotoExtraSelect(event)">
       </div>
       <!-- Descrição -->
       <div class="fg"><label class="fl">Descrição</label><textarea class="fi" id="vendaDesc" rows="3" placeholder="Bateria, acessórios inclusos, observações, estado da tela..." style="resize:vertical;"></textarea></div>
@@ -4248,10 +4281,61 @@ function saveVenda(list) { localStorage.setItem(VENDA_KEY, JSON.stringify(list))
 
 let _vendaModalId = null;
 let _vendaImgPendente = null;
+let _vendaFotosExtras = [];
+
+function setVendaStorage(btn, val) {
+  document.querySelectorAll('#vendaStoragePills .vso').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('vendaMemoria').value = val;
+}
+function syncStoragePill(val) {
+  document.querySelectorAll('#vendaStoragePills .vso').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim() === val);
+  });
+}
+function renderVendaFotosGrid() {
+  const wrap = document.getElementById('vendaFotosExtras');
+  if (!wrap) return;
+  let html = _vendaFotosExtras.map((f, i) => `
+    <div class="vfe-slot">
+      <img src="${f}">
+      <button class="vfe-rm" onclick="removeVendaFotoExtra(${i})">✕</button>
+    </div>`).join('');
+  if (_vendaFotosExtras.length < 5) {
+    html += `<div class="vfe-slot" onclick="document.getElementById('vendaFotoExtraInput').click()"><span class="vfe-add">+</span></div>`;
+  }
+  wrap.innerHTML = html;
+}
+function removeVendaFotoExtra(idx) {
+  _vendaFotosExtras.splice(idx, 1);
+  renderVendaFotosGrid();
+}
+function onVendaFotoExtraSelect(e) {
+  const file = e.target.files[0];
+  if (!file || _vendaFotosExtras.length >= 5) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const maxW = 800;
+      const scale = img.width > maxW ? maxW / img.width : 1;
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      _vendaFotosExtras.push(canvas.toDataURL('image/jpeg', 0.80));
+      renderVendaFotosGrid();
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+  e.target.value = '';
+}
 
 function openVendaModal(id) {
   _vendaModalId = id || null;
   _vendaImgPendente = null;
+  _vendaFotosExtras = [];
   document.getElementById('vendaModalTitle').textContent = id ? 'Editar Aparelho' : 'Novo Aparelho';
   document.getElementById('vendaNome').value = '';
   document.getElementById('vendaMarca').value = '';
@@ -4268,6 +4352,7 @@ function openVendaModal(id) {
   document.getElementById('vendaImgRemBtn').style.display = 'none';
   document.getElementById('vendaModalSaveBtn').textContent = 'Salvar aparelho';
   document.getElementById('vendaModalSaveBtn').disabled = false;
+  document.querySelectorAll('#vendaStoragePills .vso').forEach(b => b.classList.remove('active'));
   if (id) {
     const p = loadVenda().find(x => x.id === id);
     if (!p) return;
@@ -4280,13 +4365,16 @@ function openVendaModal(id) {
     document.getElementById('vendaPreco').value = p.preco || '';
     document.getElementById('vendaQtd').value = p.qtd || 1;
     document.getElementById('vendaAtivo').checked = p.ativo !== false;
+    if (p.memoria) syncStoragePill(p.memoria);
     if (p.imgUrl) {
       document.getElementById('vendaImgPreviewImg').src = p.imgUrl;
       document.getElementById('vendaImgPreviewImg').style.display = '';
       document.getElementById('vendaImgPh').style.display = 'none';
       document.getElementById('vendaImgRemBtn').style.display = '';
     }
+    _vendaFotosExtras = Array.isArray(p.fotos) ? [...p.fotos] : [];
   }
+  renderVendaFotosGrid();
   document.getElementById('vendaModal').classList.add('open');
 }
 function closeVendaModal() { document.getElementById('vendaModal').classList.remove('open'); _vendaImgPendente = null; }
@@ -4350,7 +4438,10 @@ function salvarAparelho() {
     descricao: document.getElementById('vendaDesc').value.trim(),
     preco: parseFloat(document.getElementById('vendaPreco').value) || 0,
     qtd: parseInt(document.getElementById('vendaQtd').value) || 1,
-    ativo: document.getElementById('vendaAtivo').checked, imgUrl, updatedAt: Date.now(),
+    ativo: document.getElementById('vendaAtivo').checked,
+    imgUrl,
+    fotos: [..._vendaFotosExtras],
+    updatedAt: Date.now(),
   };
   if (_vendaModalId) { const idx = list.findIndex(x => x.id === _vendaModalId); if (idx >= 0) list[idx] = ap; else list.push(ap); }
   else list.push(ap);
@@ -4436,6 +4527,7 @@ function _renderVendaAmzCard(p, whats) {
     <div class="va-body">
       <div class="va-nome">${p.nome}</div>
       ${specs.length ? `<div class="venda-spec-row">${specs.map(s=>`<span class="venda-spec-tag">${s}</span>`).join('')}</div>` : ''}
+      ${(Array.isArray(p.fotos) && p.fotos.length) ? `<div class="va-gallery">${p.fotos.map(f=>`<img src="${f}" onclick="event.stopPropagation();this.closest('.venda-amz-card').querySelector('.va-img').src='${f}'">`).join('')}</div>` : ''}
       ${p.descricao ? `<div class="va-desc">${p.descricao}</div>` : ''}
       <div class="va-preco-wrap">
         <div class="va-preco"><span class="va-preco-rs">R$</span>${reais}<sup style="font-size:13px;font-weight:600;">,${cents}</sup></div>
