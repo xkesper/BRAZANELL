@@ -562,20 +562,53 @@ input[type="file"]#mImgFile{display:none;}
 .home-card:hover .home-card-cta svg{transform:translateX(4px);}
 .page-back-btn{display:flex;align-items:center;gap:5px;background:none;border:none;color:var(--text3);font-size:12px;font-weight:500;cursor:pointer;padding:6px 10px;border-radius:8px;}
 .page-back-btn:hover{background:var(--bg3);color:var(--text);}
-/* ══ Loja de Produtos ══ */
-.loja-grid-pub{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;padding:0 20px 40px;max-width:960px;margin:0 auto;}
-.loja-section-title{max-width:960px;margin:32px auto 16px;padding:0 20px;font-size:17px;font-weight:700;color:var(--text);}
+/* ══ Loja Hero ══ */
+.loja-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(6,182,212,.07) 0%,transparent 55%);padding:36px 20px 32px;max-width:960px;margin:0 auto;}
+.loja-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;}
+.loja-hero-badge{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(6,182,212,.3);background:rgba(6,182,212,.08);color:var(--accent);padding:5px 14px;border-radius:20px;font-size:11.5px;font-weight:600;letter-spacing:.3px;margin-bottom:16px;}
+.loja-hero-h1{font-size:26px;font-weight:800;color:var(--text);line-height:1.25;letter-spacing:-.5px;margin-bottom:10px;}
+.loja-hero-h1 span{background:linear-gradient(135deg,var(--accent),#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.loja-hero-desc{font-size:13px;color:var(--text3);line-height:1.65;margin-bottom:22px;}
+.loja-hero-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.lhb-primary{display:flex;align-items:center;gap:7px;background:var(--accent);color:#0a0a0a;border:none;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;transition:filter .15s,transform .1s;}
+.lhb-primary:hover{filter:brightness(1.1);transform:translateY(-1px);}
+.lhb-outline{display:flex;align-items:center;gap:7px;background:transparent;color:var(--text);border:1.5px solid var(--border);border-radius:10px;padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .15s,background .15s;}
+.lhb-outline:hover{border-color:var(--accent);background:rgba(6,182,212,.06);}
+.loja-hero-blob1{position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(6,182,212,.12);filter:blur(55px);pointer-events:none;}
+.loja-hero-blob2{position:absolute;bottom:-60px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(124,58,237,.1);filter:blur(50px);pointer-events:none;}
+.loja-hero-preview{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.lhp-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;}
+.lhp-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.15);}
+.lhp-img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--bg3);}
+.lhp-img-ph{width:100%;aspect-ratio:1;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:32px;}
+.lhp-body{padding:9px 11px 11px;}
+.lhp-cat{font-size:9.5px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;}
+.lhp-nome{font-size:12px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:5px;}
+.lhp-preco{font-size:15px;font-weight:800;color:var(--text);}
+/* ══ Loja de Produtos — Cards ══ */
+.loja-grid-pub{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px;padding:0 20px 60px;max-width:960px;margin:0 auto;}
+.loja-section-title{max-width:960px;margin:28px auto 14px;padding:0 20px;font-size:16px;font-weight:700;color:var(--text);}
 .loja-section-title span{color:var(--accent);}
-.loja-card-pub{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .15s;}
-.loja-card-pub:hover{transform:translateY(-2px);}
-.loja-card-pub .lc-img{width:100%;height:160px;object-fit:cover;background:var(--bg3);}
-.loja-card-pub .lc-img-ph{width:100%;height:160px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:40px;}
-.loja-card-pub .lc-body{padding:12px;flex:1;display:flex;flex-direction:column;gap:4px;}
-.loja-card-pub .lc-cat{font-size:10px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;}
-.loja-card-pub .lc-nome{font-size:13px;font-weight:600;color:var(--text);}
-.loja-card-pub .lc-preco{font-size:18px;font-weight:700;color:var(--green);margin:4px 0;}
-.loja-card-pub .lc-stock{font-size:11px;color:var(--text3);}
-.loja-card-pub .lc-btn{margin-top:8px;background:#25d366;color:#fff;border:none;border-radius:10px;padding:9px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;}
+.loja-card-pub{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;position:relative;}
+.loja-card-pub:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.16);}
+.loja-card-pub .lc-img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--bg3);}
+.loja-card-pub .lc-img-ph{width:100%;aspect-ratio:1;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:40px;}
+.loja-card-pub .lc-body{padding:12px 13px 13px;flex:1;display:flex;flex-direction:column;gap:3px;}
+.loja-card-pub .lc-cat{font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;}
+.loja-card-pub .lc-nome{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.35;}
+.loja-card-pub .lc-desc{font-size:11px;color:var(--text3);line-height:1.45;margin:2px 0;}
+.lc-stars{display:flex;align-items:center;gap:5px;margin:5px 0 2px;}
+.lc-star-row{display:flex;gap:1px;}
+.lc-star-row svg{width:11px;height:11px;}
+.lc-star-filled{fill:var(--text);}
+.lc-star-empty{fill:none;stroke:var(--text3);stroke-width:1.5;}
+.lc-reviews{font-size:10.5px;color:var(--text3);}
+.loja-card-pub .lc-preco{font-size:20px;font-weight:800;color:var(--text);margin:3px 0 1px;}
+.loja-card-pub .lc-preco sup{font-size:11px;font-weight:500;}
+.loja-card-pub .lc-stock{font-size:10.5px;color:var(--text3);margin-bottom:6px;}
+.loja-card-pub .lc-btn{margin-top:auto;background:linear-gradient(135deg,#25d366,#1aad56);color:#fff;border:none;border-radius:10px;padding:9px 10px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;transition:filter .15s;}
+.loja-card-pub .lc-btn:hover{filter:brightness(1.08);}
+@media(max-width:640px){.loja-hero-inner{grid-template-columns:1fr;}.loja-hero-preview{display:none;}.loja-hero{padding:24px 16px 20px;}.loja-hero-h1{font-size:21px;}}
 .loja-admin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
 /* ══ Aparelhos Venda — Estilo Profissional ══ */
 .venda-fk-list{display:flex;flex-direction:column;gap:16px;padding:16px 16px 80px;max-width:960px;margin:0 auto;}
@@ -781,12 +814,39 @@ input[type="file"]#mImgFile{display:none;}
       Início
     </button>
     <div style="font-size:15px;font-weight:700;color:var(--text);">Produtos</div>
-    <span class="admin-link" onclick="goAdmin()">⚙ Admin</span>
+    <span style="width:80px;"></span>
   </header>
-  <div style="max-width:960px;margin:20px auto 8px;padding:0 20px;">
-    <input type="text" id="lojaFiltSearch" placeholder="🔍 Buscar produto..." class="fi" style="width:100%;max-width:400px;" oninput="renderLojaPublica()">
+  <!-- Hero -->
+  <div class="loja-hero">
+    <div class="loja-hero-blob1"></div>
+    <div class="loja-hero-blob2"></div>
+    <div class="loja-hero-inner">
+      <div>
+        <div class="loja-hero-badge">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Novidades 2025
+        </div>
+        <div class="loja-hero-h1">Acessórios tech para o seu <span>dia a dia</span></div>
+        <div class="loja-hero-desc">Capinhas, fones, carregadores, caixas de som e muito mais — qualidade e preço justo em Curitiba-PR.</div>
+        <div class="loja-hero-btns">
+          <button class="lhb-primary" onclick="document.getElementById('loja-pub-grid').scrollIntoView({behavior:'smooth'})">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            Ver Produtos
+          </button>
+          <button class="lhb-outline" onclick="_lojaHeroWA()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.82.487 3.53 1.338 5.007L2.05 21.95l5.082-1.328A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2z"/></svg>
+            Fale Conosco
+          </button>
+        </div>
+      </div>
+      <div class="loja-hero-preview" id="loja-hero-preview"></div>
+    </div>
   </div>
-  <div class="loja-grid-pub" id="loja-pub-grid" style="padding-bottom:60px;"></div>
+  <!-- Busca -->
+  <div style="max-width:960px;margin:16px auto 8px;padding:0 20px;">
+    <input type="text" id="lojaFiltSearch" placeholder="Buscar produto..." class="fi" style="width:100%;max-width:360px;" oninput="renderLojaPublica()">
+  </div>
+  <div class="loja-grid-pub" id="loja-pub-grid"></div>
   <div id="loja-pub-empty" style="display:none;text-align:center;padding:60px 20px;color:var(--text3);">
     <div style="font-size:40px;margin-bottom:12px;">🛍️</div>
     <div style="font-size:15px;font-weight:600;">Nenhum produto disponível</div>
@@ -4307,6 +4367,31 @@ function renderAdminLoja() {
   `).join('');
 }
 
+function _lojaHeroWA() {
+  const cfg = loadConfig();
+  const w = cfg.whats || '';
+  if (w) window.open(`https://wa.me/55${w.replace(/\D/g,'')}`, '_blank');
+}
+
+function _renderLojaHeroPreview(list, whats) {
+  const el = document.getElementById('loja-hero-preview');
+  if (!el) return;
+  const featured = list.slice(0, 2);
+  if (!featured.length) { el.style.display = 'none'; return; }
+  el.style.display = '';
+  el.innerHTML = featured.map(p => {
+    const preco = (p.preco||0).toFixed(2).replace('.',',');
+    return `<div class="lhp-card" onclick="document.getElementById('loja-pub-grid').scrollIntoView({behavior:'smooth'})">
+      ${p.imgUrl ? `<img class="lhp-img" src="${p.imgUrl}">` : `<div class="lhp-img-ph">📦</div>`}
+      <div class="lhp-body">
+        ${p.categoria ? `<div class="lhp-cat">${p.categoria}</div>` : ''}
+        <div class="lhp-nome">${p.nome}</div>
+        <div class="lhp-preco"><sup style="font-size:10px;font-weight:500;">R$</sup>${preco.split(',')[0]}<span style="font-size:11px;font-weight:600;">,${preco.split(',')[1]}</span></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
 function renderLojaPublica() {
   const grid = document.getElementById('loja-pub-grid');
   const empty = document.getElementById('loja-pub-empty');
@@ -4315,6 +4400,7 @@ function renderLojaPublica() {
   const whats = cfg.whats || '';
   const search = (document.getElementById('lojaFiltSearch')?.value || '').toLowerCase();
   let list = loadLoja().filter(p => p.ativo && p.qtd > 0);
+  _renderLojaHeroPreview(list, whats);
   if (search) list = list.filter(p => p.nome.toLowerCase().includes(search) || (p.categoria||'').toLowerCase().includes(search));
   if (!list.length) { grid.innerHTML = ''; if (empty) empty.style.display = ''; return; }
   if (empty) empty.style.display = 'none';
@@ -4322,18 +4408,21 @@ function renderLojaPublica() {
 }
 
 function _renderPubCard(p, whats, ph) {
-  const msg = encodeURIComponent(`Olá! Tenho interesse: *${p.nome}* — R$ ${(p.preco||0).toFixed(2).replace('.',',')}. Ainda tem disponível?`);
+  const preco = (p.preco||0).toFixed(2).replace('.',',');
+  const [reais, cents] = preco.split(',');
+  const msg = encodeURIComponent(`Olá! Tenho interesse: *${p.nome}* — R$ ${preco}. Ainda tem disponível?`);
   const waLink = whats ? `https://wa.me/55${whats.replace(/\D/g,'')}?text=${msg}` : `https://wa.me/?text=${msg}`;
+  const stars = Array.from({length:5},(_,i)=>`<svg class="${i<4?'lc-star-filled':'lc-star-empty'}" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`).join('');
   return `<div class="loja-card-pub">
     ${p.imgUrl ? `<img class="lc-img" src="${p.imgUrl}" onerror="this.style.display='none'">` : `<div class="lc-img-ph">${ph}</div>`}
     <div class="lc-body">
       ${p.categoria ? `<div class="lc-cat">${p.categoria}</div>` : ''}
       <div class="lc-nome">${p.nome}</div>
-      ${p.descricao ? `<div style="font-size:11px;color:var(--text3);line-height:1.4;">${p.descricao}</div>` : ''}
-      <div class="lc-preco">R$ ${(p.preco||0).toFixed(2).replace('.',',')}</div>
-      <div class="lc-stock">${p.qtd > 1 ? p.qtd + ' disponíveis' : 'Disponível'}</div>
+      ${p.descricao ? `<div class="lc-desc">${p.descricao}</div>` : ''}
+      <div class="lc-stars"><div class="lc-star-row">${stars}</div><span class="lc-reviews">${p.qtd > 1 ? p.qtd+' disponíveis' : 'Disponível'}</span></div>
+      <div class="lc-preco"><sup>R$</sup>${reais}<span style="font-size:12px;font-weight:600;">,${cents}</span></div>
       <a href="${waLink}" target="_blank" class="lc-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.656 1.438 5.168L2 22l4.868-1.438A9.945 9.945 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.725 0-3.328-.47-4.7-1.284l-3.318.98.98-3.303A7.953 7.953 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.82.487 3.53 1.338 5.007L2.05 21.95l5.082-1.328A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm.001 18c-1.714 0-3.31-.469-4.68-1.283l-.337-.2-3.016.788.806-2.946-.221-.349A7.964 7.964 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
         Pedir via WhatsApp
       </a>
     </div>
