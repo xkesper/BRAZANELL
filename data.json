@@ -1,5 +1,5 @@
 {
-  "version": 1784857325660,
+  "version": 1785206435657,
   "modelos": [
     {
       "id": "a1",
@@ -4914,6 +4914,35 @@
         }
       ],
       "_customServicos": true
+    },
+    {
+      "id": "s21",
+      "brand": "Samsung",
+      "icon": "🌀",
+      "name": "Galaxy A15",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a14-4g.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
     }
   ],
   "config": {
