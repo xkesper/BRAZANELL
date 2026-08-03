@@ -1,5 +1,5 @@
 {
-  "version": 1785279607694,
+  "version": 1785716856112,
   "modelos": [
     {
       "id": "a1",
@@ -4111,25 +4111,26 @@
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
-          "preco": 0
+          "preco": 300
         },
         {
           "nome": "Troca de Tela/Display Oled",
-          "preco": 0
+          "preco": 500
         },
         {
           "nome": "Troca de Bateria",
-          "preco": 0
+          "preco": 200
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
+          "preco": 130
         },
         {
           "nome": "Reparo de Câmera",
           "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "x2",
@@ -4922,6 +4923,694 @@
         },
         {
           "nome": "Troca de Tela/Display Oled",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "a30",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 16e",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-16e.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "a31",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 17",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "a32",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 17 Air",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-air.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "a33",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 17 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "a34",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 17 Pro Max",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17-pro-max.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "a35",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone 17e",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-17e.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tela/Display Oled Premium",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "a36",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone SE (2020)",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-se-2020-.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "a37",
+      "brand": "Apple",
+      "icon": "🍎",
+      "name": "iPhone SE (2022)",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-se-2022-.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Tampa Traseira",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Flex de Aproximidade",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "ss8",
+      "brand": "Samsung",
+      "icon": "🌀",
+      "name": "Galaxy S25 FE",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s25-fe.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "s57",
+      "brand": "Samsung",
+      "icon": "🌀",
+      "name": "Galaxy A57",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a57.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x23",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi Note 7",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-7.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x24",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi Note 8",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-8.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x25",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi Note 8 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-8-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x26",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi Note 9",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-9.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x27",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi Note 9S",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-9-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x28",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi Note 10 4G",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note10--.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x29",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi Note 11 4G",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-11-global.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x30",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi A3x",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-a3x-new.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x31",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi Note 9 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-9-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x32",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi Note 10 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note10-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x33",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi Note 11 Pro",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note11-pro.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x34",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Redmi 12C",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-12c.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x35",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Poco M5",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-m5.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Bateria",
+          "preco": 0
+        },
+        {
+          "nome": "Troca de Conector de Carga",
+          "preco": 0
+        },
+        {
+          "nome": "Reparo de Câmera",
+          "preco": 0
+        }
+      ]
+    },
+    {
+      "id": "x36",
+      "brand": "Xiaomi",
+      "icon": "🔴",
+      "name": "Poco M5s",
+      "imgData": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-m5s.jpg",
+      "servicos": [
+        {
+          "nome": "Troca de Tela/Display",
           "preco": 0
         },
         {
