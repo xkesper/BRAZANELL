@@ -1,5 +1,5 @@
 {
-  "version": 1785717586306,
+  "version": 1785717599769,
   "modelos": [
     {
       "id": "a1",
@@ -5246,17 +5246,18 @@
         },
         {
           "nome": "Troca de Bateria",
-          "preco": 0
+          "preco": 350
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
+          "preco": 300
         },
         {
           "nome": "Reparo de Câmera",
           "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "s57",
