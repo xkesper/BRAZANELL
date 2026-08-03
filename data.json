@@ -1,5 +1,5 @@
 {
-  "version": 1785716932721,
+  "version": 1785716938997,
   "modelos": [
     {
       "id": "a1",
@@ -5495,21 +5495,22 @@
       "servicos": [
         {
           "nome": "Troca de Tela/Display",
-          "preco": 0
+          "preco": 240
         },
         {
           "nome": "Troca de Bateria",
-          "preco": 0
+          "preco": 190
         },
         {
           "nome": "Troca de Conector de Carga",
-          "preco": 0
+          "preco": 110
         },
         {
           "nome": "Reparo de Câmera",
           "preco": 0
         }
-      ]
+      ],
+      "_customServicos": true
     },
     {
       "id": "x32",
