@@ -613,6 +613,32 @@ input[type="file"]#mImgFile{display:none;}
 .lc-cart-btn{margin-top:auto;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:9px 10px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:filter .15s,background .2s;}
 .lc-cart-btn:hover{filter:brightness(1.1);}
 .lc-cart-btn.added{background:#22c55e;}
+/* ── Loja Category Nav ── */
+.loja-cat-nav{display:flex;gap:2px;overflow-x:auto;padding:8px 16px 2px;max-width:960px;margin:0 auto;scrollbar-width:none;}
+.loja-cat-nav::-webkit-scrollbar{display:none;}
+.lcn-item{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:9px 13px 9px;border-radius:14px;cursor:pointer;white-space:nowrap;transition:background .15s;flex-shrink:0;user-select:none;}
+.lcn-item:hover{background:var(--bg3);}
+.lcn-item.active{background:rgba(6,182,212,.1);}
+.lcn-item.active .lcn-label{color:var(--accent);font-weight:700;}
+.lcn-item.active .lcn-icon-wrap svg{stroke:var(--accent);}
+.lcn-icon-wrap{width:36px;height:36px;background:var(--bg3);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+.lcn-item.active .lcn-icon-wrap{background:rgba(6,182,212,.15);}
+.lcn-icon-wrap svg{width:18px;height:18px;stroke:var(--text3);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .15s;}
+.lcn-item:hover .lcn-icon-wrap svg{stroke:var(--text);}
+.lcn-label{font-size:10.5px;font-weight:600;color:var(--text3);transition:color .15s;}
+.lcn-item:hover .lcn-label{color:var(--text);}
+/* dropdown */
+.lcn-drop{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:6px;z-index:500;}
+.lcn-item:hover .lcn-drop{display:block;}
+.lcn-drop::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;}
+.lcn-drop-inner{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:8px;min-width:200px;box-shadow:0 12px 40px rgba(0,0,0,.2);}
+.lcn-sub-title{font-size:9.5px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;padding:4px 10px 5px;margin-bottom:2px;}
+.lcn-sub{padding:7px 10px;border-radius:9px;font-size:12.5px;color:var(--text);cursor:pointer;transition:background .1s,color .1s;display:flex;align-items:center;gap:8px;}
+.lcn-sub:hover{background:var(--bg3);color:var(--accent);}
+.lcn-sub svg{width:13px;height:13px;stroke:var(--text3);fill:none;stroke-width:2;flex-shrink:0;transition:stroke .1s;}
+.lcn-sub:hover svg{stroke:var(--accent);}
+.lcn-drop-divider{height:1px;background:var(--border);margin:5px 0;}
+@media(max-width:640px){.lcn-drop{display:none!important;}}
 .loja-card-pub .lc-preco{font-size:20px;font-weight:800;color:var(--text);margin:3px 0 1px;}
 .loja-card-pub .lc-preco sup{font-size:11px;font-weight:500;}
 .loja-card-pub .lc-stock{font-size:10.5px;color:var(--text3);margin-bottom:6px;}
@@ -848,8 +874,113 @@ input[type="file"]#mImgFile{display:none;}
       <div class="loja-hero-preview" id="loja-hero-preview"></div>
     </div>
   </div>
+  <!-- Category Nav -->
+  <div class="loja-cat-nav" id="lojaCatNav">
+    <div class="lcn-item active" id="lcn-todos" onclick="setLojaCat('','todos')">
+      <div class="lcn-icon-wrap"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+      <div class="lcn-label">Todos</div>
+    </div>
+    <div class="lcn-item" id="lcn-telas" onclick="setLojaCat('tela','telas')">
+      <div class="lcn-icon-wrap"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="21" x2="15" y2="21"/><rect x="8" y="5" width="8" height="12" rx="1"/></svg></div>
+      <div class="lcn-label">Telas</div>
+      <div class="lcn-drop" onclick="event.stopPropagation()">
+        <div class="lcn-drop-inner">
+          <div class="lcn-sub-title">Tipo de Tela</div>
+          <div class="lcn-sub" onclick="setLojaCat('Display','telas')"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Display</div>
+          <div class="lcn-sub" onclick="setLojaCat('LCD','telas')"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><rect x="8" y="6" width="8" height="10" rx="1"/></svg>LCD</div>
+          <div class="lcn-sub" onclick="setLojaCat('OLED','telas')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3"/></svg>OLED / AMOLED</div>
+          <div class="lcn-sub" onclick="setLojaCat('Touch','telas')"><svg viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-4 0v1M14 7V4a2 2 0 0 0-4 0v3M10 7V6a2 2 0 0 0-4 0v8l-2-2a2 2 0 0 0-2.83 2.83l4 4A6 6 0 0 0 18 16v-5"/></svg>Touch / Flex</div>
+          <div class="lcn-sub" onclick="setLojaCat('Aro','telas')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg>Aro / Frame</div>
+        </div>
+      </div>
+    </div>
+    <div class="lcn-item" id="lcn-baterias" onclick="setLojaCat('bateria','baterias')">
+      <div class="lcn-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="11" rx="2"/><path d="M22 11v3"/><line x1="6" y1="12" x2="14" y2="12"/></svg></div>
+      <div class="lcn-label">Baterias</div>
+      <div class="lcn-drop" onclick="event.stopPropagation()">
+        <div class="lcn-drop-inner">
+          <div class="lcn-sub-title">Por Marca</div>
+          <div class="lcn-sub" onclick="setLojaCat('Bateria iPhone','baterias')"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="11" rx="2"/><path d="M22 11v3"/></svg>iPhone</div>
+          <div class="lcn-sub" onclick="setLojaCat('Bateria Samsung','baterias')"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="11" rx="2"/><path d="M22 11v3"/></svg>Samsung</div>
+          <div class="lcn-sub" onclick="setLojaCat('Bateria Xiaomi','baterias')"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="11" rx="2"/><path d="M22 11v3"/></svg>Xiaomi</div>
+          <div class="lcn-sub" onclick="setLojaCat('Bateria Motorola','baterias')"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="11" rx="2"/><path d="M22 11v3"/></svg>Motorola</div>
+          <div class="lcn-sub" onclick="setLojaCat('Bateria Universal','baterias')"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="11" rx="2"/><path d="M22 11v3"/></svg>Universal</div>
+        </div>
+      </div>
+    </div>
+    <div class="lcn-item" id="lcn-acessorios" onclick="setLojaCat('capinha','acessorios')">
+      <div class="lcn-icon-wrap"><svg viewBox="0 0 24 24"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
+      <div class="lcn-label">Acessórios</div>
+      <div class="lcn-drop" onclick="event.stopPropagation()">
+        <div class="lcn-drop-inner">
+          <div class="lcn-sub-title">Tipo</div>
+          <div class="lcn-sub" onclick="setLojaCat('Capinha','acessorios')"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>Capinha / Case</div>
+          <div class="lcn-sub" onclick="setLojaCat('Película','acessorios')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>Película / Vidro</div>
+          <div class="lcn-sub" onclick="setLojaCat('Suporte','acessorios')"><svg viewBox="0 0 24 24"><path d="M12 2v8M12 10l-3 3h6l-3-3z"/><path d="M5 22h14M12 17v5"/><rect x="3" y="10" width="18" height="7" rx="1"/></svg>Suporte Veicular</div>
+          <div class="lcn-sub" onclick="setLojaCat('Capa Militar','acessorios')"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Capa Militar</div>
+        </div>
+      </div>
+    </div>
+    <div class="lcn-item" id="lcn-pecas" onclick="setLojaCat('peça','pecas')">
+      <div class="lcn-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <div class="lcn-label">Peças</div>
+      <div class="lcn-drop" onclick="event.stopPropagation()">
+        <div class="lcn-drop-inner">
+          <div class="lcn-sub-title">Componentes</div>
+          <div class="lcn-sub" onclick="setLojaCat('Conector','pecas')"><svg viewBox="0 0 24 24"><path d="M12 22v-5M12 7V2M7 7h10l1 5H6l1-5zM6 12l-2 5h16l-2-5"/></svg>Conector de Carga</div>
+          <div class="lcn-sub" onclick="setLojaCat('Câmera','pecas')"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>Câmera</div>
+          <div class="lcn-sub" onclick="setLojaCat('Alto-falante','pecas')"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>Alto-falante</div>
+          <div class="lcn-sub" onclick="setLojaCat('Tampa Traseira','pecas')"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="18" r="1"/></svg>Tampa Traseira</div>
+          <div class="lcn-sub" onclick="setLojaCat('Flex','pecas')"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Flex / Cabo Flat</div>
+          <div class="lcn-drop-divider"></div>
+          <div class="lcn-sub" onclick="setLojaCat('Botão','pecas')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>Botões</div>
+        </div>
+      </div>
+    </div>
+    <div class="lcn-item" id="lcn-cabos" onclick="setLojaCat('cabo','cabos')">
+      <div class="lcn-icon-wrap"><svg viewBox="0 0 24 24"><path d="M6.5 6.5L3 10l3.5 3.5"/><path d="M17.5 17.5L21 14l-3.5-3.5"/><path d="M3 10h18"/><path d="M3 14h18"/></svg></div>
+      <div class="lcn-label">Cabos</div>
+      <div class="lcn-drop" onclick="event.stopPropagation()">
+        <div class="lcn-drop-inner">
+          <div class="lcn-sub-title">Tipo de Cabo</div>
+          <div class="lcn-sub" onclick="setLojaCat('USB-C','cabos')"><svg viewBox="0 0 24 24"><rect x="7" y="10" width="10" height="7" rx="2"/><path d="M12 17v4M8 21h8"/><line x1="12" y1="3" x2="12" y2="10"/></svg>Cabo USB-C</div>
+          <div class="lcn-sub" onclick="setLojaCat('Lightning','cabos')"><svg viewBox="0 0 24 24"><rect x="7" y="10" width="10" height="7" rx="2"/><path d="M12 17v4M8 21h8"/><line x1="12" y1="3" x2="12" y2="10"/></svg>Cabo Lightning</div>
+          <div class="lcn-sub" onclick="setLojaCat('Micro-USB','cabos')"><svg viewBox="0 0 24 24"><rect x="7" y="10" width="10" height="7" rx="2"/><line x1="12" y1="3" x2="12" y2="10"/></svg>Cabo Micro-USB</div>
+          <div class="lcn-drop-divider"></div>
+          <div class="lcn-sub-title">Carregadores</div>
+          <div class="lcn-sub" onclick="setLojaCat('Carregador','cabos')"><svg viewBox="0 0 24 24"><path d="M18 7H6v10h12V7z"/><path d="M12 2v5M12 17v5"/></svg>Carregador</div>
+          <div class="lcn-sub" onclick="setLojaCat('Wireless','cabos')"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>Carregador Wireless</div>
+        </div>
+      </div>
+    </div>
+    <div class="lcn-item" id="lcn-fones" onclick="setLojaCat('fone','fones')">
+      <div class="lcn-icon-wrap"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+      <div class="lcn-label">Fones & Áudio</div>
+      <div class="lcn-drop" onclick="event.stopPropagation()">
+        <div class="lcn-drop-inner">
+          <div class="lcn-sub-title">Áudio</div>
+          <div class="lcn-sub" onclick="setLojaCat('Fone de Ouvido','fones')"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>Fone de Ouvido</div>
+          <div class="lcn-sub" onclick="setLojaCat('Bluetooth','fones')"><svg viewBox="0 0 24 24"><polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"/></svg>Bluetooth / TWS</div>
+          <div class="lcn-sub" onclick="setLojaCat('Caixa de Som','fones')"><svg viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="20" rx="2"/><circle cx="12" cy="14" r="4"/><circle cx="12" cy="6" r="1"/></svg>Caixa de Som</div>
+          <div class="lcn-sub" onclick="setLojaCat('Adaptador','fones')"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3M9 12h6"/></svg>Adaptador P2/USB</div>
+        </div>
+      </div>
+    </div>
+    <div class="lcn-item" id="lcn-informatica" onclick="setLojaCat('cartão','informatica')">
+      <div class="lcn-icon-wrap"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="lcn-label">Informática</div>
+      <div class="lcn-drop" onclick="event.stopPropagation()">
+        <div class="lcn-drop-inner">
+          <div class="lcn-sub-title">Tipo</div>
+          <div class="lcn-sub" onclick="setLojaCat('Cartão SD','informatica')"><svg viewBox="0 0 24 24"><path d="M7 22H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9l5 5v5"/><polyline points="14 2 14 8 20 8"/><rect x="10" y="14" width="14" height="8" rx="2"/><path d="M10 17h14M14 14v8M18 14v8"/></svg>Cartão SD / Memória</div>
+          <div class="lcn-sub" onclick="setLojaCat('Pendrive','informatica')"><svg viewBox="0 0 24 24"><path d="M14 8H8a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-2"/><path d="M12 2v6M9 5h6"/></svg>Pendrive</div>
+          <div class="lcn-sub" onclick="setLojaCat('SSD','informatica')"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="12" x2="6" y2="12"/><line x1="10" y1="12" x2="10" y2="12"/><line x1="14" y1="10" x2="14" y2="14"/></svg>SSD / HD Externo</div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Busca -->
-  <div style="max-width:960px;margin:16px auto 8px;padding:0 20px;">
+  <div style="max-width:960px;margin:10px auto 8px;padding:0 20px;">
     <input type="text" id="lojaFiltSearch" placeholder="Buscar produto..." class="fi" style="width:100%;max-width:360px;" oninput="renderLojaPublica()">
   </div>
   <div class="loja-grid-pub" id="loja-pub-grid"></div>
@@ -4452,6 +4583,20 @@ function _renderLojaHeroPreview(list, whats) {
   }).join('');
 }
 
+let _lojaCatFilter = '';
+let _lojaCatActiveId = 'todos';
+
+function setLojaCat(keyword, itemId) {
+  _lojaCatFilter = keyword;
+  _lojaCatActiveId = itemId || 'todos';
+  document.querySelectorAll('#lojaCatNav .lcn-item').forEach(el => el.classList.remove('active'));
+  const active = document.getElementById('lcn-' + _lojaCatActiveId);
+  if (active) active.classList.add('active');
+  renderLojaPublica();
+  const grid = document.getElementById('loja-pub-grid');
+  if (grid) grid.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
 function renderLojaPublica() {
   const grid = document.getElementById('loja-pub-grid');
   const empty = document.getElementById('loja-pub-empty');
@@ -4462,6 +4607,10 @@ function renderLojaPublica() {
   let list = loadLoja().filter(p => p.ativo && p.qtd > 0);
   _renderLojaHeroPreview(list, whats);
   if (search) list = list.filter(p => p.nome.toLowerCase().includes(search) || (p.categoria||'').toLowerCase().includes(search));
+  if (_lojaCatFilter) {
+    const cf = _lojaCatFilter.toLowerCase();
+    list = list.filter(p => (p.categoria||'').toLowerCase().includes(cf));
+  }
   if (!list.length) { grid.innerHTML = ''; if (empty) empty.style.display = ''; return; }
   if (empty) empty.style.display = 'none';
   grid.innerHTML = list.map(p => _renderPubCard(p, whats, '📦')).join('');
