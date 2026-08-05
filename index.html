@@ -749,6 +749,7 @@ input[type="file"]#mImgFile{display:none;}
 @media (prefers-color-scheme:dark){.la-badge.ativo{background:#064e3b;color:#6ee7b7;}}
 :root[data-theme="dark"] .la-badge.ativo{background:#064e3b;color:#6ee7b7;}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 <body>
 
@@ -1356,20 +1357,15 @@ input[type="file"]#mImgFile{display:none;}
               </div>
               <div style="background:var(--bg3);border:1px solid rgba(74,222,128,.2);border-radius:var(--r-lg);padding:18px;display:flex;flex-direction:column;gap:12px;">
                 <div style="font-size:13px;color:var(--text2);line-height:1.6;">
-                  Com o token configurado, <strong style="color:var(--green)">toda alteração de preço é enviada automaticamente</strong> para todos os aparelhos. Os outros dispositivos veem as mudanças ao recarregar o site.
+                  Dados sincronizados via <strong style="color:var(--green)">Supabase</strong> — toda alteração é salva automaticamente no banco de dados e aparece em todos os dispositivos ao recarregar.
                 </div>
-                <div style="display:flex;flex-direction:column;gap:6px;">
-                  <label class="fl" style="font-size:12px;">Token do GitHub <span style="color:var(--text3);font-weight:400;">(opcional — ativa publicação automática)</span></label>
-                  <div style="display:flex;gap:8px;align-items:center;">
-                    <input class="fi" id="cfgGhToken" type="password" placeholder="ghp_xxxxxxxxxxxx" style="flex:1;font-family:monospace;font-size:12px;"
-                      oninput="localStorage.setItem('cellos_gh_token',this.value.trim());atualizarBotaoPublicar()">
-                    <button class="btn" onclick="document.getElementById('cfgGhToken').type=document.getElementById('cfgGhToken').type==='password'?'text':'password'" style="padding:8px 10px;font-size:11px;">👁</button>
-                  </div>
-                  <div id="ghTokenInfo" style="font-size:11px;color:var(--text3);line-height:1.6;"></div>
+                <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--green);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px"><polyline points="20 6 9 17 4 12"/></svg>
+                  Banco de dados ativo · ldeavidbwtjmyyqlesbi.supabase.co
                 </div>
                 <button class="btn" id="btnPublicar" onclick="gerarSiteAtualizado()" style="background:var(--green);color:#000;font-weight:700;font-size:14px;padding:12px 20px;width:fit-content;">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:15px;height:15px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  <span id="btnPublicarTxt">Gerar e baixar site atualizado</span>
+                  <span id="btnPublicarTxt">🚀 Sincronizar agora</span>
                 </button>
                 <div id="publishStatus" style="font-size:12px;color:var(--green);display:none;"></div>
               </div>
@@ -3167,8 +3163,7 @@ function salvarModelo() {
   renderAdminModelos();
   renderCatalog();
   toast('Modelo salvo!', 'green');
-  if (localStorage.getItem('cellos_gh_token')) setTimeout(()=>publicarGitHub(false), 500);
-  else toast('Configure token GitHub em Config para sincronizar entre aparelhos', 'amber');
+  setTimeout(()=>publicarGitHub(true), 500);
 }
 
 function editModelo(id) {
@@ -3305,7 +3300,6 @@ function ajustarQtd(id, delta) {
 
 let _syncEstoqueTimer = null;
 function agendarSyncEstoque() {
-  if (!localStorage.getItem('cellos_gh_token')) return;
   clearTimeout(_syncEstoqueTimer);
   _syncEstoqueTimer = setTimeout(() => publicarGitHub(true), 1500);
 }
@@ -3444,8 +3438,6 @@ function loadConfigForm() {
   document.getElementById('cfgNome').value = cfg.nome||'';
   document.getElementById('cfgWhats').value = cfg.whats||'';
   document.getElementById('cfgMsg').value = cfg.msg||'';
-  const el = document.getElementById('cfgGhToken');
-  if (el) el.value = localStorage.getItem('cellos_gh_token')||'';
   atualizarBotaoPublicar();
 }
 function salvarConfig() {
@@ -3458,17 +3450,8 @@ function salvarConfig() {
 }
 
 function atualizarBotaoPublicar() {
-  const token = localStorage.getItem('cellos_gh_token')||'';
   const btn = document.getElementById('btnPublicarTxt');
-  const info = document.getElementById('ghTokenInfo');
-  if (!btn) return;
-  if (token) {
-    btn.textContent = '🚀 Sincronizar agora';
-    if (info) info.innerHTML = '✅ Token configurado — toda vez que você editar um preço, sincroniza automático em todos os aparelhos.';
-  } else {
-    btn.textContent = 'Sincronizar (sem token)';
-    if (info) info.innerHTML = '⚠️ Sem token a sincronização não funciona. <a href="https://github.com/settings/tokens/new?scopes=repo&description=CellOS" target="_blank" style="color:var(--accent);">Criar token no GitHub ↗</a>';
-  }
+  if (btn) btn.textContent = '🚀 Sincronizar agora';
 }
 
 function carregarConfigAdmin() {
@@ -3477,8 +3460,6 @@ function carregarConfigAdmin() {
   if (el('cfgNome')) el('cfgNome').value = c.nome||'';
   if (el('cfgWhats')) el('cfgWhats').value = c.whats||'';
   if (el('cfgMsg')) el('cfgMsg').value = c.msg||'';
-  const token = localStorage.getItem('cellos_gh_token')||'';
-  if (el('cfgGhToken')) el('cfgGhToken').value = token;
   atualizarBotaoPublicar();
 }
 
@@ -3563,81 +3544,52 @@ function importarBackup(event) {
 }
 
 // ═══════════════════════════════════════════════
-// SINCRONIZAÇÃO REMOTA (data.json no GitHub)
+// SINCRONIZAÇÃO SUPABASE (banco de dados real)
 // ═══════════════════════════════════════════════
-const GH_REPO_SYNC = 'xkesper/BRAZANELL';
-const GH_DATA_FILE = 'data.json';
-const GH_OS_FILE   = 'os.json';
-const DATA_VER_KEY = 'cellos_data_ver';
-const RAW_DATA_URL = `https://raw.githubusercontent.com/${GH_REPO_SYNC}/main/${GH_DATA_FILE}`;
-const RAW_OS_URL   = `https://raw.githubusercontent.com/${GH_REPO_SYNC}/main/${GH_OS_FILE}`;
-const GH_CAIXA_FILE = 'caixa.json';
-const RAW_CAIXA_URL = `https://raw.githubusercontent.com/${GH_REPO_SYNC}/main/${GH_CAIXA_FILE}`;
+const SB_URL = 'https://ldeavidbwtjmyyqlesbi.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxkZWF2aWRid3RqbXl5cWxlc2JpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4OTMwOTUsImV4cCI6MjEwMTQ2OTA5NX0.oLmuoV_6405e4q2ou3CEUnTZk75GvMsM5XYYVY6XsO0';
+let _sbClient = null;
+function getSb() {
+  if (!_sbClient) { try { _sbClient = supabase.createClient(SB_URL, SB_KEY); } catch(e) { console.warn('Supabase init:', e); } }
+  return _sbClient;
+}
+async function sbGet(key) {
+  try { const {data,error} = await getSb().from('config').select('data').eq('id',key).single(); if(error) return null; return data?.data ?? null; } catch(e) { return null; }
+}
+async function sbSet(key, value) {
+  try { const {error} = await getSb().from('config').upsert({id:key, data:value},{onConflict:'id'}); if(error) console.warn('sbSet:',error.message); } catch(e) { console.warn('sbSet:',e.message); }
+}
 
 async function carregarDadosRemoto() {
   try {
-    const res = await fetch(`${RAW_DATA_URL}?t=${Date.now()}`, { cache: 'no-store' });
-    if (!res.ok) return false;
-    const data = await res.json();
-    if (!data || !data.version || !Array.isArray(data.modelos)) return false;
-    const local = parseInt(localStorage.getItem(DATA_VER_KEY) || '0');
-    if (data.version > local) {
-      localStorage.setItem(MODELOS_KEY, JSON.stringify(data.modelos));
-      if (data.config) localStorage.setItem(CONFIG_KEY, JSON.stringify(data.config));
-      if (Array.isArray(data.estoque)) localStorage.setItem(ESTOQUE_KEY, JSON.stringify(data.estoque));
-      if (Array.isArray(data.loja)) localStorage.setItem(LOJA_KEY, JSON.stringify(data.loja));
-      if (Array.isArray(data.venda)) localStorage.setItem(VENDA_KEY, JSON.stringify(data.venda));
-      localStorage.setItem(DATA_VER_KEY, String(data.version));
-      return true;
-    }
-    return false;
-  } catch(e) {
-    console.warn('Sync remoto falhou:', e.message);
-    return false;
-  }
+    const [cfg, loja, venda, estoque, modelos] = await Promise.all([
+      sbGet('main'), sbGet('loja'), sbGet('venda'), sbGet('estoque'), sbGet('modelos')
+    ]);
+    let updated = false;
+    if (cfg)     { localStorage.setItem(CONFIG_KEY,  JSON.stringify(cfg));     updated = true; }
+    if (loja)    { localStorage.setItem(LOJA_KEY,    JSON.stringify(loja));    updated = true; }
+    if (venda)   { localStorage.setItem(VENDA_KEY,   JSON.stringify(venda));   updated = true; }
+    if (estoque) { localStorage.setItem(ESTOQUE_KEY, JSON.stringify(estoque)); updated = true; }
+    if (modelos) { localStorage.setItem(MODELOS_KEY, JSON.stringify(modelos)); updated = true; }
+    return updated;
+  } catch(e) { console.warn('Sync Supabase falhou:', e.message); return false; }
 }
 
 async function publicarGitHub(silent) {
-  const token = localStorage.getItem('cellos_gh_token') || '';
-  if (!token) {
-    if (!silent) toast('Configure o token do GitHub em Config primeiro', 'amber');
-    return false;
-  }
   const status = document.getElementById('publishStatus');
   if (status && !silent) { status.style.display = 'block'; status.textContent = '⏳ Sincronizando...'; }
-  const version = Date.now();
-  const data = {
-    version,
-    modelos: loadModelos().map(m =>
-      (m.imgData && m.imgData.startsWith('data:')) ? {...m, imgData:''} : m
-    ),
-    config: loadConfig(),
-    estoque: loadEstoque(),
-    loja: loadLoja(),
-    venda: loadVenda()
-  };
-  const apiBase = `https://api.github.com/repos/${GH_REPO_SYNC}/contents/${GH_DATA_FILE}`;
   try {
-    let sha = null;
-    try {
-      const metaRes = await fetch(apiBase, { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json' } });
-      if (metaRes.ok) { const m = await metaRes.json(); if (m && m.sha) sha = m.sha; }
-    } catch(e) {}
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
-    const body = { message: `Atualização ${new Date().toLocaleString('pt-BR')}`, content };
-    if (sha) body.sha = sha;
-    const res = await fetch(apiBase, {
-      method: 'PUT',
-      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    });
-    if (!res.ok) { const err = await res.json(); throw new Error(err.message || res.status); }
-    localStorage.setItem(DATA_VER_KEY, String(version));
-    if (status && !silent) status.textContent = '✅ Sincronizado! Outros aparelhos vão atualizar ao recarregar.';
+    await Promise.all([
+      sbSet('main',    loadConfig()),
+      sbSet('loja',    loadLoja()),
+      sbSet('venda',   loadVenda()),
+      sbSet('estoque', loadEstoque()),
+      sbSet('modelos', loadModelos().map(m => (m.imgData && m.imgData.startsWith('data:')) ? {...m, imgData:''} : m))
+    ]);
+    if (status && !silent) status.textContent = '✅ Sincronizado!';
     if (!silent) toast('Sincronizado em todos os aparelhos! ✅', 'green');
     return true;
   } catch(e) {
-    console.error('Publish failed:', e);
     if (status && !silent) status.textContent = '❌ Erro: ' + e.message;
     if (!silent) toast('Erro ao sincronizar: ' + e.message, 'red');
     return false;
@@ -3660,11 +3612,8 @@ function _mergeOSLists(local, remote) {
 // Pull OS from GitHub and merge into local (called on startup)
 async function pullOS() {
   try {
-    const r = await fetch(RAW_OS_URL + '?t=' + Date.now(), { cache:'no-store' });
-    if (!r.ok) return false;
-    const data = await r.json();
-    const remote = data.orders || [];
-    if (!remote.length) return false;
+    const remote = await sbGet('os');
+    if (!Array.isArray(remote) || !remote.length) return false;
     const local = loadOS();
     const merged = _mergeOSLists(local, remote);
     saveOS(merged);
@@ -3674,63 +3623,24 @@ async function pullOS() {
 }
 
 async function pushOSTracking() {
-  const token = localStorage.getItem('cellos_gh_token');
-  if (!token) { toast('Token GitHub não configurado — dados não serão sincronizados', 'amber'); return; }
-  const cfg = loadConfig();
-
-  // Pull remote first to merge (prevents overwriting other devices' OS)
-  let remoteOrders = [];
-  try {
-    const r = await fetch(RAW_OS_URL + '?t=' + Date.now(), { cache:'no-store' });
-    if (r.ok) { const d = await r.json(); remoteOrders = d.orders || []; }
-  } catch(e) {}
-
   const localOrders = loadOS().map(o => ({
     ...o,
     fotos: (o.fotos||[]).filter(f => !f.startsWith('data:')),
     updatedAt: o.updatedAt || Date.now()
   }));
-
+  let remoteOrders = [];
+  try { const r = await sbGet('os'); if (Array.isArray(r)) remoteOrders = r; } catch(e) {}
   const merged = _mergeOSLists(localOrders, remoteOrders);
-
-  // Save any remote-only items to local
   const localIds = new Set(localOrders.map(o => o.id));
   const remoteOnly = merged.filter(o => !localIds.has(o.id));
   if (remoteOnly.length) saveOS([...loadOS(), ...remoteOnly]);
-
-  const payload = { shop: cfg.nome||'CellOS', updated: Date.now(), orders: merged };
-  const apiBase = `https://api.github.com/repos/${GH_REPO_SYNC}/contents/${GH_OS_FILE}`;
-  try {
-    let sha = null;
-    try {
-      const r = await fetch(apiBase, { headers:{ Authorization:`token ${token}`, Accept:'application/vnd.github+json' } });
-      if (r.ok) { const m = await r.json(); if (m && m.sha) sha = m.sha; }
-    } catch(e) {}
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
-    const body = { message:'OS sync', content };
-    if (sha) body.sha = sha;
-    const res = await fetch(apiBase, {
-      method:'PUT',
-      headers:{ Authorization:`token ${token}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json' },
-      body: JSON.stringify(body)
-    });
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      console.warn('pushOSTracking HTTP', res.status, err.message);
-      if (res.status === 401 || res.status === 403) toast('Token GitHub inválido ou sem permissão — verifique em Config', 'red');
-      else toast('Falha ao sincronizar OS (' + res.status + ')', 'red');
-    }
-  } catch(e) { console.warn('pushOSTracking:', e.message); toast('Sem conexão para sincronizar OS', 'amber'); }
+  await sbSet('os', merged);
 }
 
-// Pull Caixa from GitHub and merge into local (called on startup)
 async function pullCaixa() {
   try {
-    const r = await fetch(RAW_CAIXA_URL + '?t=' + Date.now(), { cache:'no-store' });
-    if (!r.ok) return false;
-    const data = await r.json();
-    const remote = data.vendas || [];
-    if (!remote.length) return false;
+    const remote = await sbGet('caixa');
+    if (!Array.isArray(remote) || !remote.length) return false;
     const local = loadVendas();
     const localIds = new Set(local.map(v => v.id));
     const newItems = remote.filter(v => !localIds.has(v.id));
@@ -3741,49 +3651,17 @@ async function pullCaixa() {
 }
 
 async function pushCaixa() {
-  const token = localStorage.getItem('cellos_gh_token');
-  if (!token) { toast('Token GitHub não configurado — Caixa não será sincronizado', 'amber'); return; }
-
-  // Pull remote first to merge
   let remoteVendas = [];
-  try {
-    const r = await fetch(RAW_CAIXA_URL + '?t=' + Date.now(), { cache:'no-store' });
-    if (r.ok) { const d = await r.json(); remoteVendas = d.vendas || []; }
-  } catch(e) {}
-
+  try { const r = await sbGet('caixa'); if (Array.isArray(r)) remoteVendas = r; } catch(e) {}
   const local = loadVendas();
   const localIds = new Set(local.map(v => v.id));
   const merged = [...local, ...remoteVendas.filter(v => !localIds.has(v.id))];
   if (merged.length > local.length) saveVendas(merged);
-
-  const payload = { updated: Date.now(), vendas: merged };
-  const apiBase = `https://api.github.com/repos/${GH_REPO_SYNC}/contents/${GH_CAIXA_FILE}`;
-  try {
-    let sha = null;
-    try {
-      const r = await fetch(apiBase, { headers:{ Authorization:`token ${token}`, Accept:'application/vnd.github+json' } });
-      if (r.ok) { const m = await r.json(); if (m && m.sha) sha = m.sha; }
-    } catch(e) {}
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
-    const body = { message:'Caixa sync', content };
-    if (sha) body.sha = sha;
-    const res = await fetch(apiBase, {
-      method:'PUT',
-      headers:{ Authorization:`token ${token}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json' },
-      body: JSON.stringify(body)
-    });
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      console.warn('pushCaixa HTTP', res.status, err.message);
-      if (res.status === 401 || res.status === 403) toast('Token GitHub inválido ou sem permissão — verifique em Config', 'red');
-      else toast('Falha ao sincronizar Caixa (' + res.status + ')', 'red');
-    }
-  } catch(e) { console.warn('pushCaixa:', e.message); toast('Sem conexão para sincronizar Caixa', 'amber'); }
+  await sbSet('caixa', merged);
 }
 
 let _syncCaixaTimer = null;
 function agendarSyncCaixa() {
-  if (!localStorage.getItem('cellos_gh_token')) return;
   clearTimeout(_syncCaixaTimer);
   _syncCaixaTimer = setTimeout(() => pushCaixa(), 1500);
 }
@@ -3833,11 +3711,7 @@ async function gerarCodigoOS() {
     if (m && parseInt(m[1]) === ano) maxNum = Math.max(maxNum, parseInt(m[2]));
   });
   checaLista(loadOS());
-  // Verifica também o os.json remoto, pra evitar colisão entre aparelhos diferentes
-  try {
-    const res = await fetch(RAW_OS_URL + '?t=' + Date.now(), { cache: 'no-store' });
-    if (res.ok) { const data = await res.json(); checaLista(data.orders); }
-  } catch(e) {}
+  try { const remote = await sbGet('os'); if (Array.isArray(remote)) checaLista(remote); } catch(e) {}
   const num = String(maxNum + 1).padStart(3,'0');
   return 'OS-' + ano + '-' + num;
 }
@@ -4103,19 +3977,7 @@ function renderOSFotos() {
 function addFotoOS() { document.getElementById('osFotoInput').click(); }
 
 async function uploadFotoToGitHub(b64, filename) {
-  const token = localStorage.getItem('cellos_gh_token');
-  if (!token) return null;
-  const apiBase = `https://api.github.com/repos/${GH_REPO_SYNC}/contents/photos/${filename}`;
-  const base64Content = b64.split(',')[1];
-  try {
-    const res = await fetch(apiBase, {
-      method: 'PUT',
-      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: 'Foto OS', content: base64Content })
-    });
-    if (!res.ok) return null;
-    return `https://raw.githubusercontent.com/${GH_REPO_SYNC}/main/photos/${filename}`;
-  } catch(e) { console.warn('uploadFotoToGitHub:', e.message); return null; }
+  return null; // fotos ficam como base64 — Supabase Storage pode ser adicionado futuramente
 }
 
 function handleFotoInput(input) {
@@ -4138,29 +4000,8 @@ function handleFotoInput(input) {
 function removeFotoOS(idx) { osFotosTemp.splice(idx, 1); renderOSFotos(); }
 
 async function migrarFotosParaGitHub() {
-  const token = localStorage.getItem('cellos_gh_token');
   const status = document.getElementById('migrarFotosStatus');
-  if (!token) { if (status) { status.style.display='block'; status.style.color='var(--red)'; status.textContent = 'Configure o token do GitHub primeiro.'; } return; }
-  const lista = loadOS();
-  let totalFotos = 0, migradas = 0;
-  lista.forEach(o => (o.fotos||[]).forEach(f => { if (f.startsWith('data:')) totalFotos++; }));
-  if (!totalFotos) { if (status) { status.style.display='block'; status.style.color='var(--green)'; status.textContent = 'Nenhuma foto antiga para migrar — já está tudo no GitHub!'; } return; }
-  if (status) { status.style.display='block'; status.style.color='var(--accent)'; }
-  for (const os of lista) {
-    if (!os.fotos || !os.fotos.length) continue;
-    for (let i = 0; i < os.fotos.length; i++) {
-      const f = os.fotos[i];
-      if (!f.startsWith('data:')) continue;
-      const filename = 'os_' + os.id + '_' + i + '_' + Date.now() + '.jpg';
-      const url = await uploadFotoToGitHub(f, filename);
-      if (url) { os.fotos[i] = url; migradas++; }
-      if (status) status.textContent = `Migrando... ${migradas}/${totalFotos}`;
-    }
-  }
-  saveOS(lista);
-  pushOSTracking();
-  renderStorageBar();
-  if (status) { status.style.color='var(--green)'; status.textContent = `✅ ${migradas} foto(s) migrada(s) para o GitHub! Espaço liberado.`; }
+  if (status) { status.style.display='block'; status.style.color='var(--green)'; status.textContent = 'Fotos ficam salvas localmente — sincronizadas via Supabase.'; }
 }
 
 async function salvarOS() {
@@ -4264,15 +4105,14 @@ function checkAndShowCustomerTracking() {
 async function _buscarOSRemoto(codigo) {
   const el = document.getElementById('ctBody');
   try {
-    const res = await fetch(RAW_OS_URL + '?t=' + Date.now(), { cache: 'no-store' });
-    if (res.ok) {
-      const data = await res.json();
-      if (data.shop) document.getElementById('ctShopName').textContent = data.shop;
-      const os = (data.orders || []).find(o => o.codigo === codigo);
+    const remote = await sbGet('os');
+    if (Array.isArray(remote)) {
+      const cfg = loadConfig();
+      if (cfg.nome) document.getElementById('ctShopName').textContent = cfg.nome;
+      const os = remote.find(o => o.codigo === codigo);
       if (os) { renderCustomerOS(os); _agendarRefreshCT(); return; }
     }
   } catch(e) {}
-  // Fallback localStorage
   const os = loadOS().find(o => o.codigo === codigo);
   if (os) { renderCustomerOS(os); }
   else el.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text3);"><div style="font-size:40px;margin-bottom:12px">🔍</div><div style="font-size:15px;font-weight:600;color:var(--text2);margin-bottom:6px">OS não encontrada</div><div style="font-size:13px;">Verifique o código com a assistência técnica.</div></div>';
@@ -4315,11 +4155,11 @@ async function buscarOSPorCodigo() {
   _ctCodigo = codigo;
   document.getElementById('ctCode').textContent = codigo;
   try {
-    const res = await fetch(RAW_OS_URL + '?t=' + Date.now(), { cache: 'no-store' });
-    if (res.ok) {
-      const data = await res.json();
-      if (data.shop) document.getElementById('ctShopName').textContent = data.shop;
-      const os = (data.orders || []).find(o => o.codigo === codigo);
+    const remote = await sbGet('os');
+    if (Array.isArray(remote)) {
+      const cfg = loadConfig();
+      if (cfg.nome) document.getElementById('ctShopName').textContent = cfg.nome;
+      const os = remote.find(o => o.codigo === codigo);
       if (os) { renderCustomerOS(os); _agendarRefreshCT(); return; }
     }
   } catch(e) {}
@@ -4501,7 +4341,7 @@ async function salvarProduto() {
   closeLojaModal();
   renderAdminLoja();
   renderLojaPublica();
-  if (localStorage.getItem('cellos_gh_token')) setTimeout(() => publicarGitHub(true), 800);
+  setTimeout(() => publicarGitHub(true), 800);
   toast(_lojaModalId ? 'Produto atualizado!' : 'Produto adicionado!', 'green');
 }
 
@@ -4510,7 +4350,7 @@ function deleteProduto(id) {
   saveLoja(loadLoja().filter(p => p.id !== id));
   renderAdminLoja();
   renderLojaPublica();
-  if (localStorage.getItem('cellos_gh_token')) setTimeout(() => publicarGitHub(true), 800);
+  setTimeout(() => publicarGitHub(true), 800);
   toast('Produto removido', 'red');
 }
 
@@ -4522,7 +4362,7 @@ function toggleProdutoAtivo(id) {
   saveLoja(list);
   renderAdminLoja();
   renderLojaPublica();
-  if (localStorage.getItem('cellos_gh_token')) setTimeout(() => publicarGitHub(true), 1500);
+  setTimeout(() => publicarGitHub(true), 1500);
 }
 
 function renderAdminLoja() {
@@ -4926,7 +4766,7 @@ function salvarAparelho() {
   saveVenda(list);
   closeVendaModal();
   renderAdminVenda();
-  if (localStorage.getItem('cellos_gh_token')) setTimeout(() => publicarGitHub(true), 800);
+  setTimeout(() => publicarGitHub(true), 800);
   toast(_vendaModalId ? 'Aparelho atualizado!' : 'Aparelho adicionado!', 'green');
 }
 
@@ -4934,14 +4774,14 @@ function deleteAparelho(id) {
   if (!confirm('Excluir este aparelho?')) return;
   saveVenda(loadVenda().filter(p => p.id !== id));
   renderAdminVenda();
-  if (localStorage.getItem('cellos_gh_token')) setTimeout(() => publicarGitHub(true), 800);
+  setTimeout(() => publicarGitHub(true), 800);
   toast('Aparelho removido', 'red');
 }
 
 function toggleAparelhoAtivo(id) {
   const list = loadVenda(); const idx = list.findIndex(p => p.id === id); if (idx < 0) return;
   list[idx].ativo = !list[idx].ativo; saveVenda(list); renderAdminVenda();
-  if (localStorage.getItem('cellos_gh_token')) setTimeout(() => publicarGitHub(true), 1500);
+  setTimeout(() => publicarGitHub(true), 1500);
 }
 
 function renderAdminVenda() {
@@ -5075,13 +4915,11 @@ carregarDadosRemoto().then(updated => {
 pullOS().then(updated => { if (updated) renderAdminOS(); });
 pullCaixa().then(updated => { if (updated) renderVendas(); });
 
-// Push inicial: garante que os arquivos existam no GitHub para outros dispositivos lerem
-if (localStorage.getItem('cellos_gh_token')) {
-  setTimeout(() => {
-    pushOSTracking();
-    pushCaixa();
-  }, 3000);
-}
+// Push inicial: garante que os dados existam no Supabase para outros dispositivos lerem
+setTimeout(() => {
+  pushOSTracking();
+  pushCaixa();
+}, 3000);
 
 // Polling automático a cada 30s — pull sempre (leitura pública); push só se tiver token
 setInterval(() => {
