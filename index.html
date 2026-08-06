@@ -1672,7 +1672,7 @@ input[type="file"]#mImgFile{display:none;}
         <input type="file" id="vendaFotoExtraInput" accept="image/*" style="display:none;" onchange="onVendaFotoExtraSelect(event)">
       </div>
       <!-- Descrição -->
-      <div class="fg"><label class="fl">Descrição</label><textarea class="fi" id="vendaDesc" rows="3" placeholder="Bateria, acessórios inclusos, observações, estado da tela..." style="resize:vertical;"></textarea></div>
+      <div class="fg"><label class="fl">Descrição</label><textarea class="fi" id="apDescricao" rows="3" placeholder="Bateria, acessórios inclusos, observações, estado da tela..." style="resize:vertical;"></textarea></div>
       <!-- Preço + Qtd -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
         <div class="fg"><label class="fl">Preço (R$) *</label><input type="number" class="fi" id="vendaPreco" placeholder="0.00" min="0" step="0.01"></div>
@@ -4660,7 +4660,7 @@ function openVendaModal(id) {
   document.getElementById('vendaMemoria').value = '';
   document.getElementById('vendaCor').value = '';
   document.getElementById('vendaCond').value = 'Seminovo';
-  document.getElementById('vendaDesc').value = '';
+  document.getElementById('apDescricao').value = '';
   document.getElementById('vendaPreco').value = '';
   document.getElementById('vendaQtd').value = '1';
   document.getElementById('vendaAtivo').checked = true;
@@ -4679,7 +4679,7 @@ function openVendaModal(id) {
     document.getElementById('vendaMemoria').value = p.memoria || '';
     document.getElementById('vendaCor').value = p.cor || '';
     document.getElementById('vendaCond').value = p.categoria || 'Seminovo';
-    document.getElementById('vendaDesc').value = p.descricao || '';
+    document.getElementById('apDescricao').value = p.descricao || '';
     document.getElementById('vendaPreco').value = p.preco || '';
     document.getElementById('vendaQtd').value = p.qtd || 1;
     document.getElementById('vendaAtivo').checked = p.ativo !== false;
@@ -4753,7 +4753,7 @@ function salvarAparelho() {
     memoria: document.getElementById('vendaMemoria').value.trim(),
     cor: document.getElementById('vendaCor').value.trim(),
     categoria: document.getElementById('vendaCond').value,
-    descricao: document.getElementById('vendaDesc').value.trim(),
+    descricao: document.getElementById('apDescricao').value.trim(),
     preco: parseFloat(document.getElementById('vendaPreco').value) || 0,
     qtd: parseInt(document.getElementById('vendaQtd').value) || 1,
     ativo: document.getElementById('vendaAtivo').checked,
