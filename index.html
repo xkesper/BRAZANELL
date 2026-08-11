@@ -2610,15 +2610,15 @@ function enviarOrcamento(modelId) {
   const lista = servs.map(s => `• ${s.nome}: ${s.preco>0?fmtR(s.preco):'Consulta'}`).join('\n');
   const data = new Date().toLocaleString('pt-BR');
   const msg = encodeURIComponent(
-    `📱 *Novo Pedido de Orçamento*\n` +
+    `*Novo Pedido de Orcamento*\n` +
     `━━━━━━━━━━━━━━━━━━━\n` +
-    `👤 *Cliente:* ${nome}\n` +
-    `📞 *Telefone:* ${tel}\n` +
-    `📅 *Data:* ${data}\n` +
+    `*Cliente:* ${nome}\n` +
+    `*Telefone:* ${tel}\n` +
+    `*Data:* ${data}\n` +
     `━━━━━━━━━━━━━━━━━━━\n` +
-    `📦 *Aparelho:* ${m.brand} ${m.name}\n\n` +
-    `🔧 *Reparos solicitados:*\n${lista}\n\n` +
-    `💰 *Total estimado: ${fmtR(total)}*`
+    `*Aparelho:* ${m.brand} ${m.name}\n\n` +
+    `*Reparos solicitados:*\n${lista}\n\n` +
+    `*Total estimado: ${fmtR(total)}*`
   );
   window.open(`https://wa.me/55${WHATS_LOJA}?text=${msg}`, '_blank');
 
@@ -3967,7 +3967,7 @@ function enviarWhats(id) {
   if (tel && !tel.startsWith('55')) tel = '55' + tel;
   const fallback = cfg.whats ? (cfg.whats.replace(/\D/g,'').startsWith('55') ? cfg.whats.replace(/\D/g,'') : '55' + cfg.whats.replace(/\D/g,'')) : '';
   const num = tel || fallback;
-  const msg = encodeURIComponent('Olá ' + os.cliente.nome + '! 👋\nSua OS *' + os.codigo + '* foi aberta.\nAcompanhe em tempo real:\n' + url);
+  const msg = encodeURIComponent('Ola ' + os.cliente.nome + '!\nSua OS *' + os.codigo + '* foi registrada.\nAcompanhe em tempo real:\n' + url);
   window.open('https://wa.me/+' + num + '?text=' + msg, '_blank');
 }
 
@@ -4126,29 +4126,29 @@ function enviarOrcamentoWA(idOverride) {
   const linhasServicos = servicos.map((s, i) => {
     const preco = s.preco ? 'R$ ' + Number(s.preco).toFixed(2).replace('.',',') : 'Consultar';
     return `*${i+1}. ${s.label}*\n` +
-           `   └ ${s.detalhe}\n` +
-           `   └ Garantia: ${s.garantia}\n` +
-           `   └ Valor: ${preco}`;
+           `   - ${s.detalhe}\n` +
+           `   - Garantia: ${s.garantia}\n` +
+           `   - Valor: ${preco}`;
   }).join('\n\n');
-  const data = os.dataPrevista ? '\n📅 Previsão de entrega: ' + os.dataPrevista : '';
+  const data = os.dataPrevista ? '\nPrevisao de entrega: ' + os.dataPrevista : '';
   const msg =
-`🔧 *ORÇAMENTO DE REPARO — ${cfg.nome || 'Assistência Técnica'}*
-
-👤 Cliente: ${os.cliente.nome}
-📱 Aparelho: ${os.modelo || 'Não informado'}${data}
-
-*Serviços a Realizar:*
+`*ORCAMENTO DE REPARO — ${cfg.nome || 'Assistencia Tecnica'}*
+━━━━━━━━━━━━━━━━━━━
+*Cliente:* ${os.cliente.nome}
+*Aparelho:* ${os.modelo || 'Nao informado'}${data}
+━━━━━━━━━━━━━━━━━━━
+*Servicos a Realizar:*
 
 ${linhasServicos}
 
 ━━━━━━━━━━━━━━━
-💰 *TOTAL: R$ ${total.toFixed(2).replace('.',',')}*
+*TOTAL: R$ ${total.toFixed(2).replace('.',',')}*
 ━━━━━━━━━━━━━━━
 
-✅ Após a aprovação, iniciaremos o reparo imediatamente.
-Qualquer dúvida estamos à disposição!
+Apos a aprovacao, iniciaremos o reparo imediatamente.
+Qualquer duvida estamos a disposicao!
 
-_${cfg.nome || 'Assistência Técnica'}_`;
+_${cfg.nome || 'Assistencia Tecnica'}_`;
 
   let tel = (os.cliente.telefone || '').replace(/\D/g, '');
   if (tel && !tel.startsWith('55')) tel = '55' + tel;
