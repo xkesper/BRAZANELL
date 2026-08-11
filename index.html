@@ -4829,9 +4829,7 @@ function renderVendaPublica() {
 }
 
 function _renderVendaAmzCard(p, whats) {
-  const preco = (p.preco || 0).toFixed(2).replace('.', ',');
-  const [reais, cents] = preco.split(',');
-  const msg = encodeURIComponent(`Olá! Tenho interesse no aparelho: *${p.nome}* — R$ ${preco}. Ainda está disponível?`);
+  const msg = encodeURIComponent(`Olá! Tenho interesse no aparelho: *${p.nome}*. Poderia me passar o preço e disponibilidade?`);
   const waLink = whats ? `https://wa.me/55${whats.replace(/\D/g,'')}?text=${msg}` : `https://wa.me/?text=${msg}`;
   const estoque = p.qtd > 1 ? `Em estoque (${p.qtd} un.)` : 'Disponível';
   const extras = Array.isArray(p.fotos) ? p.fotos : [];
@@ -4869,8 +4867,7 @@ function _renderVendaAmzCard(p, whats) {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           ${estoque}
         </div>
-        <div class="vfk-price"><span class="vfk-price-rs">R$</span>${reais}<span class="vfk-price-cents">,${cents}</span></div>
-        <div class="vfk-parcela">ou parcele no cartão</div>
+        <div style="font-size:12px;color:var(--text3);margin-bottom:10px;line-height:1.5;">Solicite o orçamento pelo WhatsApp e receba o preço na hora.</div>
         <hr class="vfk-divider">
         <div class="vfk-exchange">
           <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4 4 4"/><path d="M17 8v12m0 0 4-4m-4 4-4-4"/></svg>
@@ -4878,7 +4875,7 @@ function _renderVendaAmzCard(p, whats) {
         </div>
         <a href="${waLink}" target="_blank" class="vfk-btn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.82.487 3.53 1.338 5.007L2.05 21.95l5.082-1.328A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm.001 18c-1.714 0-3.31-.469-4.68-1.283l-.337-.2-3.016.788.806-2.946-.221-.349A7.964 7.964 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
-          Comprar via WhatsApp
+          Solicitar Orçamento
         </a>
       </div>
     </div>
