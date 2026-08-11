@@ -1478,6 +1478,13 @@ input[type="file"]#mImgFile{display:none;}
         <div class="fg"><label class="fl">Valor do Orçamento (R$)</label><input class="fi" id="osOrcamento" type="number" step="0.01" placeholder="0,00"></div>
         <div class="fg"><label class="fl">Previsão de entrega</label><input class="fi" id="osDataPrevista" type="date"></div>
       </div>
+      <!-- Serviços do Orçamento -->
+      <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:6px;">Serviços do Orçamento</div>
+      <div style="display:flex;flex-direction:column;gap:6px;" id="osSrvGrid"></div>
+      <div class="os-srv-total" id="osSrvTotalRow" style="display:none;">
+        <span style="font-size:12px;color:var(--text3);font-weight:600;">TOTAL</span>
+        <span id="osSrvTotal" style="font-size:16px;font-weight:800;color:var(--green);font-family:var(--mono);">R$ 0,00</span>
+      </div>
       <div class="fg"><label class="fl">Problema relatado pelo cliente</label><textarea class="fi" id="osProblema" rows="2" placeholder="Descreva o problema..." style="resize:vertical;"></textarea></div>
       <!-- Checklist -->
       <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);padding-bottom:6px;">Condições ao Receber</div>
@@ -1493,9 +1500,15 @@ input[type="file"]#mImgFile{display:none;}
       <!-- Observações -->
       <div class="fg"><label class="fl">Observações internas</label><textarea class="fi" id="osObs" rows="2" placeholder="Anotações técnicas, peças necessárias..." style="resize:vertical;"></textarea></div>
     </div>
-    <div class="amodal-foot">
-      <button class="btn btn-ghost" onclick="closeOSModal()">Cancelar</button>
-      <button class="btn btn-primary" onclick="salvarOS()">Salvar OS</button>
+    <div class="amodal-foot" style="flex-direction:column;gap:10px;">
+      <button class="wa-orc-btn" id="osWaOrcBtn" onclick="enviarOrcamentoWA()" style="display:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.82.487 3.53 1.338 5.007L2.05 21.95l5.082-1.328A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 11.999 2zm.001 18c-1.714 0-3.31-.469-4.68-1.283l-.337-.2-3.016.788.806-2.946-.221-.349A7.964 7.964 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+        Enviar Orçamento via WhatsApp
+      </button>
+      <div style="display:flex;gap:8px;width:100%;">
+        <button class="btn btn-ghost" style="flex:1;" onclick="closeOSModal()">Cancelar</button>
+        <button class="btn btn-primary" style="flex:2;" onclick="salvarOS()">Salvar OS</button>
+      </div>
     </div>
   </div>
 </div>
@@ -1848,6 +1861,23 @@ input[type="file"]#mImgFile{display:none;}
 .os-check-item.checked{background:rgba(34,211,238,.07);border-color:rgba(34,211,238,.25);color:var(--accent);}
 .os-check-box{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;transition:.2s;}
 .os-check-item.checked .os-check-box{background:var(--accent);border-color:var(--accent);color:#000;}
+/* OS Serviços */
+.os-srv-row{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .15s;}
+.os-srv-row.selected{border-color:rgba(34,211,238,.35);}
+.os-srv-head{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;user-select:none;background:var(--bg3);}
+.os-srv-row.selected .os-srv-head{background:rgba(34,211,238,.06);}
+.os-srv-chk{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s;}
+.os-srv-row.selected .os-srv-chk{background:var(--accent);border-color:var(--accent);}
+.os-srv-chk svg{width:10px;height:10px;stroke:#000;display:none;}
+.os-srv-row.selected .os-srv-chk svg{display:block;}
+.os-srv-icon{font-size:16px;line-height:1;}
+.os-srv-label{font-size:13px;font-weight:500;color:var(--text);flex:1;}
+.os-srv-price{font-family:var(--mono);font-size:13px;color:var(--green);font-weight:600;min-width:80px;text-align:right;}
+.os-srv-body{display:none;padding:10px 12px 12px;background:var(--bg2);border-top:1px solid var(--border);flex-direction:column;gap:8px;}
+.os-srv-row.selected .os-srv-body{display:flex;}
+.os-srv-total{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.2);border-radius:var(--r);margin-top:4px;}
+.wa-orc-btn{width:100%;padding:13px;border-radius:var(--r);border:none;cursor:pointer;font-size:14px;font-weight:700;font-family:var(--font);background:linear-gradient(135deg,#25d366,#1aad56);color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;transition:filter .15s;}
+.wa-orc-btn:hover{filter:brightness(1.08);}
 #customerTrackPage{position:fixed;inset:0;z-index:2000;background:var(--bg);overflow-y:auto;display:none;}
 .ct-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10;}
 .ct-body{max-width:620px;margin:0 auto;padding:24px 16px;}
@@ -3700,6 +3730,23 @@ const CHECKLIST_ITEMS = [
   { key:'conta',       label:'Conta Google' },
 ];
 
+const OS_SERVICOS = [
+  { key:'tela',      icon:'📱', label:'Troca de Tela',             detalhe:'Tela com digitalizador integrado — vidro e LCD/OLED compatível com o modelo, testada e com garantia contra defeito de fábrica' },
+  { key:'bateria',   icon:'🔋', label:'Troca de Bateria',           detalhe:'Bateria de alta capacidade compatível com o modelo, célula de qualidade com proteção contra sobrecarga e curto-circuito' },
+  { key:'conector',  icon:'🔌', label:'Conector de Carregamento',   detalhe:'Conector USB/Type-C/Lightning compatível com o modelo, estrutura reforçada para maior durabilidade' },
+  { key:'cam_tras',  icon:'📷', label:'Câmera Traseira',            detalhe:'Módulo de câmera traseira compatível com o modelo, testado para garantir foco, qualidade de imagem e vídeo' },
+  { key:'cam_front', icon:'🤳', label:'Câmera Frontal / Selfie',    detalhe:'Módulo de câmera frontal compatível com o modelo, testado para garantir qualidade de imagem e vídeo' },
+  { key:'alto_fal',  icon:'🔊', label:'Alto-falante (Caixa)',       detalhe:'Alto-falante externo (caixa) compatível com o modelo, testado para som limpo sem distorção' },
+  { key:'auricular', icon:'🎧', label:'Alto-falante Auricular',     detalhe:'Alto-falante auricular (viva-voz) compatível com o modelo, testado para chamadas com qualidade' },
+  { key:'microfone', icon:'🎤', label:'Microfone',                  detalhe:'Microfone interno compatível com o modelo, testado para captação de áudio nítida' },
+  { key:'botao_h',   icon:'⬜', label:'Botão Home / Biometria',     detalhe:'Conjunto do botão home com leitor de digital (quando aplicável) compatível com o modelo' },
+  { key:'botao_pv',  icon:'🔘', label:'Botões Power / Volume',      detalhe:'Conjunto de botões laterais (power e volume) compatíveis com o modelo' },
+  { key:'placa',     icon:'🔧', label:'Reparo de Placa-mãe',        detalhe:'Serviço de microssoldagem e diagnóstico avançado em placa-mãe — ressoldagem de componentes, limpeza de oxidação e testes funcionais' },
+  { key:'carcaca',   icon:'🛡️', label:'Troca de Carcaça / Tampa',   detalhe:'Carcaça traseira / chassi compatível com o modelo, estrutura íntegra e encaixe preciso' },
+  { key:'software',  icon:'💾', label:'Formatação / Software',      detalhe:'Formatação completa do dispositivo, atualização de sistema e configuração inicial' },
+  { key:'outro',     icon:'⚙️', label:'Outro Serviço',              detalhe:'Descreva abaixo o serviço ou peça a ser substituída' },
+];
+
 function loadOS() { try { return JSON.parse(localStorage.getItem(OS_KEY)) || []; } catch { return []; } }
 function saveOS(d) { localStorage.setItem(OS_KEY, JSON.stringify(d)); }
 
@@ -3861,7 +3908,8 @@ function renderOSCard(os) {
       '<div style="display:flex;align-items:center;gap:10px;"><span style="font-family:var(--mono);font-weight:700;color:var(--accent)">' + esc(os.codigo) + '</span><span class="os-badge ' + os.status + '">' + st.icon + ' ' + st.label + '</span></div>' +
       '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
         '<button class="btn btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="copiarLinkOS(\'' + os.id + '\')">🔗 Link</button>' +
-        '<button class="btn btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="enviarWhats(\'' + os.id + '\')">WhatsApp</button>' +
+        '<button class="btn btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="enviarWhats(\'' + os.id + '\')">📩 Notificar</button>' +
+        (os.servicos && os.servicos.length ? '<button style="padding:5px 11px;font-size:11px;font-weight:700;border-radius:20px;border:none;cursor:pointer;background:linear-gradient(135deg,#25d366,#1aad56);color:#fff;" onclick="enviarOrcamentoWA(\'' + os.id + '\')">💬 Orçamento WA</button>' : '') +
         '<button class="btn btn-ghost" style="padding:5px 11px;font-size:11px;" onclick="openOSModal(\'' + os.id + '\')">Editar</button>' +
         '<button class="btn" style="padding:5px 11px;font-size:11px;background:var(--red-dim);color:var(--red);border:1px solid rgba(248,113,113,.2);" onclick="deleteOS(\'' + os.id + '\')">✕</button>' +
       '</div>' +
@@ -3875,6 +3923,15 @@ function renderOSCard(os) {
       '<div><span style="color:var(--text3)">Previsão: </span>' + (os.dataPrevista||'—') + '</div>' +
     '</div>' +
     '<div style="display:flex;flex-wrap:wrap;gap:5px;">' + statusBtns + '</div>' +
+    (os.servicos && os.servicos.length ? '<div style="background:var(--bg3);border-radius:var(--r);padding:10px 12px;font-size:12px;display:flex;flex-direction:column;gap:5px;">' +
+      '<div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;">Serviços Detalhados</div>' +
+      os.servicos.map(s => '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:4px 0;border-bottom:1px solid var(--border);">' +
+        '<div><span style="margin-right:5px;">' + s.icon + '</span><strong>' + esc(s.label) + '</strong>' +
+        '<div style="color:var(--text3);font-size:11px;margin-top:2px;">' + esc(s.detalhe) + '</div>' +
+        '<div style="color:var(--text3);font-size:10px;margin-top:1px;">Garantia: ' + esc(s.garantia||'90 dias') + '</div></div>' +
+        '<span style="font-family:var(--mono);font-weight:700;color:var(--green);white-space:nowrap;">' + (s.preco ? 'R$ ' + Number(s.preco).toFixed(2).replace('.',',') : '—') + '</span>' +
+      '</div>').join('') +
+    '</div>' : '') +
     fotos +
   '</div>';
 }
@@ -3938,6 +3995,8 @@ function openOSModal(id) {
   document.getElementById('osProblema').value = os?.problema || '';
   document.getElementById('osObs').value = os?.observacoes || '';
   document.getElementById('osDataPrevista').value = os?.dataPrevista || '';
+  // Serviços do Orçamento
+  _renderOsSrvGrid(os?.servicos || []);
   // Checklist
   const grid = document.getElementById('osChecklistGrid');
   grid.innerHTML = CHECKLIST_ITEMS.map(item => {
@@ -3958,6 +4017,148 @@ function closeOSModal() {
 }
 
 function closeOSFora(e) { if (e.target === document.getElementById('osModal')) closeOSModal(); }
+
+// ── OS Serviços ──────────────────────────────────
+function _renderOsSrvGrid(savedServicos) {
+  const grid = document.getElementById('osSrvGrid');
+  if (!grid) return;
+  grid.innerHTML = OS_SERVICOS.map(s => {
+    const saved = savedServicos.find(x => x.key === s.key) || {};
+    const sel = !!saved.key;
+    const preco = saved.preco != null ? saved.preco : '';
+    const detalhe = saved.detalhe !== undefined ? saved.detalhe : s.detalhe;
+    const garantia = saved.garantia || '90 dias';
+    return `<div class="os-srv-row${sel?' selected':''}" id="ossrv_${s.key}">
+      <div class="os-srv-head" onclick="toggleOsSrv('${s.key}')">
+        <div class="os-srv-chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <span class="os-srv-icon">${s.icon}</span>
+        <span class="os-srv-label">${s.label}</span>
+        <span class="os-srv-price" id="ossrv_price_${s.key}">${preco ? 'R$ ' + Number(preco).toFixed(2).replace('.',',') : ''}</span>
+      </div>
+      <div class="os-srv-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div class="fg" style="margin:0"><label class="fl">Valor (R$)</label>
+            <input class="fi" type="number" step="0.01" min="0" id="ossrv_val_${s.key}" value="${preco}" placeholder="0,00" oninput="updateOsSrvTotal()">
+          </div>
+          <div class="fg" style="margin:0"><label class="fl">Garantia</label>
+            <input class="fi" id="ossrv_gar_${s.key}" value="${garantia}" placeholder="Ex: 90 dias">
+          </div>
+        </div>
+        <div class="fg" style="margin:0"><label class="fl">Detalhamento da peça / serviço</label>
+          <textarea class="fi" id="ossrv_det_${s.key}" rows="2" style="resize:vertical;font-size:12px;">${detalhe}</textarea>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  _updateOsSrvUI();
+}
+
+function toggleOsSrv(key) {
+  const row = document.getElementById('ossrv_' + key);
+  if (!row) return;
+  row.classList.toggle('selected');
+  _updateOsSrvUI();
+}
+
+function _updateOsSrvUI() {
+  let total = 0;
+  let anySelected = false;
+  OS_SERVICOS.forEach(s => {
+    const row = document.getElementById('ossrv_' + s.key);
+    if (!row) return;
+    const sel = row.classList.contains('selected');
+    if (sel) {
+      anySelected = true;
+      const val = parseFloat(document.getElementById('ossrv_val_' + s.key)?.value) || 0;
+      total += val;
+      const priceEl = document.getElementById('ossrv_price_' + s.key);
+      if (priceEl) priceEl.textContent = val ? 'R$ ' + val.toFixed(2).replace('.',',') : '';
+    } else {
+      const priceEl = document.getElementById('ossrv_price_' + s.key);
+      if (priceEl) priceEl.textContent = '';
+    }
+  });
+  const totalRow = document.getElementById('osSrvTotalRow');
+  const totalEl = document.getElementById('osSrvTotal');
+  const waBtn = document.getElementById('osWaOrcBtn');
+  if (totalRow) totalRow.style.display = anySelected ? '' : 'none';
+  if (totalEl) totalEl.textContent = 'R$ ' + total.toFixed(2).replace('.',',');
+  if (waBtn) waBtn.style.display = anySelected ? '' : 'none';
+  // auto-fill orcamento field
+  const orcEl = document.getElementById('osOrcamento');
+  if (orcEl && anySelected) orcEl.value = total.toFixed(2);
+}
+
+function updateOsSrvTotal() { _updateOsSrvUI(); }
+
+function _collectOsSrvs() {
+  return OS_SERVICOS
+    .filter(s => document.getElementById('ossrv_' + s.key)?.classList.contains('selected'))
+    .map(s => ({
+      key: s.key,
+      icon: s.icon,
+      label: s.label,
+      preco: parseFloat(document.getElementById('ossrv_val_' + s.key)?.value) || 0,
+      detalhe: document.getElementById('ossrv_det_' + s.key)?.value || s.detalhe,
+      garantia: document.getElementById('ossrv_gar_' + s.key)?.value || '90 dias',
+    }));
+}
+
+function enviarOrcamentoWA(idOverride) {
+  const id = idOverride || osModalId;
+  let os, servicos;
+  if (id) {
+    os = loadOS().find(o => o.id === id);
+    servicos = os?.servicos || [];
+  } else {
+    // chamado direto do modal (antes de salvar)
+    os = {
+      codigo: '(prévia)',
+      cliente: { nome: document.getElementById('osCliente')?.value || '', telefone: document.getElementById('osTelefone')?.value || '' },
+      modelo: document.getElementById('osModelo')?.value || '',
+      dataPrevista: document.getElementById('osDataPrevista')?.value || '',
+    };
+    servicos = _collectOsSrvs();
+  }
+  if (!servicos.length) { toast('Selecione ao menos um serviço', 'red'); return; }
+  const cfg = loadConfig();
+  const total = servicos.reduce((s, v) => s + (v.preco || 0), 0);
+  const linhasServicos = servicos.map((s, i) => {
+    const preco = s.preco ? 'R$ ' + Number(s.preco).toFixed(2).replace('.',',') : 'Consultar';
+    return `*${i+1}. ${s.label}*\n` +
+           `   └ ${s.detalhe}\n` +
+           `   └ Garantia: ${s.garantia}\n` +
+           `   └ Valor: ${preco}`;
+  }).join('\n\n');
+  const data = os.dataPrevista ? '\n📅 Previsão de entrega: ' + os.dataPrevista : '';
+  const msg =
+`🔧 *ORÇAMENTO DE REPARO — ${cfg.nome || 'Assistência Técnica'}*
+
+👤 Cliente: ${os.cliente.nome}
+📱 Aparelho: ${os.modelo || 'Não informado'}${data}
+
+*Serviços a Realizar:*
+
+${linhasServicos}
+
+━━━━━━━━━━━━━━━
+💰 *TOTAL: R$ ${total.toFixed(2).replace('.',',')}*
+━━━━━━━━━━━━━━━
+
+✅ Após a aprovação, iniciaremos o reparo imediatamente.
+Qualquer dúvida estamos à disposição!
+
+_${cfg.nome || 'Assistência Técnica'}_`;
+
+  let tel = (os.cliente.telefone || '').replace(/\D/g, '');
+  if (tel && !tel.startsWith('55')) tel = '55' + tel;
+  const fallback = cfg.whats ? (cfg.whats.replace(/\D/g,'').startsWith('55') ? cfg.whats.replace(/\D/g,'') : '55' + cfg.whats.replace(/\D/g,'')) : '';
+  const num = tel || fallback;
+  const base = num ? `https://wa.me/${num}` : 'https://wa.me/';
+  window.open(base + '?text=' + encodeURIComponent(msg), '_blank');
+  // muda status para "orcamento" se ainda estava aguardando
+  if (id && os.status === 'aguardando') quickStatusOS(id, 'orcamento');
+}
 
 function toggleOsCk(key) {
   const cb = document.getElementById('osCk_' + key);
@@ -4013,6 +4214,9 @@ async function salvarOS() {
   const isNew = !osModalId;
   const existing = osModalId ? lista.find(o => o.id === osModalId) : null;
   const codigo = existing?.codigo || await gerarCodigoOS();
+  const servicos = _collectOsSrvs();
+  const totalServicos = servicos.reduce((s, v) => s + (v.preco || 0), 0);
+  const orcamentoFinal = servicos.length ? totalServicos.toFixed(2) : document.getElementById('osOrcamento').value;
   const os = {
     id: osModalId || ('os_' + Date.now() + '_' + Math.random().toString(36).slice(2,8)),
     codigo,
@@ -4021,7 +4225,8 @@ async function salvarOS() {
     cliente: { nome, telefone: document.getElementById('osTelefone').value.trim() },
     modelo: document.getElementById('osModelo').value.trim(),
     status: document.getElementById('osStatus').value,
-    orcamento: document.getElementById('osOrcamento').value,
+    orcamento: orcamentoFinal,
+    servicos,
     problema: document.getElementById('osProblema').value.trim(),
     observacoes: document.getElementById('osObs').value.trim(),
     checklist,
