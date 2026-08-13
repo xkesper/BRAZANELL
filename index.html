@@ -1957,6 +1957,16 @@ function loadModelos() {
         upd.servicos = d.servicos;
       if (Object.keys(upd).length) { stored[i] = Object.assign({}, m, upd); changed = true; }
     });
+    // Migração: garante que todos os modelos tenham Alto Falante/Campainha e Botão Power
+    var _newSrvs = ['Alto Falante/Campainha','Botão Power'];
+    stored.forEach(function(m, i) {
+      var nomes = (m.servicos||[]).map(function(x){ return (x.nome||'').toLowerCase().trim(); });
+      var toAdd = _newSrvs.filter(function(n){ return nomes.indexOf(n.toLowerCase().trim()) === -1; });
+      if (toAdd.length) {
+        stored[i] = Object.assign({}, m, { servicos: (m.servicos||[]).concat(toAdd.map(function(n){ return {nome:n,preco:0}; })) });
+        changed = true;
+      }
+    });
     if (changed) localStorage.setItem(MODELOS_KEY, JSON.stringify(stored));
     return stored;
   } catch { return defaultModelos(); }
@@ -2040,10 +2050,10 @@ function defaultEstoque() {
 
 function defaultModelos() {
   // Todos preços iniciam em 0 (Sob consulta) — admin define pelo painel
-  var s = function(t,b,c,cam,tam){ var r=[{nome:'Troca de Tela/Display',preco:0},{nome:'Troca de Bateria',preco:0},{nome:'Troca de Conector de Carga',preco:0}]; if(cam) r.push({nome:'Reparo de Câmera',preco:0}); if(tam) r.push({nome:'Troca de Tampa Traseira',preco:0}); return r; };
+  var s = function(t,b,c,cam,tam){ var r=[{nome:'Troca de Tela/Display',preco:0},{nome:'Troca de Bateria',preco:0},{nome:'Troca de Conector de Carga',preco:0}]; if(cam) r.push({nome:'Reparo de Câmera',preco:0}); if(tam) r.push({nome:'Troca de Tampa Traseira',preco:0}); r.push({nome:'Alto Falante/Campainha',preco:0},{nome:'Botão Power',preco:0}); return r; };
   // Helper para iPhones: inclui sempre Tampa Traseira + Flex de Aproximidade
   // oled: passe um número (mesmo 0) para incluir "Tela Oled Premium"; omita para não incluir
-  var ap = function(t,b,c,cam,tam,flex,oled){ var r=[{nome:'Troca de Tela/Display',preco:0}]; if(arguments.length>=7) r.push({nome:'Troca de Tela/Display Oled Premium',preco:0}); r.push({nome:'Troca de Bateria',preco:0},{nome:'Troca de Conector de Carga',preco:0}); if(cam) r.push({nome:'Reparo de Câmera',preco:0}); r.push({nome:'Troca de Tampa Traseira',preco:0}); r.push({nome:'Troca de Flex de Aproximidade',preco:0}); return r; };
+  var ap = function(t,b,c,cam,tam,flex,oled){ var r=[{nome:'Troca de Tela/Display',preco:0}]; if(arguments.length>=7) r.push({nome:'Troca de Tela/Display Oled Premium',preco:0}); r.push({nome:'Troca de Bateria',preco:0},{nome:'Troca de Conector de Carga',preco:0}); if(cam) r.push({nome:'Reparo de Câmera',preco:0}); r.push({nome:'Troca de Tampa Traseira',preco:0}); r.push({nome:'Troca de Flex de Aproximidade',preco:0}); r.push({nome:'Alto Falante/Campainha',preco:0},{nome:'Botão Power',preco:0}); return r; };
   var g = function(n){ return 'https://fdn2.gsmarena.com/vv/bigpic/'+n+'.jpg'; };
   return [
     // ── APPLE ──────────────────────────────────────
